@@ -1,6 +1,6 @@
 # Terms of Use
 
-`development-plugin-for-avalonia` is provided as an open source Codex plugin and documentation bundle.
+`avalonia-codex-plugin` is provided as an open source Codex plugin and documentation bundle.
 
 ## License
 
@@ -22,4 +22,4 @@ You are responsible for reviewing and validating any code, configuration, or mig
 
 Repository and publisher information is available at:
 
-- <https://github.com/wieslawsoltes/development-plugin-for-avalonia>
+- <https://github.com/dusdong/avalonia-codex-plugin>

@@ -1,6 +1,6 @@
 # Privacy Policy
 
-`development-plugin-for-avalonia` is a documentation and workflow plugin for Codex.
+`avalonia-codex-plugin` is a documentation and workflow plugin for Codex.
 
 ## Data Collection
 
@@ -20,4 +20,4 @@ The plugin is designed to read and help edit files in the workspace where you us
 
 Repository and publisher information is available at:
 
-- <https://github.com/wieslawsoltes/development-plugin-for-avalonia>
+- <https://github.com/dusdong/avalonia-codex-plugin>

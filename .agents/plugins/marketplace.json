@@ -1,11 +1,11 @@
 {
-  "name": "development-plugin-for-avalonia-repo",
+  "name": "avalonia-codex-plugin-repo",
   "interface": {
-    "displayName": "Development Plugin for Avalonia"
+    "displayName": "Avalonia Codex Plugin"
   },
   "plugins": [
     {
-      "name": "development-plugin-for-avalonia",
+      "name": "avalonia-codex-plugin",
       "source": {
         "source": "local",
         "path": "./"

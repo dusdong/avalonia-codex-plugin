@@ -2,18 +2,18 @@
 
 ## Purpose
 
-This repository defines and maintains the `development-plugin-for-avalonia` plugin, its repo-local wrapper skill, its repo marketplace metadata, and its focused Avalonia skills.
+This repository defines and maintains the `avalonia-codex-plugin` plugin, its repo-local wrapper skill, its repo marketplace metadata, and its focused Avalonia skills.
 
 Primary goals:
 - keep guidance accurate to the pinned Avalonia 12 source baseline,
 - split broad Avalonia guidance into granular, reusable skills,
 - keep app-development references shared instead of duplicated across skills,
-- maintain clear navigation across `.agents/skills/development-plugin-for-avalonia/SKILL.md`, `SKILL.md`, `.codex-plugin/plugin.json`, `.agents/plugins/marketplace.json`, `skills/*/SKILL.md`, `README.md`, and `references/`.
+- maintain clear navigation across `.agents/skills/avalonia-codex-plugin/SKILL.md`, `SKILL.md`, `.codex-plugin/plugin.json`, `.agents/plugins/marketplace.json`, `skills/*/SKILL.md`, `README.md`, and `references/`.
 
 ## Source of Truth
 
 Use these files in this order:
-1. `.agents/skills/development-plugin-for-avalonia/SKILL.md` (repo-local discovery entrypoint)
+1. `.agents/skills/avalonia-codex-plugin/SKILL.md` (repo-local discovery entrypoint)
 2. `SKILL.md` (canonical umbrella routing workflow and default behavior)
 3. `.codex-plugin/plugin.json` (plugin package metadata, branding, and bundled component paths)
 4. `.agents/plugins/marketplace.json` (repo marketplace metadata and local install path)
@@ -60,7 +60,7 @@ After regeneration, `references/api-index-generated.md` is the default local-sou
 - Keep the repo marketplace `name` distinct from the plugin `name` so catalog and cache identity stay stable, even if the visible marketplace `displayName` intentionally matches the plugin brand.
 - If the repo root itself is the plugin root, keep the marketplace `source.path` at `./` and document that choice in `README.md`.
 - When adding, renaming, or removing a skill, update all relevant navigation points:
-  - `.agents/skills/development-plugin-for-avalonia/SKILL.md`
+  - `.agents/skills/avalonia-codex-plugin/SKILL.md`
   - `SKILL.md`
   - `.codex-plugin/plugin.json` if bundle paths or install-surface metadata change
   - `.agents/plugins/marketplace.json` if the plugin path or marketplace presentation changes

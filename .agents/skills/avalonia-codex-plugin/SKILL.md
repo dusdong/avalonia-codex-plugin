@@ -1,15 +1,15 @@
 ---
-name: development-plugin-for-avalonia
+name: avalonia-codex-plugin
 description: Repo-local umbrella skill for building, reviewing, designing, porting, and migrating Avalonia 12 applications with modern XAML/C# patterns. Use when working inside this repository and the request is broad Avalonia 12 work; route quickly to the focused plugin skills for startup, bindings, styling, controls, layout, rendering, testing, design systems, or HTML/WinForms/WPF/WinUI/legacy Avalonia migration work.
 ---
 
-# Development Plugin for Avalonia
+# Avalonia Codex Plugin
 
 Use this as the repo-local entrypoint when Codex is operating inside this repository.
 
 This wrapper keeps repo-local skill discovery separate from plugin skill discovery:
 
-- repo-local discovery entrypoint: `.agents/skills/development-plugin-for-avalonia/SKILL.md`
+- repo-local discovery entrypoint: `.agents/skills/avalonia-codex-plugin/SKILL.md`
 - plugin manifest: `../../../.codex-plugin/plugin.json`
 - plugin skills: `../../../skills/`
 - shared references: `../../../references/`

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Avalonia Codex Plugin"
+  short_description: "Repo-local umbrella skill that routes Avalonia 12 work to focused plugin skills"
+  default_prompt: "Use $avalonia-codex-plugin to route broad Avalonia 12 work in this repo to the right focused skill"

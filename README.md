@@ -1,17 +1,25 @@
-# Development Plugin for Avalonia
+# Avalonia Codex Plugin
 
-Codex plugin for building, reviewing, designing, porting, and migrating Avalonia applications with focused skills instead of one oversized catch-all skill.
+Avalonia 12 focused Codex plugin for building, reviewing, designing, porting, and migrating Avalonia applications with focused skills instead of one oversized catch-all skill.
+
+This repository is maintained independently for Avalonia 12 guidance. It is derived from [wieslawsoltes/development-plugin-for-avalonia](https://github.com/wieslawsoltes/development-plugin-for-avalonia), which is kept as the `upstream` Git remote.
 
 ## License
 
 This repository is licensed under the MIT License. See `LICENSE` for the full terms.
 
+## Upstream
+
+This project is a maintained Avalonia 12 focused Codex plugin derived from [wieslawsoltes/development-plugin-for-avalonia](https://github.com/wieslawsoltes/development-plugin-for-avalonia).
+
+The original repository is kept as `upstream`; this repository is maintained independently for Avalonia 12 guidance. See [`UPSTREAM.md`](UPSTREAM.md) for the maintenance boundary and contribution policy.
+
 ## Plugin Identity
 
-- Plugin name: `development-plugin-for-avalonia`
+- Plugin name: `avalonia-codex-plugin`
 - Plugin manifest: [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json)
 - Canonical umbrella workflow: [`SKILL.md`](SKILL.md)
-- Repo-local umbrella skill: [`.agents/skills/development-plugin-for-avalonia/SKILL.md`](.agents/skills/development-plugin-for-avalonia/SKILL.md)
+- Repo-local umbrella skill: [`.agents/skills/avalonia-codex-plugin/SKILL.md`](.agents/skills/avalonia-codex-plugin/SKILL.md)
 - Specialist skills: [`skills/`](skills)
 - Shared reference index: [`references/compendium.md`](references/compendium.md)
 - Avalonia upstream repository: [AvaloniaUI/Avalonia](https://github.com/AvaloniaUI/Avalonia)
@@ -20,7 +28,7 @@ This repository is licensed under the MIT License. See `LICENSE` for the full te
 
 This repo now supports both Codex discovery paths at the same time:
 
-- Repo-local skill discovery uses [`.agents/skills/development-plugin-for-avalonia/SKILL.md`](.agents/skills/development-plugin-for-avalonia/SKILL.md) as the broad entrypoint when Codex is working inside this checkout.
+- Repo-local skill discovery uses [`.agents/skills/avalonia-codex-plugin/SKILL.md`](.agents/skills/avalonia-codex-plugin/SKILL.md) as the broad entrypoint when Codex is working inside this checkout.
 - Plugin discovery uses [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json), which exposes the focused skills under [`skills/`](skills).
 - Repo marketplace discovery can use [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json), which points back to this repo root as the plugin directory.
 
@@ -62,7 +70,7 @@ This repository also carries a legacy-to-Avalonia-12 migration lane:
 
 ### Umbrella
 
-- [`.agents/skills/development-plugin-for-avalonia/SKILL.md`](.agents/skills/development-plugin-for-avalonia/SKILL.md): broad repo-local routing skill
+- [`.agents/skills/avalonia-codex-plugin/SKILL.md`](.agents/skills/avalonia-codex-plugin/SKILL.md): broad repo-local routing skill
 - [`SKILL.md`](SKILL.md): canonical umbrella workflow source shared by the repo-local wrapper, not a repo-local discovery path
 - [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json): repo marketplace entry exposing this repo itself as the plugin directory
 
@@ -113,7 +121,7 @@ The skills share one reference corpus instead of duplicating docs inside every s
 
 - [`SKILL.md`](SKILL.md): canonical umbrella workflow source
 - [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json): repo marketplace for loading this repo as a local plugin, with the repo root acting as the plugin root
-- [`.agents/skills/development-plugin-for-avalonia/SKILL.md`](.agents/skills/development-plugin-for-avalonia/SKILL.md): repo-local skill entrypoint for this checkout
+- [`.agents/skills/avalonia-codex-plugin/SKILL.md`](.agents/skills/avalonia-codex-plugin/SKILL.md): repo-local skill entrypoint for this checkout
 - [`skills/`](skills): focused skill folders with their own `SKILL.md` and `agents/openai.yaml`
 - [`references/`](references): shared reference corpus
 - [`scripts/generate_api_index.py`](scripts/generate_api_index.py): API index generator

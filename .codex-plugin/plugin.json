@@ -1,14 +1,13 @@
 {
-  "name": "development-plugin-for-avalonia",
+  "name": "avalonia-codex-plugin",
   "version": "0.1.0",
-  "description": "Build, review, design, port, and migrate Avalonia applications through focused skills for app architecture, styling, rendering, platform services, design systems, and framework migration.",
+  "description": "Build, review, design, port, and migrate Avalonia 12 applications through focused Codex skills for app architecture, styling, rendering, platform services, design systems, and framework migration.",
   "author": {
-    "name": "Wiesław Šoltés",
-    "email": "wieslawsoltes@users.noreply.github.com",
-    "url": "https://github.com/wieslawsoltes"
+    "name": "dusdong",
+    "url": "https://github.com/dusdong"
   },
-  "homepage": "https://github.com/wieslawsoltes/development-plugin-for-avalonia",
-  "repository": "https://github.com/wieslawsoltes/development-plugin-for-avalonia",
+  "homepage": "https://github.com/dusdong/avalonia-codex-plugin",
+  "repository": "https://github.com/dusdong/avalonia-codex-plugin",
   "license": "MIT",
   "keywords": [
     "avalonia",
@@ -24,27 +23,27 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Development Plugin for Avalonia",
-    "shortDescription": "Focused skills for building and porting Avalonia 12 apps",
-    "longDescription": "Use Development Plugin for Avalonia to build or review Avalonia 12 applications, route work into focused startup, styling, rendering, platform, and testing workflows, and handle HTML/CSS, WinForms, WPF, WinUI, and legacy Avalonia migration without drifting away from the local Avalonia 12 source baseline.",
-    "developerName": "Wiesław Šoltés",
+    "displayName": "Avalonia Codex Plugin",
+    "shortDescription": "Avalonia 12 focused Codex skills for building and porting desktop apps",
+    "longDescription": "Use Avalonia Codex Plugin to build or review Avalonia 12 applications, route work into focused startup, styling, rendering, platform, and testing workflows, and handle HTML/CSS, WinForms, WPF, WinUI, and legacy Avalonia migration without drifting away from the local Avalonia 12 source baseline. This repository is maintained independently from the original development-plugin-for-avalonia upstream.",
+    "developerName": "dusdong",
     "category": "Coding",
     "capabilities": [
       "Interactive",
       "Read",
       "Write"
     ],
-    "websiteURL": "https://github.com/wieslawsoltes/development-plugin-for-avalonia",
-    "privacyPolicyURL": "https://github.com/wieslawsoltes/development-plugin-for-avalonia/blob/main/PRIVACY.md",
-    "termsOfServiceURL": "https://github.com/wieslawsoltes/development-plugin-for-avalonia/blob/main/TERMS.md",
+    "websiteURL": "https://github.com/dusdong/avalonia-codex-plugin",
+    "privacyPolicyURL": "https://github.com/dusdong/avalonia-codex-plugin/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/dusdong/avalonia-codex-plugin/blob/main/TERMS.md",
     "defaultPrompt": [
       "Build a modern Avalonia 12 app and route the work to the right specialist skill",
       "Port this WPF, WinForms, WinUI, or HTML UI to Avalonia 12",
       "Review an Avalonia 12 project for AOT-safe bindings, styling, and performance"
     ],
     "brandColor": "#0F6CBD",
-    "composerIcon": "./assets/development-plugin-for-avalonia-icon.png",
-    "logo": "./assets/development-plugin-for-avalonia-logo.png",
+    "composerIcon": "./assets/avalonia-codex-plugin-icon.png",
+    "logo": "./assets/avalonia-codex-plugin-logo.png",
     "screenshots": []
   }
 }
