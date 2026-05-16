@@ -7,6 +7,7 @@ description: Integrate or troubleshoot Avalonia platform services such as storag
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/29-storage-provider-and-file-pickers.md`
 - `../../references/31-clipboard-and-data-transfer.md`
 - `../../references/32-launcher-and-external-open.md`

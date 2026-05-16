@@ -17,7 +17,6 @@
 - `public static readonly AttachedProperty<bool> IsClipEnabledProperty = AvaloniaProperty.RegisterAttached<AdornerLayer, Visual, bool>("IsClipEnabled", true);`
 - `public static readonly AttachedProperty<Control?> AdornerProperty = AvaloniaProperty.RegisterAttached<AdornerLayer, Visual, Control?>("Adorner");`
 - `public static readonly StyledProperty<ITemplate<Control>?> DefaultFocusAdornerProperty = AvaloniaProperty.Register<AdornerLayer, ITemplate<Control>?>(nameof(DefaultFocusAdorner));`
-- `public AdornerLayer() {`
 - `public static Visual? GetAdornedElement(Visual adorner) {`
 - `public static void SetAdornedElement(Visual adorner, Visual? adorned) {`
 - `public static AdornerLayer? GetAdornerLayer(Visual visual) {`

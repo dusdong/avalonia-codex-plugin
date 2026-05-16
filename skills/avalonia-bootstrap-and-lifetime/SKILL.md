@@ -7,6 +7,7 @@ description: Design or troubleshoot Avalonia startup wiring, `AppBuilder` config
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/00-api-map.md`
 - `../../references/01-architecture-and-lifetimes.md`
 - `../../references/05-platforms-and-bootstrap.md`
@@ -27,7 +28,7 @@ Load these when the request touches runtime services or platform shell integrati
 
 ## Rules
 
-- Keep defaults pinned to Avalonia `11.3.12`.
+- Keep defaults pinned to the local Avalonia 12 source baseline.
 - Prefer compiled XAML and compiled bindings for production startup paths.
 - Keep platform-specific code isolated to entrypoints and platform option configuration.
 - Treat reflection-heavy startup helpers as opt-in tradeoffs and call them out explicitly.

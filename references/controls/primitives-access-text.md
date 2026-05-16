@@ -13,9 +13,9 @@
 
 ## Basic APIs
 
-- `public static readonly AttachedProperty<bool> ShowAccessKeyProperty = AvaloniaProperty.RegisterAttached<AccessText, Control, bool>("ShowAccessKey", inherits: true);`
+- `public static readonly AttachedProperty<bool> ShowAccessKeyProperty = AccessKeyHandler.ShowAccessKeyProperty.AddOwner<AccessText>();`
 - `public AccessText() {`
-- `public char AccessKey {`
+- `public string? AccessKey {`
 - `public bool ShowAccessKey {`
 
 ## XAML Usage

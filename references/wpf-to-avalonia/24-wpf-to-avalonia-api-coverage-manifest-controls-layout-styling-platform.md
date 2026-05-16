@@ -72,4 +72,4 @@ python3 -m unittest scripts.test_find_uncovered_apis
 
 1. choose the migration topic doc (`00`-`45`),
 2. confirm concrete APIs in controls docs and signature index,
-3. verify final patterns against Avalonia `11.3.12` behavior.
+3. verify final patterns against the local Avalonia 12 source baseline.

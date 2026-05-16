@@ -7,6 +7,7 @@ description: Implement or review Avalonia animations, compositor usage, custom d
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/12-animations-transitions-and-frame-loops.md`
 - `../../references/14-custom-drawing-text-shapes-and-skia.md`
 - `../../references/15-compositor-and-custom-visuals.md`

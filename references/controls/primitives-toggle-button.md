@@ -15,14 +15,8 @@
 
 - `public static readonly StyledProperty<bool?> IsCheckedProperty = AvaloniaProperty.Register<ToggleButton, bool?>(nameof(IsChecked), false, defaultBindingMode: BindingMode.TwoWay);`
 - `public static readonly StyledProperty<bool> IsThreeStateProperty = AvaloniaProperty.Register<ToggleButton, bool>(nameof(IsThreeState));`
-- `public static readonly RoutedEvent<RoutedEventArgs> CheckedEvent = RoutedEvent.Register<ToggleButton, RoutedEventArgs>( nameof(Checked), RoutingStrategies.Bubble);`
-- `public static readonly RoutedEvent<RoutedEventArgs> UncheckedEvent = RoutedEvent.Register<ToggleButton, RoutedEventArgs>( nameof(Unchecked), RoutingStrategies.Bubble);`
-- `public static readonly RoutedEvent<RoutedEventArgs> IndeterminateEvent = RoutedEvent.Register<ToggleButton, RoutedEventArgs>( nameof(Indeterminate), RoutingStrategies.Bubble);`
 - `public static readonly RoutedEvent<RoutedEventArgs> IsCheckedChangedEvent = RoutedEvent.Register<ToggleButton, RoutedEventArgs>( nameof(IsCheckedChanged), RoutingStrategies.Bubble);`
 - `public ToggleButton() {`
-- `public event EventHandler<RoutedEventArgs>? Checked {`
-- `public event EventHandler<RoutedEventArgs>? Unchecked {`
-- `public event EventHandler<RoutedEventArgs>? Indeterminate {`
 - `public event EventHandler<RoutedEventArgs>? IsCheckedChanged {`
 - `public bool? IsChecked {`
 - `public bool IsThreeState {`

@@ -17,7 +17,7 @@
 - `public static readonly DirectProperty<SelectingItemsControl, int> SelectedIndexProperty = AvaloniaProperty.RegisterDirect<SelectingItemsControl, int>( nameof(SelectedIndex), o => o.SelectedIndex,`
 - `public static readonly DirectProperty<SelectingItemsControl, object?> SelectedItemProperty = AvaloniaProperty.RegisterDirect<SelectingItemsControl, object?>( nameof(SelectedItem), o => o.SelectedItem,`
 - `public static readonly StyledProperty<object?> SelectedValueProperty = AvaloniaProperty.Register<SelectingItemsControl, object?>(nameof(SelectedValue), defaultBindingMode: BindingMode.TwoWay);`
-- `public static readonly StyledProperty<IBinding?> SelectedValueBindingProperty = AvaloniaProperty.Register<SelectingItemsControl, IBinding?>(nameof(SelectedValueBinding));`
+- `public static readonly StyledProperty<BindingBase?> SelectedValueBindingProperty = AvaloniaProperty.Register<SelectingItemsControl, BindingBase?>(nameof(SelectedValueBinding));`
 - `public static readonly StyledProperty<bool> IsSelectedProperty = AvaloniaProperty.RegisterAttached<SelectingItemsControl, Control, bool>( "IsSelected", defaultBindingMode: BindingMode.TwoWay);`
 - `public static readonly StyledProperty<bool> IsTextSearchEnabledProperty = AvaloniaProperty.Register<SelectingItemsControl, bool>(nameof(IsTextSearchEnabled), false);`
 - `public static readonly RoutedEvent<RoutedEventArgs> IsSelectedChangedEvent = RoutedEvent.Register<SelectingItemsControl, RoutedEventArgs>( "IsSelectedChanged", RoutingStrategies.Bubble);`
@@ -28,7 +28,7 @@
 - `public bool AutoScrollToSelectedItem {`
 - `public int SelectedIndex {`
 - `public object? SelectedItem {`
-- `public IBinding? SelectedValueBinding {`
+- `public BindingBase? SelectedValueBinding {`
 
 ## XAML Usage
 

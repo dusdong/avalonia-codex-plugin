@@ -14,7 +14,7 @@
 ## Basic APIs
 
 - `public static readonly StyledProperty<Control?> ChildProperty = AvaloniaProperty.Register<Decorator, Control?>(nameof(Child));`
-- `public static readonly StyledProperty<Thickness> PaddingProperty = AvaloniaProperty.Register<Decorator, Thickness>(nameof(Padding));`
+- `public static readonly StyledProperty<Thickness> PaddingProperty = AvaloniaProperty.Register<Decorator, Thickness>(nameof(Padding), validate: MarginProperty.ValidateValue);`
 - `public Control? Child {`
 - `public Thickness Padding {`
 

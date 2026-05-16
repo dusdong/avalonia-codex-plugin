@@ -4,7 +4,7 @@ This catalog provides one reference document per public Avalonia control type.
 
 ## Scope
 
-- Source: Avalonia `11.3.12` control assemblies (`src/Avalonia.Controls*`)
+- Source: local Avalonia 12 control assemblies (`src/Avalonia.Controls*`) from `/Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia`
 - Coverage: public classes identified as controls by inheritance from `Control`, `TopLevel`, or `WindowBase`
 - Per-control content:
   - basic type metadata,
@@ -22,8 +22,8 @@ Use the generator script to rebuild all control references:
 
 ```bash
 python3 scripts/generate_control_reference_docs.py \
-  --repo <path-to-avalonia-repo> \
-  --git-ref 11.3.12 \
+  --repo /Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia \
+  --git-ref HEAD \
   --output-dir references/controls
 ```
 

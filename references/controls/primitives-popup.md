@@ -21,7 +21,6 @@
 - `public static readonly StyledProperty<PopupPositionerConstraintAdjustment> PlacementConstraintAdjustmentProperty = AvaloniaProperty.Register<Popup, PopupPositionerConstraintAdjustment>( nameof(PlacementConstraintAdjustment), PopupPositionerConstraintAdjustment.FlipX | PopupPositionerConstraintAdjustment.FlipY | PopupPositionerConstraintAdjustment.SlideX | PopupPositionerConstraintAdjustment.SlideY | PopupPositionerConstraintAdjustment.ResizeX | PopupPositionerConstraintAdjustment.ResizeY);`
 - `public static readonly StyledProperty<PopupGravity> PlacementGravityProperty = AvaloniaProperty.Register<Popup, PopupGravity>(nameof(PlacementGravity));`
 - `public static readonly StyledProperty<PlacementMode> PlacementProperty = AvaloniaProperty.Register<Popup, PlacementMode>(nameof(Placement), defaultValue: PlacementMode.Bottom);`
-- `public static readonly StyledProperty<PlacementMode> PlacementModeProperty = PlacementProperty;`
 - `public static readonly StyledProperty<Rect?> PlacementRectProperty = AvaloniaProperty.Register<Popup, Rect?>(nameof(PlacementRect));`
 - `public static readonly StyledProperty<Control?> PlacementTargetProperty = AvaloniaProperty.Register<Popup, Control?>(nameof(PlacementTarget));`
 - `public static readonly StyledProperty<CustomPopupPlacementCallback?> CustomPopupPlacementCallbackProperty = AvaloniaProperty.Register<Popup, CustomPopupPlacementCallback?>(nameof(CustomPopupPlacementCallback));`
@@ -29,6 +28,7 @@
 - `public static readonly StyledProperty<IInputElement?> OverlayInputPassThroughElementProperty = AvaloniaProperty.Register<Popup, IInputElement?>(nameof(OverlayInputPassThroughElement));`
 - `public static readonly StyledProperty<double> HorizontalOffsetProperty = AvaloniaProperty.Register<Popup, double>(nameof(HorizontalOffset));`
 - `public static readonly StyledProperty<bool> IsLightDismissEnabledProperty = AvaloniaProperty.Register<Popup, bool>(nameof(IsLightDismissEnabled));`
+- `public static readonly StyledProperty<double> VerticalOffsetProperty = AvaloniaProperty.Register<Popup, double>(nameof(VerticalOffset));`
 
 ## XAML Usage
 

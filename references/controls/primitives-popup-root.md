@@ -22,7 +22,6 @@
 - `public bool WindowManagerAddShadowHint {`
 - `public TopLevel ParentTopLevel { get; }`
 - `public void Dispose() {`
-- `public void ConfigurePosition(Visual target, PlacementMode placement, Point offset, PopupAnchor anchor = PopupAnchor.None, PopupGravity gravity = PopupGravity.None, PopupPositionerConstraintAdjustment constraintAdjustment = PopupPositionerConstraintAdjustment.All, Rect? rect = null) {`
 - `public void SetChild(Control? control) => Content = control;`
 - `public void TakeFocus() => PlatformImpl?.TakeFocus();`
 

@@ -7,6 +7,7 @@ description: Port WinForms applications and patterns to Avalonia, including layo
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/63-winforms-to-avalonia-modern-ui-conversion-index.md`
 - `../../references/winforms-to-avalonia/README.md`
 

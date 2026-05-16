@@ -15,8 +15,14 @@
 
 - `public static readonly DirectProperty<TabItem, Dock?> TabStripPlacementProperty = AvaloniaProperty.RegisterDirect<TabItem, Dock?>(nameof(TabStripPlacement), o => o.TabStripPlacement);`
 - `public static readonly StyledProperty<bool> IsSelectedProperty = SelectingItemsControl.IsSelectedProperty.AddOwner<TabItem>();`
+- `public static readonly StyledProperty<object?> IconProperty = AvaloniaProperty.Register<TabItem, object?>(nameof(Icon));`
+- `public static readonly StyledProperty<IDataTemplate?> IconTemplateProperty = AvaloniaProperty.Register<TabItem, IDataTemplate?>(nameof(IconTemplate));`
+- `public static readonly StyledProperty<IDataTemplate?> IndicatorTemplateProperty = AvaloniaProperty.Register<TabItem, IDataTemplate?>(nameof(IndicatorTemplate));`
 - `public Dock? TabStripPlacement {`
 - `public bool IsSelected {`
+- `public object? Icon {`
+- `public IDataTemplate? IconTemplate {`
+- `public IDataTemplate? IndicatorTemplate {`
 
 ## XAML Usage
 

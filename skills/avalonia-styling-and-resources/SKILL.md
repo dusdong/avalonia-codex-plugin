@@ -7,6 +7,7 @@ description: Build or troubleshoot Avalonia styles, themes, resources, property-
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/04-styles-themes-resources.md`
 - `../../references/16-property-system-attached-properties-behaviors-and-style-properties.md`
 - `../../references/17-resources-assets-theme-variants-and-xmlns.md`

@@ -14,7 +14,13 @@
 ## Basic APIs
 
 - `public static readonly StyledProperty<IPageTransition?> PageTransitionProperty = AvaloniaProperty.Register<Carousel, IPageTransition?>(nameof(PageTransition));`
+- `public static readonly StyledProperty<bool> IsSwipeEnabledProperty = AvaloniaProperty.Register<Carousel, bool>(nameof(IsSwipeEnabled), defaultValue: false);`
+- `public static readonly StyledProperty<double> ViewportFractionProperty = AvaloniaProperty.Register<Carousel, double>( nameof(ViewportFraction), defaultValue: 1d, coerce: (_, value) => double.IsFinite(value) && value > 0 ? value : 1d);`
+- `public static readonly DirectProperty<Carousel, bool> IsSwipingProperty = AvaloniaProperty.RegisterDirect<Carousel, bool>(nameof(IsSwiping), o => o.IsSwiping);`
 - `public IPageTransition? PageTransition {`
+- `public bool IsSwipeEnabled {`
+- `public double ViewportFraction {`
+- `public bool IsSwiping {`
 - `public void Next() {`
 - `public void Previous() {`
 

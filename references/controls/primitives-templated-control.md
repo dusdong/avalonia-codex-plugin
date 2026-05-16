@@ -25,10 +25,10 @@
 - `public static readonly StyledProperty<FontWeight> FontWeightProperty = TextElement.FontWeightProperty.AddOwner<TemplatedControl>();`
 - `public static readonly StyledProperty<FontStretch> FontStretchProperty = TextElement.FontStretchProperty.AddOwner<TemplatedControl>();`
 - `public static readonly StyledProperty<IBrush?> ForegroundProperty = TextElement.ForegroundProperty.AddOwner<TemplatedControl>();`
+- `public static readonly StyledProperty<double> LetterSpacingProperty = TextElement.LetterSpacingProperty.AddOwner<TemplatedControl>();`
 - `public static readonly StyledProperty<Thickness> PaddingProperty = Decorator.PaddingProperty.AddOwner<TemplatedControl>();`
 - `public static readonly StyledProperty<IControlTemplate?> TemplateProperty = AvaloniaProperty.Register<TemplatedControl, IControlTemplate?>(nameof(Template));`
 - `public static readonly AttachedProperty<bool> IsTemplateFocusTargetProperty = AvaloniaProperty.RegisterAttached<TemplatedControl, Control, bool>("IsTemplateFocusTarget");`
-- `public static readonly RoutedEvent<TemplateAppliedEventArgs> TemplateAppliedEvent = RoutedEvent.Register<TemplatedControl, TemplateAppliedEventArgs>( nameof(TemplateApplied), RoutingStrategies.Direct);`
 
 ## XAML Usage
 

@@ -23,12 +23,12 @@
 - `public static readonly StyledProperty<CalendarDatePickerFormat> SelectedDateFormatProperty = AvaloniaProperty.Register<CalendarDatePicker, CalendarDatePickerFormat>( nameof(SelectedDateFormat), defaultValue: CalendarDatePickerFormat.Short, validate: IsValidSelectedDateFormat);`
 - `public static readonly StyledProperty<string> CustomDateFormatStringProperty = AvaloniaProperty.Register<CalendarDatePicker, string>( nameof(CustomDateFormatString), defaultValue: "d", validate: IsValidDateFormatString);`
 - `public static readonly StyledProperty<string?> TextProperty = AvaloniaProperty.Register<CalendarDatePicker, string?>(nameof(Text));`
-- `public static readonly StyledProperty<string?> WatermarkProperty = TextBox.WatermarkProperty.AddOwner<CalendarDatePicker>();`
-- `public static readonly StyledProperty<bool> UseFloatingWatermarkProperty = TextBox.UseFloatingWatermarkProperty.AddOwner<CalendarDatePicker>();`
-- `public static readonly StyledProperty<HorizontalAlignment> HorizontalContentAlignmentProperty = ContentControl.HorizontalContentAlignmentProperty.AddOwner<CalendarDatePicker>();`
-- `public static readonly StyledProperty<VerticalAlignment> VerticalContentAlignmentProperty = ContentControl.VerticalContentAlignmentProperty.AddOwner<CalendarDatePicker>();`
-- `public CalendarBlackoutDatesCollection? BlackoutDates { get; private set; }`
-- `public DateTime DisplayDate {`
+- `public static readonly StyledProperty<string?> PlaceholderTextProperty = TextBox.PlaceholderTextProperty.AddOwner<CalendarDatePicker>();`
+- `public static readonly StyledProperty<string?> WatermarkProperty = PlaceholderTextProperty;`
+- `public static readonly StyledProperty<bool> UseFloatingPlaceholderProperty = TextBox.UseFloatingPlaceholderProperty.AddOwner<CalendarDatePicker>();`
+- `public static readonly StyledProperty<bool> UseFloatingWatermarkProperty = UseFloatingPlaceholderProperty;`
+- `public static readonly StyledProperty<Media.IBrush?> PlaceholderForegroundProperty = TextBox.PlaceholderForegroundProperty.AddOwner<CalendarDatePicker>();`
+- `public static readonly StyledProperty<Media.IBrush?> WatermarkForegroundProperty = PlaceholderForegroundProperty;`
 
 ## XAML Usage
 

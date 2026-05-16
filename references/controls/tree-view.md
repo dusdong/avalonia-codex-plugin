@@ -18,7 +18,6 @@
 - `public static readonly DirectProperty<TreeView, IList> SelectedItemsProperty = AvaloniaProperty.RegisterDirect<TreeView, IList>( nameof(SelectedItems), o => o.SelectedItems,`
 - `public static readonly StyledProperty<SelectionMode> SelectionModeProperty = ListBox.SelectionModeProperty.AddOwner<TreeView>();`
 - `public event EventHandler<SelectionChangedEventArgs>? SelectionChanged {`
-- `public new TreeItemContainerGenerator ItemContainerGenerator =>`
 - `public bool AutoScrollToSelectedItem {`
 - `public SelectionMode SelectionMode {`
 - `public object? SelectedItem {`
@@ -29,6 +28,7 @@
 - `public void UnselectAll() {`
 - `public IEnumerable<Control> GetRealizedTreeContainers() {`
 - `public Control? TreeContainerFromItem(object item) {`
+- `public object? TreeItemFromContainer(Control container) {`
 
 ## XAML Usage
 

@@ -8,7 +8,7 @@
 - Namespace: `Avalonia.Controls`
 - Assembly: `Avalonia.Controls`
 - Source: `src/Avalonia.Controls/ScrollViewer.cs`
-- Base types: `ContentControl, IInternalScroller, IScrollAnchorProvider, IScrollable`
+- Base types: `ContentControl, IScrollAnchorProvider, IScrollable`
 - Kind: `control`
 
 ## Basic APIs

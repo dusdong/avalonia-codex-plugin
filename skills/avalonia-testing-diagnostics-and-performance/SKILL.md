@@ -7,6 +7,7 @@ description: Validate Avalonia applications with headless tests, render or UI te
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/26-testing-stack-headless-render-and-ui-tests.md`
 - `../../references/27-diagnostics-profiling-and-devtools.md`
 - `../../references/08-performance-checklist.md`

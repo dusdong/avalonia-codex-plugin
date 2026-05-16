@@ -158,7 +158,7 @@ For hierarchical data, use `TreeDataTemplate`/`ITreeDataTemplate`.
 </TreeDataTemplate>
 ```
 
-In `11.3.12`, `TreeDataTemplate.ItemsSource` supports:
+On the local Avalonia 12 baseline, verify `TreeDataTemplate.ItemsSource` support against the source tree. The practical model is:
 - `Binding`
 - `CompiledBindingExtension`
 

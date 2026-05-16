@@ -19,7 +19,6 @@
 - `public static readonly StyledProperty<PopupPositionerConstraintAdjustment> PlacementConstraintAdjustmentProperty = Popup.PlacementConstraintAdjustmentProperty.AddOwner<ContextMenu>();`
 - `public static readonly StyledProperty<PopupGravity> PlacementGravityProperty = Popup.PlacementGravityProperty.AddOwner<ContextMenu>();`
 - `public static readonly StyledProperty<PlacementMode> PlacementProperty = Popup.PlacementProperty.AddOwner<ContextMenu>();`
-- `public static readonly StyledProperty<PlacementMode> PlacementModeProperty = PlacementProperty;`
 - `public static readonly StyledProperty<Rect?> PlacementRectProperty = Popup.PlacementRectProperty.AddOwner<ContextMenu>();`
 - `public static readonly StyledProperty<bool> WindowManagerAddShadowHintProperty = Popup.WindowManagerAddShadowHintProperty.AddOwner<ContextMenu>();`
 - `public static readonly StyledProperty<Control?> PlacementTargetProperty = Popup.PlacementTargetProperty.AddOwner<ContextMenu>();`
@@ -29,6 +28,7 @@
 - `public double HorizontalOffset {`
 - `public double VerticalOffset {`
 - `public PopupAnchor PlacementAnchor {`
+- `public PopupPositionerConstraintAdjustment PlacementConstraintAdjustment {`
 
 ## XAML Usage
 

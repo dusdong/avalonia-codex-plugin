@@ -129,4 +129,4 @@ python3 -m unittest scripts.test_find_uncovered_apis
 
 1. choose the migration topic doc (`00`-`66`),
 2. confirm concrete WinUI and Avalonia APIs in source/docs,
-3. validate against pinned Avalonia `11.3.12` behavior before adopting patterns.
+3. validate against the local Avalonia 12 source baseline before adopting patterns.

@@ -44,17 +44,19 @@ The plugin manifest now uses plugin-specific PNG assets for `composerIcon` and `
 
 ## Avalonia Version Coverage
 
-This plugin is pinned to Avalonia **11.3.12** for default implementation guidance.
+This plugin is being rewritten as an Avalonia **12** focused plugin for default implementation guidance.
 
-- API references and guidance are aligned to `11.3.12`.
-- Generated stable API indexing is expected to use `--git-ref 11.3.12`.
-- Guidance should avoid relying on `master`-only APIs unless a document explicitly states that exception.
+- Source baseline: `/Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia`.
+- Current source signal: `12.1.999` in `build/SharedVersion.props`, with `net10.0` in `build/TargetFrameworks.props`.
+- API references and guidance should be verified against that local source baseline.
+- Generated API indexes are helper artifacts; if they conflict with the local source tree, the local source tree wins.
 
-This repository also carries a dedicated Avalonia 12 migration lane:
+This repository also carries a legacy-to-Avalonia-12 migration lane:
 
+- source and product-reference baseline: [`references/70-avalonia-12-source-and-reference-baseline.md`](references/70-avalonia-12-source-and-reference-baseline.md)
 - curated migration chapter: [`references/68-avalonia-12-migration-guide.md`](references/68-avalonia-12-migration-guide.md)
 - generated break/new API catalog: [`references/69-avalonia-12-breaking-changes-and-new-api-catalog.md`](references/69-avalonia-12-breaking-changes-and-new-api-catalog.md)
-- generated Avalonia 12 API index: [`references/api-index-12.0.0-rc1-generated.md`](references/api-index-12.0.0-rc1-generated.md)
+- generated Avalonia 12 API index: [`references/api-index-generated.md`](references/api-index-generated.md)
 
 ## Skill Catalog
 
@@ -90,15 +92,16 @@ This repository also carries a dedicated Avalonia 12 migration lane:
 - [`winforms-to-avalonia`](skills/winforms-to-avalonia/SKILL.md): WinForms control, layout, owner-draw, and workflow migration
 - [`wpf-to-avalonia`](skills/wpf-to-avalonia/SKILL.md): WPF property, binding, layout, styling, and rendering migration
 - [`winui-to-avalonia`](skills/winui-to-avalonia/SKILL.md): WinUI shell, state, composition, and platform-integration migration
-- [`avalonia-12-migration`](skills/avalonia-12-migration/SKILL.md): move existing Avalonia 11 code to Avalonia 12 safely
+- [`avalonia-12-migration`](skills/avalonia-12-migration/SKILL.md): move legacy Avalonia 11.x code to the plugin's Avalonia 12 baseline safely
 
 ## Shared References
 
 The skills share one reference corpus instead of duplicating docs inside every skill:
 
 - [`references/compendium.md`](references/compendium.md): top-level navigation
+- [`references/70-avalonia-12-source-and-reference-baseline.md`](references/70-avalonia-12-source-and-reference-baseline.md): Avalonia 12 source baseline and allowed product references
 - [`references/00-api-map.md`](references/00-api-map.md): curated app-facing API map
-- [`references/api-index-generated.md`](references/api-index-generated.md): broad signature lookup
+- [`references/api-index-generated.md`](references/api-index-generated.md): broad Avalonia 12 signature lookup regenerated from the local source baseline
 - [`references/professional-design/README.md`](references/professional-design/README.md): professional design lane
 - [`references/fluent-design/README.md`](references/fluent-design/README.md): Fluent design lane
 - [`references/html-to-avalonia/README.md`](references/html-to-avalonia/README.md): HTML/CSS migration lane
@@ -113,31 +116,32 @@ The skills share one reference corpus instead of duplicating docs inside every s
 - [`.agents/skills/development-plugin-for-avalonia/SKILL.md`](.agents/skills/development-plugin-for-avalonia/SKILL.md): repo-local skill entrypoint for this checkout
 - [`skills/`](skills): focused skill folders with their own `SKILL.md` and `agents/openai.yaml`
 - [`references/`](references): shared reference corpus
-- [`scripts/generate_api_index.py`](scripts/generate_api_index.py): stable API index generator
+- [`scripts/generate_api_index.py`](scripts/generate_api_index.py): API index generator
 - [`scripts/generate_api_migration_report.py`](scripts/generate_api_migration_report.py): Avalonia 12 migration report generator
 - [`assets/`](assets): shared plugin and skill imagery
 
-## Regenerating API Index (Pinned)
+## Regenerating API Index
 
 ```bash
 python3 scripts/generate_api_index.py \
-  --repo <path-to-avalonia-repo> \
-  --git-ref 11.3.12 \
-  --output references/api-index-generated.md
+  --repo /Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia \
+  --git-ref HEAD \
+  --output references/api-index-generated.md \
+  --max-per-file 100000
 ```
 
-Avalonia 12 lane regeneration:
+Legacy migration report regeneration:
 
 ```bash
 python3 scripts/generate_api_index.py \
-  --repo <path-to-avalonia-repo> \
-  --git-ref 12.0.0-rc1 \
-  --output references/api-index-12.0.0-rc1-generated.md \
+  --repo /Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia \
+  --git-ref HEAD \
+  --output references/api-index-generated.md \
   --max-per-file 100000
 
 python3 scripts/generate_api_migration_report.py \
-  --repo <path-to-avalonia-repo> \
+  --repo /Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia \
   --from-ref 11.3.12 \
-  --to-ref 12.0.0-rc1 \
+  --to-ref HEAD \
   --output references/69-avalonia-12-breaking-changes-and-new-api-catalog.md
 ```

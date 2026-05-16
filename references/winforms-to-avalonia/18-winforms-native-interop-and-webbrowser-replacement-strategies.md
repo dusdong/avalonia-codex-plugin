@@ -32,7 +32,7 @@ Primary Avalonia APIs:
 
 ## Web Browser Replacement Strategy
 
-Avalonia core `11.3.12` does not ship a direct drop-in `WebBrowser` control equivalent.
+Verify native interop and web-view options against the local Avalonia 12 source baseline; do not assume Avalonia core ships a direct drop-in WinForms `WebBrowser` equivalent unless the source tree proves otherwise.
 
 Recommended approach:
 

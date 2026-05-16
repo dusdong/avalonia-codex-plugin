@@ -2,10 +2,10 @@
 
 - API index: `references/api-index-generated.md`
 - References scanned: `references`
-- Reference docs scanned: `431`
-- API signatures parsed: `9895`
-- Covered APIs: `5528`
-- Not covered APIs: `4367`
+- Reference docs scanned: `447`
+- API signatures parsed: `10345`
+- Covered APIs: `5746`
+- Not covered APIs: `4599`
 
 ## Not Covered API Signatures
 
@@ -25,6 +25,9 @@
 - `public override void OnBackPressed() {`
 - `public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults) {`
 - `public void OnBackInvoked() {`
+
+### `src/Android/Avalonia.Android/AvaloniaAndroidApplication.cs`
+- `public override void OnCreate() {`
 
 ### `src/Android/Avalonia.Android/AvaloniaView.Input.cs`
 - `public override IInputConnection OnCreateInputConnection(EditorInfo? outAttrs) {`
@@ -49,9 +52,6 @@
 ### `src/Android/Avalonia.Android/Platform/SkiaPlatform/AndroidFramebuffer.cs`
 - `public enum AndroidPixelFormat`
 
-### `src/Android/Avalonia.Android/Platform/Specific/IAndroidView.cs`
-- `public interface IAndroidView`
-
 ### `src/Avalonia.Base/Animation/Animatable.cs`
 - `public static readonly StyledProperty<Transitions?> TransitionsProperty = AvaloniaProperty.Register<Animatable, Transitions?>(nameof(Transitions));`
 
@@ -59,15 +59,21 @@
 - `public static readonly DirectProperty<Animation, TimeSpan> DurationProperty = AvaloniaProperty.RegisterDirect<Animation, TimeSpan>( nameof(Duration), o => o._duration,`
 - `public static readonly DirectProperty<Animation, IterationCount> IterationCountProperty = AvaloniaProperty.RegisterDirect<Animation, IterationCount>( nameof(IterationCount), o => o._iterationCount,`
 - `public static readonly DirectProperty<Animation, PlaybackDirection> PlaybackDirectionProperty = AvaloniaProperty.RegisterDirect<Animation, PlaybackDirection>( nameof(PlaybackDirection), o => o._playbackDirection,`
+- `public static readonly DirectProperty<Animation, PlaybackBehavior> PlaybackBehaviorProperty = AvaloniaProperty.RegisterDirect<Animation, PlaybackBehavior>( nameof(PlaybackBehavior), o => o._playbackBehavior,`
 - `public static readonly DirectProperty<Animation, FillMode> FillModeProperty = AvaloniaProperty.RegisterDirect<Animation, FillMode>( nameof(FillMode), o => o._fillMode,`
 - `public static readonly DirectProperty<Animation, Easing> EasingProperty = AvaloniaProperty.RegisterDirect<Animation, Easing>( nameof(Easing), o => o._easing,`
 - `public static readonly DirectProperty<Animation, TimeSpan> DelayBetweenIterationsProperty = AvaloniaProperty.RegisterDirect<Animation, TimeSpan>( nameof(DelayBetweenIterations), o => o._delayBetweenIterations,`
 - `public static readonly DirectProperty<Animation, double> SpeedRatioProperty = AvaloniaProperty.RegisterDirect<Animation, double>( nameof(SpeedRatio), o => o._speedRatio,`
+- `public PlaybackBehavior PlaybackBehavior {`
 - `public Easing Easing {`
+
+### `src/Avalonia.Base/Animation/CompositePageTransition.cs`
+- `public void Reset(Visual visual) {`
 
 ### `src/Avalonia.Base/Animation/CrossFade.cs`
 - `public Easing FadeInEasing {`
 - `public Easing FadeOutEasing {`
+- `public void Reset(Visual visual) {`
 
 ### `src/Avalonia.Base/Animation/Cue.cs`
 - `public double CueValue { get; }`
@@ -108,10 +114,6 @@
 ### `src/Avalonia.Base/Animation/Easings/CircularEaseOut.cs`
 - `public class CircularEaseOut : Easing`
 - `public override double Ease(double progress) {`
-
-### `src/Avalonia.Base/Animation/Easings/CubicBezierEasing.cs`
-- `public Point ControlPoint2 { get; set; }`
-- `public Point ControlPoint1 { get; set; }`
 
 ### `src/Avalonia.Base/Animation/Easings/CubicEaseIn.cs`
 - `public override double Ease(double progress) {`
@@ -224,11 +226,12 @@
 - `public interface IAnimationSetter`
 
 ### `src/Avalonia.Base/Animation/ICustomAnimator.cs`
-- `public abstract class CustomAnimatorBase`
-- `public abstract class CustomAnimatorBase<T> : CustomAnimatorBase`
-- `public abstract T Interpolate(double progress, T oldValue, T newValue);`
 - `public interface ICustomAnimator`
 - `public abstract class InterpolatingAnimator<T> : ICustomAnimator`
+- `public abstract T Interpolate(double progress, T oldValue, T newValue);`
+
+### `src/Avalonia.Base/Animation/IProgressPageTransition.cs`
+- `public interface IProgressPageTransition : IPageTransition`
 
 ### `src/Avalonia.Base/Animation/InterpolatingTransitionBase.cs`
 - `public abstract class InterpolatingTransitionBase<T> : Transition<T>`
@@ -269,9 +272,16 @@
 - `public enum SlideAxis`
 - `public Easing SlideInEasing { get; set; } = new LinearEasing();`
 - `public Easing SlideOutEasing { get; set; } = new LinearEasing();`
+- `public virtual void Reset(Visual visual) {`
+
+### `src/Avalonia.Base/Animation/PageTransitionItem.cs`
+- `public readonly record struct PageTransitionItem(`
 
 ### `src/Avalonia.Base/Animation/PlayState.cs`
 - `public enum PlayState`
+
+### `src/Avalonia.Base/Animation/PlaybackBehavior.cs`
+- `public enum PlaybackBehavior`
 
 ### `src/Avalonia.Base/Animation/TransitionBase.cs`
 - `public abstract class TransitionBase : AvaloniaObject, ITransition`
@@ -297,6 +307,7 @@
 
 ### `src/Avalonia.Base/Animation/Transitions/Rotate3DTransition.cs`
 - `public double? Depth { get; set; }`
+- `public override void Reset(Visual visual) {`
 
 ### `src/Avalonia.Base/Animation/Transitions/SizeTransition.cs`
 - `public class SizeTransition : Transition<Size>`
@@ -413,9 +424,9 @@
 - `public PseudoClassesAttribute(params string[] pseudoClasses) {`
 
 ### `src/Avalonia.Base/Controls/NameScope.cs`
-- `public static readonly AttachedProperty<INameScope> NameScopeProperty = AvaloniaProperty.RegisterAttached<NameScope, StyledElement, INameScope>("NameScope");`
-- `public static INameScope GetNameScope(StyledElement styled) {`
-- `public static void SetNameScope(StyledElement styled, INameScope value) {`
+- `public static readonly AttachedProperty<INameScope?> NameScopeProperty = AvaloniaProperty.RegisterAttached<NameScope, StyledElement, INameScope?>("NameScope");`
+- `public static INameScope? GetNameScope(StyledElement styled) {`
+- `public static void SetNameScope(StyledElement styled, INameScope? value) {`
 - `public SynchronousCompletionAsyncResult<object?> FindAsync(string name) {`
 
 ### `src/Avalonia.Base/Controls/NameScopeExtensions.cs`
@@ -425,9 +436,6 @@
 
 ### `src/Avalonia.Base/Controls/NameScopeLocator.cs`
 - `public class NameScopeLocator`
-
-### `src/Avalonia.Base/Controls/PseudoClassesExtensions.cs`
-- `public static class PseudolassesExtensions`
 
 ### `src/Avalonia.Base/Controls/ResourceNodeExtensions.cs`
 - `public static class ResourceNodeExtensions`
@@ -448,6 +456,11 @@
 ### `src/Avalonia.Base/Controls/Templates/TemplateResult.cs`
 - `public TemplateResult(T result, INameScope nameScope) {`
 - `public void Deconstruct(out T result, out INameScope scope) {`
+
+### `src/Avalonia.Base/Data/CompiledBindingPath.cs`
+- `public CompiledBindingPathBuilder ArrayElement(int[] indices, Type elementType) {`
+- `public CompiledBindingPathBuilder TypeCast<T>() {`
+- `public CompiledBindingPathBuilder TypeCast(Type targetType) {`
 
 ### `src/Avalonia.Base/Data/Converters/DefaultValueConverter.cs`
 - `public class DefaultValueConverter : IValueConverter`
@@ -476,54 +489,8 @@
 ### `src/Avalonia.Base/Data/Core/IPropertyInfo.cs`
 - `public interface IPropertyInfo`
 
-### `src/Avalonia.Base/Data/Core/Plugins/BindingPlugins.cs`
-- `public static IList<IPropertyAccessorPlugin> PropertyAccessors => s_propertyAccessors;`
-- `public static IList<IStreamPlugin> StreamHandlers => s_streamHandlers;`
-
-### `src/Avalonia.Base/Data/Core/Plugins/DataValidationBase.cs`
-- `public abstract class DataValidationBase : PropertyAccessorBase, IObserver<object?>`
-
-### `src/Avalonia.Base/Data/Core/Plugins/ExceptionValidationPlugin.cs`
-- `public class ExceptionValidationPlugin : IDataValidationPlugin`
-
-### `src/Avalonia.Base/Data/Core/Plugins/IDataValidationPlugin.cs`
-- `public interface IDataValidationPlugin`
-
 ### `src/Avalonia.Base/Data/Core/Plugins/IPropertyAccessor.cs`
 - `public interface IPropertyAccessor : IDisposable`
-
-### `src/Avalonia.Base/Data/Core/Plugins/IPropertyAccessorPlugin.cs`
-- `public interface IPropertyAccessorPlugin`
-
-### `src/Avalonia.Base/Data/Core/Plugins/IStreamPlugin.cs`
-- `public interface IStreamPlugin`
-
-### `src/Avalonia.Base/Data/Core/Plugins/IndeiValidationPlugin.cs`
-- `public class IndeiValidationPlugin : IDataValidationPlugin`
-
-### `src/Avalonia.Base/Data/Core/Plugins/PropertyAccessorBase.cs`
-- `public abstract class PropertyAccessorBase : IPropertyAccessor`
-- `public void Unsubscribe() {`
-
-### `src/Avalonia.Base/Data/Core/Plugins/PropertyError.cs`
-- `public class PropertyError : IPropertyAccessor`
-- `public PropertyError(BindingNotification error) {`
-- `public void Unsubscribe() {`
-
-### `src/Avalonia.Base/Data/Core/PropertyPath.cs`
-- `public class PropertyPath`
-- `public PropertyPath(IEnumerable<IPropertyPathElement> elements) {`
-- `public class PropertyPathBuilder`
-- `public PropertyPathBuilder ChildTraversal() {`
-- `public PropertyPathBuilder EnsureType(Type type) {`
-- `public interface IPropertyPathElement`
-- `public class PropertyPropertyPathElement : IPropertyPathElement`
-- `public PropertyPropertyPathElement(IPropertyInfo property) {`
-- `public class ChildTraversalPropertyPathElement : IPropertyPathElement`
-- `public class EnsureTypePropertyPathElement : IPropertyPathElement`
-- `public EnsureTypePropertyPathElement(Type type) {`
-- `public class CastTypePropertyPathElement : IPropertyPathElement`
-- `public CastTypePropertyPathElement(Type type) {`
 
 ### `src/Avalonia.Base/Data/Core/StreamBindingExtensions.cs`
 - `public static class StreamBindingExtensions`
@@ -549,13 +516,6 @@
 - `public interface IValueFrameDiagnostic`
 - `public enum FrameType`
 
-### `src/Avalonia.Base/Diagnostics/StyleDiagnostics.cs`
-- `public class StyleDiagnostics`
-- `public IReadOnlyList<AppliedStyle> AppliedStyles { get; }`
-- `public StyleDiagnostics(IReadOnlyList<AppliedStyle> appliedStyles) {`
-- `public sealed class AppliedStyle`
-- `public bool HasActivator => _instance.HasActivator;`
-
 ### `src/Avalonia.Base/Diagnostics/ValueStoreDiagnostic.cs`
 - `public class ValueStoreDiagnostic`
 - `public IReadOnlyList<IValueFrameDiagnostic> AppliedFrames { get; }`
@@ -578,6 +538,9 @@
 ### `src/Avalonia.Base/INamed.cs`
 - `public interface INamed`
 
+### `src/Avalonia.Base/IOptionalFeatureProvider.cs`
+- `public static class OptionalFeatureProviderExtensions`
+
 ### `src/Avalonia.Base/IStyledPropertyMetadata.cs`
 - `public interface IStyledPropertyMetadata`
 
@@ -591,31 +554,26 @@
 - `public static class AsyncDataTransferItemExtensions`
 - `public static async Task<T?> TryGetValueAsync<T>(this IAsyncDataTransferItem dataTransferItem, DataFormat<T> format) where T : class => await dataTransferItem.TryGetRawAsync(format).ConfigureAwait(false) as T;`
 
+### `src/Avalonia.Base/Input/ContextRequestedEventArgs.cs`
+- `public class ContextRequestedEventArgs : RoutedEventArgs`
+- `public ContextRequestedEventArgs() : base(InputElement.ContextRequestedEvent) {`
+- `public ContextRequestedEventArgs(PointerEventArgs pointerEventArgs) : this() {`
+- `public ContextRequestedEventArgs(ContextRequestedEventArgs contextRequestedEventArgs) : this() {`
+- `public bool TryGetPosition(InputElement? relativeTo, out Point point) {`
+
 ### `src/Avalonia.Base/Input/DataFormat.cs`
 - `public string Identifier { get; }`
 - `public static DataFormat<IStorageItem> File { get; } = CreateUniversalFormat<IStorageItem>("File");`
 - `public string ToSystemName(string applicationPrefix) {`
 - `public static DataFormat<byte[]> CreateBytesApplicationFormat(string identifier) => CreateApplicationFormat<byte[]>(identifier);`
 - `public static DataFormat<string> CreateStringApplicationFormat(string identifier) => CreateApplicationFormat<string>(identifier);`
+- `public static DataFormat<T> CreateInProcessFormat<T>(string identifier) where T : class {`
 - `public static DataFormat<byte[]> CreateBytesPlatformFormat(string identifier) => CreatePlatformFormat<byte[]>(identifier);`
 - `public static DataFormat<string> CreateStringPlatformFormat(string identifier) => CreatePlatformFormat<string>(identifier);`
 - `public static DataFormat<T> FromSystemName<T>(string systemName, string applicationPrefix) where T : class {`
 
 ### `src/Avalonia.Base/Input/DataFormatKind.cs`
 - `public enum DataFormatKind`
-
-### `src/Avalonia.Base/Input/DataFormats.cs`
-- `public static readonly string FileNames = nameof(FileNames);`
-
-### `src/Avalonia.Base/Input/DataObject.cs`
-- `public object? Get(string dataFormat) {`
-- `public IEnumerable<string> GetDataFormats() {`
-
-### `src/Avalonia.Base/Input/DataObjectExtensions.cs`
-- `public static class DataObjectExtensions`
-- `public static IEnumerable<IStorageItem>? GetFiles(this IDataObject dataObject) {`
-- `public static IEnumerable<string>? GetFileNames(this IDataObject dataObject) {`
-- `public static string? GetText(this IDataObject dataObject) {`
 
 ### `src/Avalonia.Base/Input/DataTransfer.cs`
 - `public IReadOnlyList<DataFormat> Formats {`
@@ -649,11 +607,31 @@
 - `public class DragDropDevice : IDragDropDevice`
 - `public void ProcessRawEvent(RawInputEventArgs e) {`
 
+### `src/Avalonia.Base/Input/FindNextElementOptions.cs`
+- `public IInputElement? FocusedElement { get; init; }`
+- `public InputElement? SearchRoot { get; init; }`
+- `public Rect ExclusionRect { get; init; }`
+- `public Rect? FocusHintRectangle { get; init; }`
+- `public XYFocusNavigationStrategy? NavigationStrategyOverride { get; init; }`
+- `public bool IgnoreOcclusivity { get; init; }`
+
+### `src/Avalonia.Base/Input/FocusChangingEventArgs.cs`
+- `public class FocusChangingEventArgs : RoutedEventArgs, IKeyModifiersEventArgs`
+- `public FocusChangingEventArgs(RoutedEvent? routedEvent) : base(routedEvent) {`
+- `public bool Canceled { get; private set; }`
+- `public bool TryCancel() {`
+- `public bool TrySetNewFocusedElement(IInputElement? inputElement) {`
+
 ### `src/Avalonia.Base/Input/FocusManager.cs`
-- `public void ClearFocusOnElementRemoved(IInputElement removedElement, Visual oldParent) {`
+- `public IInputElement? ContentRoot {`
 - `public void SetFocusScope(IFocusScope scope) {`
 - `public void RemoveFocusRoot(IFocusScope scope) {`
 - `public static bool GetIsFocusScope(IInputElement e) => e is IFocusScope;`
+- `public IInputElement? FindFirstFocusableElement() {`
+- `public static IInputElement? FindFirstFocusableElement(IInputElement searchScope) {`
+- `public IInputElement? FindLastFocusableElement() {`
+- `public static IInputElement? FindLastFocusableElement(IInputElement searchScope) {`
+- `public IInputElement? FindNextElement(NavigationDirection direction, FindNextElementOptions? options = null) {`
 
 ### `src/Avalonia.Base/Input/GestureRecognizers/GestureRecognizerCollection.cs`
 - `public class GestureRecognizerCollection : IReadOnlyCollection<GestureRecognizer>`
@@ -661,51 +639,17 @@
 
 ### `src/Avalonia.Base/Input/GestureRecognizers/ScrollGestureRecognizer.cs`
 - `public const double InertialResistance = 0.15;`
-- `public static readonly DirectProperty<ScrollGestureRecognizer, bool> IsScrollInertiaEnabledProperty = AvaloniaProperty.RegisterDirect<ScrollGestureRecognizer, bool>(nameof(IsScrollInertiaEnabled), o => o.IsScrollInertiaEnabled, (o,v) => o.IsScrollInertiaEnabled = v);`
+- `public static readonly DirectProperty<ScrollGestureRecognizer, bool> IsScrollInertiaEnabledProperty = AvaloniaProperty.RegisterDirect<ScrollGestureRecognizer, bool>(nameof(IsScrollInertiaEnabled), o => o.IsScrollInertiaEnabled, (o, v) => o.IsScrollInertiaEnabled = v);`
 - `public static readonly DirectProperty<ScrollGestureRecognizer, int> ScrollStartDistanceProperty = AvaloniaProperty.RegisterDirect<ScrollGestureRecognizer, int>(nameof(ScrollStartDistance), o => o.ScrollStartDistance, (o, v) => o.ScrollStartDistance = v,`
 - `public int ScrollStartDistance {`
 
-### `src/Avalonia.Base/Input/Gestures.cs`
-- `public static readonly AttachedProperty<bool> IsHoldingEnabledProperty = AvaloniaProperty.RegisterAttached<StyledElement, bool>("IsHoldingEnabled", typeof(Gestures), true);`
-- `public static readonly AttachedProperty<bool> IsHoldWithMouseEnabledProperty = AvaloniaProperty.RegisterAttached<StyledElement, bool>("IsHoldWithMouseEnabled", typeof(Gestures), false);`
-- `public static readonly RoutedEvent<TappedEventArgs> RightTappedEvent = RoutedEvent.Register<TappedEventArgs>( "RightTapped", RoutingStrategies.Bubble, typeof(Gestures));`
-- `public static readonly RoutedEvent<ScrollGestureInertiaStartingEventArgs> ScrollGestureInertiaStartingEvent = RoutedEvent.Register<ScrollGestureInertiaStartingEventArgs>( "ScrollGestureInertiaStarting", RoutingStrategies.Bubble, typeof(Gestures));`
-- `public static readonly RoutedEvent<ScrollGestureEndedEventArgs> ScrollGestureEndedEvent = RoutedEvent.Register<ScrollGestureEndedEventArgs>( "ScrollGestureEnded", RoutingStrategies.Bubble, typeof(Gestures));`
-- `public static readonly RoutedEvent<PointerDeltaEventArgs> PointerTouchPadGestureMagnifyEvent = RoutedEvent.Register<PointerDeltaEventArgs>( "PointerTouchPadGestureMagnify", RoutingStrategies.Bubble, typeof(Gestures));`
-- `public static readonly RoutedEvent<PointerDeltaEventArgs> PointerTouchPadGestureRotateEvent = RoutedEvent.Register<PointerDeltaEventArgs>( "PointerTouchPadGestureRotate", RoutingStrategies.Bubble, typeof(Gestures));`
-- `public static readonly RoutedEvent<PointerDeltaEventArgs> PointerTouchPadGestureSwipeEvent = RoutedEvent.Register<PointerDeltaEventArgs>( "PointerTouchPadGestureSwipe", RoutingStrategies.Bubble, typeof(Gestures));`
-- `public static readonly RoutedEvent<PinchEndedEventArgs> PinchEndedEvent = RoutedEvent.Register<PinchEndedEventArgs>( "PinchEnded", RoutingStrategies.Bubble, typeof(Gestures));`
-- `public static readonly RoutedEvent<PullGestureEventArgs> PullGestureEvent = RoutedEvent.Register<PullGestureEventArgs>( "PullGesture", RoutingStrategies.Bubble, typeof(Gestures));`
-- `public static readonly RoutedEvent<PullGestureEndedEventArgs> PullGestureEndedEvent = RoutedEvent.Register<PullGestureEndedEventArgs>( "PullGestureEnded", RoutingStrategies.Bubble, typeof(Gestures));`
-- `public static bool GetIsHoldingEnabled(StyledElement element) {`
-- `public static void SetIsHoldingEnabled(StyledElement element, bool value) {`
-- `public static bool GetIsHoldWithMouseEnabled(StyledElement element) {`
-- `public static void SetIsHoldWithMouseEnabled(StyledElement element, bool value) {`
-- `public static void AddDoubleTappedHandler(Interactive element, EventHandler<RoutedEventArgs> handler) {`
-- `public static void AddRightTappedHandler(Interactive element, EventHandler<RoutedEventArgs> handler) {`
-- `public static void AddPinchEndedHandler(Interactive element, EventHandler<PinchEndedEventArgs> handler) =>`
-- `public static void AddPullGestureHandler(Interactive element, EventHandler<PullGestureEventArgs> handler) =>`
-- `public static void AddPullGestureEndedHandler(Interactive element, EventHandler<PullGestureEndedEventArgs> handler) =>`
-- `public static void AddPointerTouchPadGestureMagnifyHandler(Interactive element, EventHandler<PointerDeltaEventArgs> handler) =>`
-- `public static void AddPointerTouchPadGestureRotateHandler(Interactive element, EventHandler<PointerDeltaEventArgs> handler) =>`
-- `public static void AddPointerTouchPadGestureSwipeHandler(Interactive element, EventHandler<PointerDeltaEventArgs> handler) =>`
-- `public static void AddScrollGestureHandler(Interactive element, EventHandler<RoutedEventArgs> handler) =>`
-- `public static void AddScrollGestureEndedHandler(Interactive element, EventHandler<ScrollGestureEndedEventArgs> handler) =>`
-- `public static void AddScrollGestureInertiaStartingHandler(Interactive element, EventHandler<ScrollGestureInertiaStartingEventArgs> handler) =>`
-- `public static void RemoveTappedHandler(Interactive element, EventHandler<RoutedEventArgs> handler) {`
-- `public static void RemoveDoubleTappedHandler(Interactive element, EventHandler<RoutedEventArgs> handler) {`
-- `public static void RemoveRightTappedHandler(Interactive element, EventHandler<RoutedEventArgs> handler) {`
-- `public static void RemoveHoldingHandler(Interactive element, EventHandler<RoutedEventArgs> handler) =>`
-- `public static void RemovePinchHandler(Interactive element, EventHandler<PinchEventArgs> handler) =>`
-- `public static void RemovePinchEndedHandler(Interactive element, EventHandler<PinchEndedEventArgs> handler) =>`
-- `public static void RemovePullGestureHandler(Interactive element, EventHandler<PullGestureEventArgs> handler) =>`
-- `public static void RemovePullGestureEndedHandler(Interactive element, EventHandler<PullGestureEndedEventArgs> handler) =>`
-- `public static void RemovePointerTouchPadGestureMagnifyHandler(Interactive element, EventHandler<PointerDeltaEventArgs> handler) =>`
-- `public static void RemovePointerTouchPadGestureRotateHandler(Interactive element, EventHandler<PointerDeltaEventArgs> handler) =>`
-- `public static void RemovePointerTouchPadGestureSwipeHandler(Interactive element, EventHandler<PointerDeltaEventArgs> handler) =>`
-- `public static void RemoveScrollGestureHandler(Interactive element, EventHandler<ScrollGestureEventArgs> handler) =>`
-- `public static void RemoveScrollGestureEndedHandler(Interactive element,EventHandler<ScrollGestureEndedEventArgs> handler) =>`
-- `public static void RemoveScrollGestureInertiaStartingHandler(Interactive element, EventHandler<ScrollGestureInertiaStartingEventArgs> handler) =>`
+### `src/Avalonia.Base/Input/GestureRecognizers/SwipeGestureRecognizer.cs`
+- `public static readonly StyledProperty<bool> CanHorizontallySwipeProperty = AvaloniaProperty.Register<SwipeGestureRecognizer, bool>(nameof(CanHorizontallySwipe));`
+- `public static readonly StyledProperty<bool> CanVerticallySwipeProperty = AvaloniaProperty.Register<SwipeGestureRecognizer, bool>(nameof(CanVerticallySwipe));`
+- `public static readonly StyledProperty<double> ThresholdProperty = AvaloniaProperty.Register<SwipeGestureRecognizer, double>(nameof(Threshold), defaultValue: 0d);`
+- `public static readonly StyledProperty<bool> IsMouseEnabledProperty = AvaloniaProperty.Register<SwipeGestureRecognizer, bool>(nameof(IsMouseEnabled), defaultValue: false);`
+- `public static readonly StyledProperty<bool> IsEnabledProperty = AvaloniaProperty.Register<SwipeGestureRecognizer, bool>(nameof(IsEnabled), defaultValue: true);`
+- `public double Threshold {`
 
 ### `src/Avalonia.Base/Input/IAsyncDataTransferItem.cs`
 - `public interface IAsyncDataTransferItem`
@@ -722,13 +666,16 @@
 ### `src/Avalonia.Base/Input/IInputManager.cs`
 - `public interface IInputManager`
 
+### `src/Avalonia.Base/Input/IInputRoot.cs`
+- `public InputElement FocusRoot { get; }`
+
+### `src/Avalonia.Base/Input/IKeyModifiersEventArgs.cs`
+- `public interface IKeyModifiersEventArgs`
+
 ### `src/Avalonia.Base/Input/IKeyboardDevice.cs`
 - `public enum KeyStates`
 - `public enum RawInputModifiers`
 - `public interface IKeyboardDevice : IInputDevice`
-
-### `src/Avalonia.Base/Input/IKeyboardNavigationHandler.cs`
-- `public interface IKeyboardNavigationHandler`
 
 ### `src/Avalonia.Base/Input/IMouseDevice.cs`
 - `public interface IMouseDevice : IPointerDevice`
@@ -742,6 +689,34 @@
 ### `src/Avalonia.Base/Input/IPointerDevice.cs`
 - `public interface IPointerDevice : IInputDevice`
 
+### `src/Avalonia.Base/Input/InputElement.Gestures.cs`
+- `public static readonly AttachedProperty<bool> IsHoldingEnabledProperty = AvaloniaProperty.RegisterAttached<StyledElement, bool>("IsHoldingEnabled", typeof(InputElement), true);`
+- `public static readonly AttachedProperty<bool> IsHoldWithMouseEnabledProperty = AvaloniaProperty.RegisterAttached<StyledElement, bool>("IsHoldWithMouseEnabled", typeof(InputElement), false);`
+- `public static readonly RoutedEvent<PinchEndedEventArgs> PinchEndedEvent = RoutedEvent.Register<InputElement, PinchEndedEventArgs>( nameof(PinchEnded), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<PullGestureEventArgs> PullGestureEvent = RoutedEvent.Register<InputElement, PullGestureEventArgs>( nameof(PullGesture), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<PullGestureEndedEventArgs> PullGestureEndedEvent = RoutedEvent.Register<InputElement, PullGestureEndedEventArgs>( nameof(PullGestureEnded), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<SwipeGestureEventArgs> SwipeGestureEvent = RoutedEvent.Register<InputElement, SwipeGestureEventArgs>( nameof(SwipeGesture), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<SwipeGestureEndedEventArgs> SwipeGestureEndedEvent = RoutedEvent.Register<InputElement, SwipeGestureEndedEventArgs>( nameof(SwipeGestureEnded), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<ScrollGestureInertiaStartingEventArgs> ScrollGestureInertiaStartingEvent = RoutedEvent.Register<InputElement, ScrollGestureInertiaStartingEventArgs>( nameof(ScrollGestureInertiaStarting), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<ScrollGestureEndedEventArgs> ScrollGestureEndedEvent = RoutedEvent.Register<InputElement, ScrollGestureEndedEventArgs>( nameof(ScrollGestureEnded), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<PointerDeltaEventArgs> PointerTouchPadGestureMagnifyEvent = RoutedEvent.Register<InputElement, PointerDeltaEventArgs>( nameof(PointerTouchPadGestureMagnify), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<PointerDeltaEventArgs> PointerTouchPadGestureRotateEvent = RoutedEvent.Register<InputElement, PointerDeltaEventArgs>( nameof(PointerTouchPadGestureRotate), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<PointerDeltaEventArgs> PointerTouchPadGestureSwipeEvent = RoutedEvent.Register<InputElement, PointerDeltaEventArgs>( nameof(PointerTouchPadGestureSwipe), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<TappedEventArgs> RightTappedEvent = RoutedEvent.Register<InputElement, TappedEventArgs>( nameof(RightTapped), RoutingStrategies.Bubble);`
+- `public static bool GetIsHoldingEnabled(StyledElement element) {`
+- `public static void SetIsHoldingEnabled(StyledElement element, bool value) {`
+- `public static bool GetIsHoldWithMouseEnabled(StyledElement element) {`
+- `public static void SetIsHoldWithMouseEnabled(StyledElement element, bool value) {`
+- `public event EventHandler<PinchEndedEventArgs>? PinchEnded {`
+- `public event EventHandler<PullGestureEndedEventArgs>? PullGestureEnded {`
+- `public event EventHandler<ScrollGestureInertiaStartingEventArgs>? ScrollGestureInertiaStarting {`
+- `public event EventHandler<ScrollGestureEndedEventArgs>? ScrollGestureEnded {`
+- `public event EventHandler<PointerDeltaEventArgs>? PointerTouchPadGestureMagnify {`
+- `public event EventHandler<PointerDeltaEventArgs>? PointerTouchPadGestureRotate {`
+- `public event EventHandler<SwipeGestureEventArgs>? SwipeGesture {`
+- `public event EventHandler<SwipeGestureEndedEventArgs>? SwipeGestureEnded {`
+- `public event EventHandler<PointerDeltaEventArgs>? PointerTouchPadGestureSwipe {`
+
 ### `src/Avalonia.Base/Input/InputElement.cs`
 - `public static readonly StyledProperty<bool> FocusableProperty = AvaloniaProperty.Register<InputElement, bool>(nameof(Focusable));`
 - `public static readonly StyledProperty<bool> IsEnabledProperty = AvaloniaProperty.Register<InputElement, bool>(nameof(IsEnabled), true);`
@@ -751,12 +726,18 @@
 - `public static readonly DirectProperty<InputElement, bool> IsFocusedProperty = AvaloniaProperty.RegisterDirect<InputElement, bool>(nameof(IsFocused), o => o.IsFocused);`
 - `public static readonly StyledProperty<bool> IsHitTestVisibleProperty = AvaloniaProperty.Register<InputElement, bool>(nameof(IsHitTestVisible), true);`
 - `public static readonly DirectProperty<InputElement, bool> IsPointerOverProperty = AvaloniaProperty.RegisterDirect<InputElement, bool>(nameof(IsPointerOver), o => o.IsPointerOver);`
-- `public static readonly RoutedEvent<GotFocusEventArgs> GotFocusEvent = RoutedEvent.Register<InputElement, GotFocusEventArgs>(nameof(GotFocus), RoutingStrategies.Bubble);`
-- `public static readonly RoutedEvent<RoutedEventArgs> LostFocusEvent = RoutedEvent.Register<InputElement, RoutedEventArgs>(nameof(LostFocus), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<FocusChangedEventArgs> GotFocusEvent = RoutedEvent.Register<InputElement, FocusChangedEventArgs>(nameof(GotFocus), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<FocusChangingEventArgs> GettingFocusEvent = RoutedEvent.Register<InputElement, FocusChangingEventArgs>(nameof(GettingFocus), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<FocusChangedEventArgs> LostFocusEvent = RoutedEvent.Register<InputElement, FocusChangedEventArgs>(nameof(LostFocus), RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<FocusChangingEventArgs> LosingFocusEvent = RoutedEvent.Register<InputElement, FocusChangingEventArgs>(nameof(LosingFocus), RoutingStrategies.Bubble);`
 - `public static readonly StyledProperty<int> TabIndexProperty = KeyboardNavigation.TabIndexProperty.AddOwner<InputElement>();`
 - `public static readonly RoutedEvent<PointerEventArgs> PointerEnteredEvent = RoutedEvent.Register<InputElement, PointerEventArgs>( nameof(PointerEntered), RoutingStrategies.Direct);`
 - `public static readonly RoutedEvent<PointerEventArgs> PointerExitedEvent = RoutedEvent.Register<InputElement, PointerEventArgs>( nameof(PointerExited), RoutingStrategies.Direct);`
 - `public static readonly RoutedEvent<PointerCaptureLostEventArgs> PointerCaptureLostEvent = RoutedEvent.Register<InputElement, PointerCaptureLostEventArgs>( nameof(PointerCaptureLost), RoutingStrategies.Direct);`
+- `public static readonly RoutedEvent<ContextRequestedEventArgs> ContextRequestedEvent = RoutedEvent.Register<InputElement, ContextRequestedEventArgs>( nameof(ContextRequested), RoutingStrategies.Tunnel | RoutingStrategies.Bubble);`
+- `public static readonly RoutedEvent<RoutedEventArgs> ContextCanceledEvent = RoutedEvent.Register<InputElement, RoutedEventArgs>( nameof(ContextCanceled), RoutingStrategies.Tunnel | RoutingStrategies.Bubble);`
+- `public event EventHandler<FocusChangingEventArgs>? GettingFocus {`
+- `public event EventHandler<FocusChangingEventArgs>? LosingFocus {`
 - `public event EventHandler<KeyEventArgs>? KeyUp {`
 - `public event EventHandler<TextInputMethodClientRequestedEventArgs>? TextInputMethodClientRequested {`
 - `public event EventHandler<PointerCaptureLostEventArgs>? PointerCaptureLost {`
@@ -765,6 +746,8 @@
 - `public bool IsKeyboardFocusWithin {`
 - `public bool IsFocused {`
 - `public bool IsPointerOver {`
+- `public event EventHandler<ContextRequestedEventArgs>? ContextRequested {`
+- `public event EventHandler<RoutedEventArgs>? ContextCanceled {`
 
 ### `src/Avalonia.Base/Input/InputExtensions.cs`
 - `public static class InputExtensions`
@@ -796,6 +779,7 @@
 - `public IInputManager? InputManager => AvaloniaLocator.Current.GetService<IInputManager>();`
 - `public IInputElement? FocusedElement => _focusedElement;`
 - `public void SetFocusedElement( IInputElement? element, NavigationMethod method, KeyModifiers keyModifiers) {`
+- `public void SetFocusedElement( IInputElement? element, NavigationMethod method, KeyModifiers keyModifiers, bool isFocusChangeCancellable) {`
 - `public void ProcessRawEvent(RawInputEventArgs e) {`
 
 ### `src/Avalonia.Base/Input/KeyboardNavigation.cs`
@@ -806,11 +790,6 @@
 - `public static void SetTabOnceActiveElement(InputElement element, IInputElement? value) {`
 - `public static void SetIsTabStop(InputElement element, bool value) {`
 - `public static bool GetIsTabStop(InputElement element) {`
-
-### `src/Avalonia.Base/Input/KeyboardNavigationHandler.cs`
-- `public sealed class KeyboardNavigationHandler : IKeyboardNavigationHandler`
-- `public void SetOwner(IInputRoot owner) {`
-- `public static IInputElement? GetNext( IInputElement element, NavigationDirection direction) {`
 
 ### `src/Avalonia.Base/Input/MouseDevice.cs`
 - `public class MouseDevice : IMouseDevice, IDisposable`
@@ -863,14 +842,14 @@
 
 ### `src/Avalonia.Base/Input/PinchEventArgs.cs`
 - `public class PinchEventArgs : RoutedEventArgs`
-- `public PinchEventArgs(double scale, Point scaleOrigin) : base(Gestures.PinchEvent) {`
-- `public PinchEventArgs(double scale, Point scaleOrigin, double angle, double angleDelta) : base(Gestures.PinchEvent) {`
+- `public PinchEventArgs(double scale, Point scaleOrigin) : base(InputElement.PinchEvent) {`
+- `public PinchEventArgs(double scale, Point scaleOrigin, double angle, double angleDelta) : base(InputElement.PinchEvent) {`
 - `public double Scale { get; } = 1;`
 - `public Point ScaleOrigin { get; }`
 - `public double Angle { get; }`
 - `public double AngleDelta { get; }`
 - `public class PinchEndedEventArgs : RoutedEventArgs`
-- `public PinchEndedEventArgs() : base(Gestures.PinchEndedEvent) {`
+- `public PinchEndedEventArgs() : base(InputElement.PinchEndedEvent) {`
 
 ### `src/Avalonia.Base/Input/Platform/ClipboardExtensions.cs`
 - `public static async Task<IReadOnlyList<DataFormat>> GetDataFormatsAsync(this IClipboard clipboard) {`
@@ -930,7 +909,7 @@
 
 ### `src/Avalonia.Base/Input/PointerDeltaEventArgs.cs`
 - `public class PointerDeltaEventArgs : PointerEventArgs`
-- `public PointerDeltaEventArgs(RoutedEvent routedEvent, object? source, IPointer pointer, Visual rootVisual, Point rootVisualPosition, ulong timestamp, PointerPointProperties properties, KeyModifiers modifiers, Vector delta) : base(routedEvent, source, pointer, rootVisual, rootVisualPosition, timestamp, properties, modifiers) {`
+- `public PointerDeltaEventArgs(RoutedEvent? routedEvent, object? source, IPointer pointer, Visual rootVisual, Point rootVisualPosition, ulong timestamp, PointerPointProperties properties, KeyModifiers modifiers, Vector delta) : base(routedEvent, source, pointer, rootVisual, rootVisualPosition, timestamp, properties, modifiers) {`
 
 ### `src/Avalonia.Base/Input/PointerEventArgs.cs`
 - `public ulong Timestamp { get; }`
@@ -938,7 +917,7 @@
 - `public int ClickCount { get; }`
 - `public MouseButton InitialPressMouseButton { get; }`
 - `public class PointerCaptureLostEventArgs : RoutedEventArgs`
-- `public PointerCaptureLostEventArgs(object source, IPointer pointer) : base(InputElement.PointerCaptureLostEvent) {`
+- `public PointerCaptureLostEventArgs(object? source, IPointer pointer) : base(InputElement.PointerCaptureLostEvent) {`
 
 ### `src/Avalonia.Base/Input/PointerPoint.cs`
 - `public record struct PointerPoint`
@@ -967,14 +946,14 @@
 
 ### `src/Avalonia.Base/Input/PointerWheelEventArgs.cs`
 - `public class PointerWheelEventArgs : PointerEventArgs`
-- `public PointerWheelEventArgs(object source, IPointer pointer, Visual rootVisual, Point rootVisualPosition, ulong timestamp, PointerPointProperties properties, KeyModifiers modifiers, Vector delta) : base(InputElement.PointerWheelChangedEvent, source, pointer, rootVisual, rootVisualPosition, timestamp, properties, modifiers) {`
+- `public PointerWheelEventArgs(object? source, IPointer pointer, Visual rootVisual, Point rootVisualPosition, ulong timestamp, PointerPointProperties properties, KeyModifiers modifiers, Vector delta) : base(InputElement.PointerWheelChangedEvent, source, pointer, rootVisual, rootVisualPosition, timestamp, properties, modifiers) {`
 
 ### `src/Avalonia.Base/Input/PullGestureEventArgs.cs`
 - `public class PullGestureEventArgs : RoutedEventArgs`
 - `public int Id { get; }`
-- `public PullGestureEventArgs(int id, Vector delta, PullDirection pullDirection) : base(Gestures.PullGestureEvent) {`
+- `public PullGestureEventArgs(int id, Vector delta, PullDirection pullDirection) : base(InputElement.PullGestureEvent) {`
 - `public class PullGestureEndedEventArgs : RoutedEventArgs`
-- `public PullGestureEndedEventArgs(int id, PullDirection pullDirection) : base(Gestures.PullGestureEndedEvent) {`
+- `public PullGestureEndedEventArgs(int id, PullDirection pullDirection) : base(InputElement.PullGestureEndedEvent) {`
 
 ### `src/Avalonia.Base/Input/Raw/IDragDropDevice.cs`
 - `public interface IDragDropDevice : IInputDevice`
@@ -982,7 +961,6 @@
 ### `src/Avalonia.Base/Input/Raw/RawDragEvent.cs`
 - `public class RawDragEvent : RawInputEventArgs`
 - `public DragDropEffects Effects { get; set; }`
-- `public RawDragEvent(IDragDropDevice inputDevice, RawDragEventType type, IInputRoot root, Point location, IDataObject data, DragDropEffects effects, RawInputModifiers modifiers) : this(inputDevice, type, root, location, new DataObjectToDataTransferWrapper(data), effects, modifiers) {`
 - `public RawDragEvent( IDragDropDevice inputDevice, RawDragEventType type, IInputRoot root, Point location, IDataTransfer dataTransfer, DragDropEffects effects, RawInputModifiers modifiers) : base(inputDevice, 0, root) {`
 
 ### `src/Avalonia.Base/Input/Raw/RawDragEventType.cs`
@@ -997,9 +975,7 @@
 ### `src/Avalonia.Base/Input/Raw/RawKeyEventArgs.cs`
 - `public enum RawKeyEventType`
 - `public class RawKeyEventArgs : RawInputEventArgs`
-- `public RawKeyEventArgs( IKeyboardDevice device, ulong timestamp, IInputRoot root, RawKeyEventType type, Key key, RawInputModifiers modifiers) : this(device, timestamp, root, type, key, modifiers, PhysicalKey.None, KeyDeviceType.Keyboard, null) {`
-- `public RawKeyEventArgs( IInputDevice device, ulong timestamp, IInputRoot root, RawKeyEventType type, Key key, RawInputModifiers modifiers, PhysicalKey physicalKey, string? keySymbol) : this(device, timestamp, root, type, key, modifiers, physicalKey, KeyDeviceType.Keyboard, keySymbol) { }`
-- `public RawKeyEventArgs( IInputDevice device, ulong timestamp, IInputRoot root, RawKeyEventType type, Key key, RawInputModifiers modifiers, PhysicalKey physicalKey, KeyDeviceType keyDeviceType, string? keySymbol) : base(device, timestamp, root) {`
+- `public RawKeyEventArgs( IInputDevice device, ulong timestamp, IInputRoot root, RawKeyEventType type, Key key, RawInputModifiers modifiers, PhysicalKey physicalKey, string? keySymbol, KeyDeviceType keyDeviceType = KeyDeviceType.Keyboard) : base(device, timestamp, root) {`
 - `public KeyDeviceType KeyDeviceType { get; set; }`
 - `public string? KeySymbol { get; set; }`
 
@@ -1047,20 +1023,26 @@
 - `public int Id { get; }`
 - `public bool ShouldEndScrollGesture { get; set; }`
 - `public static int GetNextFreeId() => _nextId++;`
-- `public ScrollGestureEventArgs(int id, Vector delta) : base(Gestures.ScrollGestureEvent) {`
+- `public ScrollGestureEventArgs(int id, Vector delta) : base(InputElement.ScrollGestureEvent) {`
 - `public class ScrollGestureEndedEventArgs : RoutedEventArgs`
-- `public ScrollGestureEndedEventArgs(int id) : base(Gestures.ScrollGestureEndedEvent) {`
+- `public ScrollGestureEndedEventArgs(int id) : base(InputElement.ScrollGestureEndedEvent) {`
 - `public sealed class ScrollGestureInertiaStartingEventArgs : RoutedEventArgs`
 - `public Vector Inertia { get; }`
 
+### `src/Avalonia.Base/Input/SwipeDirection.cs`
+- `public enum SwipeDirection`
+
+### `src/Avalonia.Base/Input/SwipeGestureEventArgs.cs`
+- `public int Id { get; }`
+- `public SwipeDirection SwipeDirection { get; }`
+
 ### `src/Avalonia.Base/Input/TappedEventArgs.cs`
-- `public class TappedEventArgs : RoutedEventArgs`
-- `public TappedEventArgs(RoutedEvent routedEvent, PointerEventArgs lastPointerEventArgs) : base(routedEvent) {`
+- `public class TappedEventArgs : RoutedEventArgs, IKeyModifiersEventArgs`
+- `public TappedEventArgs(RoutedEvent? routedEvent, PointerEventArgs lastPointerEventArgs) : base(routedEvent) {`
 - `public ulong Timestamp => lastPointerEventArgs.Timestamp;`
 
 ### `src/Avalonia.Base/Input/TextInput/ITextInputMethodImpl.cs`
 - `public interface ITextInputMethodImpl`
-- `public interface ITextInputMethodRoot : IInputRoot`
 
 ### `src/Avalonia.Base/Input/TextInput/TextInputMethodClient.cs`
 - `public abstract class TextInputMethodClient`
@@ -1077,7 +1059,6 @@
 - `public virtual void SetPreeditText(string? preeditText) { }`
 - `public virtual void ExecuteContextMenuAction(ContextMenuAction action) { }`
 - `public virtual void SetPreeditText(string? preeditText, int? cursorPos) {`
-- `public virtual void ShowInputPanel() {`
 - `public record struct TextSelection(int Start, int End);`
 - `public enum ContextMenuAction`
 
@@ -1119,11 +1100,11 @@
 - `public void ProcessRawEvent(RawInputEventArgs ev) {`
 - `public IPointer? TryGetPointer(RawPointerEventArgs ev) {`
 
+### `src/Avalonia.Base/Input/WindowDecorationsElementRole.cs`
+- `public enum WindowDecorationsElementRole`
+
 ### `src/Avalonia.Base/Layout/EffectiveViewportChangedEventArgs.cs`
 - `public Rect EffectiveViewport { get; }`
-
-### `src/Avalonia.Base/Layout/IEmbeddedLayoutRoot.cs`
-- `public interface IEmbeddedLayoutRoot : ILayoutRoot`
 
 ### `src/Avalonia.Base/Layout/LayoutExtensions.cs`
 - `public static class LayoutExtensions`
@@ -1138,9 +1119,10 @@
 - `public static Size ArrangeChild(Layoutable? child, Size availableSize, Thickness padding, Thickness borderThickness) {`
 - `public static Size ArrangeChild(Layoutable? child, Size availableSize, Thickness padding) {`
 - `public static void InvalidateSelfAndChildrenMeasure(Layoutable control) {`
-- `public static double GetLayoutScale(Layoutable control) => control.VisualRoot is ILayoutRoot layoutRoot ? layoutRoot.LayoutScaling : 1.0;`
-- `public static Size RoundLayoutSizeUp(Size size, double dpiScaleX, double dpiScaleY) {`
-- `public static Thickness RoundLayoutThickness(Thickness thickness, double dpiScaleX, double dpiScaleY) {`
+- `public static double GetLayoutScale(Layoutable control) => control.GetLayoutRoot()?.LayoutScaling ?? 1.0;`
+- `public static Size RoundLayoutSizeUp(Size size, double dpiScale) {`
+- `public static Thickness RoundLayoutThickness(Thickness thickness, double dpiScale) {`
+- `public static Point RoundLayoutPoint(Point point, double dpiScale) {`
 - `public static double RoundLayoutValue(double value, double dpiScale) {`
 - `public static double RoundLayoutValueUp(double value, double dpiScale) {`
 
@@ -1148,9 +1130,6 @@
 - `public static class LayoutInformation`
 - `public static Size? GetPreviousMeasureConstraint(Layoutable control) {`
 - `public static Rect? GetPreviousArrangeBounds(Layoutable control) {`
-
-### `src/Avalonia.Base/Layout/LayoutManager.cs`
-- `public virtual void ExecuteInitialLayoutPass() {`
 
 ### `src/Avalonia.Base/Layout/Layoutable.cs`
 - `public static readonly DirectProperty<Layoutable, Size> DesiredSizeProperty = AvaloniaProperty.RegisterDirect<Layoutable, Size>(nameof(DesiredSize), o => o.DesiredSize);`
@@ -1160,7 +1139,6 @@
 - `public static readonly StyledProperty<double> MaxWidthProperty = AvaloniaProperty.Register<Layoutable, double>(nameof(MaxWidth), double.PositiveInfinity, validate: ValidateMaximumDimension);`
 - `public static readonly StyledProperty<double> MinHeightProperty = AvaloniaProperty.Register<Layoutable, double>(nameof(MinHeight), validate: ValidateMinimumDimension);`
 - `public static readonly StyledProperty<double> MaxHeightProperty = AvaloniaProperty.Register<Layoutable, double>(nameof(MaxHeight), double.PositiveInfinity, validate: ValidateMaximumDimension);`
-- `public static readonly StyledProperty<Thickness> MarginProperty = AvaloniaProperty.Register<Layoutable, Thickness>(nameof(Margin));`
 - `public static readonly StyledProperty<HorizontalAlignment> HorizontalAlignmentProperty = AvaloniaProperty.Register<Layoutable, HorizontalAlignment>(nameof(HorizontalAlignment));`
 - `public static readonly StyledProperty<VerticalAlignment> VerticalAlignmentProperty = AvaloniaProperty.Register<Layoutable, VerticalAlignment>(nameof(VerticalAlignment));`
 - `public static readonly StyledProperty<bool> UseLayoutRoundingProperty = AvaloniaProperty.Register<Layoutable, bool>(nameof(UseLayoutRounding), defaultValue: true, inherits: true);`
@@ -1169,6 +1147,7 @@
 - `public interface ILogSink`
 
 ### `src/Avalonia.Base/Logging/LogArea.cs`
+- `public const string Fonts = nameof(Fonts);`
 - `public const string Win32Platform = nameof(Win32Platform);`
 - `public const string X11Platform = nameof(X11Platform);`
 - `public const string AndroidPlatform = nameof(AndroidPlatform);`
@@ -1243,6 +1222,9 @@
 ### `src/Avalonia.Base/Media/BaselineAlignment.cs`
 - `public enum BaselineAlignment`
 
+### `src/Avalonia.Base/Media/BaselinePixelAlignment.cs`
+- `public enum BaselinePixelAlignment : byte`
+
 ### `src/Avalonia.Base/Media/BezierSegment .cs`
 - `public sealed class BezierSegment : PathSegment`
 - `public static readonly StyledProperty<Point> Point1Property = AvaloniaProperty.Register<BezierSegment, Point>(nameof(Point1));`
@@ -1251,6 +1233,15 @@
 - `public Point Point1 {`
 - `public Point Point2 {`
 - `public Point Point3 {`
+
+### `src/Avalonia.Base/Media/BitmapCache.cs`
+- `public class BitmapCache : CacheMode`
+- `public static readonly StyledProperty<double> RenderAtScaleProperty = AvaloniaProperty.Register<BitmapCache, double>( nameof(RenderAtScale), 1);`
+- `public double RenderAtScale {`
+- `public static readonly StyledProperty<bool> SnapsToDevicePixelsProperty = AvaloniaProperty.Register<BitmapCache, bool>( nameof(SnapsToDevicePixels));`
+- `public bool SnapsToDevicePixels {`
+- `public static readonly StyledProperty<bool> EnableClearTypeProperty = AvaloniaProperty.Register<BitmapCache, bool>( nameof(EnableClearType));`
+- `public bool EnableClearType {`
 
 ### `src/Avalonia.Base/Media/BoxShadow.cs`
 - `public double OffsetX { get; set; }`
@@ -1384,6 +1375,28 @@
 - `public static IImmutableSolidColorBrush SaddleBrown => KnownColor.SaddleBrown.ToBrush();`
 - `public static IImmutableSolidColorBrush Salmon => KnownColor.Salmon.ToBrush();`
 - `public static IImmutableSolidColorBrush SandyBrown => KnownColor.SandyBrown.ToBrush();`
+- `public static IImmutableSolidColorBrush SeaGreen => KnownColor.SeaGreen.ToBrush();`
+- `public static IImmutableSolidColorBrush SeaShell => KnownColor.SeaShell.ToBrush();`
+- `public static IImmutableSolidColorBrush Sienna => KnownColor.Sienna.ToBrush();`
+- `public static IImmutableSolidColorBrush Silver => KnownColor.Silver.ToBrush();`
+- `public static IImmutableSolidColorBrush SkyBlue => KnownColor.SkyBlue.ToBrush();`
+- `public static IImmutableSolidColorBrush SlateBlue => KnownColor.SlateBlue.ToBrush();`
+- `public static IImmutableSolidColorBrush SlateGray => KnownColor.SlateGray.ToBrush();`
+- `public static IImmutableSolidColorBrush Snow => KnownColor.Snow.ToBrush();`
+- `public static IImmutableSolidColorBrush SpringGreen => KnownColor.SpringGreen.ToBrush();`
+- `public static IImmutableSolidColorBrush Tan => KnownColor.Tan.ToBrush();`
+- `public static IImmutableSolidColorBrush Teal => KnownColor.Teal.ToBrush();`
+- `public static IImmutableSolidColorBrush Thistle => KnownColor.Thistle.ToBrush();`
+- `public static IImmutableSolidColorBrush Tomato => KnownColor.Tomato.ToBrush();`
+- `public static IImmutableSolidColorBrush Turquoise => KnownColor.Turquoise.ToBrush();`
+- `public static IImmutableSolidColorBrush Violet => KnownColor.Violet.ToBrush();`
+- `public static IImmutableSolidColorBrush Wheat => KnownColor.Wheat.ToBrush();`
+- `public static IImmutableSolidColorBrush WhiteSmoke => KnownColor.WhiteSmoke.ToBrush();`
+- `public static IImmutableSolidColorBrush Yellow => KnownColor.Yellow.ToBrush();`
+- `public static IImmutableSolidColorBrush YellowGreen => KnownColor.YellowGreen.ToBrush();`
+
+### `src/Avalonia.Base/Media/CacheMode.cs`
+- `public abstract class CacheMode : StyledElement`
 
 ### `src/Avalonia.Base/Media/CharacterHit.cs`
 - `public readonly struct CharacterHit : IEquatable<CharacterHit>`
@@ -1501,6 +1514,25 @@
 - `public static Color SaddleBrown => KnownColor.SaddleBrown.ToColor();`
 - `public static Color Salmon => KnownColor.Salmon.ToColor();`
 - `public static Color SandyBrown => KnownColor.SandyBrown.ToColor();`
+- `public static Color SeaGreen => KnownColor.SeaGreen.ToColor();`
+- `public static Color SeaShell => KnownColor.SeaShell.ToColor();`
+- `public static Color Sienna => KnownColor.Sienna.ToColor();`
+- `public static Color Silver => KnownColor.Silver.ToColor();`
+- `public static Color SkyBlue => KnownColor.SkyBlue.ToColor();`
+- `public static Color SlateBlue => KnownColor.SlateBlue.ToColor();`
+- `public static Color SlateGray => KnownColor.SlateGray.ToColor();`
+- `public static Color Snow => KnownColor.Snow.ToColor();`
+- `public static Color SpringGreen => KnownColor.SpringGreen.ToColor();`
+- `public static Color Tan => KnownColor.Tan.ToColor();`
+- `public static Color Teal => KnownColor.Teal.ToColor();`
+- `public static Color Thistle => KnownColor.Thistle.ToColor();`
+- `public static Color Tomato => KnownColor.Tomato.ToColor();`
+- `public static Color Turquoise => KnownColor.Turquoise.ToColor();`
+- `public static Color Violet => KnownColor.Violet.ToColor();`
+- `public static Color Wheat => KnownColor.Wheat.ToColor();`
+- `public static Color WhiteSmoke => KnownColor.WhiteSmoke.ToColor();`
+- `public static Color Yellow => KnownColor.Yellow.ToColor();`
+- `public static Color YellowGreen => KnownColor.YellowGreen.ToColor();`
 
 ### `src/Avalonia.Base/Media/ConicGradientBrush.cs`
 - `public sealed class ConicGradientBrush : GradientBrush, IConicGradientBrush`
@@ -1545,9 +1577,7 @@
 - `public PushedState PushOpacityMask(IBrush mask, Rect bounds) {`
 - `public PushedState PushTransform(Matrix matrix) {`
 - `public PushedState PushRenderOptions(RenderOptions renderOptions) {`
-- `public PushedState PushPreTransform(Matrix matrix) => PushTransform(matrix);`
-- `public PushedState PushPostTransform(Matrix matrix) => PushTransform(matrix);`
-- `public PushedState PushTransformContainer() => PushTransform(Matrix.Identity);`
+- `public PushedState PushTextOptions(TextOptions textOptions) {`
 
 ### `src/Avalonia.Base/Media/DrawingGroup.cs`
 - `public sealed class DrawingGroup : Drawing`
@@ -1561,6 +1591,7 @@
 
 ### `src/Avalonia.Base/Media/DrawingImage.cs`
 - `public static readonly StyledProperty<Drawing?> DrawingProperty = AvaloniaProperty.Register<DrawingImage, Drawing?>(nameof(Drawing));`
+- `public static readonly StyledProperty<Rect?> ViewboxProperty = AvaloniaProperty.Register<DrawingImage, Rect?>(nameof(Viewbox));`
 - `public event EventHandler? Invalidated;`
 
 ### `src/Avalonia.Base/Media/EdgeMode.cs`
@@ -1658,8 +1689,8 @@
 - `public FontManager(IFontManagerImpl platformImpl) {`
 - `public static FontManager Current {`
 - `public FontFamily DefaultFontFamily {`
-- `public IFontCollection SystemFonts => _fontCollections[SystemFontsKey];`
-- `public bool TryGetGlyphTypeface(Typeface typeface, [NotNullWhen(true)] out IGlyphTypeface? glyphTypeface) {`
+- `public IFontCollection SystemFonts {`
+- `public bool TryGetGlyphTypeface(Typeface typeface, [NotNullWhen(true)] out GlyphTypeface? glyphTypeface) {`
 - `public void AddFontCollection(IFontCollection fontCollection) {`
 - `public void RemoveFontCollection(Uri key) {`
 - `public bool TryMatchCharacter(int codepoint, FontStyle fontStyle, FontWeight fontWeight, FontStretch fontStretch, FontFamily? fontFamily, CultureInfo? culture, out Typeface typeface) {`
@@ -1672,7 +1703,7 @@
 
 ### `src/Avalonia.Base/Media/FontMetrics.cs`
 - `public readonly record struct FontMetrics`
-- `public short DesignEmHeight { get; init; }`
+- `public ushort DesignEmHeight { get; init; }`
 - `public bool IsFixedPitch { get; init; }`
 - `public int Ascent { get; init; }`
 - `public int Descent { get; init; }`
@@ -1686,10 +1717,8 @@
 - `public enum FontSimulations : byte`
 
 ### `src/Avalonia.Base/Media/Fonts/EmbeddedFontCollection.cs`
-- `public class EmbeddedFontCollection : FontCollectionBase, IFontCollection2`
+- `public class EmbeddedFontCollection : FontCollectionBase`
 - `public EmbeddedFontCollection(Uri key, Uri source) {`
-- `public override bool TryGetGlyphTypeface(string familyName, FontStyle style, FontWeight weight, FontStretch stretch, [NotNullWhen(true)] out IGlyphTypeface? glyphTypeface) {`
-- `public bool TryGetFamilyTypefaces(string familyName, [NotNullWhen(true)] out IReadOnlyList<Typeface>? familyTypefaces) {`
 
 ### `src/Avalonia.Base/Media/Fonts/FamilyNameCollection.cs`
 - `public sealed class FamilyNameCollection : IReadOnlyList<string>`
@@ -1699,9 +1728,15 @@
 
 ### `src/Avalonia.Base/Media/Fonts/FontCollectionBase.cs`
 - `public abstract class FontCollectionBase : IFontCollection`
-- `public abstract bool TryGetGlyphTypeface(string familyName, FontStyle style, FontWeight weight, FontStretch stretch, [NotNullWhen(true)] out IGlyphTypeface? glyphTypeface);`
 - `public virtual bool TryMatchCharacter(int codepoint, FontStyle style, FontWeight weight, FontStretch stretch, string? familyName, CultureInfo? culture, out Typeface match) {`
-- `public virtual bool TryCreateSyntheticGlyphTypeface( IGlyphTypeface glyphTypeface, FontStyle style, FontWeight weight, FontStretch stretch, [NotNullWhen(true)] out IGlyphTypeface? syntheticGlyphTypeface) {`
+- `public virtual bool TryCreateSyntheticGlyphTypeface( GlyphTypeface glyphTypeface, FontStyle style, FontWeight weight, FontStretch stretch, [NotNullWhen(true)] out GlyphTypeface? syntheticGlyphTypeface) {`
+- `public virtual bool TryGetGlyphTypeface(string familyName, FontStyle style, FontWeight weight, FontStretch stretch, [NotNullWhen(true)] out GlyphTypeface? glyphTypeface) {`
+- `public virtual bool TryGetFamilyTypefaces(string familyName, [NotNullWhen(true)] out IReadOnlyList<Typeface>? familyTypefaces) {`
+- `public bool TryGetNearestMatch(string familyName, FontStyle style, FontWeight weight, FontStretch stretch, [NotNullWhen(true)] out GlyphTypeface? glyphTypeface) {`
+- `public bool TryAddGlyphTypeface(GlyphTypeface glyphTypeface) {`
+- `public bool TryAddGlyphTypeface(GlyphTypeface glyphTypeface, FontCollectionKey key) {`
+- `public bool TryAddGlyphTypeface(Stream stream, [NotNullWhen(true)] out GlyphTypeface? glyphTypeface) {`
+- `public bool TryAddFontSource(Uri source) {`
 
 ### `src/Avalonia.Base/Media/Fonts/FontCollectionKey.cs`
 - `public readonly record struct FontCollectionKey(FontStyle Style, FontWeight Weight, FontStretch Stretch);`
@@ -1710,12 +1745,32 @@
 - `public class FontFamilyKey`
 - `public FontFamilyKey(Uri source, Uri? baseUri = null) {`
 
-### `src/Avalonia.Base/Media/Fonts/FontFamilyLoader.cs`
-- `public static class FontFamilyLoader`
-- `public static IEnumerable<Uri> LoadFontAssets(Uri source) {`
-
 ### `src/Avalonia.Base/Media/Fonts/IFontCollection.cs`
 - `public interface IFontCollection : IReadOnlyList<FontFamily>, IDisposable`
+
+### `src/Avalonia.Base/Media/Fonts/OpenTypeTag.cs`
+- `public readonly record struct OpenTypeTag`
+- `public OpenTypeTag(uint value) {`
+- `public OpenTypeTag(char c1, char c2, char c3, char c4) {`
+- `public static implicit operator uint(OpenTypeTag tag) => tag._value;`
+- `public static implicit operator OpenTypeTag(uint tag) => new OpenTypeTag(tag);`
+
+### `src/Avalonia.Base/Media/Fonts/Tables/Cmap/CharacterToGlyphMap.cs`
+- `public readonly struct CharacterToGlyphMap`
+- `public ushort GetGlyph(int codePoint) {`
+- `public bool ContainsGlyph(int codePoint) {`
+- `public void GetGlyphs(ReadOnlySpan<int> codePoints, Span<ushort> glyphIds) {`
+- `public bool TryGetGlyph(int codePoint, out ushort glyphId) {`
+- `public CodepointRangeEnumerator GetMappedRanges() {`
+
+### `src/Avalonia.Base/Media/Fonts/Tables/Cmap/CodepointRange.cs`
+- `public readonly struct CodepointRange`
+- `public CodepointRange(int start, int end) {`
+
+### `src/Avalonia.Base/Media/Fonts/Tables/Cmap/CodepointRangeEnumerator.cs`
+- `public ref struct CodepointRangeEnumerator`
+- `public CodepointRange Current { get; private set; }`
+- `public bool MoveNext() {`
 
 ### `src/Avalonia.Base/Media/FormattedText.cs`
 - `public const double DefaultRealToIdeal = 28800.0 / 96;`
@@ -1754,10 +1809,10 @@
 ### `src/Avalonia.Base/Media/GlyphMetrics.cs`
 - `public readonly record struct GlyphMetrics`
 - `public int XBearing { get; init; }`
-- `public int YBearing{ get; init; }`
+- `public int YBearing { get; init; }`
 
 ### `src/Avalonia.Base/Media/GlyphRun.cs`
-- `public IGlyphTypeface GlyphTypeface { get; }`
+- `public GlyphTypeface GlyphTypeface { get; }`
 - `public double FontRenderingEmSize {`
 - `public Rect InkBounds => PlatformImpl.Item.Bounds;`
 - `public GlyphRunMetrics Metrics => _glyphRunMetrics ??= CreateGlyphRunMetrics();`
@@ -1787,6 +1842,26 @@
 - `public int FirstCluster { get; init; }`
 - `public int LastCluster { get; init; }`
 
+### `src/Avalonia.Base/Media/GlyphTypeface.cs`
+- `public sealed class GlyphTypeface`
+- `public GlyphTypeface(IPlatformTypeface typeface, FontSimulations fontSimulations = FontSimulations.None) {`
+- `public string FamilyName { get; }`
+- `public string TypographicFamilyName { get; }`
+- `public IReadOnlyDictionary<CultureInfo, string> FamilyNames { get; }`
+- `public IReadOnlyDictionary<CultureInfo, string> FaceNames { get; }`
+- `public CharacterToGlyphMap CharacterToGlyphMap => _cmapTable;`
+- `public FontMetrics Metrics { get; }`
+- `public FontWeight Weight { get; }`
+- `public FontSimulations FontSimulations { get; }`
+- `public int GlyphCount { get; }`
+- `public IReadOnlyList<OpenTypeTag> SupportedFeatures {`
+- `public IPlatformTypeface PlatformTypeface { get; }`
+- `public ITextShaperTypeface TextShaperTypeface {`
+- `public bool TryGetHorizontalGlyphAdvance(ushort glyphId, out ushort advance) {`
+- `public bool TryGetHorizontalGlyphAdvances(ReadOnlySpan<ushort> glyphIds, Span<ushort> advances) {`
+- `public bool TryGetGlyphMetrics(ushort glyph, out GlyphMetrics metrics) {`
+- `public bool TryGetGlyphMetrics(ReadOnlySpan<ushort> glyphIds, Span<GlyphMetrics> metrics) {`
+
 ### `src/Avalonia.Base/Media/GradientBrush.cs`
 - `public abstract class GradientBrush : Brush, IGradientBrush, IMutableBrush`
 - `public static readonly StyledProperty<GradientSpreadMethod> SpreadMethodProperty = AvaloniaProperty.Register<GradientBrush, GradientSpreadMethod>(nameof(SpreadMethod));`
@@ -1814,8 +1889,8 @@
 ### `src/Avalonia.Base/Media/IExperimentalAcrylicMaterial.cs`
 - `public interface IExperimentalAcrylicMaterial`
 
-### `src/Avalonia.Base/Media/IGlyphTypeface.cs`
-- `public interface IGlyphTypeface : IDisposable`
+### `src/Avalonia.Base/Media/IFontMemory.cs`
+- `public interface IFontMemory : IDisposable`
 
 ### `src/Avalonia.Base/Media/IGradientBrush.cs`
 - `public interface IGradientBrush : IBrush`
@@ -1842,6 +1917,9 @@
 ### `src/Avalonia.Base/Media/IPen.cs`
 - `public interface IPen`
 
+### `src/Avalonia.Base/Media/IPlatformTypeface.cs`
+- `public interface IPlatformTypeface : IFontMemory`
+
 ### `src/Avalonia.Base/Media/IRadialGradientBrush.cs`
 - `public interface IRadialGradientBrush : IGradientBrush`
 
@@ -1851,6 +1929,9 @@
 
 ### `src/Avalonia.Base/Media/ISolidColorBrush.cs`
 - `public interface ISolidColorBrush : IBrush`
+
+### `src/Avalonia.Base/Media/ITextShaperTypeface.cs`
+- `public interface ITextShaperTypeface : IDisposable`
 
 ### `src/Avalonia.Base/Media/ITileBrush.cs`
 - `public interface ITileBrush : IBrush`
@@ -1874,9 +1955,9 @@
 - `public Vector Dpi => PlatformImpl.Item.Dpi;`
 - `public PixelSize PixelSize => PlatformImpl.Item.PixelSize;`
 - `public virtual PixelFormat? Format => (PlatformImpl.Item as IReadableBitmapImpl)?.Format;`
-- `public virtual AlphaFormat? AlphaFormat => (PlatformImpl.Item as IReadableBitmapWithAlphaImpl)?.AlphaFormat;`
+- `public virtual AlphaFormat? AlphaFormat => (PlatformImpl.Item as IReadableBitmapImpl)?.AlphaFormat;`
 - `public virtual void CopyPixels(PixelRect sourceRect, IntPtr buffer, int bufferSize, int stride) {`
-- `public void CopyPixels(ILockedFramebuffer buffer, AlphaFormat alphaFormat) {`
+- `public void CopyPixels(ILockedFramebuffer buffer) {`
 
 ### `src/Avalonia.Base/Media/Imaging/BitmapInterpolationMode.cs`
 - `public enum BitmapInterpolationMode : byte`
@@ -2110,11 +2191,9 @@
 ### `src/Avalonia.Base/Media/RadialGradientBrush.cs`
 - `public static readonly StyledProperty<RelativePoint> CenterProperty = AvaloniaProperty.Register<RadialGradientBrush, RelativePoint>( nameof(Center), RelativePoint.Center);`
 - `public static readonly StyledProperty<RelativePoint> GradientOriginProperty = AvaloniaProperty.Register<RadialGradientBrush, RelativePoint>( nameof(GradientOrigin), RelativePoint.Center);`
-- `public static readonly StyledProperty<double> RadiusProperty = AvaloniaProperty.Register<RadialGradientBrush, double>( nameof(Radius), 0.5);`
 - `public RelativePoint Center {`
 - `public RelativeScalar RadiusX {`
 - `public RelativeScalar RadiusY {`
-- `public double Radius {`
 
 ### `src/Avalonia.Base/Media/RectangleGeometry.cs`
 - `public class RectangleGeometry : Geometry`
@@ -2129,9 +2208,9 @@
 
 ### `src/Avalonia.Base/Media/RenderOptions.cs`
 - `public readonly record struct RenderOptions`
+- `public TextRenderingMode TextRenderingMode { get; init; }`
 - `public BitmapInterpolationMode BitmapInterpolationMode { get; init; }`
 - `public EdgeMode EdgeMode { get; init; }`
-- `public TextRenderingMode TextRenderingMode { get; init; }`
 - `public bool? RequiresFullOpacityHandling { get; init; }`
 - `public static BitmapInterpolationMode GetBitmapInterpolationMode(Visual visual) {`
 - `public static void SetBitmapInterpolationMode(Visual visual, BitmapInterpolationMode value) {`
@@ -2179,20 +2258,16 @@
 - `public override Geometry Clone() {`
 
 ### `src/Avalonia.Base/Media/StreamGeometryContext.cs`
-- `public class StreamGeometryContext : IGeometryContext, IGeometryContext2`
+- `public class StreamGeometryContext : IGeometryContext`
 - `public StreamGeometryContext(IStreamGeometryContextImpl impl) {`
 - `public void SetFillRule(FillRule fillRule) {`
-- `public void ArcTo(Point point, Size size, double rotationAngle, bool isLargeArc, SweepDirection sweepDirection) {`
+- `public void ArcTo(Point point, Size size, double rotationAngle, bool isLargeArc, SweepDirection sweepDirection, bool isStroked = true) {`
 - `public void PreciseArcTo(Point point, Size size, double rotationAngle, bool isLargeArc, SweepDirection sweepDirection) {`
-- `public void BeginFigure(Point startPoint, bool isFilled) {`
-- `public void CubicBezierTo(Point controlPoint1, Point controlPoint2, Point endPoint) {`
-- `public void QuadraticBezierTo(Point controlPoint , Point endPoint) {`
-- `public void LineTo(Point endPoint) {`
+- `public void BeginFigure(Point startPoint, bool isFilled = true) {`
+- `public void CubicBezierTo(Point controlPoint1, Point controlPoint2, Point endPoint, bool isStroked = true) {`
+- `public void QuadraticBezierTo(Point controlPoint, Point endPoint, bool isStroked = true) {`
+- `public void LineTo(Point point, bool isStroked = true) {`
 - `public void EndFigure(bool isClosed) {`
-- `public void LineTo(Point point, bool isStroked) {`
-- `public void ArcTo(Point point, Size size, double rotationAngle, bool isLargeArc, SweepDirection sweepDirection, bool isStroked) {`
-- `public void CubicBezierTo(Point controlPoint1, Point controlPoint2, Point endPoint, bool isStroked) {`
-- `public void QuadraticBezierTo(Point controlPoint, Point endPoint, bool isStroked) {`
 
 ### `src/Avalonia.Base/Media/SweepDirection.cs`
 - `public enum SweepDirection`
@@ -2232,8 +2307,8 @@
 
 ### `src/Avalonia.Base/Media/TextFormatting/GenericTextParagraphProperties.cs`
 - `public sealed class GenericTextParagraphProperties : TextParagraphProperties`
-- `public GenericTextParagraphProperties(TextRunProperties defaultTextRunProperties, TextAlignment textAlignment = TextAlignment.Left, TextWrapping textWrap = TextWrapping.NoWrap, double lineHeight = 0, double letterSpacing = 0) {`
-- `public GenericTextParagraphProperties( FlowDirection flowDirection, TextAlignment textAlignment, bool firstLineInParagraph, bool alwaysCollapsible, TextRunProperties defaultTextRunProperties, TextWrapping textWrap, double lineHeight, double indent, double letterSpacing) {`
+- `public GenericTextParagraphProperties(TextRunProperties defaultTextRunProperties, TextAlignment textAlignment = TextAlignment.Left, TextWrapping textWrapping = TextWrapping.NoWrap, double lineHeight = 0, double letterSpacing = 0) {`
+- `public GenericTextParagraphProperties( FlowDirection flowDirection, TextAlignment textAlignment, bool firstLineInParagraph, bool alwaysCollapsible, TextRunProperties defaultTextRunProperties, TextWrapping textWrapping, double lineHeight, double indent, double letterSpacing) {`
 - `public GenericTextParagraphProperties(TextParagraphProperties textParagraphProperties) : this(textParagraphProperties.FlowDirection, textParagraphProperties.TextAlignment, textParagraphProperties.FirstLineInParagraph, textParagraphProperties.AlwaysCollapsible, textParagraphProperties.DefaultTextRunProperties, textParagraphProperties.TextWrapping, textParagraphProperties.LineHeight, textParagraphProperties.Indent, textParagraphProperties.LetterSpacing) {`
 - `public override bool FirstLineInParagraph { get; }`
 - `public override bool AlwaysCollapsible { get; }`
@@ -2242,8 +2317,7 @@
 
 ### `src/Avalonia.Base/Media/TextFormatting/GenericTextRunProperties.cs`
 - `public class GenericTextRunProperties : TextRunProperties`
-- `public GenericTextRunProperties(Typeface typeface, double fontRenderingEmSize = DefaultFontRenderingEmSize, TextDecorationCollection? textDecorations = null, IBrush? foregroundBrush = null, IBrush? backgroundBrush = null, BaselineAlignment baselineAlignment = BaselineAlignment.Baseline, CultureInfo? cultureInfo = null) : this(typeface, null, fontRenderingEmSize, textDecorations, foregroundBrush, backgroundBrush, baselineAlignment, cultureInfo) {`
-- `public GenericTextRunProperties( Typeface typeface, FontFeatureCollection? fontFeatures, double fontRenderingEmSize = DefaultFontRenderingEmSize, TextDecorationCollection? textDecorations = null, IBrush? foregroundBrush = null, IBrush? backgroundBrush = null, BaselineAlignment baselineAlignment = BaselineAlignment.Baseline, CultureInfo? cultureInfo = null) {`
+- `public GenericTextRunProperties( Typeface typeface, double fontRenderingEmSize = DefaultFontRenderingEmSize, TextDecorationCollection? textDecorations = null, IBrush? foregroundBrush = null, IBrush? backgroundBrush = null, BaselineAlignment baselineAlignment = BaselineAlignment.Baseline, CultureInfo? cultureInfo = null, FontFeatureCollection? fontFeatures = null) {`
 - `public override double FontRenderingEmSize { get; }`
 - `public override IBrush? ForegroundBrush { get; }`
 - `public override IBrush? BackgroundBrush { get; }`
@@ -2269,19 +2343,17 @@
 
 ### `src/Avalonia.Base/Media/TextFormatting/ShapedBuffer.cs`
 - `public sealed class ShapedBuffer : IReadOnlyList<GlyphInfo>, IDisposable`
-- `public ShapedBuffer(ReadOnlyMemory<char> text, int bufferLength, IGlyphTypeface glyphTypeface, double fontRenderingEmSize, sbyte bidiLevel) {`
+- `public ShapedBuffer(ReadOnlyMemory<char> text, int bufferLength, GlyphTypeface glyphTypeface, double fontRenderingEmSize, sbyte bidiLevel) {`
 - `public int Length => _glyphInfos.Length;`
-- `public IGlyphTypeface GlyphTypeface { get; }`
+- `public GlyphTypeface GlyphTypeface { get; }`
 - `public double FontRenderingEmSize { get; }`
-- `public sbyte BidiLevel { get; private set; }`
+- `public sbyte BidiLevel { get; }`
 - `public bool IsLeftToRight => (BidiLevel & 1) == 0;`
-- `public void Reverse() {`
 - `public SplitResult<ShapedBuffer> Split(int textLength) {`
 
 ### `src/Avalonia.Base/Media/TextFormatting/ShapedTextRun.cs`
 - `public sealed class ShapedTextRun : DrawableTextRun, IDisposable`
 - `public ShapedTextRun(ShapedBuffer shapedBuffer, TextRunProperties properties) {`
-- `public bool IsReversed { get; private set; }`
 - `public sbyte BidiLevel => ShapedBuffer.BidiLevel;`
 - `public ShapedBuffer ShapedBuffer { get; }`
 - `public override int Length => ShapedBuffer.Text.Length;`
@@ -2309,7 +2381,7 @@
 - `public abstract class TextCollapsingProperties`
 - `public abstract TextRun Symbol { get; }`
 - `public abstract TextRun[]? Collapse(TextLine textLine);`
-- `public static TextRun[] CreateCollapsedRuns(TextLine textLine, int collapsedLength, FlowDirection flowDirection, TextRun shapedSymbol) {`
+- `public static TextRun[] CreateCollapsedRuns(TextLine textLine, int collapsedLength, TextRun shapedSymbol) {`
 
 ### `src/Avalonia.Base/Media/TextFormatting/TextEndOfLine.cs`
 - `public class TextEndOfLine : TextRun`
@@ -2325,6 +2397,7 @@
 - `public abstract class TextFormatter`
 - `public static TextFormatter Current {`
 - `public abstract TextLine? FormatLine(ITextSource textSource, int firstTextSourceIndex, double paragraphWidth, TextParagraphProperties paragraphProperties, TextLineBreak? previousLineBreak = null);`
+- `public virtual TextLine? FormatLine(ITextSource textSource, int firstTextSourceIndex, double paragraphWidth, TextParagraphProperties paragraphProperties, TextLineBreak? previousLineBreak, TextRunCache? textRunCache) {`
 - `public static ShapedTextRun CreateSymbol(TextRun textRun, FlowDirection flowDirection) {`
 
 ### `src/Avalonia.Base/Media/TextFormatting/TextLayout.cs`
@@ -2373,7 +2446,7 @@
 
 ### `src/Avalonia.Base/Media/TextFormatting/TextMetrics.cs`
 - `public readonly record struct TextMetrics`
-- `public TextMetrics(IGlyphTypeface glyphTypeface, double fontRenderingEmSize) {`
+- `public TextMetrics(GlyphTypeface glyphTypeface, double fontRenderingEmSize) {`
 - `public double FontRenderingEmSize { get; }`
 - `public double Ascent { get; }`
 - `public double Descent { get; }`
@@ -2392,13 +2465,6 @@
 - `public virtual double ParagraphIndent {`
 - `public virtual double DefaultIncrementalTab => 0;`
 
-### `src/Avalonia.Base/Media/TextFormatting/TextRange.cs`
-- `public readonly record struct TextRange`
-- `public TextRange(int start, int length) {`
-- `public int Length { get; }`
-- `public TextRange Take(int length) {`
-- `public TextRange Skip(int length) {`
-
 ### `src/Avalonia.Base/Media/TextFormatting/TextRun.cs`
 - `public abstract class TextRun`
 - `public const int DefaultTextSourceLength = 1;`
@@ -2409,6 +2475,10 @@
 - `public int TextSourceCharacterIndex { get; }`
 - `public int Length { get; }`
 - `public TextRun TextRun { get; }`
+
+### `src/Avalonia.Base/Media/TextFormatting/TextRunCache.cs`
+- `public class TextRunCache : IDisposable`
+- `public void InvalidateFrom(int textSourceIndex) {`
 
 ### `src/Avalonia.Base/Media/TextFormatting/TextRunProperties.cs`
 - `public abstract class TextRunProperties : IEquatable<TextRunProperties>`
@@ -2427,8 +2497,8 @@
 
 ### `src/Avalonia.Base/Media/TextFormatting/TextShaperOptions.cs`
 - `public readonly record struct TextShaperOptions`
-- `public TextShaperOptions( IGlyphTypeface typeface, double fontRenderingEmSize = 12, sbyte bidiLevel = 0, CultureInfo? culture = null, double incrementalTabWidth = 0, double letterSpacing = 0) : this(typeface, null, fontRenderingEmSize, bidiLevel, culture, incrementalTabWidth, letterSpacing) {`
-- `public TextShaperOptions( IGlyphTypeface typeface, IReadOnlyList<FontFeature>? fontFeatures, double fontRenderingEmSize = 12, sbyte bidiLevel = 0, CultureInfo? culture = null, double incrementalTabWidth = 0, double letterSpacing = 0) {`
+- `public TextShaperOptions( GlyphTypeface typeface, double fontRenderingEmSize = GenericTextRunProperties.DefaultFontRenderingEmSize, sbyte bidiLevel = 0, CultureInfo? culture = null, double incrementalTabWidth = 0, double letterSpacing = 0, IReadOnlyList<FontFeature>? fontFeatures = null) {`
+- `public GlyphTypeface GlyphTypeface { get; }`
 - `public double FontRenderingEmSize { get; }`
 - `public sbyte BidiLevel { get; }`
 - `public CultureInfo? Culture { get; }`
@@ -2518,6 +2588,9 @@
 - `public override int Length => Text.Length;`
 - `public sbyte BidiLevel { get; }`
 
+### `src/Avalonia.Base/Media/TextHintingMode.cs`
+- `public enum TextHintingMode : byte`
+
 ### `src/Avalonia.Base/Media/TextHitTestResult.cs`
 - `public readonly record struct TextHitTestResult`
 - `public TextHitTestResult(CharacterHit characterHit, int textPosition, bool isInside, bool isTrailing) {`
@@ -2530,6 +2603,21 @@
 - `public sealed class TextLeadingPrefixTrimming : TextTrimming`
 - `public TextLeadingPrefixTrimming(string ellipsis, int prefixLength) {`
 - `public override TextCollapsingProperties CreateCollapsingProperties(TextCollapsingCreateInfo createInfo) {`
+
+### `src/Avalonia.Base/Media/TextOptions.cs`
+- `public readonly record struct TextOptions`
+- `public TextRenderingMode TextRenderingMode { get; init; }`
+- `public TextHintingMode TextHintingMode { get; init; }`
+- `public BaselinePixelAlignment BaselinePixelAlignment { get; init; }`
+- `public TextOptions MergeWith(TextOptions other) {`
+- `public static TextOptions GetTextOptions(Visual visual) {`
+- `public static void SetTextOptions(Visual visual, TextOptions value) {`
+- `public static TextRenderingMode GetTextRenderingMode(Visual visual) {`
+- `public static void SetTextRenderingMode(Visual visual, TextRenderingMode value) {`
+- `public static TextHintingMode GetTextHintingMode(Visual visual) {`
+- `public static void SetTextHintingMode(Visual visual, TextHintingMode value) {`
+- `public static BaselinePixelAlignment GetBaselinePixelAlignment(Visual visual) {`
+- `public static void SetBaselinePixelAlignment(Visual visual, BaselinePixelAlignment value) {`
 
 ### `src/Avalonia.Base/Media/TextPathSegmentEllipsis.cs`
 - `public sealed class TextPathSegmentEllipsis : TextCollapsingProperties`
@@ -2626,7 +2714,8 @@
 
 ### `src/Avalonia.Base/Media/Typeface.cs`
 - `public FontWeight Weight { get; }`
-- `public IGlyphTypeface GlyphTypeface {`
+- `public GlyphTypeface GlyphTypeface {`
+- `public Typeface Normalize(out string normalizedFamilyName) {`
 
 ### `src/Avalonia.Base/Media/UnicodeRange.cs`
 - `public readonly record struct UnicodeRange`
@@ -2650,6 +2739,9 @@
 - `public sealed class AvaloniaListAttribute : Attribute`
 - `public string[]? Separators { get; init; }`
 - `public StringSplitOptions SplitOptions { get; init; } = StringSplitOptions.RemoveEmptyEntries | (StringSplitOptions)2;`
+
+### `src/Avalonia.Base/Metadata/ConstructorArgumentAttribute.cs`
+- `public sealed class ConstructorArgumentAttribute(string name) : Attribute`
 
 ### `src/Avalonia.Base/Metadata/ContentAttribute.cs`
 - `public sealed class ContentAttribute : Attribute`
@@ -2819,7 +2911,7 @@
 - `public interface IDrawingContextImplWithEffects : IDrawingContextImpl`
 - `public static class DrawingContextImplExtensions`
 - `public static T? GetFeature<T>(this IDrawingContextImpl context) where T : class =>`
-- `public interface IDrawingContextLayerImpl : IRenderTargetBitmapImpl`
+- `public interface IDrawingContextLayerImpl : IBitmapImpl`
 - `public interface IDrawingContextLayerWithRenderContextAffinityImpl : IDrawingContextLayerImpl`
 
 ### `src/Avalonia.Base/Platform/IDrawingContextWithAcrylicLikeSupport.cs`
@@ -2841,9 +2933,6 @@
 ### `src/Avalonia.Base/Platform/IGeometryContext.cs`
 - `public interface IGeometryContext : IDisposable`
 
-### `src/Avalonia.Base/Platform/IGeometryContext2.cs`
-- `public interface IGeometryContext2 : IGeometryContext`
-
 ### `src/Avalonia.Base/Platform/IGeometryImpl.cs`
 - `public interface IGeometryImpl`
 
@@ -2856,9 +2945,6 @@
 ### `src/Avalonia.Base/Platform/IMacOSTopLevelPlatformHandle.cs`
 - `public interface IMacOSTopLevelPlatformHandle`
 
-### `src/Avalonia.Base/Platform/IOptionalFeatureProvider.cs`
-- `public static class OptionalFeatureProviderExtensions`
-
 ### `src/Avalonia.Base/Platform/IPlatformBehaviorInhibition.cs`
 - `public interface IPlatformBehaviorInhibition`
 
@@ -2870,6 +2956,7 @@
 - `public AlphaFormat DefaultAlphaFormat { get; }`
 - `public PixelFormat DefaultPixelFormat { get; }`
 - `public interface IPlatformRenderInterfaceContext : IOptionalFeatureProvider, IDisposable`
+- `public PixelSize? MaxOffscreenRenderTargetPixelSize { get; }`
 
 ### `src/Avalonia.Base/Platform/IPlatformRenderInterfaceRegion.cs`
 - `public interface IPlatformRenderInterfaceRegion : IDisposable`
@@ -2878,17 +2965,14 @@
 - `public interface IPlatformThreadingInterface`
 
 ### `src/Avalonia.Base/Platform/IReadableBitmapImpl.cs`
-- `public interface IReadableBitmapImpl`
-- `public interface IReadableBitmapWithAlphaImpl : IReadableBitmapImpl`
+- `public interface IReadableBitmapImpl : IBitmapImpl`
 
 ### `src/Avalonia.Base/Platform/IRenderTarget.cs`
 - `public interface IRenderTarget : IDisposable`
-- `public bool IsCorrupted { get; }`
-- `public interface IRenderTargetWithProperties : IRenderTarget`
-- `public interface IRenderTarget2 : IRenderTarget`
+- `public record struct RenderTargetSceneInfo(PixelSize Size, double Scaling);`
 
 ### `src/Avalonia.Base/Platform/IRenderTargetBitmapImpl.cs`
-- `public interface IRenderTargetBitmapImpl : IBitmapImpl, IRenderTarget`
+- `public interface IRenderTargetBitmapImpl : IReadableBitmapImpl`
 
 ### `src/Avalonia.Base/Platform/IRuntimePlatform.cs`
 - `public interface IRuntimePlatform`
@@ -2915,28 +2999,43 @@
 - `public interface ITransformedGeometryImpl : IGeometryImpl`
 
 ### `src/Avalonia.Base/Platform/IWriteableBitmapImpl.cs`
-- `public interface IWriteableBitmapImpl : IBitmapImpl, IReadableBitmapWithAlphaImpl`
+- `public interface IWriteableBitmapImpl : IBitmapImpl, IReadableBitmapImpl`
 
 ### `src/Avalonia.Base/Platform/LockedFramebuffer.cs`
 - `public class LockedFramebuffer : ILockedFramebuffer`
-- `public LockedFramebuffer(IntPtr address, PixelSize size, int rowBytes, Vector dpi, PixelFormat format, Action? onDispose) {`
+- `public LockedFramebuffer(IntPtr address, PixelSize size, int rowBytes, Vector dpi, PixelFormat format, AlphaFormat alphaFormat, Action? onDispose) {`
 - `public IntPtr Address { get; }`
 - `public int RowBytes { get; }`
 - `public Vector Dpi { get; }`
 - `public PixelFormat Format { get; }`
+- `public AlphaFormat AlphaFormat { get; }`
 
 ### `src/Avalonia.Base/Platform/LtrbRect.cs`
 - `public struct LtrbRect`
+- `public LtrbRect Union(LtrbRect rect) {`
 - `public struct LtrbPixelRect`
+
+### `src/Avalonia.Base/Platform/ManagedDispatcherImpl.cs`
+- `public class ManagedDispatcherImpl : IControlledDispatcherImpl, IDispatcherImplWithExplicitBackgroundProcessing`
+- `public interface IManagedDispatcherInputProvider`
+- `public ManagedDispatcherImpl(IManagedDispatcherInputProvider? inputProvider) {`
+- `public bool CurrentThreadIsLoopThread => _loopThread == Thread.CurrentThread;`
+- `public void Signal() {`
+- `public event Action? Signaled;`
+- `public long Now => _clock.ElapsedMilliseconds;`
+- `public void UpdateTimer(long? dueTimeInMs) {`
+- `public bool CanQueryPendingInput => _inputProvider != null;`
+- `public bool HasPendingInput => _inputProvider?.HasInput ?? false;`
+- `public void RunLoop(CancellationToken token) {`
 
 ### `src/Avalonia.Base/Platform/PathGeometryContext.cs`
 - `public class PathGeometryContext : IGeometryContext`
 - `public PathGeometryContext(PathGeometry pathGeometry) {`
-- `public void ArcTo(Point point, Size size, double rotationAngle, bool isLargeArc, SweepDirection sweepDirection) {`
+- `public void ArcTo(Point point, Size size, double rotationAngle, bool isLargeArc, SweepDirection sweepDirection, bool isStroked = true) {`
 - `public void BeginFigure(Point startPoint, bool isFilled) {`
-- `public void CubicBezierTo(Point controlPoint1, Point controlPoint2, Point endPoint) {`
-- `public void QuadraticBezierTo(Point controlPoint , Point endPoint) {`
-- `public void LineTo(Point endPoint) {`
+- `public void CubicBezierTo(Point controlPoint1, Point controlPoint2, Point endPoint, bool isStroked = true) {`
+- `public void QuadraticBezierTo(Point controlPoint , Point endPoint, bool isStroked = true) {`
+- `public void LineTo(Point point, bool isStroked = true) {`
 - `public void EndFigure(bool isClosed) {`
 - `public void SetFillRule(FillRule fillRule) {`
 
@@ -3001,6 +3100,13 @@
 - `public string? HandleDescriptor { get; }`
 
 ### `src/Avalonia.Base/Platform/RenderTargetProperties.cs`
+- `public readonly struct PlatformRenderTargetState`
+- `public bool IsReady { get; init; }`
+- `public bool IsCorrupted { get; init; }`
+- `public static PlatformRenderTargetState Ready => new() { IsReady = true };`
+- `public static PlatformRenderTargetState NotReadyTryLater => default;`
+- `public static PlatformRenderTargetState Corrupted => new() { IsCorrupted = true, IsReady = true};`
+- `public static PlatformRenderTargetState Disposed => new() { IsCorrupted = true};`
 - `public struct RenderTargetProperties`
 - `public bool RetainsPreviousFrameContents { get; init; }`
 - `public bool IsSuitableForDirectRendering { get; init; }`
@@ -3036,7 +3142,7 @@
 - `public class PickerOptions`
 
 ### `src/Avalonia.Base/Platform/Storage/SaveFilePickerResult.cs`
-- `public readonly struct SaveFilePickerResult`
+- `public readonly record struct SaveFilePickerResult`
 - `public IStorageFile? File { get; init; }`
 - `public FilePickerFileType? SelectedFileType { get; init; }`
 
@@ -3045,6 +3151,24 @@
 - `public StorageItemProperties( ulong? size = null, DateTimeOffset? dateCreated = null, DateTimeOffset? dateModified = null) {`
 - `public DateTimeOffset? DateCreated { get; }`
 - `public DateTimeOffset? DateModified { get; }`
+
+### `src/Avalonia.Base/Platform/SurfaceOrientation.cs`
+- `public enum SurfaceOrientation`
+
+### `src/Avalonia.Base/Platform/Surfaces/IFramebufferPlatformSurface.cs`
+- `public interface IFramebufferPlatformSurface : IPlatformRenderSurface`
+- `public interface IFramebufferRenderTarget : IDisposable, IPlatformRenderSurfaceRenderTarget`
+- `public record struct FramebufferLockProperties(bool PreviousFrameIsRetained);`
+- `public class FuncFramebufferRenderTarget : IFramebufferRenderTarget`
+- `public delegate ILockedFramebuffer LockFramebufferDelegate(IRenderTarget.RenderTargetSceneInfo sceneInfo, out FramebufferLockProperties properties);`
+- `public FuncFramebufferRenderTarget(Func<ILockedFramebuffer> lockFramebuffer) : this((_, out properties) =>`
+- `public FuncFramebufferRenderTarget(LockFramebufferDelegate lockFramebuffer, bool retainsFrameContents = false) {`
+- `public ILockedFramebuffer Lock(IRenderTarget.RenderTargetSceneInfo sceneInfo, out FramebufferLockProperties properties) => _lockFramebuffer(sceneInfo, out properties);`
+- `public bool RetainsFrameContents { get; }`
+
+### `src/Avalonia.Base/Platform/Surfaces/IPlatformRenderSurface.cs`
+- `public interface IPlatformRenderSurface`
+- `public interface IPlatformRenderSurfaceRenderTarget`
 
 ### `src/Avalonia.Base/Platform/SystemNavigationManagerImpl.cs`
 - `public interface ISystemNavigationManagerImpl`
@@ -3177,6 +3301,8 @@
 ### `src/Avalonia.Base/Rendering/Composition/CompositionOptions.cs`
 - `public class CompositionOptions`
 - `public bool? UseRegionDirtyRectClipping { get; set; }`
+- `public int? MaxDirtyRects { get; set; }`
+- `public double? DirtyRectMergeEagerness { get; set; }`
 - `public bool? UseSaveLayerRootClip { get; set; }`
 
 ### `src/Avalonia.Base/Rendering/Composition/CompositionPropertySet.cs`
@@ -3223,14 +3349,17 @@
 - `public enum CompositionTileMode`
 - `public enum CompositionStretch`
 
-### `src/Avalonia.Base/Rendering/Composition/Server/ServerCompositionVisual.cs`
-- `public record struct UpdateResult(LtrbRect? Bounds, bool InvalidatedOld, bool InvalidatedNew)`
-- `public UpdateResult() : this(null, false, false) {`
-- `public struct ReadbackData`
+### `src/Avalonia.Base/Rendering/Composition/Server/ServerCompositionVisual/ServerCompositionVisual.Readback.cs`
+- `public class ReadbackData`
 - `public Matrix Matrix;`
 - `public ulong Revision;`
 - `public long TargetId;`
 - `public bool Visible;`
+- `public LtrbRect? TransformedSubtreeBounds;`
+
+### `src/Avalonia.Base/Rendering/Composition/Server/ServerCompositionVisual/ServerCompositionVisual.Walker.cs`
+- `public record struct TreeWalkerFrame(ServerCompositionVisual Visual, int CurrentIndex);`
+- `public static void Walk(ref TVisitor visitor, ServerCompositionVisual root) {`
 
 ### `src/Avalonia.Base/Rendering/Composition/Transport/Batch.cs`
 - `public sealed class CompositionBatch`
@@ -3246,6 +3375,7 @@
 
 ### `src/Avalonia.Base/Rendering/Composition/Visual.cs`
 - `public abstract partial class CompositionVisual`
+- `public bool DisableSubTreeBoundsHitTestOptimization => CustomHitTestCountInSubTree != 0;`
 - `public IBrush? OpacityMask {`
 
 ### `src/Avalonia.Base/Rendering/Composition/VisualCollection.cs`
@@ -3261,22 +3391,23 @@
 - `public int FramesPerSecond { get; }`
 - `public virtual bool RunsInBackground => true;`
 
-### `src/Avalonia.Base/Rendering/IRenderRoot.cs`
-- `public IHitTester HitTester { get; }`
+### `src/Avalonia.Base/Rendering/IPresentationSource.cs`
+- `public Visual? RootVisual { get; }`
+
+### `src/Avalonia.Base/Rendering/IRenderLoop.cs`
+- `public interface IRenderLoop`
 
 ### `src/Avalonia.Base/Rendering/IRenderTimer.cs`
 - `public interface IRenderTimer`
 
-### `src/Avalonia.Base/Rendering/IRenderer.cs`
-- `public interface IRenderer : IDisposable`
-- `public ValueTask<object?> TryGetRenderInterfaceFeature(Type featureType);`
-- `public interface IHitTester`
+### `src/Avalonia.Base/Rendering/RenderLoop.cs`
+- `public static class RenderLoop`
+- `public static IRenderLoop FromTimer(IRenderTimer timer) => new DefaultRenderLoop(timer);`
 
 ### `src/Avalonia.Base/Rendering/SceneInvalidatedEventArgs.cs`
 - `public class SceneInvalidatedEventArgs : EventArgs`
-- `public SceneInvalidatedEventArgs( IRenderRoot root, Rect dirtyRect) {`
+- `public SceneInvalidatedEventArgs(Rect dirtyRect) {`
 - `public Rect DirtyRect { get; }`
-- `public IRenderRoot RenderRoot { get; }`
 
 ### `src/Avalonia.Base/Rendering/SleepLoopRenderTimer.cs`
 - `public class SleepLoopRenderTimer : IRenderTimer`
@@ -3347,24 +3478,40 @@
 - `public bool ApplyStyling() {`
 
 ### `src/Avalonia.Base/StyledElementExtensions.cs`
-- `public static IDisposable BindClass(this StyledElement target, string className, IBinding source, object anchor) =>`
+- `public static IDisposable BindClass(this StyledElement target, string className, BindingBase source, object anchor) =>`
 - `public static AvaloniaProperty GetClassProperty(string className) =>`
 
 ### `src/Avalonia.Base/StyledProperty.cs`
-- `public class StyledPropertyMetadata<TValue> : AvaloniaPropertyMetadata, IStyledPropertyMetadata`
-- `public StyledPropertyMetadata( Optional<TValue> defaultValue = default, BindingMode defaultBindingMode = BindingMode.Default, Func<AvaloniaObject, TValue, TValue>? coerce = null, bool enableDataValidation = false) : base(defaultBindingMode, enableDataValidation) {`
 - `public TValue DefaultValue {`
 
 ### `src/Avalonia.Base/Threading/AvaloniaSynchronizationContext.cs`
 - `public class AvaloniaSynchronizationContext : SynchronizationContext`
-- `public AvaloniaSynchronizationContext() : this(Dispatcher.UIThread, DispatcherPriority.Default, Thread.CurrentThread.GetApartmentState() == ApartmentState.STA) {`
-- `public AvaloniaSynchronizationContext(DispatcherPriority priority) : this(Dispatcher.UIThread, priority, false) {`
-- `public AvaloniaSynchronizationContext(Dispatcher dispatcher, DispatcherPriority priority) : this(dispatcher, priority, false) {`
+- `public AvaloniaSynchronizationContext() : this(Dispatcher.CurrentDispatcher, DispatcherPriority.Default) {`
+- `public AvaloniaSynchronizationContext(DispatcherPriority priority) : this(Dispatcher.CurrentDispatcher, priority) {`
+- `public AvaloniaSynchronizationContext(Dispatcher dispatcher, DispatcherPriority priority) : this(dispatcher, priority, dispatcher.IsSta) {`
 - `public static bool AutoInstall { get; set; } = true;`
 - `public static void InstallIfNeeded() {`
 - `public record struct RestoreContext : IDisposable`
-- `public static RestoreContext Ensure(DispatcherPriority priority) => Ensure(Dispatcher.UIThread, priority);`
+- `public static RestoreContext Ensure(DispatcherPriority priority) => Ensure(Dispatcher.CurrentDispatcher, priority);`
 - `public static RestoreContext Ensure(Dispatcher dispatcher, DispatcherPriority priority) {`
+
+### `src/Avalonia.Base/Threading/Dispatcher.Invoke.cs`
+- `public DispatcherPriorityAwaitable Resume() =>`
+- `public DispatcherPriorityAwaitable Resume(DispatcherPriority priority) {`
+- `public static DispatcherPriorityAwaitable Yield() =>`
+- `public static DispatcherPriorityAwaitable Yield(DispatcherPriority priority) {`
+
+### `src/Avalonia.Base/Threading/Dispatcher.ThreadStorage.cs`
+- `public static Dispatcher? FromThread(Thread thread) {`
+- `public static void InitializeUIThreadDispatcher(IPlatformThreadingInterface impl) =>`
+- `public static void InitializeUIThreadDispatcher(IDispatcherImpl impl) {`
+
+### `src/Avalonia.Base/Threading/Dispatcher.cs`
+- `public Thread Thread => _thread;`
+
+### `src/Avalonia.Base/Threading/DispatcherPriorityAwaitable.cs`
+- `public struct DispatcherPriorityAwaiter : INotifyCompletion`
+- `public struct DispatcherPriorityAwaiter<T> : INotifyCompletion`
 
 ### `src/Avalonia.Base/Threading/IDispatcher.cs`
 - `public interface IDispatcher`
@@ -3452,6 +3599,7 @@
 - `public static readonly StyledProperty<bool> ClipToBoundsProperty = AvaloniaProperty.Register<Visual, bool>(nameof(ClipToBounds));`
 - `public static readonly StyledProperty<Geometry?> ClipProperty = AvaloniaProperty.Register<Visual, Geometry?>(nameof(Clip));`
 - `public static readonly StyledProperty<IBrush?> OpacityMaskProperty = AvaloniaProperty.Register<Visual, IBrush?>(nameof(OpacityMask));`
+- `public static readonly StyledProperty<CacheMode?> CacheModeProperty = AvaloniaProperty.Register<Visual, CacheMode?>( nameof(CacheMode));`
 - `public static readonly StyledProperty<IEffect?> EffectProperty = AvaloniaProperty.Register<Visual, IEffect?>(nameof(Effect));`
 - `public static readonly DirectProperty<Visual, bool> HasMirrorTransformProperty = AvaloniaProperty.RegisterDirect<Visual, bool>(nameof(HasMirrorTransform), o => o.HasMirrorTransform);`
 - `public static readonly StyledProperty<RelativePoint> RenderTransformOriginProperty = AvaloniaProperty.Register<Visual, RelativePoint>(nameof(RenderTransformOrigin), defaultValue: RelativePoint.Center);`
@@ -3462,6 +3610,7 @@
 - `public bool IsEffectivelyVisible { get; private set; } = true;`
 - `public double Opacity {`
 - `public IBrush? OpacityMask {`
+- `public CacheMode? CacheMode {`
 - `public IEffect? Effect {`
 - `public bool HasMirrorTransform {`
 - `public RelativePoint RenderTransformOrigin {`
@@ -3483,14 +3632,19 @@
 - `public static int CalculateDistanceFromAncestor(this Visual visual, Visual? ancestor) {`
 - `public static int CalculateDistanceFromRoot(Visual visual) {`
 - `public static Visual? FindCommonVisualAncestor(this Visual? visual, Visual? target) {`
+- `public static ILayoutManager? GetLayoutManager(this Visual visual) =>`
+- `public static IPlatformSettings? GetPlatformSettings(this Visual visual) =>`
 - `public static IEnumerable<Visual> SortByZIndex(this IEnumerable<Visual> elements) {`
 
 ### `src/Avalonia.Base/VisualTree/VisualLocator.cs`
 - `public class VisualLocator`
 
 ### `src/Avalonia.Base/VisualTreeAttachmentEventArgs.cs`
-- `public Visual Parent { get; }`
-- `public IRenderRoot Root { get; }`
+- `public Visual? AttachmentPoint { get; }`
+- `public Visual? Parent => AttachmentPoint;`
+- `public IPresentationSource PresentationSource { get; }`
+- `public Visual Root => RootVisual;`
+- `public Visual RootVisual { get; set; }`
 
 ### `src/Avalonia.Build.Tasks/CompileAvaloniaXamlTask.cs`
 - `public const string AvaloniaCompileOutputMetadataName = "AvaloniaCompileOutput";`
@@ -3649,13 +3803,26 @@
 - `public double BlurLevel { get; }`
 - `public double AcrylicBlurLevel { get; }`
 
+### `src/Avalonia.Controls/AppBuilder.cs`
+- `public Action? TextShapingSubsystemInitializer { get; private set; }`
+- `public string? TextShapingSubsystemName { get; private set; }`
+- `public AppBuilder UseTextShapingSubsystem(Action initializer, string name = "") {`
+
 ### `src/Avalonia.Controls/AutoCompleteBox/AutoCompleteBox.Properties.cs`
+- `public static readonly StyledProperty<AutoCompleteFilterPredicate<object?>?> ItemFilterProperty = AvaloniaProperty.Register<AutoCompleteBox, AutoCompleteFilterPredicate<object?>?>( nameof(ItemFilter));`
+- `public static readonly StyledProperty<AutoCompleteFilterPredicate<string?>?> TextFilterProperty = AvaloniaProperty.Register<AutoCompleteBox, AutoCompleteFilterPredicate<string?>?>( nameof(TextFilter), defaultValue: AutoCompleteSearch.GetFilter(AutoCompleteFilterMode.StartsWith));`
+- `public static readonly StyledProperty<AutoCompleteSelector<object>?> ItemSelectorProperty = AvaloniaProperty.Register<AutoCompleteBox, AutoCompleteSelector<object>?>( nameof(ItemSelector));`
 - `public static readonly StyledProperty<AutoCompleteSelector<string?>?> TextSelectorProperty = AvaloniaProperty.Register<AutoCompleteBox, AutoCompleteSelector<string?>?>( nameof(TextSelector));`
 - `public static readonly StyledProperty<Func<string?, CancellationToken, Task<IEnumerable<object>>>?> AsyncPopulatorProperty = AvaloniaProperty.Register<AutoCompleteBox, Func<string?, CancellationToken, Task<IEnumerable<object>>>?>( nameof(AsyncPopulator));`
 - `public static readonly StyledProperty<int> MaxLengthProperty = TextBox.MaxLengthProperty.AddOwner<AutoCompleteBox>();`
 - `public static readonly StyledProperty<object?> InnerLeftContentProperty = TextBox.InnerLeftContentProperty.AddOwner<AutoCompleteBox>();`
 - `public static readonly StyledProperty<object?> InnerRightContentProperty = TextBox.InnerRightContentProperty.AddOwner<AutoCompleteBox>();`
-- `public IBinding? ValueMemberBinding {`
+- `public static readonly StyledProperty<BindingBase?> ValueMemberBindingProperty = AvaloniaProperty.Register<AutoCompleteBox, BindingBase?>(nameof(ValueMemberBinding));`
+- `public BindingBase? ValueMemberBinding {`
+- `public Media.IBrush? WatermarkForeground {`
+- `public AutoCompleteFilterPredicate<object?>? ItemFilter {`
+- `public AutoCompleteFilterPredicate<string?>? TextFilter {`
+- `public AutoCompleteSelector<object>? ItemSelector {`
 - `public AutoCompleteSelector<string?>? TextSelector {`
 - `public object? InnerLeftContent {`
 - `public object? InnerRightContent {`
@@ -3691,6 +3858,8 @@
 - `public static readonly AttachedProperty<string?> AccessKeyProperty = AvaloniaProperty.RegisterAttached<StyledElement, string?>( "AccessKey", typeof(AutomationProperties));`
 - `public static readonly AttachedProperty<string?> AutomationIdProperty = AvaloniaProperty.RegisterAttached<StyledElement, string?>( "AutomationId", typeof(AutomationProperties));`
 - `public static readonly AttachedProperty<AutomationControlType?> ControlTypeOverrideProperty = AvaloniaProperty.RegisterAttached<StyledElement, AutomationControlType?>( "ControlTypeOverride", typeof(AutomationProperties));`
+- `public static readonly AttachedProperty<string?> ClassNameOverrideProperty = AvaloniaProperty.RegisterAttached<StyledElement, string?>( "ClassNameOverride", typeof(AutomationProperties));`
+- `public static readonly AttachedProperty<bool?> IsControlElementOverrideProperty = AvaloniaProperty.RegisterAttached<StyledElement, bool?>( "IsControlElementOverride", typeof(AutomationProperties));`
 - `public static readonly AttachedProperty<string?> HelpTextProperty = AvaloniaProperty.RegisterAttached<StyledElement, string?>( "HelpText", typeof(AutomationProperties));`
 - `public static readonly AttachedProperty<AutomationLandmarkType?> LandmarkTypeProperty = AvaloniaProperty.RegisterAttached<StyledElement, AutomationLandmarkType?>( "LandmarkType", typeof(AutomationProperties));`
 - `public static readonly AttachedProperty<int> HeadingLevelProperty = AvaloniaProperty.RegisterAttached<StyledElement, int>( "HeadingLevel", typeof(AutomationProperties));`
@@ -3710,6 +3879,10 @@
 - `public static AccessibilityView GetAccessibilityView(StyledElement element) {`
 - `public static string? GetAccessKey(StyledElement element) {`
 - `public static AutomationControlType? GetControlTypeOverride(StyledElement element) {`
+- `public static void SetClassNameOverride(StyledElement element, string? value) {`
+- `public static string? GetClassNameOverride(StyledElement element) {`
+- `public static void SetIsControlElementOverride(StyledElement element, bool? value) {`
+- `public static bool? GetIsControlElementOverride(StyledElement element) {`
 - `public static void SetLandmarkType(StyledElement element, AutomationLandmarkType? value) {`
 - `public static AutomationLandmarkType? GetLandmarkType(StyledElement element) {`
 - `public static void SetHeadingLevel(StyledElement element, int value) {`
@@ -3754,12 +3927,14 @@
 - `public string? GetAccessKey() => GetAccessKeyCore();`
 - `public Rect GetBoundingRectangle() => GetBoundingRectangleCore();`
 - `public IReadOnlyList<AutomationPeer> GetChildren() => GetOrCreateChildrenCore();`
-- `public string GetClassName() => GetClassNameCore() ?? string.Empty;`
+- `public string GetClassName() => GetClassNameOverrideCore() ?? string.Empty;`
 - `public string GetLocalizedControlType() => GetLocalizedControlTypeCore();`
+- `public string GetPlaceholderText() => GetPlaceholderTextCore() ?? string.Empty;`
 - `public AutomationLandmarkType? GetLandmarkType() => GetLandmarkTypeCore();`
 - `public int GetHeadingLevel() => GetHeadingLevelCore();`
 - `public string? GetItemType() => GetItemTypeCore();`
 - `public string? GetItemStatus() => GetItemStatusCore();`
+- `public AutomationPeer? GetAutomationRoot() => GetAutomationRootCore();`
 - `public bool HasKeyboardFocus() => HasKeyboardFocusCore();`
 - `public bool IsContentElement() => IsContentElementOverrideCore();`
 - `public bool IsControlElement() => IsControlElementOverrideCore();`
@@ -3775,6 +3950,10 @@
 - `public class ButtonAutomationPeer : ContentControlAutomationPeer,`
 - `public ButtonAutomationPeer(Button owner) : base(owner) {`
 
+### `src/Avalonia.Controls/Automation/Peers/CarouselPageAutomationPeer.cs`
+- `public class CarouselPageAutomationPeer : ControlAutomationPeer`
+- `public CarouselPageAutomationPeer(CarouselPage owner) : base(owner) {`
+
 ### `src/Avalonia.Controls/Automation/Peers/ComboBoxAutomationPeer.cs`
 - `public class ComboBoxAutomationPeer : SelectingItemsControlAutomationPeer,`
 - `public ComboBoxAutomationPeer(ComboBox owner) : base(owner) {`
@@ -3786,6 +3965,10 @@
 ### `src/Avalonia.Controls/Automation/Peers/ContentControlAutomationPeer.cs`
 - `public class ContentControlAutomationPeer : ControlAutomationPeer`
 
+### `src/Avalonia.Controls/Automation/Peers/ContentPageAutomationPeer.cs`
+- `public class ContentPageAutomationPeer : ControlAutomationPeer`
+- `public ContentPageAutomationPeer(ContentPage owner) : base(owner) {`
+
 ### `src/Avalonia.Controls/Automation/Peers/ControlAutomationPeer.cs`
 - `public AutomationPeer GetOrCreate(Control element) {`
 - `public static AutomationPeer? FromElement(Control element) => element.GetAutomationPeer();`
@@ -3793,6 +3976,14 @@
 ### `src/Avalonia.Controls/Automation/Peers/DatePickerAutomationPeer.cs`
 - `public class DatePickerAutomationPeer : ControlAutomationPeer, IValueProvider`
 - `public DatePickerAutomationPeer(DatePicker owner) : base(owner) {`
+
+### `src/Avalonia.Controls/Automation/Peers/DrawerPageAutomationPeer.cs`
+- `public class DrawerPageAutomationPeer : ControlAutomationPeer,`
+- `public DrawerPageAutomationPeer(DrawerPage owner) : base(owner) {`
+- `public ExpandCollapseState ExpandCollapseState => ToState(Owner.IsOpen);`
+- `public bool ShowsMenu => false;`
+- `public void Collapse() => Owner.IsOpen = false;`
+- `public void Expand() => Owner.IsOpen = true;`
 
 ### `src/Avalonia.Controls/Automation/Peers/EmbeddableControlRootAutomationPeer.cs`
 - `public class EmbeddableControlRootAutomationPeer : ContentControlAutomationPeer, IEmbeddedRootProvider`
@@ -3838,9 +4029,20 @@
 - `public class MenuItemAutomationPeer : ControlAutomationPeer`
 - `public MenuItemAutomationPeer(MenuItem owner) : base(owner) {`
 
+### `src/Avalonia.Controls/Automation/Peers/NavigationPageAutomationPeer.cs`
+- `public class NavigationPageAutomationPeer : ControlAutomationPeer`
+- `public NavigationPageAutomationPeer(NavigationPage owner) : base(owner) {`
+
 ### `src/Avalonia.Controls/Automation/Peers/NoneAutomationPeer.cs`
 - `public class NoneAutomationPeer : ControlAutomationPeer`
 - `public NoneAutomationPeer(Control owner) : base(owner) {`
+
+### `src/Avalonia.Controls/Automation/Peers/PipsPagerAutomationPeer.cs`
+- `public class PipsPagerAutomationPeer : ControlAutomationPeer, ISelectionProvider`
+- `public PipsPagerAutomationPeer(PipsPager owner) : base(owner) {`
+- `public bool CanSelectMultiple => false;`
+- `public bool IsSelectionRequired => true;`
+- `public IReadOnlyList<AutomationPeer> GetSelection() {`
 
 ### `src/Avalonia.Controls/Automation/Peers/PopupAutomationPeer.cs`
 - `public class PopupAutomationPeer : ControlAutomationPeer`
@@ -3890,6 +4092,10 @@
 ### `src/Avalonia.Controls/Automation/Peers/SliderAutomationPeer.cs`
 - `public class SliderAutomationPeer : RangeBaseAutomationPeer`
 - `public SliderAutomationPeer(Slider owner) : base(owner) {`
+
+### `src/Avalonia.Controls/Automation/Peers/TabbedPageAutomationPeer.cs`
+- `public class TabbedPageAutomationPeer : ControlAutomationPeer`
+- `public TabbedPageAutomationPeer(TabbedPage owner) : base(owner) {`
 
 ### `src/Avalonia.Controls/Automation/Peers/TextBlockAutomationPeer.cs`
 - `public class TextBlockAutomationPeer : ControlAutomationPeer`
@@ -4007,11 +4213,13 @@
 - `public CalendarMode OldMode { get; private set; }`
 - `public CalendarMode NewMode { get; private set; }`
 - `public CalendarModeChangedEventArgs(CalendarMode oldMode, CalendarMode newMode) {`
+- `public CalendarBlackoutDatesCollection BlackoutDates { get; private set; }`
 - `public event EventHandler<SelectionChangedEventArgs>? SelectedDatesChanged;`
 - `public event EventHandler<CalendarDateChangedEventArgs>? DisplayDateChanged;`
 - `public event EventHandler<CalendarModeChangedEventArgs>? DisplayModeChanged;`
 
 ### `src/Avalonia.Controls/Calendar/CalendarBlackoutDatesCollection.cs`
+- `public sealed class CalendarBlackoutDatesCollection : ObservableCollection<CalendarDateRange>`
 - `public CalendarBlackoutDatesCollection(Calendar owner) {`
 - `public void AddDatesInPast() {`
 - `public bool ContainsAny(CalendarDateRange range) {`
@@ -4025,7 +4233,9 @@
 - `public SelectedDatesCollection(Calendar owner) {`
 
 ### `src/Avalonia.Controls/CalendarDatePicker/CalendarDatePicker.Properties.cs`
+- `public CalendarBlackoutDatesCollection? BlackoutDates { get; private set; }`
 - `public bool UseFloatingWatermark {`
+- `public Media.IBrush? WatermarkForeground {`
 
 ### `src/Avalonia.Controls/CalendarDatePicker/CalendarDatePicker.cs`
 - `public event EventHandler? CalendarClosed;`
@@ -4038,10 +4248,51 @@
 - `public CalendarDatePickerDateValidationErrorEventArgs(Exception exception, string text) {`
 - `public bool ThrowException {`
 
+### `src/Avalonia.Controls/Chrome/IWindowDrawnDecorationsTemplate.cs`
+- `public interface IWindowDrawnDecorationsTemplate : ITemplate`
+
+### `src/Avalonia.Controls/Chrome/WindowDecorationProperties.cs`
+- `public static readonly AttachedProperty<WindowDecorationsElementRole> ElementRoleProperty = AvaloniaProperty.RegisterAttached<Visual, WindowDecorationsElementRole>("ElementRole", typeof(WindowDecorationProperties));`
+- `public static WindowDecorationsElementRole GetElementRole(Visual element) => element.GetValue(ElementRoleProperty);`
+- `public static void SetElementRole(Visual element, WindowDecorationsElementRole value) => element.SetValue(ElementRoleProperty, value);`
+
+### `src/Avalonia.Controls/Chrome/WindowDrawnDecorations.cs`
+- `public static readonly StyledProperty<double> DefaultTitleBarHeightProperty = AvaloniaProperty.Register<WindowDrawnDecorations, double>(nameof(DefaultTitleBarHeight));`
+- `public static readonly StyledProperty<Thickness> DefaultFrameThicknessProperty = AvaloniaProperty.Register<WindowDrawnDecorations, Thickness>(nameof(DefaultFrameThickness), validate: Border.BorderThicknessProperty.ValidateValue);`
+- `public static readonly StyledProperty<Thickness> DefaultShadowThicknessProperty = AvaloniaProperty.Register<WindowDrawnDecorations, Thickness>(nameof(DefaultShadowThickness), validate: Border.BorderThicknessProperty.ValidateValue);`
+- `public static readonly DirectProperty<WindowDrawnDecorations, double> TitleBarHeightProperty = AvaloniaProperty.RegisterDirect<WindowDrawnDecorations, double>( nameof(TitleBarHeight), o => o.TitleBarHeight);`
+- `public static readonly DirectProperty<WindowDrawnDecorations, Thickness> FrameThicknessProperty = AvaloniaProperty.RegisterDirect<WindowDrawnDecorations, Thickness>( nameof(FrameThickness), o => o.FrameThickness);`
+- `public static readonly DirectProperty<WindowDrawnDecorations, Thickness> ShadowThicknessProperty = AvaloniaProperty.RegisterDirect<WindowDrawnDecorations, Thickness>( nameof(ShadowThickness), o => o.ShadowThickness);`
+- `public static readonly DirectProperty<WindowDrawnDecorations, bool> HasBorderProperty = AvaloniaProperty.RegisterDirect<WindowDrawnDecorations, bool>( nameof(HasBorder), o => o.HasBorder);`
+- `public static readonly DirectProperty<WindowDrawnDecorations, bool> HasTitleBarProperty = AvaloniaProperty.RegisterDirect<WindowDrawnDecorations, bool>( nameof(HasTitleBar), o => o.HasTitleBar);`
+- `public double DefaultTitleBarHeight {`
+- `public Thickness DefaultFrameThickness {`
+- `public Thickness DefaultShadowThickness {`
+- `public double TitleBarHeight {`
+- `public Thickness FrameThickness {`
+- `public Thickness ShadowThickness {`
+- `public bool HasBorder {`
+- `public bool HasTitleBar {`
+
+### `src/Avalonia.Controls/Chrome/WindowDrawnDecorationsContent.cs`
+- `public class WindowDrawnDecorationsContent : StyledElement`
+- `public Control? Underlay {`
+- `public Control? FullscreenPopover {`
+
 ### `src/Avalonia.Controls/ColumnDefinition.cs`
 - `public static readonly StyledProperty<double> MaxWidthProperty = AvaloniaProperty.Register<ColumnDefinition, double>(nameof(MaxWidth), double.PositiveInfinity);`
 - `public static readonly StyledProperty<double> MinWidthProperty = AvaloniaProperty.Register<ColumnDefinition, double>(nameof(MinWidth));`
 - `public static readonly StyledProperty<GridLength> WidthProperty = AvaloniaProperty.Register<ColumnDefinition, GridLength>(nameof(Width), new GridLength(1, GridUnitType.Star));`
+
+### `src/Avalonia.Controls/CommandBar/CommandBar.cs`
+- `public ReadOnlyObservableCollection<ICommandBarElement> VisiblePrimaryCommands { get; }`
+- `public ReadOnlyObservableCollection<ICommandBarElement> OverflowItems { get; }`
+
+### `src/Avalonia.Controls/CommandBar/CommandBarButton.cs`
+- `public string? Label {`
+
+### `src/Avalonia.Controls/CommandBar/CommandBarToggleButton.cs`
+- `public string? Label {`
 
 ### `src/Avalonia.Controls/ContainerClearingEventArgs.cs`
 - `public class ContainerClearingEventArgs : EventArgs`
@@ -4058,15 +4309,12 @@
 - `public ContainerPreparedEventArgs(Control container, int index) {`
 - `public int Index { get; }`
 
-### `src/Avalonia.Controls/ContextRequestedEventArgs.cs`
-- `public ContextRequestedEventArgs() : base(Control.ContextRequestedEvent) {`
-- `public ContextRequestedEventArgs(PointerEventArgs pointerEventArgs) : this() {`
-- `public ContextRequestedEventArgs(ContextRequestedEventArgs contextRequestedEventArgs) : this() {`
-- `public bool TryGetPosition(Control? relativeTo, out Point point) {`
-
 ### `src/Avalonia.Controls/ControlExtensions.cs`
 - `public static class ControlExtensions`
 - `public static T GetControl<T>(this Control control, string name) where T : Control {`
+
+### `src/Avalonia.Controls/Converters/BorderGapMaskConverter.cs`
+- `public class BorderGapMaskConverter : IMultiValueConverter`
 
 ### `src/Avalonia.Controls/Converters/CornerRadiusFilterConverter.cs`
 - `public class CornerRadiusFilterConverter : IValueConverter`
@@ -4097,6 +4345,9 @@
 
 ### `src/Avalonia.Controls/Converters/StringFormatConverter.cs`
 - `public class StringFormatConverter : IMultiValueConverter`
+
+### `src/Avalonia.Controls/Converters/TreeViewItemIndentConverter.cs`
+- `public class TreeViewItemIndentConverter : IMultiValueConverter`
 
 ### `src/Avalonia.Controls/DateTimePickers/DatePicker.cs`
 - `public event EventHandler<DatePickerSelectedValueChangedEventArgs>? SelectedDateChanged;`
@@ -4145,24 +4396,35 @@
 - `public static readonly AttachedProperty<double> WidthProperty = AvaloniaProperty .RegisterAttached<Control, double>("Width", typeof(Design));`
 - `public static void SetWidth(Control control, double value) {`
 - `public static double GetWidth(Control control) {`
-- `public static void SetDataContext(Control control, object value) {`
-- `public static object GetDataContext(Control control) {`
+- `public static void SetDataContext(Control control, object? value) {`
+- `public static object? GetDataContext(Control control) {`
+- `public static void SetDataContext(IDataTemplate control, object? value) {`
+- `public static object? GetDataContext(IDataTemplate control) {`
 - `public static readonly AttachedProperty<Control?> PreviewWithProperty = AvaloniaProperty .RegisterAttached<AvaloniaObject, Control?>("PreviewWith", typeof (Design));`
+- `public static void SetPreviewWith(AvaloniaObject target, ITemplate<Control>? template) {`
 - `public static void SetPreviewWith(AvaloniaObject target, Control? control) {`
+- `public static void SetPreviewWith(ResourceDictionary target, ITemplate<Control>? template) {`
 - `public static void SetPreviewWith(ResourceDictionary target, Control? control) {`
+- `public static void SetPreviewWith(IDataTemplate target, ITemplate<Control>? template) {`
+- `public static void SetPreviewWith(IDataTemplate target, Control? control) {`
+- `public static void SetPreviewWith(IStyle target, ITemplate<Control>? template) {`
+- `public static void SetPreviewWith(IStyle target, Control? control) {`
 - `public static Control? GetPreviewWith(AvaloniaObject target) {`
 - `public static Control? GetPreviewWith(ResourceDictionary target) {`
+- `public static Control? GetPreviewWith(IDataTemplate target) {`
+- `public static Control? GetPreviewWith(IStyle target) {`
 - `public static readonly AttachedProperty<IStyle> DesignStyleProperty = AvaloniaProperty .RegisterAttached<Control, IStyle>("DesignStyle", typeof(Design));`
 - `public static void SetDesignStyle(Control control, IStyle value) {`
 - `public static IStyle GetDesignStyle(Control control) {`
 - `public static void ApplyDesignModeProperties(Control target, Control source) {`
+- `public static Control CreatePreviewWithControl(object target) {`
 
 ### `src/Avalonia.Controls/Diagnostics/ToolTipDiagnostics.cs`
 - `public static class ToolTipDiagnostics`
 - `public static readonly AvaloniaProperty<ToolTip?> ToolTipProperty = ToolTip.ToolTipProperty;`
 
 ### `src/Avalonia.Controls/Documents/Inline.cs`
-- `public static readonly StyledProperty<TextDecorationCollection?> TextDecorationsProperty = AvaloniaProperty.RegisterAttached<Inline, Inline, TextDecorationCollection?>( nameof(TextDecorations), inherits: true);`
+- `public static readonly AttachedProperty<TextDecorationCollection?> TextDecorationsProperty = AvaloniaProperty.RegisterAttached<Inline, Inline, TextDecorationCollection?>( nameof(TextDecorations), inherits: true);`
 - `public static readonly StyledProperty<BaselineAlignment> BaselineAlignmentProperty = AvaloniaProperty.Register<Inline, BaselineAlignment>( nameof(BaselineAlignment), BaselineAlignment.Baseline);`
 - `public BaselineAlignment BaselineAlignment {`
 - `public static TextDecorationCollection? GetTextDecorations(Control control) {`
@@ -4188,6 +4450,8 @@
 - `public FontFeatureCollection? FontFeatures {`
 - `public static FontFamily GetFontFamily(Control control) {`
 - `public static FontFeatureCollection? GetFontFeatures(Control control) {`
+- `public static double GetLetterSpacing(Control control) {`
+- `public static void SetLetterSpacing(Control control, double value) {`
 - `public static double GetFontSize(Control control) {`
 - `public static FontStyle GetFontStyle(Control control) {`
 - `public static FontWeight GetFontWeight(Control control) {`
@@ -4225,13 +4489,6 @@
 
 ### `src/Avalonia.Controls/Generators/ItemContainerGenerator.cs`
 - `public void ItemContainerIndexChanged(Control container, int oldIndex, int newIndex) =>`
-- `public int IndexFromContainer(Control container) => _owner.IndexFromContainer(container);`
-
-### `src/Avalonia.Controls/Generators/TreeItemContainerGenerator.cs`
-- `public TreeContainerIndex Index { get; }`
-- `public class TreeContainerIndex`
-- `public Control? ContainerFromItem(object item) => _owner.TreeContainerFromItem(item);`
-- `public object? ItemFromContainer(Control container) => _owner.TreeItemFromContainer(container);`
 
 ### `src/Avalonia.Controls/Grid.cs`
 - `public static readonly StyledProperty<bool> ShowGridLinesProperty = AvaloniaProperty.Register<Grid, bool>(nameof(ShowGridLines));`
@@ -4255,7 +4512,6 @@
 - `public Control? ContainerFromItem(object item) {`
 - `public int IndexFromContainer(Control container) => Presenter?.IndexFromContainer(container) ?? -1;`
 - `public object? ItemFromContainer(Control container) {`
-- `public static ItemsControl? ItemsControlFromItemContaner(Control container) =>`
 - `public static ItemsControl? ItemsControlFromItemContainer(Control container) {`
 
 ### `src/Avalonia.Controls/ItemsSourceView.cs`
@@ -4284,6 +4540,9 @@
 ### `src/Avalonia.Controls/Mixins/SelectableMixin.cs`
 - `public static class SelectableMixin`
 
+### `src/Avalonia.Controls/NativeDock.cs`
+- `public static class NativeDock`
+
 ### `src/Avalonia.Controls/NativeMenu.cs`
 - `public static readonly DirectProperty<NativeMenu, NativeMenuItem?> ParentProperty = AvaloniaProperty.RegisterDirect<NativeMenu, NativeMenuItem?>(nameof(Parent), o => o.Parent);`
 - `public NativeMenuItem? Parent {`
@@ -4292,7 +4551,6 @@
 - `public static readonly StyledProperty<string?> ToolTipProperty = AvaloniaProperty.Register<NativeMenuItem, string?>(nameof(ToolTip));`
 - `public static readonly StyledProperty<bool> IsEnabledProperty = AvaloniaProperty.Register<NativeMenuItem, bool>(nameof(IsEnabled), true);`
 - `public bool HasClickHandlers => Click != null;`
-- `public enum NativeMenuItemToggleType`
 
 ### `src/Avalonia.Controls/NativeMenuItemBase.cs`
 - `public static readonly DirectProperty<NativeMenuItemBase, NativeMenu?> ParentProperty = AvaloniaProperty.RegisterDirect<NativeMenuItemBase, NativeMenu?>(nameof(Parent), o => o.Parent);`
@@ -4301,13 +4559,158 @@
 ### `src/Avalonia.Controls/NumericUpDown/NumericUpDown.cs`
 - `public static readonly StyledProperty<object?> InnerLeftContentProperty = TextBox.InnerLeftContentProperty.AddOwner<NumericUpDown>();`
 - `public static readonly StyledProperty<object?> InnerRightContentProperty = TextBox.InnerRightContentProperty.AddOwner<NumericUpDown>();`
+- `public Media.IBrush? WatermarkForeground {`
 - `public object? InnerLeftContent {`
 - `public object? InnerRightContent {`
 - `public event EventHandler<SpinEventArgs>? Spinned;`
 
 ### `src/Avalonia.Controls/NumericUpDown/NumericUpDownValueChangedEventArgs.cs`
 - `public class NumericUpDownValueChangedEventArgs : RoutedEventArgs`
-- `public NumericUpDownValueChangedEventArgs(RoutedEvent routedEvent, decimal? oldValue, decimal? newValue) : base(routedEvent) {`
+- `public NumericUpDownValueChangedEventArgs(RoutedEvent? routedEvent, decimal? oldValue, decimal? newValue) : base(routedEvent) {`
+
+### `src/Avalonia.Controls/Page/DrawerClosingEventArgs.cs`
+- `public DrawerClosingEventArgs(RoutedEvent? routedEvent) : base(routedEvent) { }`
+
+### `src/Avalonia.Controls/Page/DrawerPage.cs`
+- `public static readonly StyledProperty<IDataTemplate?> DrawerFooterTemplateProperty = AvaloniaProperty.Register<DrawerPage, IDataTemplate?>(nameof(DrawerFooterTemplate));`
+- `public static readonly StyledProperty<object?> DrawerIconProperty = AvaloniaProperty.Register<DrawerPage, object?>(nameof(DrawerIcon));`
+- `public static readonly StyledProperty<IDataTemplate?> DrawerIconTemplateProperty = AvaloniaProperty.Register<DrawerPage, IDataTemplate?>(nameof(DrawerIconTemplate));`
+- `public static readonly StyledProperty<IDataTemplate?> DrawerTemplateProperty = AvaloniaProperty.Register<DrawerPage, IDataTemplate?>(nameof(DrawerTemplate));`
+- `public static readonly StyledProperty<IBrush?> DrawerBackgroundProperty = AvaloniaProperty.Register<DrawerPage, IBrush?>(nameof(DrawerBackground));`
+- `public static readonly StyledProperty<IBrush?> DrawerHeaderBackgroundProperty = AvaloniaProperty.Register<DrawerPage, IBrush?>(nameof(DrawerHeaderBackground));`
+- `public static readonly StyledProperty<IBrush?> DrawerHeaderForegroundProperty = AvaloniaProperty.Register<DrawerPage, IBrush?>(nameof(DrawerHeaderForeground));`
+- `public static readonly StyledProperty<IBrush?> DrawerFooterBackgroundProperty = AvaloniaProperty.Register<DrawerPage, IBrush?>(nameof(DrawerFooterBackground));`
+- `public static readonly StyledProperty<IBrush?> DrawerFooterForegroundProperty = AvaloniaProperty.Register<DrawerPage, IBrush?>(nameof(DrawerFooterForeground));`
+- `public static readonly StyledProperty<IBrush?> BackdropBrushProperty = AvaloniaProperty.Register<DrawerPage, IBrush?>(nameof(BackdropBrush));`
+- `public object? Drawer {`
+- `public IDataTemplate? DrawerFooterTemplate {`
+- `public object? DrawerIcon {`
+- `public IDataTemplate? DrawerIconTemplate {`
+- `public IDataTemplate? DrawerTemplate {`
+- `public IBrush? DrawerBackground {`
+- `public IBrush? DrawerHeaderBackground {`
+- `public IBrush? DrawerHeaderForeground {`
+- `public IBrush? DrawerFooterBackground {`
+- `public IBrush? DrawerFooterForeground {`
+- `public IBrush? BackdropBrush {`
+
+### `src/Avalonia.Controls/Page/ModalPoppedEventArgs.cs`
+- `public class ModalPoppedEventArgs : EventArgs`
+- `public ModalPoppedEventArgs(Page modal) {`
+- `public Page Modal { get; }`
+
+### `src/Avalonia.Controls/Page/ModalPushedEventArgs.cs`
+- `public class ModalPushedEventArgs : EventArgs`
+- `public ModalPushedEventArgs(Page modal) {`
+- `public Page Modal { get; }`
+
+### `src/Avalonia.Controls/Page/MultiPage.cs`
+- `public IEnumerable<Page>? Pages {`
+
+### `src/Avalonia.Controls/Page/NavigatedFromEventArgs.cs`
+- `public class NavigatedFromEventArgs : EventArgs`
+- `public NavigatedFromEventArgs(Page? destinationPage, NavigationType navigationType) {`
+- `public Page? DestinationPage { get; }`
+- `public NavigationType NavigationType { get; }`
+
+### `src/Avalonia.Controls/Page/NavigatedToEventArgs.cs`
+- `public class NavigatedToEventArgs : EventArgs`
+- `public NavigatedToEventArgs(Page? previousPage, NavigationType navigationType) {`
+- `public Page? PreviousPage { get; }`
+- `public NavigationType NavigationType { get; }`
+
+### `src/Avalonia.Controls/Page/NavigatingFromEventArgs.cs`
+- `public class NavigatingFromEventArgs : EventArgs`
+- `public NavigatingFromEventArgs(Page? destinationPage, NavigationType navigationType) {`
+- `public Page? DestinationPage { get; }`
+- `public NavigationType NavigationType { get; }`
+
+### `src/Avalonia.Controls/Page/NavigationEventArgs.cs`
+- `public class NavigationEventArgs : EventArgs`
+- `public NavigationEventArgs(Page page, NavigationType navigationType) {`
+- `public NavigationType NavigationType { get; }`
+
+### `src/Avalonia.Controls/Page/NavigationPage.cs`
+- `public static readonly DirectProperty<NavigationPage, bool> IsNavigatingProperty = AvaloniaProperty.RegisterDirect<NavigationPage, bool>(nameof(IsNavigating), o => o._isNavigating);`
+- `public static readonly DirectProperty<NavigationPage, bool> CanGoBackProperty = AvaloniaProperty.RegisterDirect<NavigationPage, bool>(nameof(CanGoBack), o => o.CanGoBack);`
+- `public static readonly AttachedProperty<bool> IsBackButtonEnabledProperty = AvaloniaProperty.RegisterAttached<NavigationPage, Page, bool>("IsBackButtonEnabled", true);`
+- `public bool IsNavigating => _isNavigating;`
+- `public IReadOnlyList<Page> NavigationStack {`
+- `public IReadOnlyList<Page> ModalStack {`
+- `public int StackDepth => _navigationStack.Count;`
+- `public static object? GetBackButtonContent(Page page) =>`
+- `public static void SetBackButtonContent(Page page, object? content) =>`
+- `public static bool GetHasBackButton(Page page) =>`
+- `public static void SetHasBackButton(Page page, bool value) =>`
+- `public static object? GetHeader(Page page) =>`
+- `public static void SetHeader(Page page, object? header) =>`
+- `public static Control? GetTopCommandBar(Page page) =>`
+- `public static void SetTopCommandBar(Page page, Control? commandBar) =>`
+- `public static Control? GetBottomCommandBar(Page page) =>`
+- `public static void SetBottomCommandBar(Page page, Control? commandBar) =>`
+- `public static bool GetHasNavigationBar(Page page) =>`
+- `public static void SetHasNavigationBar(Page page, bool value) =>`
+- `public static BarLayoutBehavior? GetBarLayoutBehavior(Page page) =>`
+- `public static void SetBarLayoutBehavior(Page page, BarLayoutBehavior? value) =>`
+- `public static double? GetBarHeightOverride(Page page) =>`
+- `public static void SetBarHeightOverride(Page page, double? value) =>`
+- `public static bool GetIsBackButtonEnabled(Page page) =>`
+- `public static void SetIsBackButtonEnabled(Page page, bool value) =>`
+- `public event EventHandler<NavigationEventArgs>? Pushed;`
+- `public event EventHandler<NavigationEventArgs>? Popped;`
+- `public event EventHandler<NavigationEventArgs>? PoppedToRoot;`
+- `public event EventHandler<PageInsertedEventArgs>? PageInserted;`
+- `public event EventHandler<PageRemovedEventArgs>? PageRemoved;`
+- `public event EventHandler<ModalPushedEventArgs>? ModalPushed;`
+- `public event EventHandler<ModalPoppedEventArgs>? ModalPopped;`
+- `public async Task PushAsync(Page page) {`
+- `public async Task PushAsync(Page page, IPageTransition? transition) {`
+- `public async Task<Page?> PopAsync() {`
+- `public async Task<Page?> PopAsync(IPageTransition? transition) {`
+- `public async Task PopToRootAsync() {`
+- `public async Task PopToRootAsync(IPageTransition? transition) {`
+- `public async Task PopToPageAsync(Page page) {`
+- `public async Task PopToPageAsync(Page page, IPageTransition? transition) {`
+- `public async Task PushModalAsync(Page page) {`
+- `public async Task PushModalAsync(Page page, IPageTransition? transition) {`
+- `public async Task<Page?> PopModalAsync() {`
+- `public async Task<Page?> PopModalAsync(IPageTransition? transition) {`
+- `public async Task PopAllModalsAsync() {`
+- `public async Task PopAllModalsAsync(IPageTransition? transition) {`
+- `public void RemovePage(Page page) {`
+- `public void InsertPage(Page page, Page before) {`
+- `public async Task ReplaceAsync(Page page) {`
+- `public async Task ReplaceAsync(Page page, IPageTransition? transition) {`
+
+### `src/Avalonia.Controls/Page/NavigationType.cs`
+- `public enum NavigationType`
+
+### `src/Avalonia.Controls/Page/Page.cs`
+- `public event EventHandler<NavigatedToEventArgs>? NavigatedTo;`
+- `public event Func<NavigatingFromEventArgs, Task>? Navigating;`
+- `public event EventHandler<NavigatedFromEventArgs>? NavigatedFrom;`
+
+### `src/Avalonia.Controls/Page/PageInsertedEventArgs.cs`
+- `public class PageInsertedEventArgs : EventArgs`
+- `public PageInsertedEventArgs(Page page, Page before) {`
+- `public Page Before { get; }`
+
+### `src/Avalonia.Controls/Page/PageRemovedEventArgs.cs`
+- `public class PageRemovedEventArgs : EventArgs`
+- `public PageRemovedEventArgs(Page page) {`
+
+### `src/Avalonia.Controls/Page/PageSelectionChangedEventArgs.cs`
+- `public PageSelectionChangedEventArgs(RoutedEvent? routedEvent, Page? previousPage, Page? currentPage) : base(routedEvent) {`
+- `public Page? PreviousPage { get; }`
+
+### `src/Avalonia.Controls/PipsPager/PipsPagerSelectedIndexChangedEventArgs.cs`
+- `public PipsPagerSelectedIndexChangedEventArgs(int oldIndex, int newIndex) : base(PipsPager.SelectedIndexChangedEvent) {`
+- `public int OldIndex { get; }`
+- `public int NewIndex { get; }`
+
+### `src/Avalonia.Controls/PipsPager/PipsPagerTemplateSettings.cs`
+- `public static readonly DirectProperty<PipsPagerTemplateSettings, AvaloniaList<int>> PipsProperty = AvaloniaProperty.RegisterDirect<PipsPagerTemplateSettings, AvaloniaList<int>>( nameof(Pips), o => o.Pips);`
+- `public AvaloniaList<int> Pips {`
 
 ### `src/Avalonia.Controls/PixelPointEventArgs.cs`
 - `public PixelPointEventArgs(PixelPoint point) {`
@@ -4322,17 +4725,11 @@
 ### `src/Avalonia.Controls/Platform/Dialogs/IStorageProviderFactory.cs`
 - `public interface IStorageProviderFactory`
 
-### `src/Avalonia.Controls/Platform/Dialogs/ISystemDialogImpl.cs`
-- `public interface ISystemDialogImpl`
-
 ### `src/Avalonia.Controls/Platform/Dialogs/MountedDriveInfo.cs`
 - `public class MountedVolumeInfo : IEquatable<MountedVolumeInfo>`
 - `public string? VolumeLabel { get; set; }`
 - `public string? VolumePath { get; set; }`
 - `public ulong VolumeSizeBytes { get; set; }`
-
-### `src/Avalonia.Controls/Platform/IApplicationPlatformEvents.cs`
-- `public interface IApplicationPlatformEvents`
 
 ### `src/Avalonia.Controls/Platform/IInputPane.cs`
 - `public interface IInputPane`
@@ -4355,13 +4752,10 @@
 - `public abstract class InsetsManagerBase : IInsetsManager`
 - `public virtual bool? IsSystemBarVisible { get; set; }`
 - `public virtual bool DisplayEdgeToEdgePreference { get; set; }`
-- `public virtual bool DisplayEdgeToEdge { get => DisplaysEdgeToEdge; set => DisplayEdgeToEdgePreference = value; }`
-- `public virtual Thickness SafeAreaPadding { get; protected set; }`
 - `public virtual bool DisplaysEdgeToEdge => DisplayEdgeToEdgePreference;`
 - `public event EventHandler<SafeAreaChangedArgs>? SafeAreaChanged;`
 - `public class SafeAreaChangedArgs : EventArgs`
 - `public SafeAreaChangedArgs(Thickness safeArePadding) {`
-- `public Thickness SafeAreaPadding { get; }`
 - `public enum SystemBarTheme`
 
 ### `src/Avalonia.Controls/Platform/INativeControlHostImpl.cs`
@@ -4376,7 +4770,7 @@
 - `public interface IPlatformLifetimeEventsImpl`
 
 ### `src/Avalonia.Controls/Platform/IPlatformNativeSurfaceHandle.cs`
-- `public interface INativePlatformHandleSurface : IPlatformHandle`
+- `public interface INativePlatformHandleSurface : IPlatformHandle, IPlatformRenderSurface`
 
 ### `src/Avalonia.Controls/Platform/IScreenImpl.cs`
 - `public interface IScreenImpl`
@@ -4400,18 +4794,8 @@
 - `public enum X11NetWmWindowType`
 - `public interface IX11OptionsToplevelImplFeature`
 
-### `src/Avalonia.Controls/Platform/ManagedDispatcherImpl.cs`
-- `public class ManagedDispatcherImpl : IControlledDispatcherImpl`
-- `public interface IManagedDispatcherInputProvider`
-- `public ManagedDispatcherImpl(IManagedDispatcherInputProvider? inputProvider) {`
-- `public bool CurrentThreadIsLoopThread => _loopThread == Thread.CurrentThread;`
-- `public void Signal() {`
-- `public event Action? Signaled;`
-- `public long Now => _clock.ElapsedMilliseconds;`
-- `public void UpdateTimer(long? dueTimeInMs) {`
-- `public bool CanQueryPendingInput => _inputProvider != null;`
-- `public bool HasPendingInput => _inputProvider?.HasInput ?? false;`
-- `public void RunLoop(CancellationToken token) {`
+### `src/Avalonia.Controls/Platform/PlatformAllowedWindowActions.cs`
+- `public enum PlatformAllowedWindowActions`
 
 ### `src/Avalonia.Controls/Platform/PlatformManager.cs`
 - `public static IDisposable DesignerMode() {`
@@ -4419,19 +4803,11 @@
 - `public static IWindowImpl CreateWindow() {`
 - `public static IWindowImpl CreateEmbeddableWindow() {`
 
+### `src/Avalonia.Controls/Platform/PlatformRequestedDrawnDecoration.cs`
+- `public enum PlatformRequestedDrawnDecoration`
+
 ### `src/Avalonia.Controls/Platform/Screen.cs`
 - `public enum ScreenOrientation`
-- `public double PixelDensity => Scaling;`
-- `public bool Primary => IsPrimary;`
-
-### `src/Avalonia.Controls/Platform/Surfaces/IFramebufferPlatformSurface.cs`
-- `public interface IFramebufferPlatformSurface`
-- `public interface IFramebufferRenderTarget : IDisposable`
-- `public interface IFramebufferRenderTargetWithProperties : IFramebufferRenderTarget`
-- `public record struct FramebufferLockProperties(bool PreviousFrameIsRetained);`
-- `public class FuncFramebufferRenderTarget : IFramebufferRenderTarget`
-- `public FuncFramebufferRenderTarget(Func<ILockedFramebuffer> lockFramebuffer) {`
-- `public ILockedFramebuffer Lock() => _lockFramebuffer();`
 
 ### `src/Avalonia.Controls/Platform/Win32Properties.cs`
 - `public delegate (uint style, uint exStyle) CustomWindowStylesCallback(uint style, uint exStyle);`
@@ -4467,11 +4843,15 @@
 - `public CharacterHit GetNextCharacterHit(LogicalDirection direction = LogicalDirection.Forward) {`
 - `public void MoveCaretHorizontal(LogicalDirection direction = LogicalDirection.Forward) {`
 
+### `src/Avalonia.Controls/Primitives/ItemSelectionEventTriggers.cs`
+- `public static class ItemSelectionEventTriggers`
+- `public static bool HasRangeSelectionModifier(Visual selectable, RoutedEventArgs eventArgs) => HasModifiers(eventArgs, Hotkeys(selectable)?.SelectionModifiers);`
+- `public static bool HasToggleSelectionModifier(Visual selectable, RoutedEventArgs eventArgs) => HasModifiers(eventArgs, Hotkeys(selectable)?.CommandModifiers);`
+
 ### `src/Avalonia.Controls/Primitives/Popup.cs`
 - `public static readonly AttachedProperty<bool> TakesFocusFromNativeControlProperty = AvaloniaProperty.RegisterAttached<Popup, Control, bool>(nameof(TakesFocusFromNativeControl), true);`
 - `public static readonly StyledProperty<bool> ShouldUseOverlayLayerProperty = AvaloniaProperty.Register<Popup, bool>(nameof(ShouldUseOverlayLayer));`
 - `public static readonly DirectProperty<Popup, bool> IsUsingOverlayLayerProperty = AvaloniaProperty.RegisterDirect<Popup, bool>( nameof(IsUsingOverlayLayer), o => o.IsUsingOverlayLayer);`
-- `public IPopupHost? Host => _openState?.PopupHost;`
 - `public IAvaloniaDependencyResolver? DependencyResolver {`
 - `public bool TakesFocusFromNativeControl {`
 - `public static bool GetTakesFocusFromNativeControl(Control control) {`
@@ -4528,31 +4908,24 @@
 - `public override void EndInit() {`
 - `public static bool GetIsSelected(Control control) => control.GetValue(IsSelectedProperty);`
 - `public static void SetIsSelected(Control control, bool value) => control.SetValue(IsSelectedProperty, value);`
-
-### `src/Avalonia.Controls/Primitives/SelectionHandleType.cs`
-- `public enum SelectionHandleType`
+- `public new static SelectingItemsControl? ItemsControlFromItemContainer(Control container) => ItemsControl.ItemsControlFromItemContainer(container) as SelectingItemsControl;`
 
 ### `src/Avalonia.Controls/Primitives/TemplatedControl.cs`
+- `public static readonly RoutedEvent<TemplateAppliedEventArgs> TemplateAppliedEvent = RoutedEvent.Register<TemplatedControl, TemplateAppliedEventArgs>( nameof(TemplateApplied), RoutingStrategies.Direct);`
 - `public FontFeatureCollection? FontFeatures {`
 - `public static bool GetIsTemplateFocusTarget(Control control) {`
 - `public static void SetIsTemplateFocusTarget(Control control, bool value) {`
 
 ### `src/Avalonia.Controls/Primitives/TextSearch.cs`
 - `public static class TextSearch`
-- `public static readonly AttachedProperty<IBinding?> TextBindingProperty = AvaloniaProperty.RegisterAttached<Interactive, IBinding?>("TextBinding", typeof(TextSearch));`
-- `public static string? GetText(Control control) => control.GetValue(TextProperty);`
-- `public static void SetTextBinding(Interactive interactive, IBinding? value) => interactive.SetValue(TextBindingProperty, value);`
-- `public static IBinding? GetTextBinding(Interactive interactive) => interactive.GetValue(TextBindingProperty);`
-
-### `src/Avalonia.Controls/Primitives/ToggleButton.cs`
-- `public event EventHandler<RoutedEventArgs>? Checked {`
+- `public static readonly AttachedProperty<BindingBase?> TextBindingProperty = AvaloniaProperty.RegisterAttached<AvaloniaObject, BindingBase?>("TextBinding", typeof(TextSearch));`
+- `public static string? GetText(AvaloniaObject element) => element.GetValue(TextProperty);`
+- `public static void SetTextBinding(AvaloniaObject element, BindingBase? value) => element.SetValue(TextBindingProperty, value);`
+- `public static BindingBase? GetTextBinding(AvaloniaObject element) => element.GetValue(TextBindingProperty);`
 
 ### `src/Avalonia.Controls/Primitives/Track.cs`
 - `public virtual double ValueFromPoint(Point point) {`
 - `public virtual double ValueFromDistance(double horizontal, double vertical) {`
-
-### `src/Avalonia.Controls/Primitives/VisualLayerManager.cs`
-- `public bool IsPopup { get; set; }`
 
 ### `src/Avalonia.Controls/ProgressBar.cs`
 - `public class ProgressBarTemplateSettings : AvaloniaObject`
@@ -4621,13 +4994,6 @@
 - `public static void SetRightOf(AvaloniaObject obj, object value) {`
 - `public static readonly AttachedProperty<object> RightOfProperty = AvaloniaProperty.RegisterAttached<RelativePanel, Layoutable, object>("RightOf");`
 
-### `src/Avalonia.Controls/Remote/RemoteServer.cs`
-- `public class RemoteServer : IDisposable`
-- `public RemoteServer(IAvaloniaRemoteTransportConnection transport) {`
-
-### `src/Avalonia.Controls/Remote/RemoteWidget.cs`
-- `public enum SizingMode`
-
 ### `src/Avalonia.Controls/RequestBringIntoViewEventArgs.cs`
 - `public Rect TargetRect { get; set; }`
 
@@ -4644,7 +5010,6 @@
 
 ### `src/Avalonia.Controls/Screens.cs`
 - `public Screen? ScreenFromWindow(WindowBase window) {`
-- `public Screen? ScreenFromWindow(IWindowBaseImpl window) {`
 
 ### `src/Avalonia.Controls/ScrollViewer.cs`
 - `public static readonly AttachedProperty<bool> IsScrollInertiaEnabledProperty = AvaloniaProperty.RegisterAttached<ScrollViewer, Control, bool>( nameof(IsScrollInertiaEnabled), defaultValue: true);`
@@ -4722,7 +5087,7 @@
 - `public abstract class SelectionNodeBase<T>`
 
 ### `src/Avalonia.Controls/SelectionChangedEventArgs.cs`
-- `public SelectionChangedEventArgs(RoutedEvent routedEvent, IList removedItems, IList addedItems) : base(routedEvent) {`
+- `public SelectionChangedEventArgs(RoutedEvent? routedEvent, IList removedItems, IList addedItems) : base(routedEvent) {`
 - `public IList AddedItems { get; }`
 - `public IList RemovedItems { get; }`
 
@@ -4742,9 +5107,9 @@
 - `public enum SpinDirection`
 - `public bool UsingMouseWheel{ get; }`
 - `public SpinEventArgs(SpinDirection direction) {`
-- `public SpinEventArgs(RoutedEvent routedEvent, SpinDirection direction) : base(routedEvent) {`
+- `public SpinEventArgs(RoutedEvent? routedEvent, SpinDirection direction) : base(routedEvent) {`
 - `public SpinEventArgs(SpinDirection direction, bool usingMouseWheel) {`
-- `public SpinEventArgs(RoutedEvent routedEvent, SpinDirection direction, bool usingMouseWheel) : base(routedEvent) {`
+- `public SpinEventArgs(RoutedEvent? routedEvent, SpinDirection direction, bool usingMouseWheel) : base(routedEvent) {`
 - `public event EventHandler<SpinEventArgs>? Spin {`
 
 ### `src/Avalonia.Controls/SplitView/SplitViewTemplateSettings.cs`
@@ -4757,21 +5122,15 @@
 - `public double ClosedPaneHeight {`
 - `public GridLength PaneRowGridLength {`
 
-### `src/Avalonia.Controls/SystemDialog.cs`
-- `public abstract class FileDialog : FileSystemDialog`
-- `public List<FileDialogFilter> Filters { get; set; } = new List<FileDialogFilter>();`
-- `public string? InitialFileName { get; set; }`
-- `public abstract class FileSystemDialog : SystemDialog`
-- `public string? Directory { get; set; }`
-- `public FilePickerSaveOptions ToFilePickerSaveOptions() {`
-- `public FilePickerOpenOptions ToFilePickerOpenOptions() {`
-- `public FolderPickerOpenOptions ToFolderPickerOpenOptions() {`
-- `public abstract class SystemDialog`
-- `public class FileDialogFilter`
-
 ### `src/Avalonia.Controls/SystemFontAppBuilderExtension.cs`
 - `public static class SystemFontAppBuilderExtension`
 - `public static AppBuilder WithSystemFontSource(this AppBuilder appBuilder, Uri fontSource) {`
+
+### `src/Avalonia.Controls/Templates/FuncTreeDataTemplate.cs`
+- `public IDisposable BindChildren(AvaloniaObject target, AvaloniaProperty targetProperty, object item) {`
+
+### `src/Avalonia.Controls/Templates/TemplateExtensions.cs`
+- `public static IEnumerable<Visual> GetTemplateDescendants(this TemplatedControl control) {`
 
 ### `src/Avalonia.Controls/TextBlock.cs`
 - `public static readonly StyledProperty<TextDecorationCollection?> TextDecorationsProperty = Inline.TextDecorationsProperty.AddOwner<TextBlock>();`
@@ -4809,6 +5168,7 @@
 - `public static readonly RoutedEvent<TextChangedEventArgs> TextChangedEvent = RoutedEvent.Register<TextBox, TextChangedEventArgs>( nameof(TextChanged), RoutingStrategies.Bubble);`
 - `public static readonly RoutedEvent<TextChangingEventArgs> TextChangingEvent = RoutedEvent.Register<TextBox, TextChangingEventArgs>( nameof(TextChanging), RoutingStrategies.Bubble);`
 - `public bool UseFloatingWatermark {`
+- `public IBrush? WatermarkForeground {`
 - `public object? InnerLeftContent {`
 - `public object? InnerRightContent {`
 - `public string NewLine {`
@@ -4855,9 +5215,6 @@
 - `public object? From { get; }`
 - `public object? To { get; }`
 - `public bool HasRunToCompletion { get; }`
-
-### `src/Avalonia.Controls/TreeView.cs`
-- `public object? TreeItemFromContainer(Control container) {`
 
 ### `src/Avalonia.Controls/TreeViewItem.cs`
 - `public int Level {`
@@ -4913,49 +5270,6 @@
 
 ### `src/Avalonia.DesignerSupport/Remote/RemoteDesignerEntryPoint.cs`
 - `public class RemoteDesignerEntryPoint`
-
-### `src/Avalonia.Diagnostics/DevToolsExtensions.cs`
-- `public static class DevToolsExtensions`
-
-### `src/Avalonia.Diagnostics/Diagnostics/DevToolsDataFormats.cs`
-- `public static class DevToolsDataFormats`
-
-### `src/Avalonia.Diagnostics/Diagnostics/DevToolsOptions.cs`
-- `public class DevToolsOptions`
-- `public bool ShowAsChildWindow { get; set; } = true;`
-- `public int? StartupScreenIndex { get; set; }`
-- `public bool ShowImplementedInterfaces { get; set; } = true;`
-- `public IScreenshotHandler ScreenshotHandler { get; set; }`
-- `public IBrush? FocusHighlighterBrush { get; set; }`
-- `public DevToolsViewKind LaunchView { get; init; }`
-- `public HotKeyConfiguration HotKeys { get; init; } = new();`
-
-### `src/Avalonia.Diagnostics/Diagnostics/DevToolsViewKind.cs`
-- `public enum DevToolsViewKind`
-
-### `src/Avalonia.Diagnostics/Diagnostics/HotKeyConfiguration.cs`
-- `public class HotKeyConfiguration`
-- `public KeyGesture ValueFramesFreeze { get; init; } = new(Key.S, KeyModifiers.Alt);`
-- `public KeyGesture ValueFramesUnfreeze { get; init; } = new(Key.D, KeyModifiers.Alt);`
-- `public KeyGesture InspectHoveredControl { get; init; } = new(Key.None, KeyModifiers.Shift | KeyModifiers.Control);`
-- `public KeyGesture TogglePopupFreeze { get; init; } = new(Key.F, KeyModifiers.Alt | KeyModifiers.Control);`
-- `public KeyGesture ScreenshotSelectedControl { get; init; } = new(Key.F8);`
-
-### `src/Avalonia.Diagnostics/Diagnostics/IScreenshotHandler.cs`
-- `public interface IScreenshotHandler`
-
-### `src/Avalonia.Diagnostics/Diagnostics/Screenshots/BaseRenderToStreamHandler.cs`
-- `public abstract class BaseRenderToStreamHandler : IScreenshotHandler`
-- `public async Task Take(Control control) {`
-
-### `src/Avalonia.Diagnostics/Diagnostics/Screenshots/FilePickerHandler.cs`
-- `public sealed class FilePickerHandler : BaseRenderToStreamHandler`
-- `public FilePickerHandler() : this(null, null) {`
-- `public FilePickerHandler( string? title, string? screenshotRoot = default) {`
-
-### `src/Avalonia.Diagnostics/Diagnostics/VisualTreeDebug.cs`
-- `public static class VisualTreeDebug`
-- `public static string PrintVisualTree(Visual visual) {`
 
 ### `src/Avalonia.Dialogs/AboutAvaloniaDialog.xaml.cs`
 - `public class AboutAvaloniaDialog : Window`
@@ -5033,8 +5347,8 @@
 
 ### `src/Avalonia.Metal/IMetalDevice.cs`
 - `public interface IMetalDevice : IPlatformGraphicsContext`
-- `public interface IMetalPlatformSurface`
-- `public interface IMetalPlatformSurfaceRenderTarget : IDisposable`
+- `public interface IMetalPlatformSurface : IPlatformRenderSurface`
+- `public interface IMetalPlatformSurfaceRenderTarget : IDisposable, IPlatformRenderSurfaceRenderTarget`
 - `public interface IMetalPlatformSurfaceRenderingSession : IDisposable`
 
 ### `src/Avalonia.Metal/IMetalExternalObjectsFeature.cs`
@@ -5170,14 +5484,17 @@
 ### `src/Avalonia.OpenGL/Egl/EglGlPlatformSurface.cs`
 - `public class EglGlPlatformSurface : EglGlPlatformSurfaceBase`
 - `public interface IEglWindowGlPlatformSurfaceInfo`
+- `public interface IEglWindowGlPlatformSurfaceInfoWithWaitPolicy : IEglWindowGlPlatformSurfaceInfo`
+- `public bool SkipWaits { get; }`
 - `public EglGlPlatformSurface(IEglWindowGlPlatformSurfaceInfo info) {`
 - `public override IGlPlatformSurfaceRenderTarget CreateGlRenderTarget(IGlContext context) {`
 
 ### `src/Avalonia.OpenGL/Egl/EglGlPlatformSurfaceBase.cs`
 - `public abstract class EglGlPlatformSurfaceBase : IGlPlatformSurface`
 - `public abstract IGlPlatformSurfaceRenderTarget CreateGlRenderTarget(IGlContext context);`
-- `public abstract class EglPlatformSurfaceRenderTargetBase : IGlPlatformSurfaceRenderTargetWithCorruptionInfo`
-- `public abstract IGlPlatformSurfaceRenderingSession BeginDrawCore();`
+- `public abstract class EglPlatformSurfaceRenderTargetBase : IGlPlatformSurfaceRenderTarget`
+- `public abstract IGlPlatformSurfaceRenderingSession BeginDrawCore(IRenderTarget.RenderTargetSceneInfo sceneInfo);`
+- `public virtual PlatformRenderTargetState State =>`
 - `public virtual bool IsCorrupted => Context.IsLost;`
 
 ### `src/Avalonia.OpenGL/Egl/EglInterface.cs`
@@ -5259,6 +5576,7 @@
 - `public const int GL_UNSIGNED_SHORT = 0x1403;`
 - `public const int GL_FLOAT = 0x1406;`
 - `public const int GL_TRIANGLES = 0x0004;`
+- `public const int GL_TRIANGLE_FAN = 0x0006;`
 - `public const int GL_CULL_FACE = 0x0B44;`
 - `public const int GL_LESS = 0x0201;`
 - `public const int GL_GREATER = 0x0204;`
@@ -5398,6 +5716,7 @@
 - `public partial int GetUniformLocation(int program, IntPtr name);`
 - `public int GetUniformLocationString(int program, string name) {`
 - `public partial void Uniform1f(int location, float falue);`
+- `public partial void Uniform1i(int location, int value);`
 - `public partial void UniformMatrix4fv(int location, int count, bool transpose, void* value);`
 - `public partial void Enable(int what);`
 - `public partial void Disable(int what);`
@@ -5447,10 +5766,6 @@
 - `public static OpenGlException GetFormattedException(string funcName, GlInterface gl) {`
 - `public static OpenGlException GetFormattedException(string funcName, int errorCode) =>`
 - `public static OpenGlException GetFormattedEglException(string funcName, int errorCode) =>`
-
-### `src/Avalonia.OpenGL/Surfaces/IGlPlatformSurfaceRenderTarget.cs`
-- `public interface IGlPlatformSurfaceRenderTargetWithCorruptionInfo : IGlPlatformSurfaceRenderTarget`
-- `public interface IGlPlatformSurfaceRenderTarget2 : IGlPlatformSurfaceRenderTargetWithCorruptionInfo`
 
 ### `src/Avalonia.Remote.Protocol/AvaloniaRemoteMessageGuidAttribute.cs`
 - `public sealed class AvaloniaRemoteMessageGuidAttribute : Attribute`
@@ -5565,7 +5880,7 @@
 - `public IntPtr GetDeviceProcAddress(IntPtr device, string name);`
 
 ### `src/Avalonia.Vulkan/IVulkanPlatformSurface.cs`
-- `public interface IVulkanKhrSurfacePlatformSurface : IDisposable`
+- `public interface IVulkanKhrSurfacePlatformSurface : IDisposable, IPlatformRenderSurface`
 - `public interface IVulkanKhrSurfacePlatformSurfaceFactory`
 
 ### `src/Avalonia.Vulkan/UnmanagedInterop/VulkanStructs.cs`
@@ -5666,6 +5981,11 @@
 - `public class GtkInteropHelper`
 - `public static async Task<T> RunOnGlibThread<T>(Func<T> cb) {`
 
+### `src/Avalonia.X11/X11Platform.cs`
+- `public bool? EnableDrawnDecorations { get; set; }`
+- `public bool ForceDrawnDecorations { get; set; }`
+- `public Action<Exception>? ExternalGLibMainLoopExceptionLogger { get; set; }`
+
 ### `src/Avalonia.X11/X11WindowModes/DefaultWindowMode.cs`
 - `public class DefaultTopLevelWindowMode : X11WindowMode`
 - `public override Point PointToClient(PixelPoint point) => new Point(`
@@ -5705,16 +6025,20 @@
 - `public double ScaleFactor {`
 - `public void ProcessInteractiveResize(PixelSize size) {`
 
-### `src/Browser/Avalonia.Browser.Blazor/BlazorSingleViewLifetime.cs`
-- `public static class BlazorAppBuilder`
-- `public static async Task StartBlazorAppAsync(this AppBuilder builder, BrowserPlatformOptions? options = null) {`
-
 ### `src/Browser/Avalonia.Browser/JSObjectControlHandle.cs`
 - `public class JSObjectPlatformHandle : PlatformHandle`
 - `public JSObject Object { get; }`
 - `public class JSObjectControlHandle : JSObjectPlatformHandle, INativeControlHostDestroyableControlHandle`
 - `public JSObjectControlHandle(JSObject reference) : base(reference) {`
 - `public void Destroy() {`
+
+### `src/HarfBuzz/Avalonia.HarfBuzz/HarfBuzzApplicationExtensions.cs`
+- `public static class HarfBuzzApplicationExtensions`
+
+### `src/HarfBuzz/Avalonia.HarfBuzz/HarfBuzzTextShaper.cs`
+- `public class HarfBuzzTextShaper : ITextShaperImpl`
+- `public ShapedBuffer ShapeText(ReadOnlyMemory<char> text, TextShaperOptions options) {`
+- `public ITextShaperTypeface CreateTypeface(GlyphTypeface glyphTypeface) {`
 
 ### `src/Headless/Avalonia.Headless.NUnit/AvaloniaTest.cs`
 - `public TestCommand Wrap(TestCommand command) {`
@@ -5732,22 +6056,18 @@
 
 ### `src/Headless/Avalonia.Headless.Vnc/HeadlessVncPlatformExtensions.cs`
 - `public static class HeadlessVncPlatformExtensions`
-- `public static int StartWithHeadlessVncPlatform( this AppBuilder builder, string host, int port, string[] args, ShutdownMode shutdownMode = ShutdownMode.OnLastWindowClose) {`
-- `public static int StartWithHeadlessVncPlatform( this AppBuilder builder, string host, int port, string? password, string[] args, ShutdownMode shutdownMode = ShutdownMode.OnLastWindowClose) {`
+- `public static int StartWithHeadlessVncPlatform( this AppBuilder builder, string? host, int port, string[] args, ShutdownMode shutdownMode = ShutdownMode.OnLastWindowClose) {`
+- `public static int StartWithHeadlessVncPlatform( this AppBuilder builder, string? host, int port, string? password, string[] args, ShutdownMode shutdownMode = ShutdownMode.OnLastWindowClose) {`
 
-### `src/Headless/Avalonia.Headless.XUnit/AvaloniaFact.cs`
-- `public class AvaloniaUIFactDiscoverer : FactDiscoverer`
-- `public AvaloniaUIFactDiscoverer(IMessageSink diagnosticMessageSink) : base(diagnosticMessageSink) {`
+### `src/Headless/Avalonia.Headless.XUnit/AvaloniaFactDiscoverer.cs`
+- `public class AvaloniaFactDiscoverer : FactDiscoverer`
 
 ### `src/Headless/Avalonia.Headless.XUnit/AvaloniaTestFrameworkAttribute.cs`
 - `public sealed class AvaloniaTestFrameworkAttribute : Attribute, ITestFrameworkAttribute`
-- `public class AvaloniaTestFrameworkTypeDiscoverer : ITestFrameworkTypeDiscoverer`
-- `public AvaloniaTestFrameworkTypeDiscoverer(IMessageSink _) {`
-- `public Type GetTestFrameworkType(IAttributeInfo attribute) {`
+- `public Type FrameworkType => typeof(AvaloniaTestFramework);`
 
-### `src/Headless/Avalonia.Headless.XUnit/AvaloniaTheoryAttribute.cs`
+### `src/Headless/Avalonia.Headless.XUnit/AvaloniaTheoryDiscoverer.cs`
 - `public class AvaloniaTheoryDiscoverer : TheoryDiscoverer`
-- `public AvaloniaTheoryDiscoverer(IMessageSink diagnosticMessageSink) : base(diagnosticMessageSink) {`
 
 ### `src/Headless/Avalonia.Headless/AvaloniaTestApplicationAttribute.cs`
 - `public Type AppBuilderEntryPointType { get; }`
@@ -5755,9 +6075,13 @@
 ### `src/Headless/Avalonia.Headless/HeadlessUnitTestIsolationAttribute.cs`
 - `public AvaloniaTestIsolationLevel IsolationLevel { get; } = isolationLevel;`
 
+### `src/Headless/Avalonia.Headless/HeadlessUnitTestSession.cs`
+- `public async ValueTask DisposeAsync() {`
+
 ### `src/Headless/Avalonia.Headless/HeadlessWindowExtensions.cs`
 - `public static void KeyPressQwerty(this TopLevel topLevel, PhysicalKey physicalKey, RawInputModifiers modifiers) =>`
 - `public static void KeyReleaseQwerty(this TopLevel topLevel, PhysicalKey physicalKey, RawInputModifiers modifiers) =>`
+- `public static void SetRenderScaling(this TopLevel topLevel, double scaling) =>`
 
 ### `src/Linux/Avalonia.LinuxFramebuffer/DrmConnectorType.cs`
 - `public enum DrmConnectorType : uint`
@@ -5888,8 +6212,8 @@
 - `public DrmResources GetResources(bool connectorsForceProbe = false) => new DrmResources(Fd, connectorsForceProbe);`
 
 ### `src/Linux/Avalonia.LinuxFramebuffer/Output/DrmOutput.cs`
-- `public unsafe class DrmOutput : IGlOutputBackend, IGlPlatformSurface`
-- `public PixelSize PixelSize => _mode.Resolution;`
+- `public unsafe class DrmOutput : IGlOutputBackend, IGlPlatformSurface, ISurfaceOrientation`
+- `public PixelSize PixelSize => Orientation == SurfaceOrientation.Rotation0 || Orientation == SurfaceOrientation.Rotation180`
 - `public IPlatformGraphics PlatformGraphics { get; private set; }`
 - `public DrmOutput(DrmCard card, DrmResources resources, DrmConnector connector, DrmModeInfo modeInfo, DrmOutputOptions? options = null) {`
 - `public DrmOutput(string? path = null, bool connectorsForceProbe = false, DrmOutputOptions? options = null) :this(new DrmCard(path), connectorsForceProbe, options) {`
@@ -5908,15 +6232,15 @@
 ### `src/Linux/Avalonia.LinuxFramebuffer/Output/FbdevOutput.cs`
 - `public string Id { get; private set; }`
 - `public PixelSize PixelSize {`
-- `public ILockedFramebuffer Lock() => Lock(out _);`
-- `public IFramebufferRenderTarget CreateFramebufferRenderTarget() => new FuncRetainedFramebufferRenderTarget(Lock);`
+- `public ILockedFramebuffer Lock(IRenderTarget.RenderTargetSceneInfo _, out FramebufferLockProperties properties) {`
+- `public IFramebufferRenderTarget CreateFramebufferRenderTarget() => new FuncFramebufferRenderTarget(Lock, true);`
 
 ### `src/Linux/Avalonia.LinuxFramebuffer/Output/IGlOutputBackend.cs`
 - `public interface IGlOutputBackend : IOutputBackend`
 - `public IPlatformGraphics PlatformGraphics { get; }`
 
 ### `src/Linux/Avalonia.LinuxFramebuffer/Output/IOutputBackend.cs`
-- `public interface IOutputBackend`
+- `public interface IOutputBackend : IPlatformRenderSurface`
 
 ### `src/Markup/Avalonia.Markup.Xaml.Loader/CompilerExtensions/Transformers/AvaloniaXamlIlControlTemplateTargetTypeMetadataTransformer.cs`
 - `public enum ScopeTypes`
@@ -5963,11 +6287,6 @@
 ### `src/Markup/Avalonia.Markup.Xaml/MarkupExtension.cs`
 - `public abstract class MarkupExtension`
 
-### `src/Markup/Avalonia.Markup.Xaml/MarkupExtensions/CompiledBindings/CompiledBindingPath.cs`
-- `public CompiledBindingPathBuilder ArrayElement(int[] indices, Type elementType) {`
-- `public CompiledBindingPathBuilder TypeCast<T>() {`
-- `public CompiledBindingPathBuilder SetRawSource(object? rawSource) {`
-
 ### `src/Markup/Avalonia.Markup.Xaml/MarkupExtensions/CompiledBindings/PropertyInfoAccessorFactory.cs`
 - `public static class PropertyInfoAccessorFactory`
 - `public static IPropertyAccessor CreateInpcPropertyAccessor(WeakReference<object?> target, IPropertyInfo property) => new InpcPropertyAccessor(target, property);`
@@ -5976,6 +6295,12 @@
 
 ### `src/Markup/Avalonia.Markup.Xaml/RuntimeXamlLoaderConfiguration.cs`
 - `public delegate RuntimeXamlDiagnosticSeverity XamlDiagnosticFunc(RuntimeXamlDiagnostic diagnostic);`
+
+### `src/Markup/Avalonia.Markup.Xaml/Templates/TreeDataTemplate.cs`
+- `public IDisposable BindChildren(AvaloniaObject target, AvaloniaProperty targetProperty, object item) {`
+
+### `src/Markup/Avalonia.Markup.Xaml/Templates/WindowDrawnDecorationsTemplate.cs`
+- `public class WindowDrawnDecorationsTemplate : IWindowDrawnDecorationsTemplate, ITemplate`
 
 ### `src/Markup/Avalonia.Markup.Xaml/XamlIl/Runtime/IAvaloniaXamlIlControlTemplateProvider.cs`
 - `public interface IAvaloniaXamlIlControlTemplateProvider`
@@ -5994,16 +6319,7 @@
 - `public static void ApplyNonMatchingMarkupExtensionV1(object target, object property, IServiceProvider prov, object value) {`
 - `public static IServiceProvider CreateInnerServiceProviderV1(IServiceProvider compiled) => new InnerServiceProvider(compiled);`
 
-### `src/Markup/Avalonia.Markup.Xaml/XamlTypes.cs`
-- `public sealed class ConstructorArgumentAttribute : Attribute`
-- `public ConstructorArgumentAttribute(string name) {`
-
-### `src/Markup/Avalonia.Markup/Data/BindingBase.cs`
-- `public WeakReference? DefaultAnchor { get; set; }`
-
 ### `src/Skia/Avalonia.Skia/Gpu/ISkiaGpu.cs`
-- `public interface ISkiaGpu : IPlatformGraphicsContext`
-- `public interface ISkiaGpuWithPlatformGraphicsContext : ISkiaGpu`
 - `public interface ISkiaSurface : IDisposable`
 
 ### `src/Skia/Avalonia.Skia/Gpu/ISkiaGpuRenderSession.cs`
@@ -6011,14 +6327,12 @@
 
 ### `src/Skia/Avalonia.Skia/Gpu/ISkiaGpuRenderTarget.cs`
 - `public interface ISkiaGpuRenderTarget : IDisposable`
-- `public interface ISkiaGpuRenderTarget2 : ISkiaGpuRenderTarget`
 
 ### `src/Skia/Avalonia.Skia/Gpu/OpenGl/IGlSkiaSpecificOptionsFeature.cs`
 - `public interface IGlSkiaSpecificOptionsFeature`
 - `public bool UseNativeSkiaGrGlInterface { get; }`
 
 ### `src/Skia/Avalonia.Skia/Helpers/DrawingContextHelper.cs`
-- `public static IDrawingContextImpl WrapSkiaCanvas(SKCanvas canvas, Vector dpi) {`
 - `public static bool TryCreateDashEffect(IPen? pen, [NotNullWhen(true)] out SKPathEffect? effect) {`
 
 ### `src/Skia/Avalonia.Skia/Helpers/ImageSavingHelper.cs`
@@ -6040,7 +6354,7 @@
 
 ### `src/Skia/Avalonia.Skia/SkiaSharpExtensions.cs`
 - `public static class SkiaSharpExtensions`
-- `public static SKFilterQuality ToSKFilterQuality(this BitmapInterpolationMode interpolationMode) {`
+- `public static SKSamplingOptions ToSKSamplingOptions(this BitmapInterpolationMode interpolationMode) => ToSKSamplingOptions(interpolationMode, true);`
 - `public static SKBlendMode ToSKBlendMode(this BitmapBlendingMode blendingMode) {`
 - `public static SKPoint ToSKPoint(this Point p) {`
 - `public static SKPoint ToSKPoint(this Vector p) {`
@@ -6050,6 +6364,7 @@
 - `public static Rect ToAvaloniaRect(this SKRect r) {`
 - `public static PixelRect ToAvaloniaPixelRect(this SKRectI r) {`
 - `public static SKMatrix ToSKMatrix(this Matrix m) {`
+- `public static SKMatrix44 ToSKMatrix44(this Matrix m) {`
 - `public static SKColor ToSKColor(this Color c) {`
 - `public static SKColorType ToSkColorType(this PixelFormat fmt) {`
 - `public static PixelFormat? ToAvalonia(this SKColorType colorType) {`
@@ -6065,44 +6380,13 @@
 - `public static SKFontStyleSlant ToSkia(this FontStyle style) {`
 - `public static SKPath? Clone(this SKPath? src) {`
 
-### `src/Tizen/Avalonia.Tizen/NuiAvaloniaView.cs`
-- `public class NuiAvaloniaView : GLView, ITizenView, ITextInputMethodImpl`
-- `public IInputRoot InputRoot {`
-- `public event Action? OnSurfaceInit;`
-- `public NuiAvaloniaView() : base(ColorFormat.RGBA8888) {`
-- `public void SetClient(TextInputMethodClient? client) {`
-- `public void SetCursorRect(Rect rect) {`
-- `public void SetOptions(TextInputOptions options) =>`
-
-### `src/Tizen/Avalonia.Tizen/NuiAvaloniaViewTextEditable.cs`
-- `public class NuiMultiLineTextInput : TextEditor, INuiTextInput`
-- `public class NuiSingleLineTextInput : TextField, INuiTextInput`
-
-### `src/Tizen/Avalonia.Tizen/NuiTizenApplication.cs`
-- `public class NuiTizenApplication<TApp> : NUIApplication`
-
-### `src/Tizen/Avalonia.Tizen/NuiViewControlHandle.cs`
-- `public class NuiViewControlHandle : INativeControlHostDestroyableControlHandle`
-- `public NuiViewControlHandle(View view) {`
-- `public View View { get; set; }`
-- `public IntPtr Handle => throw new NotSupportedException();`
-- `public string? HandleDescriptor => ViewDescriptor;`
-- `public void Destroy() => View.Dispose();`
-
-### `src/Tizen/Avalonia.Tizen/TizenApplicationExtensions.cs`
-- `public static class TizenApplicationExtensions`
-- `public static AppBuilder UseTizen(this AppBuilder builder) {`
-
-### `src/Windows/Avalonia.Direct2D1/Direct2D1Platform.cs`
-- `public static class Direct2DApplicationExtensions`
-- `public static AppBuilder UseDirect2D1(this AppBuilder builder) {`
-
-### `src/Windows/Avalonia.Direct2D1/IExternalDirect2DRenderTargetSurface.cs`
-- `public interface IExternalDirect2DRenderTargetSurface`
-
 ### `src/Windows/Avalonia.Win32.Interoperability/WinForms/WinFormsAvaloniaControlHost.cs`
 - `public class WinFormsAvaloniaControlHost : WinFormsControl, IMessageFilter`
 - `public WinFormsAvaloniaControlHost() {`
+- `public bool PreFilterMessage(ref Message m) {`
+
+### `src/Windows/Avalonia.Win32.Interoperability/WinForms/WinFormsAvaloniaMessageFilter.cs`
+- `public class WinFormsAvaloniaMessageFilter : IMessageFilter`
 - `public bool PreFilterMessage(ref Message m) {`
 
 ### `src/Windows/Avalonia.Win32/AngleOptions.cs`
@@ -6111,8 +6395,8 @@
 - `public IList<PlatformApi>? AllowedPlatformApis { get; set; } = null;`
 
 ### `src/Windows/Avalonia.Win32/DirectX/IDirect3D11TexturePlatformSurface.cs`
-- `public interface IDirect3D11TexturePlatformSurface`
-- `public interface IDirect3D11TextureRenderTarget : IDisposable`
+- `public interface IDirect3D11TexturePlatformSurface : IPlatformRenderSurface`
+- `public interface IDirect3D11TextureRenderTarget : IPlatformRenderSurfaceRenderTarget, IDisposable`
 - `public interface IDirect3D11TextureRenderTargetRenderSession : IDisposable`
 - `public IntPtr D3D11Texture2D { get; }`
 
@@ -6121,11 +6405,13 @@
 - `public static Key KeyFromVirtualKey(int virtualKey, int keyData) {`
 - `public static int VirtualKeyFromKey(Key key) {`
 - `public static PhysicalKey PhysicalKeyFromVirtualKey(int virtualKey, int keyData) {`
+- `public static string? GetKeySymbolFromVirtualKey(int virtualKey) {`
 - `public static unsafe string? GetKeySymbol(int virtualKey, int keyData) {`
 
 ### `src/iOS/Avalonia.iOS/AvaloniaAppDelegate.cs`
 - `public AvaloniaAppDelegate() {`
-- `public bool FinishedLaunching(UIApplication application, NSDictionary launchOptions) {`
+- `public UISceneConfiguration GetConfiguration(UIApplication application, UISceneSession connectingSceneSession, UISceneConnectionOptions options) {`
+- `public bool FinishedLaunching(UIApplication application, NSDictionary? launchOptions) {`
 - `public bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options) {`
 - `public bool ContinueUserActivity(UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler) {`
 
@@ -6162,38 +6448,44 @@
 - `public override void ViewDidLayoutSubviews() {`
 - `public override bool PrefersStatusBarHidden() {`
 - `public override UIStatusBarStyle PreferredStatusBarStyle() {`
-- `public Thickness SafeAreaPadding { get; private set; }`
 - `public event EventHandler? SafeAreaPaddingChanged;`
 
-### `src/tools/Avalonia.Analyzers/AvaloniaPropertyAnalyzer.CompileAnalyzer.cs`
+### `src/tools/Avalonia.Analyzers.CSharp/AvaloniaAnalysisException.cs`
+- `public class AvaloniaAnalysisException : Exception`
+- `public AvaloniaAnalysisException(string message, Exception? innerException = null) : base(message, innerException) {`
+
+### `src/tools/Avalonia.Analyzers.CSharp/AvaloniaPropertyAnalyzer.CSharp.cs`
+- `public partial class AvaloniaPropertyAnalyzer`
+
+### `src/tools/Avalonia.Analyzers.CSharp/AvaloniaPropertyAnalyzer.CompileAnalyzer.cs`
 - `public partial class AvaloniaPropertyAnalyzer`
 - `public class CompileAnalyzer`
 - `public CompileAnalyzer(CompilationStartAnalysisContext context, INamedTypeSymbol avaloniaObjectType) {`
 
-### `src/tools/Avalonia.Analyzers/AvaloniaPropertyAnalyzer.cs`
+### `src/tools/Avalonia.Analyzers.CSharp/AvaloniaPropertyAnalyzer.cs`
 - `public partial class AvaloniaPropertyAnalyzer : DiagnosticAnalyzer`
 - `public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = ImmutableArray.Create(`
-- `public class AvaloniaAnalysisException : Exception`
-- `public AvaloniaAnalysisException(string message, Exception? innerException = null) : base(message, innerException) {`
 
-### `src/tools/Avalonia.Analyzers/BitmapAnalyzer.cs`
+### `src/tools/Avalonia.Analyzers.CSharp/BitmapAnalyzer.cs`
 - `public class BitmapAnalyzer: DiagnosticAnalyzer`
-- `public const string DiagnosticId = "AVA2002";`
 - `public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get { return ImmutableArray.Create(_rule); } }`
 
-### `src/tools/Avalonia.Analyzers/BitmapAnalyzerCSCodeFixProvider.cs`
-- `public class BitmapAnalyzerCSCodeFixProvider : CodeFixProvider`
+### `src/tools/Avalonia.Analyzers.CSharp/DiagnosticIds.cs`
+- `public static class DiagnosticIds`
+- `public const string OnPropertyChangedOverride = "AVA2001";`
+
+### `src/tools/Avalonia.Analyzers.CSharp/OnPropertyChangedOverrideAnalyzer.cs`
+- `public class OnPropertyChangedOverrideAnalyzer : DiagnosticAnalyzer`
+- `public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);`
+
+### `src/tools/Avalonia.Analyzers.CodeFixes.CSharp/BitmapAnalyzerCodeFixProvider.cs`
+- `public class BitmapAnalyzerCodeFixProvider : CodeFixProvider`
 - `public override ImmutableArray<string> FixableDiagnosticIds { get; } =`
 - `public override FixAllProvider? GetFixAllProvider() {`
 - `public sealed override async Task RegisterCodeFixesAsync(CodeFixContext context) {`
 
-### `src/tools/Avalonia.Analyzers/OnPropertyChangedOverrideAnalyzer.cs`
-- `public class OnPropertyChangedOverrideAnalyzer : DiagnosticAnalyzer`
-- `public const string DiagnosticId = "AVA2001";`
-- `public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);`
-
-### `src/tools/Avalonia.Generators/NameGenerator/AvaloniaNameSourceGenerator.cs`
-- `public class AvaloniaNameSourceGenerator : ISourceGenerator`
+### `src/tools/Avalonia.Analyzers.VisualBasic/AvaloniaPropertyAnalyzer.VisualBasic.cs`
+- `public partial class AvaloniaPropertyAnalyzer`
 
 ### `src/tools/DevAnalyzers/GenericVirtualAnalyzer.cs`
 - `public class GenericVirtualAnalyzer : DiagnosticAnalyzer`

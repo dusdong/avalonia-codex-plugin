@@ -18,7 +18,6 @@
 - `public static readonly StyledProperty<ContextMenu?> ContextMenuProperty = AvaloniaProperty.Register<Control, ContextMenu?>(nameof(ContextMenu));`
 - `public static readonly StyledProperty<FlyoutBase?> ContextFlyoutProperty = AvaloniaProperty.Register<Control, FlyoutBase?>(nameof(ContextFlyout));`
 - `public static readonly RoutedEvent<RequestBringIntoViewEventArgs> RequestBringIntoViewEvent = RoutedEvent.Register<Control, RequestBringIntoViewEventArgs>( "RequestBringIntoView", RoutingStrategies.Bubble);`
-- `public static readonly RoutedEvent<ContextRequestedEventArgs> ContextRequestedEvent = RoutedEvent.Register<Control, ContextRequestedEventArgs>( nameof(ContextRequested), RoutingStrategies.Tunnel | RoutingStrategies.Bubble);`
 - `public static readonly RoutedEvent<RoutedEventArgs> LoadedEvent = RoutedEvent.Register<Control, RoutedEventArgs>( nameof(Loaded), RoutingStrategies.Direct);`
 - `public static readonly RoutedEvent<RoutedEventArgs> UnloadedEvent = RoutedEvent.Register<Control, RoutedEventArgs>( nameof(Unloaded), RoutingStrategies.Direct);`
 - `public static readonly RoutedEvent<SizeChangedEventArgs> SizeChangedEvent = RoutedEvent.Register<Control, SizeChangedEventArgs>( nameof(SizeChanged), RoutingStrategies.Direct);`
@@ -28,7 +27,8 @@
 - `public FlyoutBase? ContextFlyout {`
 - `public bool IsLoaded => _loadState == LoadState.Loaded;`
 - `public object? Tag {`
-- `public event EventHandler<ContextRequestedEventArgs>? ContextRequested {`
+- `public event EventHandler<RoutedEventArgs>? Loaded {`
+- `public event EventHandler<RoutedEventArgs>? Unloaded {`
 
 ## XAML Usage
 

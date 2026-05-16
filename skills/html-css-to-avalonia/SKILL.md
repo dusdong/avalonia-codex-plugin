@@ -7,6 +7,7 @@ description: Port HTML or CSS mental models, layouts, controls, theming, and mod
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/62-html-css-to-avalonia-modern-ui-conversion-index.md`
 - `../../references/html-to-avalonia/README.md`
 

@@ -7,6 +7,7 @@ description: Design or review Avalonia validation, data-error presentation, acce
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/22-validation-pipeline-and-data-errors.md`
 - `../../references/23-accessibility-and-automation.md`
 - `../../references/60-automation-properties-and-attached-behavior-patterns.md`

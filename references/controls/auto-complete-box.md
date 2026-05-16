@@ -14,7 +14,10 @@
 ## Basic APIs
 
 - `public static readonly StyledProperty<int> CaretIndexProperty = TextBox.CaretIndexProperty.AddOwner<AutoCompleteBox>(new( defaultValue: 0, defaultBindingMode: BindingMode.TwoWay));`
-- `public static readonly StyledProperty<string?> WatermarkProperty = TextBox.WatermarkProperty.AddOwner<AutoCompleteBox>();`
+- `public static readonly StyledProperty<string?> PlaceholderTextProperty = TextBox.PlaceholderTextProperty.AddOwner<AutoCompleteBox>();`
+- `public static readonly StyledProperty<string?> WatermarkProperty = PlaceholderTextProperty;`
+- `public static readonly StyledProperty<Media.IBrush?> PlaceholderForegroundProperty = TextBox.PlaceholderForegroundProperty.AddOwner<AutoCompleteBox>();`
+- `public static readonly StyledProperty<Media.IBrush?> WatermarkForegroundProperty = PlaceholderForegroundProperty;`
 - `public static readonly StyledProperty<int> MinimumPrefixLengthProperty = AvaloniaProperty.Register<AutoCompleteBox, int>( nameof(MinimumPrefixLength), 1, validate: IsValidMinimumPrefixLength);`
 - `public static readonly StyledProperty<TimeSpan> MinimumPopulateDelayProperty = AvaloniaProperty.Register<AutoCompleteBox, TimeSpan>( nameof(MinimumPopulateDelay), TimeSpan.Zero, validate: IsValidMinimumPopulateDelay);`
 - `public static readonly StyledProperty<double> MaxDropDownHeightProperty = AvaloniaProperty.Register<AutoCompleteBox, double>( nameof(MaxDropDownHeight), double.PositiveInfinity, validate: IsValidMaxDropDownHeight);`
@@ -26,9 +29,6 @@
 - `public static readonly StyledProperty<string?> TextProperty = TextBlock.TextProperty.AddOwner<AutoCompleteBox>(new(string.Empty, defaultBindingMode: BindingMode.TwoWay, enableDataValidation: true));`
 - `public static readonly DirectProperty<AutoCompleteBox, string?> SearchTextProperty = AvaloniaProperty.RegisterDirect<AutoCompleteBox, string?>( nameof(SearchText), o => o.SearchText,`
 - `public static readonly StyledProperty<AutoCompleteFilterMode> FilterModeProperty = AvaloniaProperty.Register<AutoCompleteBox, AutoCompleteFilterMode>( nameof(FilterMode), defaultValue: AutoCompleteFilterMode.StartsWith, validate: IsValidFilterMode);`
-- `public static readonly StyledProperty<AutoCompleteFilterPredicate<object?>?> ItemFilterProperty = AvaloniaProperty.Register<AutoCompleteBox, AutoCompleteFilterPredicate<object?>?>( nameof(ItemFilter));`
-- `public static readonly StyledProperty<AutoCompleteFilterPredicate<string?>?> TextFilterProperty = AvaloniaProperty.Register<AutoCompleteBox, AutoCompleteFilterPredicate<string?>?>( nameof(TextFilter), defaultValue: AutoCompleteSearch.GetFilter(AutoCompleteFilterMode.StartsWith));`
-- `public static readonly StyledProperty<AutoCompleteSelector<object>?> ItemSelectorProperty = AvaloniaProperty.Register<AutoCompleteBox, AutoCompleteSelector<object>?>( nameof(ItemSelector));`
 
 ## XAML Usage
 

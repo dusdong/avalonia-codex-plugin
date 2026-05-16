@@ -1,4 +1,4 @@
 interface:
-  display_name: "WinForms to Avalonia"
+  display_name: "WinForms to Avalonia 12"
   short_description: "Port WinForms layout, controls, rendering, and workflow shells"
-  default_prompt: "Use $winforms-to-avalonia to port a WinForms UI or workflow to Avalonia"
+  default_prompt: "Use $winforms-to-avalonia to port a WinForms UI or workflow to Avalonia 12"

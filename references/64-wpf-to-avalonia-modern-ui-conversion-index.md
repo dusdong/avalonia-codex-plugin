@@ -12,7 +12,7 @@
 
 ## Scope and Coverage Contract
 
-This reference lane maps WPF application patterns to Avalonia `11.3.12` XAML/C# patterns for:
+This reference lane maps WPF application patterns to Avalonia 12 XAML/C# patterns, using the local Avalonia source baseline for API verification, for:
 
 - property system and control authoring,
 - layout, binding, validation, and templating,
@@ -24,7 +24,7 @@ Coverage intent for this lane:
 - migration guidance is practical and example-driven,
 - API lookup is exhaustive through generated references:
   - controls: one file per control in [`controls/README.md`](controls/README),
-  - signatures: [`api-index-generated.md`](api-index-generated).
+  - signatures: generated API indexes are lookup helpers and must be verified against the local Avalonia 12 source baseline.
 
 ## WPF Areas Mapped
 

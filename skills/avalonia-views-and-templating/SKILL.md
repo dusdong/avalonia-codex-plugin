@@ -7,6 +7,7 @@ description: Build or refactor Avalonia view composition, view-location strategi
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/11-user-views-locator-and-tree-patterns.md`
 - `../../references/38-data-templates-and-idatatemplate-selector-patterns.md`
 - `../../references/51-template-content-and-func-template-patterns.md`

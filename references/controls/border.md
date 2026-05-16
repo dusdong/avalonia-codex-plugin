@@ -16,7 +16,7 @@
 - `public static readonly StyledProperty<IBrush?> BackgroundProperty = AvaloniaProperty.Register<Border, IBrush?>(nameof(Background));`
 - `public static readonly StyledProperty<BackgroundSizing> BackgroundSizingProperty = AvaloniaProperty.Register<Border, BackgroundSizing>( nameof(BackgroundSizing), BackgroundSizing.CenterBorder);`
 - `public static readonly StyledProperty<IBrush?> BorderBrushProperty = AvaloniaProperty.Register<Border, IBrush?>(nameof(BorderBrush));`
-- `public static readonly StyledProperty<Thickness> BorderThicknessProperty = AvaloniaProperty.Register<Border, Thickness>(nameof(BorderThickness));`
+- `public static readonly StyledProperty<Thickness> BorderThicknessProperty = AvaloniaProperty.Register<Border, Thickness>(nameof(BorderThickness), validate: MarginProperty.ValidateValue);`
 - `public static readonly StyledProperty<CornerRadius> CornerRadiusProperty = AvaloniaProperty.Register<Border, CornerRadius>(nameof(CornerRadius));`
 - `public static readonly StyledProperty<BoxShadows> BoxShadowProperty = AvaloniaProperty.Register<Border, BoxShadows>(nameof(BoxShadow));`
 - `public IBrush? Background {`

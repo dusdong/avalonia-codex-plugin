@@ -21,7 +21,7 @@ Primary Avalonia APIs:
 - `IMultiValueConverter`
 - `MultiBinding.StringFormat`, `FallbackValue`, `TargetNullValue`
 
-`PriorityBinding` does not have a direct built-in equivalent in Avalonia `11.3.12`.
+Verify current binding APIs against the local Avalonia 12 source baseline; do not assume WPF `PriorityBinding` has a direct built-in equivalent unless the source tree proves otherwise.
 
 ## Binding Aggregation Mapping
 

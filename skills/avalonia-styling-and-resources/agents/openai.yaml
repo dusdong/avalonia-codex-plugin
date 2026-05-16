@@ -1,4 +1,4 @@
 interface:
-  display_name: "Avalonia Styling and Resources"
+  display_name: "Avalonia 12 Styling and Resources"
   short_description: "Styles, resources, themes, and property-system-driven UI architecture"
-  default_prompt: "Use $avalonia-styling-and-resources to build or troubleshoot Avalonia styles, themes, and resources"
+  default_prompt: "Use $avalonia-styling-and-resources to build or troubleshoot Avalonia 12 styles, themes, and resources"

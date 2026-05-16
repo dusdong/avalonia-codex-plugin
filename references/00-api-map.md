@@ -302,7 +302,7 @@ Use:
 - Use `ControlTheme` for reusable component families and `ItemContainerTheme` / `FlyoutPresenterTheme` for high-value container and overlay polish.
 - Model design systems as primitive tokens -> semantic tokens -> component tokens.
 - Use transitions first for simple state changes, page transitions for view swaps, and composition APIs for shell-level or high-frequency motion.
-- Use composition groups and implicit animations when several shell effects must stay coordinated; for app code in Avalonia `11.3.12`, prefer animation parameter APIs over direct `CompositionPropertySet` construction.
+- Use composition groups and implicit animations when several shell effects must stay coordinated; for app code on the local Avalonia 12 baseline, verify compositor construction and animation parameter APIs against `frameworks/Avalonia` before recommending low-level composition patterns.
 - Design for localization, `FlowDirection`, and mixed input early so the visual system holds up under RTL, touch, and dense professional workflows.
 - Use `PathIcon` plus shared geometry resources for most single-color command icons; use `Image`/`Bitmap`, `WindowIcon`, or native-menu bitmaps only when the target surface requires them.
 

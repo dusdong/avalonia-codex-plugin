@@ -1,4 +1,4 @@
 interface:
-  display_name: "Avalonia Input and Commands"
+  display_name: "Avalonia 12 Input and Commands"
   short_description: "Commands, focus, gestures, drag/drop, and text-input behavior"
-  default_prompt: "Use $avalonia-input-and-commands to fix routed input, focus, commands, or drag/drop behavior in Avalonia"
+  default_prompt: "Use $avalonia-input-and-commands to fix routed input, focus, commands, or drag/drop behavior in Avalonia 12"

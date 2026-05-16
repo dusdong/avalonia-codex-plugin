@@ -7,6 +7,7 @@ description: Build or troubleshoot Avalonia controls, control themes, windows, p
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/10-templated-controls-and-control-themes.md`
 - `../../references/13-windowing-and-custom-decorations.md`
 - `../../references/48-toplevel-window-and-runtime-services.md`

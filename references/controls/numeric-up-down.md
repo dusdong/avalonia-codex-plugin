@@ -27,8 +27,8 @@
 - `public static readonly StyledProperty<string?> TextProperty = AvaloniaProperty.Register<NumericUpDown, string?>(nameof(Text), defaultBindingMode: BindingMode.TwoWay, enableDataValidation: true);`
 - `public static readonly StyledProperty<IValueConverter?> TextConverterProperty = AvaloniaProperty.Register<NumericUpDown, IValueConverter?>(nameof(TextConverter), defaultBindingMode: BindingMode.OneWay);`
 - `public static readonly StyledProperty<decimal?> ValueProperty = AvaloniaProperty.Register<NumericUpDown, decimal?>(nameof(Value), coerce: (s,v) => ((NumericUpDown)s).OnCoerceValue(v),`
-- `public static readonly StyledProperty<string?> WatermarkProperty = AvaloniaProperty.Register<NumericUpDown, string?>(nameof(Watermark));`
-- `public static readonly StyledProperty<HorizontalAlignment> HorizontalContentAlignmentProperty = ContentControl.HorizontalContentAlignmentProperty.AddOwner<NumericUpDown>();`
+- `public static readonly StyledProperty<string?> PlaceholderTextProperty = #pragma warning disable AVP1013 TextBox.PlaceholderTextProperty.AddOwner<NumericUpDown>();`
+- `public static readonly StyledProperty<string?> WatermarkProperty = PlaceholderTextProperty;`
 
 ## XAML Usage
 

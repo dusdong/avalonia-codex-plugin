@@ -129,7 +129,7 @@ Main lifetime choices:
 - `ISingleTopLevelApplicationLifetime` when the host has exactly one `TopLevel`.
 
 Compatibility note:
-- `IActivatableApplicationLifetime` exists as an obsolete compatibility interface and has no effect in `11.3.12`; use `Application.Current.TryGetFeature<IActivatableLifetime>()`.
+- `IActivatableApplicationLifetime` is a legacy compatibility concept; verify activation guidance against the local Avalonia 12 source baseline and prefer `Application.Current.TryGetFeature<IActivatableLifetime>()` where applicable.
 
 Related public activation types:
 

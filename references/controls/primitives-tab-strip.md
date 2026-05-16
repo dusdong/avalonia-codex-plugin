@@ -13,7 +13,7 @@
 
 ## Basic APIs
 
-- No additional public members are declared on this type in source files scanned; use base control APIs.
+- `public override bool UpdateSelectionFromEvent(Control container, RoutedEventArgs eventArgs) {`
 
 ## XAML Usage
 

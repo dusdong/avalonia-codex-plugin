@@ -17,11 +17,11 @@
 - `public static readonly StyledProperty<bool> IsEditableProperty = AvaloniaProperty.Register<ComboBox, bool>(nameof(IsEditable));`
 - `public static readonly StyledProperty<double> MaxDropDownHeightProperty = AvaloniaProperty.Register<ComboBox, double>(nameof(MaxDropDownHeight), 200);`
 - `public static readonly DirectProperty<ComboBox, object?> SelectionBoxItemProperty = AvaloniaProperty.RegisterDirect<ComboBox, object?>(nameof(SelectionBoxItem), o => o.SelectionBoxItem);`
-- `public static readonly StyledProperty<string?> PlaceholderTextProperty = AvaloniaProperty.Register<ComboBox, string?>(nameof(PlaceholderText));`
-- `public static readonly StyledProperty<IBrush?> PlaceholderForegroundProperty = AvaloniaProperty.Register<ComboBox, IBrush?>(nameof(PlaceholderForeground));`
+- `public static readonly StyledProperty<string?> PlaceholderTextProperty = TextBox.PlaceholderTextProperty.AddOwner<ComboBox>();`
+- `public static readonly StyledProperty<IBrush?> PlaceholderForegroundProperty = TextBox.PlaceholderForegroundProperty.AddOwner<ComboBox>();`
 - `public static readonly StyledProperty<HorizontalAlignment> HorizontalContentAlignmentProperty = ContentControl.HorizontalContentAlignmentProperty.AddOwner<ComboBox>();`
 - `public static readonly StyledProperty<VerticalAlignment> VerticalContentAlignmentProperty = ContentControl.VerticalContentAlignmentProperty.AddOwner<ComboBox>();`
-- `public static readonly StyledProperty<string?> TextProperty = TextBlock.TextProperty.AddOwner<ComboBox>(new(string.Empty, BindingMode.TwoWay));`
+- `public static readonly StyledProperty<string?> TextProperty = TextBlock.TextProperty.AddOwner<ComboBox>(new(string.Empty, BindingMode.TwoWay, enableDataValidation: true));`
 - `public static readonly StyledProperty<IDataTemplate?> SelectionBoxItemTemplateProperty = AvaloniaProperty.Register<ComboBox, IDataTemplate?>( nameof(SelectionBoxItemTemplate), defaultBindingMode: BindingMode.TwoWay, coerce: CoerceSelectionBoxItemTemplate);`
 - `public event EventHandler? DropDownClosed;`
 - `public event EventHandler? DropDownOpened;`

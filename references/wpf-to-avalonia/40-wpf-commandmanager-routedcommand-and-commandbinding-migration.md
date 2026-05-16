@@ -21,7 +21,7 @@ Primary Avalonia APIs:
 - `KeyBinding` and `HotKey` for keyboard activation
 - explicit command-state invalidation by raising `CanExecuteChanged`
 
-Avalonia `11.3.12` does not provide WPF `CommandManager`/`CommandBinding` routing primitives.
+The local Avalonia 12 source baseline should be treated as the authority for command APIs; do not assume WPF `CommandManager`/`CommandBinding` routing primitives exist unless the source tree proves otherwise.
 
 ## Command Infrastructure Mapping
 

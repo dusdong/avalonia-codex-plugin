@@ -13,8 +13,7 @@
 
 ## Basic APIs
 
-- `public static readonly AttachedProperty<bool> EnableMenuItemClickForwardingProperty = AvaloniaProperty.RegisterAttached<NativeMenuBar, MenuItem, bool>( "EnableMenuItemClickForwarding");`
-- `public static void SetEnableMenuItemClickForwarding(MenuItem menuItem, bool enable) {`
+- No additional public members are declared on this type in source files scanned; use base control APIs.
 
 ## XAML Usage
 

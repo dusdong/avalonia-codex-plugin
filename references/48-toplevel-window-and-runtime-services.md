@@ -35,8 +35,8 @@ Service entry points exposed by `TopLevel`:
 - `PlatformSettings`
 
 Version note:
-- this stable reference reflects the `11.3.12` `TopLevel` surface,
-- for Avalonia 12 migration, see [`68-avalonia-12-migration-guide.md`](68-avalonia-12-migration-guide) because `TopLevel` is no longer guaranteed to be the visual root, `IPresentationSource` becomes part of the public host model, and some older root-service assumptions no longer hold.
+- this reference must be verified against the local Avalonia 12 source baseline,
+- do not assume legacy Avalonia 11 `TopLevel` root-service behavior; use the Avalonia 12 host and presentation-source model where applicable.
 
 ## `TopLevel` Runtime Services Surface
 

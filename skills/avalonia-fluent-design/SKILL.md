@@ -7,6 +7,7 @@ description: Build or refine Avalonia UIs that follow Microsoft Fluent guidance 
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/67-microsoft-fluent-design-and-fluenttheme.md`
 - `../../references/fluent-design/README.md`
 

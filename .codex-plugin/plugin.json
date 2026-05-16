@@ -25,8 +25,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Development Plugin for Avalonia",
-    "shortDescription": "Focused skills for building and porting Avalonia apps",
-    "longDescription": "Use Development Plugin for Avalonia to build or review Avalonia applications, route work into focused startup, styling, rendering, platform, and testing workflows, and handle HTML/CSS, WinForms, WPF, WinUI, and Avalonia 12 migration lanes without drifting away from the pinned Avalonia 11.3.12 guidance.",
+    "shortDescription": "Focused skills for building and porting Avalonia 12 apps",
+    "longDescription": "Use Development Plugin for Avalonia to build or review Avalonia 12 applications, route work into focused startup, styling, rendering, platform, and testing workflows, and handle HTML/CSS, WinForms, WPF, WinUI, and legacy Avalonia migration without drifting away from the local Avalonia 12 source baseline.",
     "developerName": "Wiesław Šoltés",
     "category": "Coding",
     "capabilities": [
@@ -38,9 +38,9 @@
     "privacyPolicyURL": "https://github.com/wieslawsoltes/development-plugin-for-avalonia/blob/main/PRIVACY.md",
     "termsOfServiceURL": "https://github.com/wieslawsoltes/development-plugin-for-avalonia/blob/main/TERMS.md",
     "defaultPrompt": [
-      "Build a modern Avalonia app and route the work to the right specialist skill",
-      "Port this WPF, WinForms, WinUI, or HTML UI to Avalonia",
-      "Review an Avalonia project for AOT-safe bindings, styling, and performance"
+      "Build a modern Avalonia 12 app and route the work to the right specialist skill",
+      "Port this WPF, WinForms, WinUI, or HTML UI to Avalonia 12",
+      "Review an Avalonia 12 project for AOT-safe bindings, styling, and performance"
     ],
     "brandColor": "#0F6CBD",
     "composerIcon": "./assets/development-plugin-for-avalonia-icon.png",

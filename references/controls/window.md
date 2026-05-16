@@ -8,23 +8,23 @@
 - Namespace: `Avalonia.Controls`
 - Assembly: `Avalonia.Controls`
 - Source: `src/Avalonia.Controls/Window.cs`
-- Base types: `IFocusScope, ILayoutRoot, WindowBase`
+- Base types: `IFocusScope, WindowBase`
 - Kind: `control`
 
 ## Basic APIs
 
 - `public static readonly StyledProperty<SizeToContent> SizeToContentProperty = AvaloniaProperty.Register<Window, SizeToContent>(nameof(SizeToContent));`
 - `public static readonly StyledProperty<bool> ExtendClientAreaToDecorationsHintProperty = AvaloniaProperty.Register<Window, bool>(nameof(ExtendClientAreaToDecorationsHint), false);`
-- `public static readonly StyledProperty<ExtendClientAreaChromeHints> ExtendClientAreaChromeHintsProperty = AvaloniaProperty.Register<Window, ExtendClientAreaChromeHints>(nameof(ExtendClientAreaChromeHints), ExtendClientAreaChromeHints.Default);`
 - `public static readonly StyledProperty<double> ExtendClientAreaTitleBarHeightHintProperty = AvaloniaProperty.Register<Window, double>(nameof(ExtendClientAreaTitleBarHeightHint), -1);`
 - `public static readonly DirectProperty<Window, bool> IsExtendedIntoWindowDecorationsProperty = AvaloniaProperty.RegisterDirect<Window, bool>(nameof(IsExtendedIntoWindowDecorations), o => o.IsExtendedIntoWindowDecorations,`
 - `public static readonly DirectProperty<Window, Thickness> WindowDecorationMarginProperty = AvaloniaProperty.RegisterDirect<Window, Thickness>(nameof(WindowDecorationMargin), o => o.WindowDecorationMargin);`
 - `public static readonly DirectProperty<Window, Thickness> OffScreenMarginProperty = AvaloniaProperty.RegisterDirect<Window, Thickness>(nameof(OffScreenMargin), o => o.OffScreenMargin);`
-- `public static readonly StyledProperty<SystemDecorations> SystemDecorationsProperty = AvaloniaProperty.Register<Window, SystemDecorations>(nameof(SystemDecorations), SystemDecorations.Full);`
+- `public static readonly StyledProperty<WindowDecorations> WindowDecorationsProperty = AvaloniaProperty.Register<Window, WindowDecorations>(nameof(WindowDecorations), WindowDecorations.Full);`
+- `public static readonly StyledProperty<ControlTheme?> WindowDecorationsThemeProperty = AvaloniaProperty.Register<Window, ControlTheme?>(nameof(WindowDecorationsTheme));`
 - `public static readonly StyledProperty<bool> ShowActivatedProperty = AvaloniaProperty.Register<Window, bool>(nameof(ShowActivated), true);`
 - `public static readonly StyledProperty<bool> ShowInTaskbarProperty = AvaloniaProperty.Register<Window, bool>(nameof(ShowInTaskbar), true);`
 - `public static readonly StyledProperty<WindowClosingBehavior> ClosingBehaviorProperty = AvaloniaProperty.Register<Window, WindowClosingBehavior>(nameof(ClosingBehavior));`
-- `public static readonly StyledProperty<WindowState> WindowStateProperty = AvaloniaProperty.Register<Window, WindowState>(nameof(WindowState));`
+- `public static readonly DirectProperty<Window, WindowState> WindowStateProperty = AvaloniaProperty.RegisterDirect<Window, WindowState>( nameof(WindowState), o => o.WindowState,`
 - `public static readonly StyledProperty<string?> TitleProperty = AvaloniaProperty.Register<Window, string?>(nameof(Title), "Window");`
 - `public static readonly StyledProperty<WindowIcon?> IconProperty = AvaloniaProperty.Register<Window, WindowIcon?>(nameof(Icon));`
 - `public static readonly StyledProperty<WindowStartupLocation> WindowStartupLocationProperty = AvaloniaProperty.Register<Window, WindowStartupLocation>(nameof(WindowStartupLocation));`

@@ -12,7 +12,7 @@
 
 ## Scope and Coverage Contract
 
-This lane maps WinUI (Windows App SDK / WinUI 3) app patterns to Avalonia `11.3.12` XAML/C# patterns.
+This lane maps WinUI (Windows App SDK / WinUI 3) app patterns to Avalonia 12 XAML/C# patterns, using the local Avalonia source baseline for API verification.
 
 Coverage focuses on:
 

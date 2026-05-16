@@ -7,6 +7,7 @@ description: Implement or debug Avalonia routed input, focus management, keyboar
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/18-input-system-and-routed-events.md`
 - `../../references/19-focus-and-keyboard-navigation.md`
 - `../../references/24-commands-hotkeys-and-gestures.md`

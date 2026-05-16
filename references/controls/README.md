@@ -1,15 +1,14 @@
 # Avalonia Controls Reference Index
 
-- Generated at (UTC): `2026-02-15 20:03:36Z`
-- Avalonia git ref: `11.3.12`
-- Controls documented: `135`
+- Generated at (UTC): `2026-05-16 06:39:48Z`
+- Avalonia git ref: `HEAD`
+- Controls documented: `144`
 
 Each control has a dedicated reference with basic APIs and XAML/C# usage.
 
 ## Avalonia.Controls
 
 - [AutoCompleteBox](auto-complete-box) (`Avalonia.Controls.AutoCompleteBox`)
-- [BindingEvaluator](binding-evaluator) (`Avalonia.Controls.BindingEvaluator`)
 - [Border](border) (`Avalonia.Controls.Border`)
 - [Button](button) (`Avalonia.Controls.Button`)
 - [ButtonSpinner](button-spinner) (`Avalonia.Controls.ButtonSpinner`)
@@ -17,12 +16,18 @@ Each control has a dedicated reference with basic APIs and XAML/C# usage.
 - [CalendarDatePicker](calendar-date-picker) (`Avalonia.Controls.CalendarDatePicker`)
 - [Canvas](canvas) (`Avalonia.Controls.Canvas`)
 - [Carousel](carousel) (`Avalonia.Controls.Carousel`)
+- [CarouselPage](carousel-page) (`Avalonia.Controls.CarouselPage`)
 - [CheckBox](check-box) (`Avalonia.Controls.CheckBox`)
 - [ColorPicker](color-picker) (`Avalonia.Controls.ColorPicker`)
 - [ColorView](color-view) (`Avalonia.Controls.ColorView`)
 - [ComboBox](combo-box) (`Avalonia.Controls.ComboBox`)
 - [ComboBoxItem](combo-box-item) (`Avalonia.Controls.ComboBoxItem`)
+- [CommandBar](command-bar) (`Avalonia.Controls.CommandBar`)
+- [CommandBarButton](command-bar-button) (`Avalonia.Controls.CommandBarButton`)
+- [CommandBarSeparator](command-bar-separator) (`Avalonia.Controls.CommandBarSeparator`)
+- [CommandBarToggleButton](command-bar-toggle-button) (`Avalonia.Controls.CommandBarToggleButton`)
 - [ContentControl](content-control) (`Avalonia.Controls.ContentControl`)
+- [ContentPage](content-page) (`Avalonia.Controls.ContentPage`)
 - [ContextMenu](context-menu) (`Avalonia.Controls.ContextMenu`)
 - [Control](control) (`Avalonia.Controls.Control`)
 - [DataValidationErrors](data-validation-errors) (`Avalonia.Controls.DataValidationErrors`)
@@ -30,12 +35,14 @@ Each control has a dedicated reference with basic APIs and XAML/C# usage.
 - [DatePickerPresenter](date-picker-presenter) (`Avalonia.Controls.DatePickerPresenter`)
 - [Decorator](decorator) (`Avalonia.Controls.Decorator`)
 - [DockPanel](dock-panel) (`Avalonia.Controls.DockPanel`)
+- [DrawerPage](drawer-page) (`Avalonia.Controls.DrawerPage`)
 - [DropDownButton](drop-down-button) (`Avalonia.Controls.DropDownButton`)
 - [Expander](expander) (`Avalonia.Controls.Expander`)
 - [ExperimentalAcrylicBorder](experimental-acrylic-border) (`Avalonia.Controls.ExperimentalAcrylicBorder`)
 - [FlyoutPresenter](flyout-presenter) (`Avalonia.Controls.FlyoutPresenter`)
 - [Grid](grid) (`Avalonia.Controls.Grid`)
 - [GridSplitter](grid-splitter) (`Avalonia.Controls.GridSplitter`)
+- [GroupBox](group-box) (`Avalonia.Controls.GroupBox`)
 - [HyperlinkButton](hyperlink-button) (`Avalonia.Controls.HyperlinkButton`)
 - [IconElement](icon-element) (`Avalonia.Controls.IconElement`)
 - [Image](image) (`Avalonia.Controls.Image`)
@@ -49,11 +56,16 @@ Each control has a dedicated reference with basic APIs and XAML/C# usage.
 - [MenuBase](menu-base) (`Avalonia.Controls.MenuBase`)
 - [MenuFlyoutPresenter](menu-flyout-presenter) (`Avalonia.Controls.MenuFlyoutPresenter`)
 - [MenuItem](menu-item) (`Avalonia.Controls.MenuItem`)
+- [MultiPage](multi-page) (`Avalonia.Controls.MultiPage`)
 - [NativeControlHost](native-control-host) (`Avalonia.Controls.NativeControlHost`)
 - [NativeMenuBar](native-menu-bar) (`Avalonia.Controls.NativeMenuBar`)
+- [NavigationPage](navigation-page) (`Avalonia.Controls.NavigationPage`)
 - [NumericUpDown](numeric-up-down) (`Avalonia.Controls.NumericUpDown`)
+- [Page](page) (`Avalonia.Controls.Page`)
+- [PageNavigationHost](page-navigation-host) (`Avalonia.Controls.PageNavigationHost`)
 - [Panel](panel) (`Avalonia.Controls.Panel`)
 - [PathIcon](path-icon) (`Avalonia.Controls.PathIcon`)
+- [PipsPager](pips-pager) (`Avalonia.Controls.PipsPager`)
 - [ProgressBar](progress-bar) (`Avalonia.Controls.ProgressBar`)
 - [RadioButton](radio-button) (`Avalonia.Controls.RadioButton`)
 - [RefreshContainer](refresh-container) (`Avalonia.Controls.RefreshContainer`)
@@ -63,6 +75,7 @@ Each control has a dedicated reference with basic APIs and XAML/C# usage.
 - [ReversibleStackPanel](reversible-stack-panel) (`Avalonia.Controls.ReversibleStackPanel`)
 - [ScrollViewer](scroll-viewer) (`Avalonia.Controls.ScrollViewer`)
 - [SelectableTextBlock](selectable-text-block) (`Avalonia.Controls.SelectableTextBlock`)
+- [SelectingMultiPage](selecting-multi-page) (`Avalonia.Controls.SelectingMultiPage`)
 - [Separator](separator) (`Avalonia.Controls.Separator`)
 - [Slider](slider) (`Avalonia.Controls.Slider`)
 - [Spinner](spinner) (`Avalonia.Controls.Spinner`)
@@ -71,6 +84,7 @@ Each control has a dedicated reference with basic APIs and XAML/C# usage.
 - [StackPanel](stack-panel) (`Avalonia.Controls.StackPanel`)
 - [TabControl](tab-control) (`Avalonia.Controls.TabControl`)
 - [TabItem](tab-item) (`Avalonia.Controls.TabItem`)
+- [TabbedPage](tabbed-page) (`Avalonia.Controls.TabbedPage`)
 - [TextBlock](text-block) (`Avalonia.Controls.TextBlock`)
 - [TextBox](text-box) (`Avalonia.Controls.TextBox`)
 - [ThemeVariantScope](theme-variant-scope) (`Avalonia.Controls.ThemeVariantScope`)
@@ -92,11 +106,6 @@ Each control has a dedicated reference with basic APIs and XAML/C# usage.
 - [Window](window) (`Avalonia.Controls.Window`)
 - [WindowBase](window-base) (`Avalonia.Controls.WindowBase`)
 - [WrapPanel](wrap-panel) (`Avalonia.Controls.WrapPanel`)
-
-## Avalonia.Controls.Chrome
-
-- [CaptionButtons](chrome-caption-buttons) (`Avalonia.Controls.Chrome.CaptionButtons`)
-- [TitleBar](chrome-title-bar) (`Avalonia.Controls.Chrome.TitleBar`)
 
 ## Avalonia.Controls.Embedding
 
@@ -121,7 +130,6 @@ Each control has a dedicated reference with basic APIs and XAML/C# usage.
 - [CalendarButton](primitives-calendar-button) (`Avalonia.Controls.Primitives.CalendarButton`)
 - [CalendarDayButton](primitives-calendar-day-button) (`Avalonia.Controls.Primitives.CalendarDayButton`)
 - [CalendarItem](primitives-calendar-item) (`Avalonia.Controls.Primitives.CalendarItem`)
-- [ChromeOverlayLayer](primitives-chrome-overlay-layer) (`Avalonia.Controls.Primitives.ChromeOverlayLayer`)
 - [ColorPreviewer](primitives-color-previewer) (`Avalonia.Controls.Primitives.ColorPreviewer`)
 - [ColorSlider](primitives-color-slider) (`Avalonia.Controls.Primitives.ColorSlider`)
 - [ColorSpectrum](primitives-color-spectrum) (`Avalonia.Controls.Primitives.ColorSpectrum`)
@@ -129,7 +137,6 @@ Each control has a dedicated reference with basic APIs and XAML/C# usage.
 - [HeaderedContentControl](primitives-headered-content-control) (`Avalonia.Controls.Primitives.HeaderedContentControl`)
 - [HeaderedItemsControl](primitives-headered-items-control) (`Avalonia.Controls.Primitives.HeaderedItemsControl`)
 - [HeaderedSelectingItemsControl](primitives-headered-selecting-items-control) (`Avalonia.Controls.Primitives.HeaderedSelectingItemsControl`)
-- [LightDismissOverlayLayer](primitives-light-dismiss-overlay-layer) (`Avalonia.Controls.Primitives.LightDismissOverlayLayer`)
 - [OverlayLayer](primitives-overlay-layer) (`Avalonia.Controls.Primitives.OverlayLayer`)
 - [OverlayPopupHost](primitives-overlay-popup-host) (`Avalonia.Controls.Primitives.OverlayPopupHost`)
 - [PickerPresenterBase](primitives-picker-presenter-base) (`Avalonia.Controls.Primitives.PickerPresenterBase`)
@@ -148,10 +155,6 @@ Each control has a dedicated reference with basic APIs and XAML/C# usage.
 - [Track](primitives-track) (`Avalonia.Controls.Primitives.Track`)
 - [UniformGrid](primitives-uniform-grid) (`Avalonia.Controls.Primitives.UniformGrid`)
 - [VisualLayerManager](primitives-visual-layer-manager) (`Avalonia.Controls.Primitives.VisualLayerManager`)
-
-## Avalonia.Controls.Remote
-
-- [RemoteWidget](remote-remote-widget) (`Avalonia.Controls.Remote.RemoteWidget`)
 
 ## Avalonia.Controls.Shapes
 

@@ -98,13 +98,13 @@ emphasis.SetScalarParameter("emphasis", 0.98f);
 visual.StartAnimation("Opacity", emphasis);
 ```
 
-`CompositionPropertySet` exists in Avalonia `11.3.12`, but app code typically drives shared composition input through animation parameters because there is no public compositor factory for constructing property sets directly.
+On the local Avalonia 12 baseline, verify `CompositionPropertySet` construction and ownership against `frameworks/Avalonia`; app code typically drives shared composition input through animation parameters unless the current public API provides a clearer low-level ownership path.
 
 ## AOT and Runtime Notes
 
 - Keep most Fluent motion in compiled XAML and reserve advanced composition for shell hotspots.
 - Reuse one motion grammar across transitions and composition animations so the shell stays coherent.
-- Prefer animation parameter APIs over direct `CompositionPropertySet` construction in app code on Avalonia `11.3.12`.
+- Prefer animation parameter APIs over direct `CompositionPropertySet` construction in app code unless the local Avalonia 12 source baseline proves a public low-level construction path is intended.
 - Clean up attached visuals and long-running animations during view detach or navigation.
 
 ## Do and Don't Guidance

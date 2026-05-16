@@ -48,7 +48,7 @@ High-value members:
 
 ## Density
 
-Avalonia `11.3.12` exposes:
+The local Avalonia 12 source baseline exposes Fluent theme APIs that should be verified from `frameworks/Avalonia` before publication. The practical app-facing concepts include:
 - `DensityStyle.Normal`
 - `DensityStyle.Compact`
 

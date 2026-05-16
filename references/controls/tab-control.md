@@ -19,12 +19,16 @@
 - `public static readonly StyledProperty<IDataTemplate?> ContentTemplateProperty = ContentControl.ContentTemplateProperty.AddOwner<TabControl>();`
 - `public static readonly DirectProperty<TabControl, object?> SelectedContentProperty = AvaloniaProperty.RegisterDirect<TabControl, object?>(nameof(SelectedContent), o => o.SelectedContent);`
 - `public static readonly DirectProperty<TabControl, IDataTemplate?> SelectedContentTemplateProperty = AvaloniaProperty.RegisterDirect<TabControl, IDataTemplate?>(nameof(SelectedContentTemplate), o => o.SelectedContentTemplate);`
+- `public static readonly StyledProperty<IPageTransition?> PageTransitionProperty = AvaloniaProperty.Register<TabControl, IPageTransition?>(nameof(PageTransition));`
+- `public static readonly StyledProperty<IDataTemplate?> IndicatorTemplateProperty = AvaloniaProperty.Register<TabControl, IDataTemplate?>(nameof(IndicatorTemplate));`
 - `public HorizontalAlignment HorizontalContentAlignment {`
 - `public VerticalAlignment VerticalContentAlignment {`
 - `public Dock TabStripPlacement {`
 - `public IDataTemplate? ContentTemplate {`
 - `public object? SelectedContent {`
 - `public IDataTemplate? SelectedContentTemplate {`
+- `public IPageTransition? PageTransition {`
+- `public IDataTemplate? IndicatorTemplate {`
 
 ## XAML Usage
 

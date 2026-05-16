@@ -18,10 +18,10 @@
 - `public static readonly StyledProperty<ITemplate<Panel?>> ItemsPanelProperty = AvaloniaProperty.Register<ItemsControl, ITemplate<Panel?>>(nameof(ItemsPanel), DefaultPanel);`
 - `public static readonly StyledProperty<IEnumerable?> ItemsSourceProperty = AvaloniaProperty.Register<ItemsControl, IEnumerable?>(nameof(ItemsSource));`
 - `public static readonly StyledProperty<IDataTemplate?> ItemTemplateProperty = AvaloniaProperty.Register<ItemsControl, IDataTemplate?>(nameof(ItemTemplate));`
-- `public static readonly StyledProperty<IBinding?> DisplayMemberBindingProperty = AvaloniaProperty.Register<ItemsControl, IBinding?>(nameof(DisplayMemberBinding));`
-- `public IBinding? DisplayMemberBinding {`
+- `public static readonly StyledProperty<BindingBase?> DisplayMemberBindingProperty = AvaloniaProperty.Register<ItemsControl, BindingBase?>(nameof(DisplayMemberBinding));`
+- `public BindingBase? DisplayMemberBinding {`
 - `public ItemsControl() {`
-- `public ItemContainerGenerator ItemContainerGenerator {`
+- `public ItemContainerGenerator ItemContainerGenerator => _itemContainerGenerator ??= new ItemContainerGenerator(this);`
 - `public ItemCollection Items => _items;`
 - `public ControlTheme? ItemContainerTheme {`
 - `public int ItemCount {`

@@ -13,7 +13,7 @@
 
 ## Purpose
 
-This manifest defines how the HTML/CSS conversion references map to full Avalonia API lookup for `11.3.12`.
+This manifest defines how the HTML/CSS conversion references map to full Avalonia API lookup for the local Avalonia 12 source baseline.
 
 Use it when you need to move from pattern guidance to exhaustive public API signatures.
 
@@ -46,7 +46,7 @@ Entry points:
 - [`52-controls-reference-catalog.md`](../52-controls-reference-catalog)
 - [`controls/README.md`](../controls/README)
 
-The controls catalog is generated from Avalonia `11.3.12` and includes:
+The controls catalog is generated from the local Avalonia 12 source baseline and includes:
 
 - control metadata,
 - basic public API members,

@@ -54,7 +54,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--git-ref",
-        default="11.3.12",
+        default="HEAD",
         help="Git ref/tag to scan.",
     )
     parser.add_argument(

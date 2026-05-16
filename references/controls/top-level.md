@@ -15,7 +15,6 @@
 
 - `public static readonly DirectProperty<TopLevel, Size> ClientSizeProperty = AvaloniaProperty.RegisterDirect<TopLevel, Size>(nameof(ClientSize), o => o.ClientSize);`
 - `public static readonly DirectProperty<TopLevel, Size?> FrameSizeProperty = AvaloniaProperty.RegisterDirect<TopLevel, Size?>(nameof(FrameSize), o => o.FrameSize);`
-- `public static readonly StyledProperty<IInputElement?> PointerOverElementProperty = AvaloniaProperty.Register<TopLevel, IInputElement?>(nameof(IInputRoot.PointerOverElement));`
 - `public static readonly StyledProperty<IReadOnlyList<WindowTransparencyLevel>> TransparencyLevelHintProperty = AvaloniaProperty.Register<TopLevel, IReadOnlyList<WindowTransparencyLevel>>(nameof(TransparencyLevelHint), Array.Empty<WindowTransparencyLevel>());`
 - `public static readonly DirectProperty<TopLevel, WindowTransparencyLevel> ActualTransparencyLevelProperty = AvaloniaProperty.RegisterDirect<TopLevel, WindowTransparencyLevel>(nameof(ActualTransparencyLevel), o => o.ActualTransparencyLevel,`
 - `public static readonly StyledProperty<IBrush> TransparencyBackgroundFallbackProperty = AvaloniaProperty.Register<TopLevel, IBrush>(nameof(TransparencyBackgroundFallback), Brushes.White);`
@@ -25,10 +24,11 @@
 - `public static readonly AttachedProperty<bool> AutoSafeAreaPaddingProperty = AvaloniaProperty.RegisterAttached<TopLevel, Control, bool>( "AutoSafeAreaPadding", defaultValue: true);`
 - `public static readonly RoutedEvent<RoutedEventArgs> BackRequestedEvent = RoutedEvent.Register<TopLevel, RoutedEventArgs>(nameof(BackRequested), RoutingStrategies.Bubble);`
 - `public TopLevel(ITopLevelImpl impl) : this(impl, AvaloniaLocator.Current) {`
-- `public TopLevel(ITopLevelImpl impl, IAvaloniaDependencyResolver? dependencyResolver) {`
 - `public event EventHandler? Opened;`
 - `public event EventHandler? Closed;`
 - `public event EventHandler? ScalingChanged;`
+- `public Size ClientSize {`
+- `public Size? FrameSize {`
 
 ## XAML Usage
 

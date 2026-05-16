@@ -7,6 +7,7 @@ description: Design or optimize Avalonia panels, measure and arrange behavior, c
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/30-layout-measure-arrange-and-custom-layout-controls.md`
 - `../../references/21-custom-layout-authoring.md`
 - `../../references/20-itemscontrol-virtualization-and-recycling.md`

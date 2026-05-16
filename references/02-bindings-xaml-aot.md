@@ -204,7 +204,7 @@ Advanced app code occasionally needs:
 - `IndexerDescriptor` (`!property` / `~property` operator paths) for concise property-indexer binding wiring.
 
 Compatibility note:
-- `IBinding.Initiate(...)` and `BindingOperations.Apply(...)` are obsolete compatibility paths in Avalonia 11.3.12 and are not recommended for new app code.
+- `IBinding.Initiate(...)` and `BindingOperations.Apply(...)` are legacy compatibility paths and are not recommended for new Avalonia 12 app code.
 
 These APIs are useful for dynamic binding infrastructure and diagnostics tooling, not as default app authoring style. Prefer normal XAML binding syntax unless you need dynamic composition.
 

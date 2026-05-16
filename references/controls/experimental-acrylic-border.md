@@ -14,9 +14,9 @@
 ## Basic APIs
 
 - `public static readonly StyledProperty<CornerRadius> CornerRadiusProperty = Border.CornerRadiusProperty.AddOwner<ExperimentalAcrylicBorder>();`
-- `public static readonly StyledProperty<ExperimentalAcrylicMaterial> MaterialProperty = AvaloniaProperty.Register<ExperimentalAcrylicBorder, ExperimentalAcrylicMaterial>(nameof(Material));`
+- `public static readonly StyledProperty<ExperimentalAcrylicMaterial?> MaterialProperty = AvaloniaProperty.Register<ExperimentalAcrylicBorder, ExperimentalAcrylicMaterial?>(nameof(Material));`
 - `public CornerRadius CornerRadius {`
-- `public ExperimentalAcrylicMaterial Material {`
+- `public ExperimentalAcrylicMaterial? Material {`
 
 ## XAML Usage
 

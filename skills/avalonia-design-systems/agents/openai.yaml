@@ -1,4 +1,4 @@
 interface:
-  display_name: "Avalonia Design Systems"
+  display_name: "Avalonia 12 Design Systems"
   short_description: "Professional design tokens, shell patterns, motion, and UX quality"
-  default_prompt: "Use $avalonia-design-systems to design a polished Avalonia product surface with reusable tokens and UX rules"
+  default_prompt: "Use $avalonia-design-systems to design a polished Avalonia 12 product surface with reusable tokens and UX rules"

@@ -7,6 +7,7 @@ description: Port WinUI or Windows App SDK applications to Avalonia, including s
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/65-winui-to-avalonia-modern-ui-conversion-index.md`
 - `../../references/winui-to-avalonia/README.md`
 

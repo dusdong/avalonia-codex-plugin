@@ -7,6 +7,7 @@ description: Implement or troubleshoot Avalonia compiled bindings, runtime XAML 
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/02-bindings-xaml-aot.md`
 - `../../references/41-xaml-compiler-and-build-pipeline.md`
 - `../../references/45-value-converters-single-multi-and-binding-wiring.md`

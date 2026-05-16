@@ -13,13 +13,9 @@
 
 ## Basic APIs
 
-- `public static readonly StyledProperty<ChromeOverlayLayer?> ChromeOverlayLayerProperty = AvaloniaProperty.Register<VisualLayerManager, ChromeOverlayLayer?>(nameof(ChromeOverlayLayer));`
-- `public bool IsPopup { get; set; }`
-- `public AdornerLayer AdornerLayer {`
-- `public ChromeOverlayLayer ChromeOverlayLayer {`
-- `public OverlayLayer? OverlayLayer {`
-- `public TextSelectorLayer? TextSelectorLayer {`
-- `public LightDismissOverlayLayer LightDismissOverlayLayer {`
+- `public bool EnableAdornerLayer { get; set; } = true;`
+- `public bool EnableOverlayLayer { get; set; }`
+- `public bool EnableTextSelectorLayer { get; set; }`
 
 ## XAML Usage
 

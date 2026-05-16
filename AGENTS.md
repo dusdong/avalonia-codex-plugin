@@ -5,7 +5,7 @@
 This repository defines and maintains the `development-plugin-for-avalonia` plugin, its repo-local wrapper skill, its repo marketplace metadata, and its focused Avalonia skills.
 
 Primary goals:
-- keep guidance accurate to the pinned Avalonia release,
+- keep guidance accurate to the pinned Avalonia 12 source baseline,
 - split broad Avalonia guidance into granular, reusable skills,
 - keep app-development references shared instead of duplicated across skills,
 - maintain clear navigation across `.agents/skills/development-plugin-for-avalonia/SKILL.md`, `SKILL.md`, `.codex-plugin/plugin.json`, `.agents/plugins/marketplace.json`, `skills/*/SKILL.md`, `README.md`, and `references/`.
@@ -20,24 +20,30 @@ Use these files in this order:
 5. `skills/*/SKILL.md` (focused workflows for the active lane)
 6. `references/compendium.md` (reference index and task navigation)
 7. `references/00-api-map.md` (curated app-facing API map)
-8. `references/api-index-generated.md` (broad signature lookup)
+8. `references/70-avalonia-12-source-and-reference-baseline.md` (Avalonia 12 source and product-reference baseline)
+9. `references/api-index-generated.md` (broad signature lookup regenerated from the local Avalonia 12 source tree)
 
-If they conflict, align all skills and docs to the pinned version and update the conflicting files.
+If they conflict, align all skills and docs to the Avalonia 12 baseline and update the conflicting files.
 
 ## Version Pinning
 
-- Target Avalonia version: `11.3.12`
-- Do not introduce default guidance that depends on Avalonia `master` unless explicitly requested.
-- Keep version statements in top-level docs (`README.md`, `SKILL.md`), not repeated everywhere.
+- Target Avalonia version line: Avalonia 12.
+- Source baseline: `/Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia`.
+- Current source signal: `build/SharedVersion.props` reports `12.1.999`; `build/TargetFrameworks.props` reports `net10.0`.
+- Default guidance may use the local Avalonia `master` source baseline, but any source-backed claim must cite or name the relevant source path.
+- Keep version statements in top-level docs (`README.md`, `SKILL.md`) and `references/70-avalonia-12-source-and-reference-baseline.md`, not repeated everywhere.
 
-Regenerate API index with the pinned ref:
+Regenerate API index from the local source baseline when signature lookup needs to become authoritative:
 
 ```bash
 python3 scripts/generate_api_index.py \
-  --repo <path-to-avalonia-repo> \
-  --git-ref 11.3.12 \
-  --output references/api-index-generated.md
+  --repo /Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia \
+  --git-ref HEAD \
+  --output references/api-index-generated.md \
+  --max-per-file 100000
 ```
+
+After regeneration, `references/api-index-generated.md` is the default local-source signature index. Still verify important guidance against the source tree before presenting it as authoritative.
 
 ## Skill Authoring Rules
 
@@ -115,9 +121,9 @@ Before finalizing changes:
 2. Verify plugin manifest paths, branding assets, and legal links still resolve from `.codex-plugin/plugin.json`.
 3. Verify repo marketplace metadata still points at the intended plugin root and uses a marketplace identity distinct from the plugin identity.
 4. Verify new or renamed skills are reflected in `README.md` and any routing skill that mentions them.
-5. Verify examples use APIs available in Avalonia `11.3.12` unless the skill explicitly targets the Avalonia 12 lane.
+5. Verify examples use APIs available in the local Avalonia 12 source baseline, or explicitly label them as legacy migration contrast.
 6. Re-run coverage tooling when API-focused references changed.
-7. Ensure no accidental drift to `master`-only APIs.
+7. Ensure no accidental drift back to Avalonia 11.x as the default guidance.
 
 ## Commits
 

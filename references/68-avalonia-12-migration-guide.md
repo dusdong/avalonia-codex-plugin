@@ -15,33 +15,33 @@
 
 ## Scope and Status
 
-This lane extends the skill with Avalonia 12 migration guidance while keeping the rest of the repository pinned to Avalonia `11.3.12`.
+This lane supports migration from legacy Avalonia 11.x code to the plugin's default Avalonia 12 source baseline.
 
-Current status for this guide:
+Historical status retained by this guide:
 
 - official breaking-change docs page reviewed on **March 20, 2026**: [Breaking changes in Avalonia 12](https://docs.avaloniaui.net/docs/avalonia12-breaking-changes),
 - Avalonia origin tags reviewed on **March 20, 2026**,
 - latest published `12.0.0*` tag on origin at that point: **`12.0.0-rc1`**,
 - GitHub release date of `12.0.0-rc1`: **March 19, 2026**,
-- generated companion artifacts in this repository therefore still target **`12.0.0-rc1`**.
+- this repository has since regenerated `references/api-index-generated.md` and `references/69-avalonia-12-breaking-changes-and-new-api-catalog.md` against the local `HEAD` source baseline.
 
-Use this guide when you are porting an application, library, or samples from `11.3.12` toward Avalonia 12. The curated guidance below follows the current official Avalonia 12 docs page, while the generated API index and generated migration report in this repo remain source-backed against `12.0.0-rc1` until a newer Avalonia 12 tag exists upstream.
+Use this guide when you are porting an application, library, or samples from legacy Avalonia 11.x toward Avalonia 12. The historical generated migration notes in this file may mention `12.0.0-rc1`; default implementation guidance must still be verified against the local `12.1.999 / net10.0` source baseline.
 
 ## Source Priority for This Lane
 
 Use sources in this order for Avalonia 12 migration work:
 
 1. the official docs page: [Breaking changes in Avalonia 12](https://docs.avaloniaui.net/docs/avalonia12-breaking-changes),
-2. the latest published Avalonia 12 tag on GitHub Releases,
+2. the local Avalonia 12 source baseline described in [`70-avalonia-12-source-and-reference-baseline.md`](70-avalonia-12-source-and-reference-baseline),
 3. this repository's generated companion references:
    - [`69-avalonia-12-breaking-changes-and-new-api-catalog.md`](69-avalonia-12-breaking-changes-and-new-api-catalog),
-   - [`api-index-12.0.0-rc1-generated.md`](api-index-12.0.0-rc1-generated),
+   - [`api-index-generated.md`](api-index-generated),
 4. older Avalonia wiki pages as historical background only when they still add detail not present on the docs page.
 
 Current generated evidence for this lane:
 
-- `11.3.12 -> 12.0.0-rc1`: `591` approved compatibility suppressions and `1175` added public signatures,
-- `12.0.0-preview2 -> 12.0.0-rc1`: `168` added public signatures and `73` removed public signatures in the parser view.
+- `11.3.12 -> HEAD`: `2` approved compatibility suppressions, `1243` added public signatures, and `885` removed public signatures in the parser view.
+- Historical `12.0.0-rc1` artifacts are retained only for comparison.
 
 Coverage intent:
 
@@ -71,7 +71,7 @@ The official docs page is written for the Avalonia 12 release line, not a mixed-
 Practical rule:
 
 - move all `Avalonia*` package references together,
-- if you are using this repository's generated artifacts for symbol lookup, remember they are still anchored to `12.0.0-rc1` as of **March 20, 2026**.
+- use `references/api-index-generated.md` for current source-backed symbol lookup, then verify high-risk guidance against `frameworks/Avalonia`.
 
 ### 3. Replace legacy DevTools packaging
 
@@ -557,8 +557,8 @@ if (ApplicationLifetime is IActivityApplicationLifetime activityLifetime)
 ## Full Reference Pointers
 
 - curated migration lane: this file,
-- source-backed break and new API catalog for the latest published Avalonia 12 tag: [`69-avalonia-12-breaking-changes-and-new-api-catalog.md`](69-avalonia-12-breaking-changes-and-new-api-catalog),
-- source-backed Avalonia 12 API index for the latest published Avalonia 12 tag: [`api-index-12.0.0-rc1-generated.md`](api-index-12.0.0-rc1-generated),
+- source-backed break and new API catalog for the local Avalonia 12 source baseline: [`69-avalonia-12-breaking-changes-and-new-api-catalog.md`](69-avalonia-12-breaking-changes-and-new-api-catalog),
+- source-backed Avalonia 12 API index for the local Avalonia 12 source baseline: [`api-index-generated.md`](api-index-generated),
 - official upstream references:
   - [Breaking changes in Avalonia 12](https://docs.avaloniaui.net/docs/avalonia12-breaking-changes),
   - [Avalonia release: 12.0.0-rc1](https://github.com/AvaloniaUI/Avalonia/releases/tag/12.0.0-rc1),

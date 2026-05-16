@@ -66,7 +66,7 @@ public class EmailEditor : Avalonia.Controls.TemplatedControl
 }
 ```
 
-### Data annotations plugin registration (11.3.12)
+### Data annotations plugin registration
 
 `DataAnnotationsValidationPlugin` is registered by default in `BindingPlugins.DataValidators`, so no `AppBuilder` extension call is required.
 

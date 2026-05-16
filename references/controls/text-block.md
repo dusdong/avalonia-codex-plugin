@@ -24,7 +24,7 @@
 - `public static readonly AttachedProperty<double> BaselineOffsetProperty = AvaloniaProperty.RegisterAttached<TextBlock, Control, double>( nameof(BaselineOffset), 0, true);`
 - `public static readonly AttachedProperty<double> LineHeightProperty = AvaloniaProperty.RegisterAttached<TextBlock, Control, double>( nameof(LineHeight), double.NaN, validate: IsValidLineHeight, inherits: true);`
 - `public static readonly AttachedProperty<double> LineSpacingProperty = AvaloniaProperty.RegisterAttached<TextBlock, Control, double>( nameof(LineSpacing), 0, validate: IsValidLineSpacing, inherits: true);`
-- `public static readonly AttachedProperty<double> LetterSpacingProperty = AvaloniaProperty.RegisterAttached<TextBlock, Control, double>( nameof(LetterSpacing), 0, inherits: true);`
+- `public static readonly StyledProperty<double> LetterSpacingProperty = TextElement.LetterSpacingProperty.AddOwner<TextBlock>();`
 - `public static readonly AttachedProperty<int> MaxLinesProperty = AvaloniaProperty.RegisterAttached<TextBlock, Control, int>( nameof(MaxLines), validate: IsValidMaxLines, inherits: true);`
 - `public static readonly StyledProperty<string?> TextProperty = AvaloniaProperty.Register<TextBlock, string?>(nameof(Text));`
 - `public static readonly AttachedProperty<TextAlignment> TextAlignmentProperty = AvaloniaProperty.RegisterAttached<TextBlock, Control, TextAlignment>( nameof(TextAlignment), defaultValue: TextAlignment.Start, inherits: true);`

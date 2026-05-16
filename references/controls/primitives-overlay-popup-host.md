@@ -8,22 +8,17 @@
 - Namespace: `Avalonia.Controls.Primitives`
 - Assembly: `Avalonia.Controls`
 - Source: `src/Avalonia.Controls/Primitives/OverlayPopupHost.cs`
-- Base types: `ContentControl, IInputRoot, IManagedPopupPositionerPopup, IPopupHost`
+- Base types: `ContentControl, IManagedPopupPositionerPopup, IPopupHost`
 - Kind: `control`
 
 ## Basic APIs
 
 - `public static readonly StyledProperty<Transform?> TransformProperty = PopupRoot.TransformProperty.AddOwner<OverlayPopupHost>();`
-- `public OverlayPopupHost(OverlayLayer overlayLayer) {`
-- `public void SetChild(Control? control) {`
 - `public Visual? HostedVisualTreeRoot => null;`
 - `public Transform? Transform {`
 - `public void Dispose() => Hide();`
 - `public void Show() {`
 - `public void Hide() {`
-- `public void TakeFocus() {`
-- `public void ConfigurePosition(Visual target, PlacementMode placement, Point offset, PopupAnchor anchor = PopupAnchor.None, PopupGravity gravity = PopupGravity.None, PopupPositionerConstraintAdjustment constraintAdjustment = PopupPositionerConstraintAdjustment.All, Rect? rect = null) {`
-- `public static IPopupHost CreatePopupHost(Visual target, IAvaloniaDependencyResolver? dependencyResolver) => CreatePopupHost(target, dependencyResolver, false);`
 
 ## XAML Usage
 

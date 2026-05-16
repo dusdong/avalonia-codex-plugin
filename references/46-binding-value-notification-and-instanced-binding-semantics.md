@@ -33,8 +33,8 @@ Primary APIs:
 - `IndexerDescriptor`
 
 Compatibility-sensitive APIs in this space:
-- `IBinding.Initiate(...)` (obsolete in 11.3.12)
-- `BindingOperations.Apply(...)` (obsolete in 11.3.12)
+- `IBinding.Initiate(...)` (legacy compatibility path)
+- `BindingOperations.Apply(...)` (legacy compatibility path)
 
 Reference source files:
 - `src/Avalonia.Base/Data/BindingValue.cs`

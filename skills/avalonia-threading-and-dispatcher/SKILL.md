@@ -7,6 +7,7 @@ description: Design or review Avalonia reactive flows, dispatcher usage, timers,
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/03-reactive-threading.md`
 - `../../references/47-dispatcher-priority-operations-and-timers.md`
 

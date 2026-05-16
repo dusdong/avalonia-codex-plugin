@@ -106,13 +106,13 @@ group.Add(fade);
 visual.StartAnimationGroup(group);
 ```
 
-`CompositionPropertySet` exists in Avalonia `11.3.12`, but normal app code does not get a public compositor factory for creating one directly. In practice, app code usually shares animation input through `SetScalarParameter(...)`, `SetVector3Parameter(...)`, and `SetReferenceParameter(...)` on the animation itself, while `CompositionPropertySet` remains part of the underlying composition model.
+On the local Avalonia 12 baseline, verify `CompositionPropertySet` construction and ownership against `frameworks/Avalonia`. In practice, app code usually shares animation input through `SetScalarParameter(...)`, `SetVector3Parameter(...)`, and `SetReferenceParameter(...)` on the animation itself, while `CompositionPropertySet` remains part of the underlying composition model.
 
 ## AOT and Runtime Notes
 
 - Composition stays code-driven; keep the host surfaces and interaction states declared in XAML.
 - Keep advanced composition isolated to shell hotspots rather than spreading it across routine controls.
-- Treat `CompositionPropertySet` as a lower-level composition concept in Avalonia `11.3.12`; prefer the public animation parameter APIs in app code.
+- Treat `CompositionPropertySet` as a lower-level composition concept; prefer the public animation parameter APIs in app code unless the local Avalonia 12 source baseline proves a better public path.
 - Detach child visuals and stop animation groups when the host leaves the visual tree.
 
 ## Do and Don't Guidance

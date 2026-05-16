@@ -25,7 +25,7 @@ This reference lane covers how to build Fluent-inspired Avalonia apps with:
 
 Coverage intent for this lane:
 
-- stay accurate to Avalonia `11.3.12`,
+- stay accurate to the local Avalonia 12 source baseline,
 - use `FluentTheme` as the baseline instead of reinventing a parallel design system,
 - split detail into smaller topic files so tasks can load only what they need.
 
@@ -67,7 +67,7 @@ For exhaustive lookup beyond these Fluent-specific docs:
 - menus and overlays: [`25-popups-flyouts-tooltips-and-overlays.md`](25-popups-flyouts-tooltips-and-overlays), [`53-menu-controls-contextmenu-and-menuflyout-patterns.md`](53-menu-controls-contextmenu-and-menuflyout-patterns)
 - color, text, and vector assets: [`35-path-icons-and-vector-geometry-assets.md`](35-path-icons-and-vector-geometry-assets), [`59-media-colors-brushes-and-formatted-text-practical-usage.md`](59-media-colors-brushes-and-formatted-text-practical-usage)
 - icon delivery on app and OS surfaces: [`13-fluent-icons-public-icon-sets-selection-and-avalonia-usage.md`](fluent-design/13-fluent-icons-public-icon-sets-selection-and-avalonia-usage), [`48-toplevel-window-and-runtime-services.md`](48-toplevel-window-and-runtime-services), [`53-menu-controls-contextmenu-and-menuflyout-patterns.md`](53-menu-controls-contextmenu-and-menuflyout-patterns), [`55-tray-icons-and-system-tray-integration.md`](55-tray-icons-and-system-tray-integration)
-- signatures: [`api-index-generated.md`](api-index-generated)
+- signatures: generated API indexes are lookup helpers and must be verified against the local Avalonia 12 source baseline
 
 ## First Example
 

@@ -1,4 +1,4 @@
 interface:
-  display_name: "Avalonia Bootstrap and Lifetime"
+  display_name: "Avalonia 12 Bootstrap and Lifetime"
   short_description: "Startup wiring, lifetimes, platform bootstrap, and AOT-ready build setup"
-  default_prompt: "Use $avalonia-bootstrap-and-lifetime to design or debug Avalonia startup, AppBuilder, lifetime, and build configuration"
+  default_prompt: "Use $avalonia-bootstrap-and-lifetime to design or debug Avalonia 12 startup, AppBuilder, lifetime, and build configuration"

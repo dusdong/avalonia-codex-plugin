@@ -7,6 +7,7 @@ description: Port WPF applications and patterns to Avalonia, including dependenc
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/64-wpf-to-avalonia-modern-ui-conversion-index.md`
 - `../../references/wpf-to-avalonia/README.md`
 

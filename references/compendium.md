@@ -74,9 +74,9 @@ Use this as the entry page for the full skill reference set.
 67. Microsoft Fluent design and FluentTheme: [`67-microsoft-fluent-design-and-fluenttheme.md`](67-microsoft-fluent-design-and-fluenttheme)
 68. Avalonia 12 migration guide: [`68-avalonia-12-migration-guide.md`](68-avalonia-12-migration-guide)
 69. Avalonia 12 breaking changes and new API catalog: [`69-avalonia-12-breaking-changes-and-new-api-catalog.md`](69-avalonia-12-breaking-changes-and-new-api-catalog)
+70. Avalonia 12 source and reference baseline: [`70-avalonia-12-source-and-reference-baseline.md`](70-avalonia-12-source-and-reference-baseline)
 API indexes:
-- stable: [`api-index-generated.md`](api-index-generated)
-- Avalonia 12 generated index for the latest published `12.0.0*` tag currently tracked here (`12.0.0-rc1`): [`api-index-12.0.0-rc1-generated.md`](api-index-12.0.0-rc1-generated)
+- local Avalonia 12 source baseline: [`api-index-generated.md`](api-index-generated)
 
 ## Fast Navigation by Task
 
@@ -195,13 +195,11 @@ API indexes:
 
 - API lookup by file/signature:
   - [`api-index-generated.md`](api-index-generated)
-  - [`api-index-12.0.0-rc1-generated.md`](api-index-12.0.0-rc1-generated)
 
-- Avalonia 12 migration:
+- Avalonia 12 baseline and legacy migration:
+  - [`70-avalonia-12-source-and-reference-baseline.md`](70-avalonia-12-source-and-reference-baseline)
   - [`68-avalonia-12-migration-guide.md`](68-avalonia-12-migration-guide)
   - [`69-avalonia-12-breaking-changes-and-new-api-catalog.md`](69-avalonia-12-breaking-changes-and-new-api-catalog)
-  - [`api-index-12.0.0-rc1-generated.md`](api-index-12.0.0-rc1-generated)
-  - official upstream release and breaking-change docs are linked from the migration guide
 
 - Professional UI design systems:
   - Index: [`66-professional-ui-design-tokens-and-themes.md`](66-professional-ui-design-tokens-and-themes)

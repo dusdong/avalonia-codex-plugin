@@ -25,7 +25,7 @@ This reference lane covers how to design professional-looking Avalonia applicati
 
 Coverage intent for this lane:
 
-- guidance stays app-development-focused and aligned to Avalonia `11.3.12`,
+- guidance stays app-development-focused and aligned to the local Avalonia 12 source baseline,
 - examples stay XAML-first with compiled-binding-friendly patterns,
 - detailed topics are split into smaller files so they can be loaded selectively.
 
@@ -73,7 +73,7 @@ For exhaustive lookup beyond these design-specific docs:
 - layout and adaptive behavior: [`16-property-system-attached-properties-behaviors-and-style-properties.md`](16-property-system-attached-properties-behaviors-and-style-properties), [`30-layout-measure-arrange-and-custom-layout-controls.md`](30-layout-measure-arrange-and-custom-layout-controls)
 - text, color, and vector assets: [`35-path-icons-and-vector-geometry-assets.md`](35-path-icons-and-vector-geometry-assets), [`59-media-colors-brushes-and-formatted-text-practical-usage.md`](59-media-colors-brushes-and-formatted-text-practical-usage)
 - overlays and shell surfaces: [`25-popups-flyouts-tooltips-and-overlays.md`](25-popups-flyouts-tooltips-and-overlays), [`53-menu-controls-contextmenu-and-menuflyout-patterns.md`](53-menu-controls-contextmenu-and-menuflyout-patterns)
-- signatures: [`api-index-generated.md`](api-index-generated)
+- signatures: generated API indexes are lookup helpers and must be verified against the local Avalonia 12 source baseline
 
 ## First Example
 

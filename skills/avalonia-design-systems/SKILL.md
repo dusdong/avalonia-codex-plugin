@@ -7,6 +7,7 @@ description: Design polished Avalonia design systems with reusable tokens, typog
 
 Start with:
 
+- `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/66-professional-ui-design-tokens-and-themes.md`
 - `../../references/professional-design/README.md`
 

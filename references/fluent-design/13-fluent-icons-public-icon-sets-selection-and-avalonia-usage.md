@@ -24,7 +24,7 @@ Use this reference when you need Fluent-aligned iconography in Avalonia and want
 
 - which public icon families fit Fluent best,
 - how to choose the right icon semantics and visual treatment,
-- which Avalonia icon path to use for each surface in `11.3.12`.
+- which Avalonia icon path to use for each surface on the local Avalonia 12 source baseline.
 
 Primary APIs and surfaces:
 
@@ -116,7 +116,7 @@ Avalonia core gives you several valid icon paths, and each solves a different pr
 
 5. `TextBlock` or `Run` with an icon font
 - Best when the library ships as a font and you want compact glyph delivery.
-- Avalonia `11.3.12` does not provide a dedicated `FontIcon` or `SymbolIcon`; text rendering is the built-in path.
+- Verify the current Avalonia 12 icon surface before recommending `FontIcon` or `SymbolIcon`-style APIs; text rendering and `PathIcon` remain the conservative built-in paths.
 
 6. Platform icon types
 - `WindowIcon` for `Window.Icon` and `TrayIcon.Icon`.
@@ -331,7 +331,7 @@ var shareImage = new Image
 
 Important note:
 
-- core Avalonia `11.3.12` does not expose a built-in SVG `Image` type in this repo's app-facing API map,
+- verify the current Avalonia 12 SVG/image surface against this repo's app-facing API map and source baseline,
 - if you want direct SVG-as-image workflows, use an ecosystem package and validate trimming, packaging, and rendering behavior separately,
 - for Fluent command icons, converting SVG paths to shared `Geometry` resources is usually the cleaner core-Avalonia path.
 

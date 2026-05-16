@@ -48,10 +48,10 @@ Core app-level diagnostics in this codebase:
 - Frame callback hooks through `RequestAnimationFrame`.
 - Layout lifecycle observation via `LayoutUpdated` and viewport events.
 
-Note on DevTools:
-- Runtime `AttachDevTools()` implementation on the stable `11.3.12` line is provided by the `Avalonia.Diagnostics` package (outside this repository tree).
-- This repository includes generator-side hooks that emit optional `attachDevTools` wiring when that package is referenced.
-- Avalonia 12 migration note: `Avalonia.Diagnostics` is removed; use `AvaloniaUI.DiagnosticsSupport` and `AttachDeveloperTools()`. See [`68-avalonia-12-migration-guide.md`](68-avalonia-12-migration-guide).
+Note on developer tools:
+- Default guidance targets Avalonia 12, where `Avalonia.Diagnostics` is no longer the default diagnostics package.
+- Use `AvaloniaUI.DiagnosticsSupport` and `AttachDeveloperTools()` when developer-tool attachment is required.
+- Older `AttachDevTools()` / `Avalonia.Diagnostics` guidance is legacy migration contrast only.
 
 ## Authoring Patterns
 
