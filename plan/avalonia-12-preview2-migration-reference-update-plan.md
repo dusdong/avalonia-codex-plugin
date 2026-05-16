@@ -1,51 +1,40 @@
-# Avalonia 12.0.0-preview2 Migration Reference Update Plan
+# Superseded Avalonia 12 Preview2 Migration Reference Update Plan
 
-## Objective
+## Status
 
-Extend the skill with a dedicated Avalonia 12 preview migration lane without changing the repository-wide stable pin of `11.3.12`.
+This file is retained as historical planning context only.
 
-## Plan
+It is superseded by the current Avalonia 12 source baseline:
 
-1. Verify the latest upstream preview tag.
-- status: completed
-- result: `12.0.0-preview2` verified on `2026-03-14`.
+- source tree: `/Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia`
+- version signal: `12.1.999`
+- current target framework: `net10.0`
+- default generated API index: `references/api-index-generated.md`
+- default breaking/new API catalog: `references/69-avalonia-12-breaking-changes-and-new-api-catalog.md`
 
-2. Build a reproducible break/new API inventory.
-- status: completed
-- deliverables:
-  - `scripts/generate_api_migration_report.py`
-  - `scripts/test_generate_api_migration_report.py`
-  - generated preview migration catalog under `references/69-...`
+Do not use the old preview2 lane as current guidance for default implementation, migration, or package-version decisions.
 
-3. Generate a preview-specific public API index.
-- status: completed
-- deliverable:
-  - `references/api-index-12.0.0-preview2-generated.md`
+## Historical Purpose
 
-4. Author a curated migration chapter.
-- status: completed
-- deliverable:
-  - `references/68-avalonia-12-preview2-migration-guide.md`
+The original plan created a dedicated migration lane for an early Avalonia 12 preview while the repository still had an Avalonia 11.x default baseline. That work is no longer the plugin's current operating model.
 
-5. Wire the preview lane into the repository entry points.
-- status: completed
-- files:
-  - `SKILL.md`
-  - `README.md`
-  - `references/compendium.md`
+Historical artifacts from that lane may still be useful only as migration archaeology when explaining how the plugin evolved from Avalonia 11.x and early Avalonia 12 preview assumptions toward the current source-backed Avalonia 12 baseline.
 
-6. Re-run repository validation.
-- status: completed
-- commands:
-  - `python3 -m unittest scripts.test_generate_api_migration_report scripts.test_find_uncovered_apis`
-  - `python3 scripts/find_uncovered_apis.py --output plan/api-coverage-not-covered.md`
-  - `python3 scripts/generate_api_migration_report.py --repo /Users/wieslawsoltes/GitHub/Avalonia --from-ref 11.3.12 --to-ref 12.0.0-preview2 --output /Users/wieslawsoltes/GitHub/avalonia-app-development/references/69-avalonia-12-preview2-breaking-changes-and-new-api-catalog.md`
+## Current Replacement
 
-## Deliverable Set
+Use these files instead:
 
-- preview migration chapter
-- official break/new API catalog
-- preview API index
-- plan and analysis docs
-- generator and tests
-- navigation updates in top-level skill docs
+- `README.md`
+- `SKILL.md`
+- `AGENTS.md`
+- `references/70-avalonia-12-source-and-reference-baseline.md`
+- `references/71-skill-routing-and-evaluation.md`
+- `references/72-avalonia-12-skill-quality-audit.md`
+- `evals/avalonia-12-plugin-prompts.md`
+- `examples/avalonia-12-task-samples.md`
+
+## Boundary
+
+- Avalonia 12 source facts must come from `frameworks/Avalonia`.
+- Default product patterns must come only from `mnemo`, `Netor.Cartana`, and `ClippyAI` as recorded in `docs/reference/ai-desktop-projects.md`.
+- Avalonia 11.x and early preview material may appear only as explicitly labeled migration contrast.

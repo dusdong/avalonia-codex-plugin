@@ -118,3 +118,75 @@ This audit does not claim every deep reference chapter has been manually re-auth
 - removing stale rc API index routing,
 - converting default entry points and high-risk references away from `11.3.12`,
 - retaining legacy version references only in migration or exclusion contexts.
+
+## Systematic Reclose
+
+Date: 2026-05-16
+
+### Scope
+
+This reclose covers the plugin as an Avalonia 12 focused Codex plugin across:
+
+- `README.md`, `AGENTS.md`, `SKILL.md`
+- `.codex-plugin/plugin.json`
+- `.agents/*`
+- `skills/*`
+- `references/*`
+- `evals/*`
+- `examples/*`
+- `scripts/*`
+- `plan/*`
+
+Required evidence boundaries:
+
+- Avalonia 12 source facts come from `/Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia`.
+- Current source signals are `12.1.999` and `net10.0`.
+- Default Avalonia 12 product references are limited to `mnemo`, `Netor.Cartana`, and `ClippyAI` as recorded in `docs/reference/ai-desktop-projects.md`.
+- Avalonia 11.x and early Avalonia 12 preview material is migration contrast only.
+
+### Findings
+
+- The current plugin entrypoints already route through the Avalonia 12 baseline and the three evidence classes.
+- All 19 specialist skills include the Avalonia 12 source baseline reference and evidence discipline markers.
+- The plugin manifest is Avalonia 12 explicit and points at `./skills/`.
+- The existing quality gate passed before this reclose, but it did not verify the semantic status of `plan/*`.
+- Two old preview2 planning files were still framed as completed preview-lane work and could be mistaken for current planning material.
+- The migration guide contained one package example that still used a historical release-candidate package version in an "After" block.
+
+### Changes
+
+- Reframed the two preview2 plan files as explicitly superseded historical context.
+- Updated the migration guide example so Avalonia package guidance stays aligned with the application's Avalonia 12 package line instead of copying a historical release-candidate version.
+- Extended `scripts/validate_plugin_quality.py` with a plan-scope check so superseded plan files and this reclose report are part of the executable quality gate.
+
+### Verification
+
+Commands to run before declaring this reclose complete:
+
+```bash
+python3 scripts/validate_plugin_quality.py
+python3 -m json.tool .codex-plugin/plugin.json
+python3 -m unittest scripts.test_generate_api_migration_report scripts.test_find_uncovered_apis
+git diff --check
+```
+
+Expected outcome:
+
+- quality gate includes `plan-scope=ok`,
+- plugin manifest parses as JSON,
+- migration and coverage helper tests pass,
+- whitespace check is clean.
+
+### Residual Risks
+
+- The generated API index is parser-based and remains a lookup helper; important API claims still require direct verification in `frameworks/Avalonia`.
+- The quality gate verifies structural evidence discipline, not actual model behavior on the eval prompts.
+- Deep reference chapters are broad; this reclose fixes routing, boundary, and plan drift, but it is not a line-by-line rewrite of every reference page.
+- Default product-pattern extraction is still document-governed; copying third-party code is prohibited but not automatically diff-detected.
+
+### Next Minimal Tasks
+
+1. Add a small prompt-runner or checklist that executes the eval prompts against the installed plugin and captures routing quality.
+2. Prioritize reference expansion from `plan/api-coverage-not-covered.md` by app-facing risk instead of raw uncovered signature count.
+3. Add a source-path citation convention for high-risk API guidance in specialist skill outputs.
+4. Create a focused review for `references/68-avalonia-12-migration-guide.md` once the official Avalonia 12 package line stabilizes beyond local `12.1.999` source signals.

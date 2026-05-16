@@ -129,6 +129,39 @@ def validate_evaluation_assets() -> list[str]:
     return ["evals>=8", "samples>=5"]
 
 
+def validate_plan_scope() -> list[str]:
+    superseded_preview_files = [
+        ROOT / "plan" / "avalonia-12-preview2-migration-reference-update-plan.md",
+        ROOT / "plan" / "avalonia-12-preview2-migration-analysis.md",
+    ]
+
+    for path in superseded_preview_files:
+        body = read(path)
+        require("Superseded" in body, f"{path.relative_to(ROOT)} must be explicitly marked superseded")
+        require("historical" in body.lower(), f"{path.relative_to(ROOT)} must describe its historical-only status")
+        require("12.1.999" in body, f"{path.relative_to(ROOT)} must point to the current Avalonia 12 baseline")
+        require("net10.0" in body, f"{path.relative_to(ROOT)} must point to the current target framework")
+        require(
+            "Do not" in body and "current guidance" in body,
+            f"{path.relative_to(ROOT)} must warn against reuse as current guidance",
+        )
+
+    closeout = ROOT / "plan" / "avalonia-12-plugin-rewrite-audit.md"
+    body = read(closeout)
+    for marker in [
+        "Systematic Reclose",
+        "Scope",
+        "Findings",
+        "Changes",
+        "Verification",
+        "Residual Risks",
+        "Next Minimal Tasks",
+    ]:
+        require(marker in body, f"closeout report lacks section marker: {marker}")
+
+    return ["plan-scope=ok"]
+
+
 def validate_forbidden_default_11x() -> list[str]:
     forbidden = [
         re.compile(r"default(?:[^\\n]{0,80})11\\.3\\.12", re.IGNORECASE),
@@ -163,6 +196,7 @@ def main() -> int:
     checks.extend(validate_skill_catalog())
     checks.extend(validate_plugin_manifest())
     checks.extend(validate_evaluation_assets())
+    checks.extend(validate_plan_scope())
     checks.extend(validate_forbidden_default_11x())
     print("OK: " + ", ".join(checks))
     return 0

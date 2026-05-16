@@ -32,10 +32,10 @@ Use this guide when you are porting an application, library, or samples from leg
 Use sources in this order for Avalonia 12 migration work:
 
 1. the official docs page: [Breaking changes in Avalonia 12](https://docs.avaloniaui.net/docs/avalonia12-breaking-changes),
-2. the local Avalonia 12 source baseline described in [`70-avalonia-12-source-and-reference-baseline.md`](70-avalonia-12-source-and-reference-baseline),
+2. the local Avalonia 12 source baseline described in [`70-avalonia-12-source-and-reference-baseline.md`](70-avalonia-12-source-and-reference-baseline.md),
 3. this repository's generated companion references:
-   - [`69-avalonia-12-breaking-changes-and-new-api-catalog.md`](69-avalonia-12-breaking-changes-and-new-api-catalog),
-   - [`api-index-generated.md`](api-index-generated),
+   - [`69-avalonia-12-breaking-changes-and-new-api-catalog.md`](69-avalonia-12-breaking-changes-and-new-api-catalog.md),
+   - [`api-index-generated.md`](api-index-generated.md),
 4. older Avalonia wiki pages as historical background only when they still add detail not present on the docs page.
 
 Current generated evidence for this lane:
@@ -46,7 +46,7 @@ Current generated evidence for this lane:
 Coverage intent:
 
 - the official docs page is treated as the authoritative user-facing migration checklist,
-- the generated report remains the exhaustive source-backed inventory for the latest published Avalonia 12 tag,
+- the generated report remains the source-backed inventory for the local Avalonia 12 baseline,
 - this guide focuses on sequencing, high-risk changes, and app-development-oriented examples.
 
 ## Upgrade Baseline First
@@ -338,7 +338,7 @@ After:
 
 <ItemGroup>
   <PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.0" />
-  <PackageReference Include="Avalonia.HarfBuzz" Version="12.0.0-rc1" />
+  <PackageReference Include="Avalonia.HarfBuzz" Version="$(AvaloniaVersion)" />
 </ItemGroup>
 ```
 
@@ -349,7 +349,7 @@ public static AppBuilder BuildAvaloniaApp()
         .UseHarfBuzz();
 ```
 
-Use `AttachDeveloperTools()` on the Avalonia 12 line.
+Use `AttachDeveloperTools()` on the Avalonia 12 line. Keep package versions aligned through central package management or the same Avalonia 12 package line used by the application; do not copy historical preview or release-candidate package versions into new guidance.
 
 ### Binding constructor migration
 

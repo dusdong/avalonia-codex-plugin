@@ -77,12 +77,13 @@ The gate checks:
 - root `SKILL.md` routes every specialist skill,
 - `.codex-plugin/plugin.json` is valid and Avalonia 12 explicit,
 - evaluation prompts and real task samples exist,
-- default 11.x drift markers are absent from plugin guidance/config files outside historical planning files.
+- default 11.x drift markers are absent from plugin guidance/config files outside explicitly superseded historical planning context.
+- `plan/*` preview2 files are explicitly marked superseded and the tracked reclose report is present.
 
 Latest result:
 
 ```text
-OK: source-baseline=12.1.999/net10.0, reference-projects=3-default-avalonia-12, skills=19, plugin-manifest=ok, evals>=8, samples>=5, default-11x-scan-files=501
+OK: source-baseline=12.1.999/net10.0, reference-projects=3-default-avalonia-12, skills=19, plugin-manifest=ok, evals>=8, samples>=5, plan-scope=ok, default-11x-scan-files=502
 ```
 
 ## Evaluation Assets
@@ -127,5 +128,5 @@ The unit test output includes `error: unknown ref: bad-ref`; that string is emit
 
 - The quality gate verifies routing and evidence discipline structurally; it does not run the prompts through an actual model evaluator.
 - The generated API index remains a parser-based helper. Important API claims still need local source verification.
-- Historical `plan/` files intentionally quote removed artifact names and old search patterns, so the quality gate excludes `plan/` from forbidden-marker scanning.
+- Historical `plan/` files may still describe old work, but the quality gate now requires preview2 plan files to be explicitly superseded and tied back to the current Avalonia 12 baseline.
 - The plugin still carries broad reference chapters from earlier work. This audit improves their routing and validation surface, but it is not a line-by-line rewrite of every deep reference chapter.
