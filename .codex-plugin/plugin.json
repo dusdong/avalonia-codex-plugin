@@ -1,7 +1,7 @@
 {
   "name": "avalonia-codex-plugin",
   "version": "0.1.0",
-  "description": "Build, review, design, port, and migrate Avalonia 12 applications through focused Codex skills for app architecture, styling, rendering, platform services, design systems, and framework migration.",
+  "description": "Unofficial Avalonia 12 focused Codex plugin for building, reviewing, designing, porting, and migrating desktop applications through focused skills.",
   "author": {
     "name": "dusdong",
     "url": "https://github.com/dusdong"
@@ -24,8 +24,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Avalonia Codex Plugin",
-    "shortDescription": "Avalonia 12 focused Codex skills for building and porting desktop apps",
-    "longDescription": "Use Avalonia Codex Plugin to build or review Avalonia 12 applications, route work into focused startup, styling, rendering, platform, and testing workflows, and handle HTML/CSS, WinForms, WPF, WinUI, and legacy Avalonia migration without drifting away from the local Avalonia 12 source baseline. This repository is maintained independently from the original development-plugin-for-avalonia upstream.",
+    "shortDescription": "Unofficial Avalonia 12 focused Codex skills for desktop apps",
+    "longDescription": "Use Avalonia Codex Plugin to build or review Avalonia 12 applications, route work into focused startup, styling, rendering, platform, and testing workflows, and handle HTML/CSS, WinForms, WPF, WinUI, and legacy Avalonia migration without drifting away from the local Avalonia 12 source baseline. This is an unofficial repository maintained independently from the original development-plugin-for-avalonia upstream.",
     "developerName": "dusdong",
     "category": "Coding",
     "capabilities": [

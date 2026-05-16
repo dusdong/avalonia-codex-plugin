@@ -1,12 +1,12 @@
 # Avalonia Codex Plugin
 
-Avalonia 12 focused Codex plugin for building, reviewing, designing, porting, and migrating Avalonia applications with focused skills instead of one oversized catch-all skill.
+Unofficial Avalonia 12 focused Codex plugin for building, reviewing, designing, porting, and migrating Avalonia applications with focused skills instead of one oversized catch-all skill.
 
 This repository is maintained independently for Avalonia 12 guidance. It is derived from [wieslawsoltes/development-plugin-for-avalonia](https://github.com/wieslawsoltes/development-plugin-for-avalonia), which is kept as the `upstream` Git remote.
 
 ## License
 
-This repository is licensed under the MIT License. See `LICENSE` for the full terms.
+This repository is licensed under the MIT License. See [`LICENSE`](LICENSE) for the full terms and [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) for upstream and third-party source notices.
 
 ## Upstream
 
@@ -17,6 +17,7 @@ The original repository is kept as `upstream`; this repository is maintained ind
 ## Plugin Identity
 
 - Plugin name: `avalonia-codex-plugin`
+- Status: unofficial, independently maintained Avalonia 12 focused plugin
 - Plugin manifest: [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json)
 - Canonical umbrella workflow: [`SKILL.md`](SKILL.md)
 - Repo-local umbrella skill: [`.agents/skills/avalonia-codex-plugin/SKILL.md`](.agents/skills/avalonia-codex-plugin/SKILL.md)
@@ -128,7 +129,9 @@ The skills share one reference corpus instead of duplicating docs inside every s
 - [`scripts/generate_api_migration_report.py`](scripts/generate_api_migration_report.py): Avalonia 12 migration report generator
 - [`assets/`](assets): shared plugin and skill imagery
 
-## Regenerating API Index
+## Maintenance: Regenerating API Index
+
+This section is for maintainers. You only need it when updating the shared reference corpus or refreshing source-backed API evidence against the local Avalonia 12 checkout.
 
 ```bash
 python3 scripts/generate_api_index.py \
