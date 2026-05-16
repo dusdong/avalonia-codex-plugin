@@ -67,6 +67,7 @@ This repository also carries a legacy-to-Avalonia-12 migration lane:
 - curated migration chapter: [`references/68-avalonia-12-migration-guide.md`](references/68-avalonia-12-migration-guide.md)
 - generated break/new API catalog: [`references/69-avalonia-12-breaking-changes-and-new-api-catalog.md`](references/69-avalonia-12-breaking-changes-and-new-api-catalog.md)
 - generated Avalonia 12 API index: [`references/api-index-generated.md`](references/api-index-generated.md)
+- AI desktop product patterns from allowed Avalonia 12 references: [`references/73-avalonia-12-ai-desktop-product-patterns.md`](references/73-avalonia-12-ai-desktop-product-patterns.md)
 
 ## Skill Catalog
 
@@ -114,6 +115,7 @@ The skills share one reference corpus instead of duplicating docs inside every s
 - [`references/api-index-generated.md`](references/api-index-generated.md): broad Avalonia 12 signature lookup regenerated from the local source baseline
 - [`references/71-skill-routing-and-evaluation.md`](references/71-skill-routing-and-evaluation.md): skill lanes, evidence classes, and local evaluation contract
 - [`references/72-avalonia-12-skill-quality-audit.md`](references/72-avalonia-12-skill-quality-audit.md): latest executable skill-quality audit and residual risks
+- [`references/73-avalonia-12-ai-desktop-product-patterns.md`](references/73-avalonia-12-ai-desktop-product-patterns.md): AI desktop workbench, assistant, tray, overlay, notification, plugin, settings, and anti-copy patterns from `mnemo`, `Netor.Cartana`, and `ClippyAI`
 - [`references/professional-design/README.md`](references/professional-design/README.md): professional design lane
 - [`references/fluent-design/README.md`](references/fluent-design/README.md): Fluent design lane
 - [`references/html-to-avalonia/README.md`](references/html-to-avalonia/README.md): HTML/CSS migration lane
@@ -144,7 +146,7 @@ The plugin is organized around six capability lanes:
 - `migration`: translate legacy Avalonia, WPF, WinForms, WinUI, or HTML/CSS inputs into Avalonia 12.
 - `debugging`: diagnose build, XAML, binding, styling, platform, rendering, and performance failures.
 - `source-reference`: verify API or behavior claims against `frameworks/Avalonia`.
-- `ui-patterns`: extract design and engineering patterns from allowed Avalonia 12 reference projects without copying code.
+- `ui-patterns`: extract design and engineering patterns from allowed Avalonia 12 reference projects without copying code; use `references/73-avalonia-12-ai-desktop-product-patterns.md` for AI desktop workbench, assistant, tray, overlay, settings, and plugin product patterns.
 
 Run the local quality gate before publishing plugin changes:
 
@@ -152,7 +154,7 @@ Run the local quality gate before publishing plugin changes:
 python3 scripts/validate_plugin_quality.py
 ```
 
-The gate checks the Avalonia source baseline, allowed reference-project evidence, specialist skill coverage, plugin manifest, evaluation prompts, real task samples, and forbidden default Avalonia 11.x drift.
+The gate checks the Avalonia source baseline, allowed reference-project evidence, AI desktop product-pattern coverage, specialist skill coverage, plugin manifest, evaluation prompts, real task samples, and forbidden default Avalonia 11.x drift.
 
 ## Maintenance: Regenerating API Index
 

@@ -13,6 +13,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT.parents[1]
 AVALONIA_REPO = WORKSPACE / "frameworks" / "Avalonia"
 AI_PROJECTS = WORKSPACE / "docs" / "reference" / "ai-desktop-projects.md"
+AI_DESKTOP_PATTERNS = ROOT / "references" / "73-avalonia-12-ai-desktop-product-patterns.md"
 
 EXPECTED_SKILLS = {
     "avalonia-12-migration",
@@ -40,6 +41,60 @@ EVIDENCE_MARKERS = [
     "Avalonia 12 source facts",
     "Avalonia 12 project patterns",
     "Avalonia 11.x migration contrast",
+]
+
+AI_DESKTOP_PROJECTS = [
+    "mnemo",
+    "Netor.Cartana",
+    "ClippyAI",
+]
+
+AI_DESKTOP_EXCLUDED_PROJECTS = [
+    "Everywhere",
+    "StabilityMatrix",
+    "avallama",
+    "WhisperVoiceInput",
+]
+
+AI_DESKTOP_SECTIONS = [
+    "## Evidence Boundary",
+    "## Source Project Coverage",
+    "## Workbench Architecture",
+    "## AI Assistant Interaction",
+    "## Plugins and Settings Center",
+    "## Desktop Entry and Tray",
+    "## Overlays and Notifications",
+    "## Theme Tokens and Design System",
+    "## View and ViewModel Organization",
+    "## Platform Service Isolation",
+    "## Transferable Anti-Patterns",
+    "## Avalonia 12 Source Verification Points",
+    "## No-Copy Rules",
+]
+
+AI_DESKTOP_KEY_FILES = [
+    "Mnemo.UI/Views/MainWindow.axaml",
+    "Mnemo.UI/Components/RightSidebar/RightSidebar.axaml",
+    "Mnemo.UI/Components/OverlayPopupHost.axaml",
+    "Mnemo.UI/Services/ToastService.cs",
+    "Src/Netor.Cortana.UI/Views/MainWindow.axaml",
+    "Src/Netor.Cortana.UI/Views/SettingsWindow.axaml",
+    "Src/Netor.Cortana.UI/Views/FloatWindow.axaml",
+    "Src/Netor.Cortana.Plugin/Core/PluginManifest.cs",
+    "Src/Netor.Cortana.Plugin/PluginLoader.cs",
+    "ClippyAI/App.axaml.cs",
+    "ClippyAI/Views/MainView.axaml",
+    "ClippyAI/Views/ConfigurationDialog.axaml",
+    "Libs/DesktopNotificationsNet8",
+]
+
+AI_DESKTOP_SKILLS = [
+    "avalonia-design-systems",
+    "avalonia-controls-and-windowing",
+    "avalonia-views-and-templating",
+    "avalonia-platform-services",
+    "avalonia-styling-and-resources",
+    "avalonia-testing-diagnostics-and-performance",
 ]
 
 
@@ -129,6 +184,68 @@ def validate_evaluation_assets() -> list[str]:
     return ["evals>=8", "samples>=5"]
 
 
+def validate_ai_desktop_patterns() -> list[str]:
+    body = read(AI_DESKTOP_PATTERNS)
+
+    for project in AI_DESKTOP_PROJECTS:
+        require(project in body, f"AI desktop patterns lack project source: {project}")
+
+    for project in AI_DESKTOP_EXCLUDED_PROJECTS:
+        require(project in body, f"AI desktop patterns do not name excluded project: {project}")
+
+    require(
+        "迁移对比" in body or "not default" in body.lower(),
+        "AI desktop patterns must keep excluded Avalonia 11.x projects out of default guidance",
+    )
+
+    for section in AI_DESKTOP_SECTIONS:
+        require(section in body, f"AI desktop patterns lack section: {section}")
+
+    for key_file in AI_DESKTOP_KEY_FILES:
+        require(key_file in body, f"AI desktop patterns lack source evidence file: {key_file}")
+
+    for marker in [
+        "不得复制",
+        "不得照搬",
+        "third-party",
+        "Avalonia 12 project patterns",
+        "Avalonia 12 source facts",
+        "frameworks/Avalonia",
+    ]:
+        require(marker in body, f"AI desktop patterns lack no-copy/source marker: {marker}")
+
+    for path in [
+        ROOT / "README.md",
+        ROOT / "SKILL.md",
+        ROOT / "references" / "compendium.md",
+        ROOT / "references" / "70-avalonia-12-source-and-reference-baseline.md",
+        ROOT / "references" / "71-skill-routing-and-evaluation.md",
+    ]:
+        text = read(path)
+        require(
+            "73-avalonia-12-ai-desktop-product-patterns.md" in text,
+            f"{path.relative_to(ROOT)} does not route AI desktop patterns",
+        )
+
+    for skill in AI_DESKTOP_SKILLS:
+        skill_file = ROOT / "skills" / skill / "SKILL.md"
+        text = read(skill_file)
+        require(
+            "../../references/73-avalonia-12-ai-desktop-product-patterns.md" in text,
+            f"{skill} does not route AI desktop patterns",
+        )
+
+    evals = read(ROOT / "evals" / "avalonia-12-plugin-prompts.md")
+    examples = read(ROOT / "examples" / "avalonia-12-task-samples.md")
+    for text, label in [(evals, "evals"), (examples, "examples")]:
+        require("73-avalonia-12-ai-desktop-product-patterns.md" in text, f"{label} lack AI desktop reference route")
+        for project in AI_DESKTOP_PROJECTS:
+            require(project in text, f"{label} lack AI desktop project: {project}")
+        require("copy" in text.lower() or "复制" in text, f"{label} lack no-copy constraint")
+
+    return ["ai-desktop-patterns=ok"]
+
+
 def validate_plan_scope() -> list[str]:
     superseded_preview_files = [
         ROOT / "plan" / "avalonia-12-preview2-migration-reference-update-plan.md",
@@ -196,6 +313,7 @@ def main() -> int:
     checks.extend(validate_skill_catalog())
     checks.extend(validate_plugin_manifest())
     checks.extend(validate_evaluation_assets())
+    checks.extend(validate_ai_desktop_patterns())
     checks.extend(validate_plan_scope())
     checks.extend(validate_forbidden_default_11x())
     print("OK: " + ", ".join(checks))

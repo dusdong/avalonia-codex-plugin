@@ -66,3 +66,15 @@ Expected output:
 - verify important signatures or behavior under `frameworks/Avalonia/src`,
 - cite the relevant local source path or generated reference,
 - mark any unresolved API claim as provisional instead of presenting it as default guidance.
+
+## Sample 7: Extract AI Desktop Product Patterns Without Copying
+
+Expected route: `avalonia-design-systems` -> `avalonia-controls-and-windowing` -> `avalonia-views-and-templating` -> `avalonia-platform-services`, with `references/73-avalonia-12-ai-desktop-product-patterns.md` loaded.
+
+Expected output:
+
+- state that `mnemo`, `Netor.Cartana`, and `ClippyAI` are Avalonia 12 project-pattern evidence, not source facts,
+- organize guidance by workbench architecture, assistant interaction, plugin/settings center, tray/floating entry, overlays/notifications, theme tokens, View/ViewModel organization, platform service isolation, and anti-patterns,
+- cite representative third-party source files as evidence, then redesign the implementation against the target app,
+- verify Avalonia APIs such as `ContentControl`, `SplitView`, `TopLevel`, `TrayIcon`, `NativeMenu`, `Popup`, `WindowNotificationManager`, `IClipboard`, `IStorageProvider`, and `ILauncher` against `frameworks/Avalonia`,
+- explicitly avoid copying third-party code, XAML, resource keys, icons, plugin protocols, strings, or layout constants.

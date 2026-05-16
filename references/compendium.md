@@ -77,6 +77,7 @@ Use this as the entry page for the full skill reference set.
 70. Avalonia 12 source and reference baseline: [`70-avalonia-12-source-and-reference-baseline.md`](70-avalonia-12-source-and-reference-baseline)
 71. Skill routing and evaluation: [`71-skill-routing-and-evaluation.md`](71-skill-routing-and-evaluation)
 72. Avalonia 12 skill quality audit: [`72-avalonia-12-skill-quality-audit.md`](72-avalonia-12-skill-quality-audit)
+73. Avalonia 12 AI desktop product patterns: [`73-avalonia-12-ai-desktop-product-patterns.md`](73-avalonia-12-ai-desktop-product-patterns)
 API indexes:
 - local Avalonia 12 source baseline: [`api-index-generated.md`](api-index-generated)
 
@@ -97,6 +98,7 @@ API indexes:
   - [`34-dragdrop-workflows.md`](34-dragdrop-workflows)
   - [`54-native-menu-and-native-menubar-integration.md`](54-native-menu-and-native-menubar-integration)
   - [`55-tray-icons-and-system-tray-integration.md`](55-tray-icons-and-system-tray-integration)
+  - [`73-avalonia-12-ai-desktop-product-patterns.md`](73-avalonia-12-ai-desktop-product-patterns)
 
 - XAML compiler, runtime loader, and manipulation:
   - [`41-xaml-compiler-and-build-pipeline.md`](41-xaml-compiler-and-build-pipeline)
@@ -131,6 +133,7 @@ API indexes:
   - [`28-custom-themes-xaml-and-code-only.md`](28-custom-themes-xaml-and-code-only)
   - [`66-professional-ui-design-tokens-and-themes.md`](66-professional-ui-design-tokens-and-themes)
   - [`67-microsoft-fluent-design-and-fluenttheme.md`](67-microsoft-fluent-design-and-fluenttheme)
+  - [`73-avalonia-12-ai-desktop-product-patterns.md`](73-avalonia-12-ai-desktop-product-patterns)
 
 - View composition and lookup patterns:
   - [`11-user-views-locator-and-tree-patterns.md`](11-user-views-locator-and-tree-patterns)
@@ -138,6 +141,7 @@ API indexes:
   - [`51-template-content-and-func-template-patterns.md`](51-template-content-and-func-template-patterns)
   - [`39-visual-tree-inspection-and-traversal.md`](39-visual-tree-inspection-and-traversal)
   - [`40-logical-tree-inspection-and-traversal.md`](40-logical-tree-inspection-and-traversal)
+  - [`73-avalonia-12-ai-desktop-product-patterns.md`](73-avalonia-12-ai-desktop-product-patterns)
 
 - Input, focus, and interaction routing:
   - [`18-input-system-and-routed-events.md`](18-input-system-and-routed-events)
@@ -176,6 +180,15 @@ API indexes:
   - [`55-tray-icons-and-system-tray-integration.md`](55-tray-icons-and-system-tray-integration)
   - [`56-managed-notifications-and-window-notification-manager.md`](56-managed-notifications-and-window-notification-manager)
   - [`52-controls-reference-catalog.md`](52-controls-reference-catalog)
+  - [`73-avalonia-12-ai-desktop-product-patterns.md`](73-avalonia-12-ai-desktop-product-patterns)
+
+- AI desktop product patterns:
+  - [`73-avalonia-12-ai-desktop-product-patterns.md`](73-avalonia-12-ai-desktop-product-patterns)
+  - [`70-avalonia-12-source-and-reference-baseline.md`](70-avalonia-12-source-and-reference-baseline)
+  - [`71-skill-routing-and-evaluation.md`](71-skill-routing-and-evaluation)
+  - [`25-popups-flyouts-tooltips-and-overlays.md`](25-popups-flyouts-tooltips-and-overlays)
+  - [`55-tray-icons-and-system-tray-integration.md`](55-tray-icons-and-system-tray-integration)
+  - [`56-managed-notifications-and-window-notification-manager.md`](56-managed-notifications-and-window-notification-manager)
 
 - Drawing and graphics:
   - [`14-custom-drawing-text-shapes-and-skia.md`](14-custom-drawing-text-shapes-and-skia)

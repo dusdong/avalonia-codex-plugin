@@ -12,6 +12,7 @@ Start with:
 - `../../references/31-clipboard-and-data-transfer.md`
 - `../../references/32-launcher-and-external-open.md`
 - `../../references/33-screens-and-display-awareness.md`
+- `../../references/73-avalonia-12-ai-desktop-product-patterns.md` when AI desktop patterns involve tray visibility, floating windows, clipboard tools, notifications, plugin processes, MCP servers, or workspace file services.
 
 Load these when workflow overlap exists:
 

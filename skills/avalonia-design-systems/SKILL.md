@@ -10,6 +10,7 @@ Start with:
 - `../../references/70-avalonia-12-source-and-reference-baseline.md`
 - `../../references/66-professional-ui-design-tokens-and-themes.md`
 - `../../references/professional-design/README.md`
+- `../../references/73-avalonia-12-ai-desktop-product-patterns.md` when the design task is an AI desktop workbench, assistant shell, settings center, plugin surface, tray entry, overlay, or notification flow.
 
 Load only the lane chapters that fit the task:
 

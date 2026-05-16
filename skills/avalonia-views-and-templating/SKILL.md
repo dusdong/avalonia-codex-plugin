@@ -11,6 +11,7 @@ Start with:
 - `../../references/11-user-views-locator-and-tree-patterns.md`
 - `../../references/38-data-templates-and-idatatemplate-selector-patterns.md`
 - `../../references/51-template-content-and-func-template-patterns.md`
+- `../../references/73-avalonia-12-ai-desktop-product-patterns.md` when view composition involves AI workbench modules, assistant panels, settings pages, plugin pages, or compact utility views.
 
 Load these when lookup or debugging matters:
 

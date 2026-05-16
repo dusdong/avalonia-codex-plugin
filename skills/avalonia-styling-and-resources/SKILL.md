@@ -11,6 +11,7 @@ Start with:
 - `../../references/04-styles-themes-resources.md`
 - `../../references/16-property-system-attached-properties-behaviors-and-style-properties.md`
 - `../../references/17-resources-assets-theme-variants-and-xmlns.md`
+- `../../references/73-avalonia-12-ai-desktop-product-patterns.md` when styling AI desktop shells, assistant panels, overlays, toast surfaces, settings centers, or compact tray tools.
 
 Load these when needed:
 

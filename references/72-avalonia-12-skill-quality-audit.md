@@ -34,9 +34,12 @@ The plugin now has an explicit capability model:
 - `source-reference`: verify uncertain API and behavior claims against `frameworks/Avalonia`.
 - `ui-patterns`: extract architecture and UI patterns from allowed Avalonia 12 projects without copying code.
 
+The AI desktop product-pattern layer is now explicit in `references/73-avalonia-12-ai-desktop-product-patterns.md`. It extracts reusable patterns from `mnemo`, `Netor.Cartana`, and `ClippyAI` while keeping Avalonia 12 source facts, project patterns, and Avalonia 11.x migration contrast separate.
+
 Primary documentation:
 
 - `references/71-skill-routing-and-evaluation.md`
+- `references/73-avalonia-12-ai-desktop-product-patterns.md`
 - `SKILL.md`
 - `README.md`
 - `AGENTS.md`
@@ -47,6 +50,7 @@ Primary documentation:
 - Routing and operator docs: `SKILL.md`, `README.md`, `AGENTS.md`, `.agents/skills/avalonia-codex-plugin/SKILL.md`
 - Specialist skills: all 19 `skills/*/SKILL.md` files
 - References: `references/compendium.md`, `references/71-skill-routing-and-evaluation.md`, `references/72-avalonia-12-skill-quality-audit.md`
+- AI desktop product patterns: `references/73-avalonia-12-ai-desktop-product-patterns.md`
 - Executable validation: `scripts/validate_plugin_quality.py`
 - Evaluation assets: `evals/avalonia-12-plugin-prompts.md`, `examples/avalonia-12-task-samples.md`
 
@@ -79,11 +83,12 @@ The gate checks:
 - evaluation prompts and real task samples exist,
 - default 11.x drift markers are absent from plugin guidance/config files outside explicitly superseded historical planning context.
 - `plan/*` preview2 files are explicitly marked superseded and the tracked reclose report is present.
+- AI desktop pattern evidence exists, includes all three allowed Avalonia 12 projects, covers required product-pattern sections, excludes Avalonia 11.x projects from default guidance, and routes through README, SKILL, compendium, baseline, routing docs, six specialist skills, evals, and examples.
 
 Latest result:
 
 ```text
-OK: source-baseline=12.1.999/net10.0, reference-projects=3-default-avalonia-12, skills=19, plugin-manifest=ok, evals>=8, samples>=5, plan-scope=ok, default-11x-scan-files=502
+OK: source-baseline=12.1.999/net10.0, reference-projects=3-default-avalonia-12, skills=19, plugin-manifest=ok, evals>=8, samples>=5, ai-desktop-patterns=ok, plan-scope=ok, default-11x-scan-files=503
 ```
 
 ## Evaluation Assets
@@ -104,7 +109,9 @@ Coverage:
 - product-reference filtering,
 - performance review,
 - HTML/CSS conversion,
-- Fluent theme guidance.
+- Fluent theme guidance,
+- AI desktop workbench pattern extraction,
+- tray-first utility and plugin/MCP settings review.
 
 ## Verification Commands
 
@@ -130,3 +137,4 @@ The unit test output includes `error: unknown ref: bad-ref`; that string is emit
 - The generated API index remains a parser-based helper. Important API claims still need local source verification.
 - Historical `plan/` files may still describe old work, but the quality gate now requires preview2 plan files to be explicitly superseded and tied back to the current Avalonia 12 baseline.
 - The plugin still carries broad reference chapters from earlier work. This audit improves their routing and validation surface, but it is not a line-by-line rewrite of every deep reference chapter.
+- The AI desktop pattern library is evidence-based and structurally gated, but it is not a license to copy third-party source; implementations must redesign against the target product and verify APIs against the local Avalonia 12 source tree.

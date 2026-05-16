@@ -81,3 +81,19 @@ Prompt: Build a Fluent-themed Avalonia 12 settings window with theme variants an
 Expected route: `ui-patterns` plus `app-building` via `avalonia-fluent-design` and `avalonia-styling-and-resources`.
 
 Expected evidence: Avalonia 12 source facts for theme APIs; design-token guidance must not depend on Avalonia 11.x defaults.
+
+## Eval 11: AI Desktop Workbench Patterns
+
+Prompt: Build an Avalonia 12 AI workbench with left module navigation, central workspace, right assistant, overlay dialogs, toast history, and a settings/plugin center using the AI desktop reference projects.
+
+Expected route: `ui-patterns` plus `app-building` via `avalonia-design-systems`, `avalonia-controls-and-windowing`, `avalonia-views-and-templating`, and `73-avalonia-12-ai-desktop-product-patterns.md`.
+
+Expected evidence: extract patterns from `mnemo`, `Netor.Cartana`, and `ClippyAI`; name source projects and key files; verify API choices against `frameworks/Avalonia`; do not copy third-party XAML, code, resources, plugin protocol, or visual constants.
+
+## Eval 12: AI Desktop Tray and Utility Review
+
+Prompt: Review a compact Avalonia 12 tray-first clipboard AI utility with a floating window, notification wrapper, task presets, and MCP plugin settings.
+
+Expected route: `ui-patterns` plus `debugging` via `avalonia-platform-services`, `avalonia-controls-and-windowing`, `avalonia-testing-diagnostics-and-performance`, and `73-avalonia-12-ai-desktop-product-patterns.md`.
+
+Expected evidence: use `ClippyAI` only as local utility pattern evidence, use `Netor.Cartana` for plugin/MCP settings information architecture, use `mnemo` for overlay/toast service layering; flag polling, fixed sizing, Topmost defaults, and direct platform calls in ViewModels as risks.

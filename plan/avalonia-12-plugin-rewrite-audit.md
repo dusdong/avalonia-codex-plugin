@@ -184,6 +184,50 @@ Expected outcome:
 - Deep reference chapters are broad; this reclose fixes routing, boundary, and plan drift, but it is not a line-by-line rewrite of every reference page.
 - Default product-pattern extraction is still document-governed; copying third-party code is prohibited but not automatically diff-detected.
 
+## AI Desktop Pattern Reclose
+
+Date: 2026-05-16
+
+### Scope
+
+This reclose covers systematic extraction of Avalonia 12 AI desktop product experience from the allowed default references in `/Volumes/程序开发/Du-Framework/Du.Ingest/docs/reference/ai-desktop-projects.md`:
+
+- `mnemo`
+- `Netor.Cartana`
+- `ClippyAI`
+
+The extracted experience is pattern evidence only. Avalonia API, XAML, platform-service, resource, and control claims still resolve back to `/Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia` at `12.1.999 / net10.0`.
+
+### Findings
+
+- `mnemo` provides the strongest pattern evidence for a full AI workbench: shell composition, left navigation, central workspace, right assistant, overlay host, toast history, and theme resource layering.
+- `Netor.Cartana` provides the strongest pattern evidence for Chinese assistant UX, drawer panels, settings center information architecture, floating entry, bubble status, plugin lifecycle, and MCP configuration.
+- `ClippyAI` provides local utility evidence for tray-first visibility, transparent topmost small windows, clipboard task flows, configuration dialogs, and cross-platform notification wrapping.
+- `Everywhere`, `StabilityMatrix`, `avallama`, and `WhisperVoiceInput` remain excluded from default guidance because their Avalonia versions are 11.x.
+
+### Changes
+
+- Added `references/73-avalonia-12-ai-desktop-product-patterns.md` with sections for workbench architecture, AI assistant interaction, plugins/settings, tray/floating entry, overlays/notifications, theme tokens, View/ViewModel organization, platform service isolation, transferable anti-patterns, source verification points, and no-copy rules.
+- Routed the new experience library through `README.md`, `SKILL.md`, `references/compendium.md`, `references/70-avalonia-12-source-and-reference-baseline.md`, and `references/71-skill-routing-and-evaluation.md`.
+- Connected AI desktop product-pattern routing to `avalonia-design-systems`, `avalonia-controls-and-windowing`, `avalonia-views-and-templating`, `avalonia-platform-services`, `avalonia-styling-and-resources`, and `avalonia-testing-diagnostics-and-performance`.
+- Extended `evals/avalonia-12-plugin-prompts.md` and `examples/avalonia-12-task-samples.md` with workbench, tray utility, plugin/MCP, overlay, notification, and no-copy scenarios.
+- Extended `scripts/validate_plugin_quality.py` with `ai-desktop-patterns=ok` checks for source coverage, required sections, excluded 11.x references, no-copy constraints, routing, evals, and examples.
+
+### Verification
+
+Latest command result:
+
+```text
+python3 scripts/validate_plugin_quality.py
+OK: source-baseline=12.1.999/net10.0, reference-projects=3-default-avalonia-12, skills=19, plugin-manifest=ok, evals>=8, samples>=5, ai-desktop-patterns=ok, plan-scope=ok, default-11x-scan-files=503
+```
+
+### Residual Risks
+
+- The pattern library captures representative source files and architecture signals; it is not a full code audit of every line in the three projects.
+- The quality gate verifies structure and routing, not actual model responses on live eval execution.
+- Third-party code copying is explicitly prohibited and structurally documented, but automated copy-detection is still outside this plugin gate.
+
 ### Next Minimal Tasks
 
 1. Add a small prompt-runner or checklist that executes the eval prompts against the installed plugin and captures routing quality.

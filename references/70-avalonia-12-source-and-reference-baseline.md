@@ -39,6 +39,12 @@ Detailed product-reference evidence lives in:
 
 `/Volumes/程序开发/Du-Framework/Du.Ingest/docs/reference/ai-desktop-projects.md`
 
+Pattern-level AI desktop experience extracted from those projects lives in:
+
+`references/73-avalonia-12-ai-desktop-product-patterns.md`
+
+Use that file for workbench, assistant, settings center, plugin/MCP, tray, floating entry, overlay, notification, theme-token, View/ViewModel, platform-service, and anti-copy guidance. It remains project-pattern evidence; source facts still come from `frameworks/Avalonia`.
+
 ## Excluded from Default Guidance
 
 These projects may be useful for migration comparison or product inspiration, but they must not be used as default Avalonia 12 API examples:

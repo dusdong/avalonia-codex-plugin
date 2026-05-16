@@ -7,7 +7,7 @@ This reference turns the plugin from a static knowledge pack into a routable and
 Every specialist skill must keep these three evidence classes separate:
 
 - **Avalonia 12 source facts**: APIs, target frameworks, package behavior, build behavior, and platform services verified against `/Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia`.
-- **Avalonia 12 project patterns**: architecture, UI composition, and engineering patterns extracted from the allowed Avalonia 12 projects in `docs/reference/ai-desktop-projects.md`.
+- **Avalonia 12 project patterns**: architecture, UI composition, and engineering patterns extracted from the allowed Avalonia 12 projects in `docs/reference/ai-desktop-projects.md`; AI desktop product patterns are normalized in `73-avalonia-12-ai-desktop-product-patterns.md`.
 - **Avalonia 11.x migration contrast**: legacy behavior or examples used only to explain upgrade risk, compatibility gaps, or anti-patterns.
 
 If a response cannot identify which class supports a recommendation, it should treat the recommendation as provisional and verify it before presenting it as default guidance.
@@ -21,7 +21,7 @@ If a response cannot identify which class supports a recommendation, it should t
 | `migration` | `avalonia-12-migration`, WPF, WinForms, WinUI, HTML/CSS skills | Port older UI stacks or legacy Avalonia code to Avalonia 12. | Legacy APIs are clearly labeled as source-side input or contrast, not default Avalonia 12 guidance. |
 | `debugging` | `avalonia-testing-diagnostics-and-performance` plus the active domain skill | Diagnose build, XAML, binding, styling, rendering, platform, or performance failures. | The answer names the likely failure layer and the concrete file/API to inspect. |
 | `source-reference` | any specialist skill plus generated references | Confirm uncertain APIs and behaviors against `frameworks/Avalonia`. | Generated indexes are helper artifacts; local source wins on conflict. |
-| `ui-patterns` | design-systems, fluent-design, controls, layout skills | Extract design and engineering patterns from allowed Avalonia 12 projects. | The answer names the source project and avoids copying third-party code. |
+| `ui-patterns` | design-systems, fluent-design, controls, layout skills | Extract design and engineering patterns from allowed Avalonia 12 projects; use `73-avalonia-12-ai-desktop-product-patterns.md` for AI desktop workbench, assistant, plugin, tray, overlay, notification, theme, and ViewModel organization. | The answer names the source project, keeps project patterns separate from source facts, and avoids copying third-party code. |
 
 ## Routing Rules
 
@@ -29,8 +29,9 @@ If a response cannot identify which class supports a recommendation, it should t
 2. Route to the smallest specialist skill that can answer the current request.
 3. Load `70-avalonia-12-source-and-reference-baseline.md` before using product references.
 4. Use `docs/reference/ai-desktop-projects.md` only for the projects marked as Avalonia 12 default references.
-5. Escalate to source-reference when the request depends on API existence, signature shape, package version, target framework, or platform behavior.
-6. Escalate to migration only when the user supplies legacy Avalonia 11.x, WPF, WinForms, WinUI, or HTML/CSS source context.
+5. Load `73-avalonia-12-ai-desktop-product-patterns.md` when the request asks for AI desktop product architecture, assistant interactions, settings/plugin/MCP surfaces, tray/floating entry, overlays, notifications, or product-pattern review.
+6. Escalate to source-reference when the request depends on API existence, signature shape, package version, target framework, or platform behavior.
+7. Escalate to migration only when the user supplies legacy Avalonia 11.x, WPF, WinForms, WinUI, or HTML/CSS source context.
 
 ## Evaluation Contract
 
@@ -42,6 +43,7 @@ The plugin passes the local quality gate when:
 - `plugin.json` remains valid and Avalonia 12 explicit,
 - evaluation prompts cover app-building, migration, debugging, source-reference, and UI-patterns,
 - real task samples show expected outputs without copying third-party project code,
+- the AI desktop product-pattern library exists, includes `mnemo`, `Netor.Cartana`, and `ClippyAI`, covers the required pattern sections, and is routed by relevant specialist skills,
 - no forbidden default Avalonia 11.x marker is present outside explicit migration or exclusion context.
 
 Run:
