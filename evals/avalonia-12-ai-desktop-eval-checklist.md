@@ -62,6 +62,19 @@ This checklist makes the AI desktop evals executable by recording the expected r
 - Avalonia source verification:
 - Notes:
 
+## Eval Case: Diagnostics and HITL Workspace
+
+- Prompt source: `evals/avalonia-12-plugin-prompts.md` Eval 15
+- Expected route: `debugging` plus `ui-patterns`; `avalonia-testing-diagnostics-and-performance`, `avalonia-controls-and-windowing`, `avalonia-views-and-templating`, `references/73-avalonia-12-ai-desktop-product-patterns.md`, `references/74-avalonia-12-ai-desktop-recipes-and-checklists.md`
+- Expected evidence classes: Avalonia 12 source facts for controls, overlays, virtualization, and timers; `mnemo` project patterns for performance diagnostics overlay, chat virtualization, and AI tool gating; `Netor.Cartana` project patterns for realtime process card and HITL workspace
+- Required source projects: `mnemo`, `Netor.Cartana`
+- Required checklist topics: diagnostics and performance overlay, multi-agent workflow, HITL workspace, realtime process card, copy-risk scan
+- Actual route:
+- Evidence classes observed:
+- No-copy result:
+- Avalonia source verification:
+- Notes:
+
 ## Result Summary Template
 
 | Eval Case | Expected route | Actual route | Evidence classes OK | No-copy OK | Source verification OK | Result |
@@ -70,3 +83,4 @@ This checklist makes the AI desktop evals executable by recording the expected r
 | Tray Utility and Clipboard Flow |  |  |  |  |  |  |
 | Overlay and Notification Review |  |  |  |  |  |  |
 | Plugin MCP Settings |  |  |  |  |  |  |
+| Diagnostics and HITL Workspace |  |  |  |  |  |  |

@@ -123,7 +123,9 @@ Coverage:
 - tray-first utility and plugin/MCP settings review,
 - overlay/notification acceptance review,
 - plugin/MCP settings acceptance review,
-- checklist-based eval result recording.
+- diagnostics/HITL workspace review,
+- checklist-based eval result recording,
+- reference-sync sample for updated `mnemo` / `Netor.Cartana` submodule evidence.
 
 ## Verification Commands
 
@@ -153,3 +155,23 @@ The unit test output includes `error: unknown ref: bad-ref`; that string is emit
 - The plugin still carries broad reference chapters from earlier work. This audit improves their routing and validation surface, but it is not a line-by-line rewrite of every deep reference chapter.
 - The AI desktop pattern library is evidence-based and structurally gated, but it is not a license to copy third-party source; implementations must redesign against the target product and verify APIs against the local Avalonia 12 source tree.
 - The copy-risk scan is intentionally lightweight. It catches obvious pasted XAML/C# body markers, not semantic plagiarism or externally generated near-duplicates.
+
+## Reference Sync: mnemo and Netor.Cartana
+
+Date: 2026-05-16
+
+Latest synchronized evidence:
+
+- `mnemo`: `5e78976ee6514f7b61287a8232ff796754276892`, `v0.6.3-5-g5e78976`
+- `Netor.Cartana`: `490c61d4379eb78a77e30d7f2d3e9887084a67b7`, `v1.3.7-22-g490c61d`
+
+Synchronized pattern additions:
+
+- `mnemo`: AI tool gating through `AiAssistantToolHost`, chat virtualization through `Avalonia.Controls.ItemsRepeater`, and developer performance diagnostics through `PerfDiagnosticsService` / `PerfDiagnosticsOverlay`.
+- `Netor.Cartana`: `DesignTokens.axaml`, `SharedStyles.axaml`, `EmptyState`, `RealtimeProcessCard`, workspace/HITL ViewModels, workflow executor patterns, and PluginBus/WebSocket consolidation.
+
+Path correction:
+
+- Plugin/MCP docs moved from `Plugins/docs/plugin-mcp.md` and `Plugins/docs/native-plugin-dev-guide.md` to `Plugins/docs/参考文档/plugin-mcp.md` and `Plugins/docs/参考文档/native-plugin-dev-guide.md`.
+
+The synchronized material remains Avalonia 12 project-pattern evidence only. API correctness still comes from `/Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia`.

@@ -266,3 +266,43 @@ OK: source-baseline=12.1.999/net10.0, reference-projects=3-default-avalonia-12, 
 - The eval checklist records actual route and evidence quality, but it does not automatically run the installed plugin against a model; that remains a manual or harness-driven step.
 - The copy-risk scan catches obvious pasted XAML/C# body markers only; it is not full plagiarism detection.
 - The recipes are acceptance-level guidance, not generated implementation code.
+
+## AI Desktop Reference Sync Reclose
+
+Date: 2026-05-16
+
+### Scope
+
+This reclose syncs the plugin after pulling updated `third_party/ai_desktop_refs/mnemo` and `third_party/ai_desktop_refs/Netor.Cartana` references:
+
+- `mnemo`: `359451d72c6ccb9b28afa131471ff7b41c54c4e3` -> `5e78976ee6514f7b61287a8232ff796754276892`
+- `Netor.Cartana`: `ac32533f8ddf414581c3c2362cc3375dcad48e2a` -> `490c61d4379eb78a77e30d7f2d3e9887084a67b7`
+
+### Findings
+
+- `mnemo` added project-pattern evidence for `AiAssistantToolHost`, chat `ItemsRepeater` virtualization, `PerfDiagnosticsService`, `PerfDiagnosticsScope`, and `PerfDiagnosticsOverlay`.
+- `Netor.Cartana` moved plugin docs under `Plugins/docs/参考文档/` and added project-pattern evidence for design tokens, shared styles, empty state, realtime process cards, workspace task views, HITL approval, workflow executor/checkpoint layers, and PluginBus event transport.
+
+### Changes
+
+- Updated `/Volumes/程序开发/Du-Framework/Du.Ingest/docs/reference/ai-desktop-projects.md` with current commits, package evidence, key files, and new pattern summaries.
+- Updated `references/73-avalonia-12-ai-desktop-product-patterns.md` and `references/74-avalonia-12-ai-desktop-recipes-and-checklists.md` with diagnostics/performance, AI tool gating, chat virtualization, design token, realtime process, PluginBus, workflow, and HITL workspace patterns.
+- Updated `evals/avalonia-12-plugin-prompts.md`, `evals/avalonia-12-ai-desktop-eval-checklist.md`, `examples/avalonia-12-task-samples.md`, `scripts/run_ai_desktop_eval_checklist.py`, and `scripts/validate_plugin_quality.py` so the new patterns are routable and structurally gated.
+
+### Verification
+
+Commands to run:
+
+```bash
+python3 scripts/run_ai_desktop_eval_checklist.py --check
+python3 scripts/validate_plugin_quality.py
+python3 -m json.tool .codex-plugin/plugin.json
+python3 -m unittest scripts.test_generate_api_migration_report scripts.test_find_uncovered_apis
+git diff --check
+```
+
+### Residual Risks
+
+- The sync updates plugin evidence and recipes, not the third-party implementations themselves.
+- New `Netor.Cartana` workflow/PluginBus patterns are large and still treated as pattern evidence only; no protocol fields or implementation bodies should be copied.
+- `mnemo` diagnostics patterns are useful for developer tooling, but production telemetry/privacy policy remains target-application specific.

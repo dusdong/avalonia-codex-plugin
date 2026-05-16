@@ -54,7 +54,7 @@
 | Field | Guidance |
 | --- | --- |
 | 来源项目 | `Netor.Cartana` |
-| 关键文件 | `Src/Netor.Cortana.UI/Views/SettingsWindow.axaml`, `Src/Netor.Cortana.UI/Providers/PluginManagementProvider.cs`, `Src/Netor.Cortana.Plugin/Core/PluginManifest.cs`, `Src/Netor.Cortana.Plugin/PluginLoader.cs`, `Plugins/docs/plugin-mcp.md`, `Plugins/docs/native-plugin-dev-guide.md` |
+| 关键文件 | `Src/Netor.Cortana.UI/Views/SettingsWindow.axaml`, `Src/Netor.Cortana.UI/Providers/PluginManagementProvider.cs`, `Src/Netor.Cortana.Plugin/Core/PluginManifest.cs`, `Src/Netor.Cortana.Plugin/PluginLoader.cs`, `Plugins/docs/参考文档/plugin-mcp.md`, `Plugins/docs/参考文档/native-plugin-dev-guide.md`, `Src/Netor.Cortana.Networks/WebSockets/*PluginBus*` |
 | Avalonia 12 源码验证点 | `frameworks/Avalonia/src/Avalonia.Controls/ContentControl.cs`, `frameworks/Avalonia/src/Avalonia.Controls/ListBox.cs`, `frameworks/Avalonia/src/Avalonia.Controls/TabControl.cs`, `frameworks/Avalonia/src/Avalonia.Base/Platform/Storage/IStorageProvider.cs`, `frameworks/Avalonia/src/Avalonia.Base/Platform/Storage/ILauncher.cs` |
 | 交互状态 | provider configured, model enabled, agent selected, MCP connected/disconnected, plugin loaded/unloaded/reloaded, auth missing |
 | 失败态 | invalid manifest, runtime unavailable, permission denied, MCP transport timeout, plugin crash, version mismatch |
@@ -168,6 +168,46 @@
 - [ ] Secrets are masked and never written to eval output.
 - [ ] Long setting pages are scrollable without nested card clutter.
 - [ ] No third-party labels, section order, or storage schema are copied.
+
+## Recipe 9: Diagnostics and Performance Overlay
+
+| Field | Guidance |
+| --- | --- |
+| 来源项目 | `mnemo`, `Netor.Cartana` |
+| 关键文件 | `Mnemo.UI/Services/PerfDiagnosticsService.cs`, `Mnemo.UI/Services/PerfDiagnosticsScope.cs`, `Mnemo.UI/Components/Overlays/PerfDiagnosticsOverlay.axaml`, `Mnemo.UI/Modules/Chat/Views/ChatView.axaml`, `Mnemo.UI/Services/AiAssistantToolHost.cs`, `Src/Netor.Cortana.UI/Controls/RealtimeProcessCard.axaml` |
+| Avalonia 12 源码验证点 | `frameworks/Avalonia/src/Avalonia.Controls/ItemsRepeater`, `frameworks/Avalonia/src/Avalonia.Controls/Primitives/Popup.cs`, `frameworks/Avalonia/src/Avalonia.Threading/DispatcherTimer.cs` |
+| 交互状态 | diagnostics disabled, enabled, startup timings buffered, overlay opened, report refreshed, memory snapshot captured, chat list virtualized, AI tools loaded/unloaded |
+| 失败态 | diagnostics unavailable, overlay owner closed, report empty, memory metric unavailable, tool load failed, long chat list jank |
+| 可访问性/焦点风险 | diagnostics overlay must not steal focus from active text entry unless explicitly opened; report text should be selectable and readable |
+| 多屏/平台差异风险 | process memory metrics and console/log output can vary by platform and sandbox |
+
+验收清单：
+
+- [ ] Diagnostics collection is service-owned and opt-in except safe startup buffering.
+- [ ] Overlay is read-only, refreshable, and closeable without disrupting the active task.
+- [ ] Chat/message surfaces with large histories use virtualization or equivalent load-shedding.
+- [ ] AI tool registration has enable/disable cleanup and failure rollback.
+- [ ] No `mnemo` metric names, report format, overlay layout, ring buffer constants, or tool registration code are copied.
+
+## Recipe 10: Multi-Agent Workflow and HITL Workspace
+
+| Field | Guidance |
+| --- | --- |
+| 来源项目 | `Netor.Cartana` |
+| 关键文件 | `Src/Netor.Cortana.UI/Views/Workspace/WorkspaceTab.axaml`, `Src/Netor.Cortana.UI/ViewModels/Workspace/WorkflowTaskListVm.cs`, `Src/Netor.Cortana.UI/ViewModels/Workspace/WorkflowTaskApprovalVm.cs`, `Src/Netor.Cortana.AI/Workflow/*`, `Src/Netor.Cortana.Entitys/Entities/OrchestrationTaskEntity.cs`, `Src/Netor.Cortana.Networks/WebSockets/*PluginBus*` |
+| Avalonia 12 源码验证点 | `frameworks/Avalonia/src/Avalonia.Controls/ContentControl.cs`, `frameworks/Avalonia/src/Avalonia.Controls/ItemsControl.cs`, `frameworks/Avalonia/src/Avalonia.Controls/ScrollViewer.cs`, `frameworks/Avalonia/src/Avalonia.Controls/Button.cs` |
+| 交互状态 | task list empty, task selected, steps streaming, paused for approval, approved, revision requested, rejected/cancelled, completed, failed |
+| 失败态 | stale HITL request, checkpoint load failed, workflow executor unavailable, PluginBus disconnected, task title generation failed |
+| 可访问性/焦点风险 | approval card must announce blocking state and return focus after approve/reject/revise |
+| 多屏/平台差异风险 | long-running workflow notifications and window activation differ by desktop platform |
+
+验收清单：
+
+- [ ] Task list, detail, steps, approval, executor, checkpoint, and event transport are separate responsibilities.
+- [ ] HITL actions are idempotent and guard against stale request IDs.
+- [ ] Realtime process cards are presentation-only and do not own orchestration.
+- [ ] Failure and cancellation states are visible in both task list and detail.
+- [ ] No `Netor.Cartana` workflow protocol, entity schema, PluginBus message fields, styles, or button text are copied.
 
 ## Cross-Cutting Copy-Risk Scan
 

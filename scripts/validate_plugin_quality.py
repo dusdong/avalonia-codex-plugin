@@ -70,6 +70,7 @@ AI_DESKTOP_SECTIONS = [
     "## Theme Tokens and Design System",
     "## View and ViewModel Organization",
     "## Platform Service Isolation",
+    "## Diagnostics and Performance",
     "## Transferable Anti-Patterns",
     "## Avalonia 12 Source Verification Points",
     "## No-Copy Rules",
@@ -80,11 +81,22 @@ AI_DESKTOP_KEY_FILES = [
     "Mnemo.UI/Components/RightSidebar/RightSidebar.axaml",
     "Mnemo.UI/Components/OverlayPopupHost.axaml",
     "Mnemo.UI/Services/ToastService.cs",
+    "Mnemo.UI/Services/AiAssistantToolHost.cs",
+    "Mnemo.UI/Components/Overlays/PerfDiagnosticsOverlay.axaml",
+    "Mnemo.UI/Services/PerfDiagnosticsService.cs",
+    "Mnemo.UI/Modules/Chat/Views/ChatView.axaml",
     "Src/Netor.Cortana.UI/Views/MainWindow.axaml",
     "Src/Netor.Cortana.UI/Views/SettingsWindow.axaml",
     "Src/Netor.Cortana.UI/Views/FloatWindow.axaml",
+    "Src/Netor.Cortana.UI/Styles/DesignTokens.axaml",
+    "Src/Netor.Cortana.UI/Styles/SharedStyles.axaml",
+    "Src/Netor.Cortana.UI/Controls/EmptyState.axaml",
+    "Src/Netor.Cortana.UI/Controls/RealtimeProcessCard.axaml",
+    "Src/Netor.Cortana.UI/Views/Workspace/WorkspaceTab.axaml",
     "Src/Netor.Cortana.Plugin/Core/PluginManifest.cs",
     "Src/Netor.Cortana.Plugin/PluginLoader.cs",
+    "Plugins/docs/参考文档/plugin-mcp.md",
+    "Plugins/docs/参考文档/native-plugin-dev-guide.md",
     "ClippyAI/App.axaml.cs",
     "ClippyAI/Views/MainView.axaml",
     "ClippyAI/Views/ConfigurationDialog.axaml",
@@ -110,6 +122,8 @@ AI_DESKTOP_RECIPE_SECTIONS = [
     "## Recipe 6: System Notification Wrapper",
     "## Recipe 7: Clipboard Utility Flow",
     "## Recipe 8: Settings Center",
+    "## Recipe 9: Diagnostics and Performance Overlay",
+    "## Recipe 10: Multi-Agent Workflow and HITL Workspace",
     "## Cross-Cutting Copy-Risk Scan",
 ]
 
@@ -125,6 +139,11 @@ AI_DESKTOP_SURFACES = [
     "notification",
     "clipboard utility",
     "settings center",
+    "diagnostics",
+    "performance overlay",
+    "multi-agent",
+    "HITL",
+    "workflow",
 ]
 
 AI_DESKTOP_CHECKLIST_FIELDS = [
@@ -345,6 +364,7 @@ def validate_ai_desktop_deepening() -> list[str]:
         "Tray Utility and Clipboard Flow",
         "Overlay and Notification Review",
         "Plugin MCP Settings",
+        "Diagnostics and HITL Workspace",
         "Avalonia 12 source facts",
         "Avalonia 12 project patterns",
         "Avalonia 11.x migration contrast",
@@ -355,8 +375,8 @@ def validate_ai_desktop_deepening() -> list[str]:
         require(marker in checklist, f"AI desktop eval checklist lacks marker: {marker}")
         require(marker in runner, f"AI desktop eval runner lacks marker: {marker}")
 
-    require("Eval 13" in evals and "Eval 14" in evals, "evaluation prompts lack AI desktop deepening evals")
-    require("Sample 8" in examples, "task samples lack AI desktop eval checklist sample")
+    require("Eval 13" in evals and "Eval 14" in evals and "Eval 15" in evals, "evaluation prompts lack AI desktop deepening evals")
+    require("Sample 8" in examples and "Sample 9" in examples, "task samples lack AI desktop eval checklist/reference-sync samples")
     require("--check" in runner and "--json" in runner, "AI desktop eval runner lacks check/json modes")
     require(AI_DESKTOP_EVAL_RUNNER.stat().st_mode & 0o111, "AI desktop eval runner is not executable")
 

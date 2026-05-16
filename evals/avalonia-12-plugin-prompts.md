@@ -113,3 +113,11 @@ Prompt: Design and review an Avalonia 12 settings center for providers, agents, 
 Expected route: `ui-patterns` plus `app-building` via `avalonia-design-systems`, `avalonia-views-and-templating`, `avalonia-platform-services`, `73-avalonia-12-ai-desktop-product-patterns.md`, and `74-avalonia-12-ai-desktop-recipes-and-checklists.md`.
 
 Expected evidence: use `Netor.Cartana` only for plugin/MCP information-architecture patterns; do not copy its plugin protocol, manifest schema, fields, package names, or generator assumptions; verify settings UI and platform service APIs against `frameworks/Avalonia`.
+
+## Eval 15: AI Desktop Diagnostics and HITL Workspace
+
+Prompt: Review an Avalonia 12 AI desktop update that adds performance diagnostics overlay, chat virtualization, AI tool gating, realtime process cards, and a HITL multi-agent workflow workspace.
+
+Expected route: `debugging` plus `ui-patterns` via `avalonia-testing-diagnostics-and-performance`, `avalonia-controls-and-windowing`, `avalonia-views-and-templating`, `73-avalonia-12-ai-desktop-product-patterns.md`, and `74-avalonia-12-ai-desktop-recipes-and-checklists.md`.
+
+Expected evidence: use `mnemo` for performance diagnostics overlay, chat virtualization, and AI tool gating patterns; use `Netor.Cartana` for realtime process card and HITL workspace patterns; verify Avalonia control/platform APIs against `frameworks/Avalonia`; do not copy metric names, overlay layout, workflow protocol, entity schema, PluginBus message fields, or button text.

@@ -90,3 +90,15 @@ Expected output:
 - cover workbench, tray utility, overlay/notification, and plugin/MCP settings scenarios,
 - mark `mnemo`, `Netor.Cartana`, and `ClippyAI` as project-pattern evidence only,
 - reject copied third-party XAML, C# bodies, resource keys, plugin protocols, prompt text, visual constants, and platform implementations.
+
+## Sample 9: Sync Updated AI Desktop Reference Projects
+
+Expected route: `source-reference` -> `avalonia-testing-diagnostics-and-performance` -> AI desktop domain skills.
+
+Expected output:
+
+- compare submodule old and current commits before updating plugin evidence,
+- update `docs/reference/ai-desktop-projects.md` when `mnemo` or `Netor.Cartana` reference commits move,
+- refresh plugin paths when upstream files move, such as `Netor.Cartana` plugin docs under `Plugins/docs/参考文档/`,
+- extract only new product patterns such as diagnostics overlay, AI tool gating, chat virtualization, design tokens, empty state, realtime process cards, PluginBus, workflow workspace, and HITL approval,
+- run `python3 scripts/validate_plugin_quality.py`, `python3 scripts/run_ai_desktop_eval_checklist.py --check`, related unittest, and `git diff --check`.

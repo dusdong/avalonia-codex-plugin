@@ -17,6 +17,7 @@ REQUIRED_CASES = [
     "Tray Utility and Clipboard Flow",
     "Overlay and Notification Review",
     "Plugin MCP Settings",
+    "Diagnostics and HITL Workspace",
 ]
 
 REQUIRED_FIELDS = [
