@@ -17,6 +17,12 @@ Load this when an integrated sample helps:
 
 - `../../references/09-end-to-end-examples.md`
 
+## Evidence Discipline
+
+- Avalonia 12 source facts: verify APIs, package behavior, target frameworks, and platform behavior against `../../references/70-avalonia-12-source-and-reference-baseline.md` and the local `frameworks/Avalonia` source tree before making default recommendations.
+- Avalonia 12 project patterns: use only the allowed Avalonia 12 projects named in the baseline/reference-project evidence for product architecture, UI composition, and engineering patterns.
+- Avalonia 11.x migration contrast: mention legacy Avalonia 11.x behavior only when the task is explicitly about migration, compatibility risk, or anti-patterns; never promote it as default Avalonia 12 guidance.
+
 ## Workflow
 
 1. Pick the right confidence level: unit, headless render, UI, or manual diagnostics.

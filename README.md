@@ -59,6 +59,7 @@ This plugin is being rewritten as an Avalonia **12** focused plugin for default 
 - Current source signal: `12.1.999` in `build/SharedVersion.props`, with `net10.0` in `build/TargetFrameworks.props`.
 - API references and guidance should be verified against that local source baseline.
 - Generated API indexes are helper artifacts; if they conflict with the local source tree, the local source tree wins.
+- Every skill separates Avalonia 12 source facts, Avalonia 12 project patterns, and Avalonia 11.x migration contrast.
 
 This repository also carries a legacy-to-Avalonia-12 migration lane:
 
@@ -111,6 +112,8 @@ The skills share one reference corpus instead of duplicating docs inside every s
 - [`references/70-avalonia-12-source-and-reference-baseline.md`](references/70-avalonia-12-source-and-reference-baseline.md): Avalonia 12 source baseline and allowed product references
 - [`references/00-api-map.md`](references/00-api-map.md): curated app-facing API map
 - [`references/api-index-generated.md`](references/api-index-generated.md): broad Avalonia 12 signature lookup regenerated from the local source baseline
+- [`references/71-skill-routing-and-evaluation.md`](references/71-skill-routing-and-evaluation.md): skill lanes, evidence classes, and local evaluation contract
+- [`references/72-avalonia-12-skill-quality-audit.md`](references/72-avalonia-12-skill-quality-audit.md): latest executable skill-quality audit and residual risks
 - [`references/professional-design/README.md`](references/professional-design/README.md): professional design lane
 - [`references/fluent-design/README.md`](references/fluent-design/README.md): Fluent design lane
 - [`references/html-to-avalonia/README.md`](references/html-to-avalonia/README.md): HTML/CSS migration lane
@@ -127,7 +130,29 @@ The skills share one reference corpus instead of duplicating docs inside every s
 - [`references/`](references): shared reference corpus
 - [`scripts/generate_api_index.py`](scripts/generate_api_index.py): API index generator
 - [`scripts/generate_api_migration_report.py`](scripts/generate_api_migration_report.py): Avalonia 12 migration report generator
+- [`scripts/validate_plugin_quality.py`](scripts/validate_plugin_quality.py): local quality gate for routing, evidence classes, evaluation assets, and default 11.x drift
+- [`evals/`](evals): prompt-level evaluation cases for routing and evidence discipline
+- [`examples/`](examples): real task sample outputs and expected response shape
 - [`assets/`](assets): shared plugin and skill imagery
+
+## Skill Routing and Evaluation
+
+The plugin is organized around six capability lanes:
+
+- `umbrella`: classify the request and route to one focused skill.
+- `app-building`: create or modify Avalonia 12 applications with source-backed APIs.
+- `migration`: translate legacy Avalonia, WPF, WinForms, WinUI, or HTML/CSS inputs into Avalonia 12.
+- `debugging`: diagnose build, XAML, binding, styling, platform, rendering, and performance failures.
+- `source-reference`: verify API or behavior claims against `frameworks/Avalonia`.
+- `ui-patterns`: extract design and engineering patterns from allowed Avalonia 12 reference projects without copying code.
+
+Run the local quality gate before publishing plugin changes:
+
+```bash
+python3 scripts/validate_plugin_quality.py
+```
+
+The gate checks the Avalonia source baseline, allowed reference-project evidence, specialist skill coverage, plugin manifest, evaluation prompts, real task samples, and forbidden default Avalonia 11.x drift.
 
 ## Maintenance: Regenerating API Index
 
@@ -155,4 +180,10 @@ python3 scripts/generate_api_migration_report.py \
   --from-ref 11.3.12 \
   --to-ref HEAD \
   --output references/69-avalonia-12-breaking-changes-and-new-api-catalog.md
+```
+
+Plugin quality gate:
+
+```bash
+python3 scripts/validate_plugin_quality.py
 ```

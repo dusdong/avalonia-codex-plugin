@@ -21,7 +21,8 @@ Use these files in this order:
 6. `references/compendium.md` (reference index and task navigation)
 7. `references/00-api-map.md` (curated app-facing API map)
 8. `references/70-avalonia-12-source-and-reference-baseline.md` (Avalonia 12 source and product-reference baseline)
-9. `references/api-index-generated.md` (broad signature lookup regenerated from the local Avalonia 12 source tree)
+9. `references/71-skill-routing-and-evaluation.md` (skill lanes, evidence classes, evaluation contract)
+10. `references/api-index-generated.md` (broad signature lookup regenerated from the local Avalonia 12 source tree)
 
 If they conflict, align all skills and docs to the Avalonia 12 baseline and update the conflicting files.
 
@@ -57,6 +58,7 @@ After regeneration, `references/api-index-generated.md` is the default local-sou
 - Keep the repo-local wrapper thin and route into the canonical umbrella workflow or focused plugin skills.
 - Keep `SKILL.md` bodies short and route to shared references instead of copying large content into each skill.
 - Put trigger conditions in frontmatter descriptions, not in long body sections.
+- Every specialist skill must distinguish Avalonia 12 source facts, Avalonia 12 project patterns, and Avalonia 11.x migration contrast.
 - Keep the repo marketplace `name` distinct from the plugin `name` so catalog and cache identity stay stable, even if the visible marketplace `displayName` intentionally matches the plugin brand.
 - If the repo root itself is the plugin root, keep the marketplace `source.path` at `./` and document that choice in `README.md`.
 - When adding, renaming, or removing a skill, update all relevant navigation points:
@@ -124,6 +126,16 @@ Before finalizing changes:
 5. Verify examples use APIs available in the local Avalonia 12 source baseline, or explicitly label them as legacy migration contrast.
 6. Re-run coverage tooling when API-focused references changed.
 7. Ensure no accidental drift back to Avalonia 11.x as the default guidance.
+8. Run the plugin quality gate:
+
+```bash
+python3 scripts/validate_plugin_quality.py
+```
+
+9. When the change affects skill routing, update:
+   - `references/71-skill-routing-and-evaluation.md`
+   - `evals/avalonia-12-plugin-prompts.md`
+   - `examples/avalonia-12-task-samples.md`
 
 ## Commits
 

@@ -18,6 +18,12 @@ Use the detailed lane docs only for the parts the request actually touches:
 - forms, navigation, overlays, lists, and command surfaces
 - advanced UI patterns such as tabs, split panes, pull-to-refresh, or custom elements
 
+## Evidence Discipline
+
+- Avalonia 12 source facts: verify APIs, package behavior, target frameworks, and platform behavior against `../../references/70-avalonia-12-source-and-reference-baseline.md` and the local `frameworks/Avalonia` source tree before making default recommendations.
+- Avalonia 12 project patterns: use only the allowed Avalonia 12 projects named in the baseline/reference-project evidence for product architecture, UI composition, and engineering patterns.
+- Avalonia 11.x migration contrast: mention legacy Avalonia 11.x behavior only when the task is explicitly about migration, compatibility risk, or anti-patterns; never promote it as default Avalonia 12 guidance.
+
 ## Workflow
 
 1. Translate the web mental model first: layout, state, semantics, and styling architecture.

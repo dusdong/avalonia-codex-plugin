@@ -20,6 +20,7 @@ Primary shared indexes:
 
 - `references/compendium.md`
 - `references/70-avalonia-12-source-and-reference-baseline.md`
+- `references/71-skill-routing-and-evaluation.md`
 - `references/00-api-map.md`
 - `references/api-index-generated.md` as broad signature lookup regenerated from the local Avalonia 12 source tree.
 
@@ -31,6 +32,18 @@ Primary shared indexes:
 - Prefer XAML-first examples unless the user explicitly asks for code-only UI construction.
 - Prefer compiled bindings with `x:DataType`.
 - Keep UI-thread work explicit and keep AOT/trimming tradeoffs visible.
+- Keep evidence classes separate: Avalonia 12 source facts, Avalonia 12 project patterns, and Avalonia 11.x migration contrast.
+
+## Capability Lanes
+
+Use these capability lanes to keep routing testable:
+
+- `umbrella`: classify intent and route to the narrowest specialist skill.
+- `app-building`: create or modify Avalonia 12 apps using source-backed APIs and current `net10.0` assumptions.
+- `migration`: port legacy Avalonia, WPF, WinForms, WinUI, or HTML/CSS inputs into Avalonia 12.
+- `debugging`: diagnose build, XAML, binding, styling, rendering, platform, or performance failures.
+- `source-reference`: verify uncertain APIs and behavior against `frameworks/Avalonia`.
+- `ui-patterns`: extract architecture and UI patterns only from allowed Avalonia 12 reference projects.
 
 ## Routing Rules
 
@@ -83,6 +96,7 @@ Route to the first specialist skill that matches the request and do not keep bro
 4. For any broad or design-heavy task, load `references/70-avalonia-12-source-and-reference-baseline.md` before using third-party product references.
 5. Use generated API indexes only when signature-level lookup is required; verify important signatures against `/Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia`.
 6. Escalate to the legacy migration lane only when the request explicitly involves upgrading older Avalonia code.
+7. When validating the plugin itself, run `python3 scripts/validate_plugin_quality.py` and inspect `evals/avalonia-12-plugin-prompts.md`.
 
 ## Output Expectations
 

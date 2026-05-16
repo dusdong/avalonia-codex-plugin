@@ -75,6 +75,8 @@ Use this as the entry page for the full skill reference set.
 68. Avalonia 12 migration guide: [`68-avalonia-12-migration-guide.md`](68-avalonia-12-migration-guide)
 69. Avalonia 12 breaking changes and new API catalog: [`69-avalonia-12-breaking-changes-and-new-api-catalog.md`](69-avalonia-12-breaking-changes-and-new-api-catalog)
 70. Avalonia 12 source and reference baseline: [`70-avalonia-12-source-and-reference-baseline.md`](70-avalonia-12-source-and-reference-baseline)
+71. Skill routing and evaluation: [`71-skill-routing-and-evaluation.md`](71-skill-routing-and-evaluation)
+72. Avalonia 12 skill quality audit: [`72-avalonia-12-skill-quality-audit.md`](72-avalonia-12-skill-quality-audit)
 API indexes:
 - local Avalonia 12 source baseline: [`api-index-generated.md`](api-index-generated)
 

@@ -13,6 +13,7 @@ This wrapper keeps repo-local skill discovery separate from plugin skill discove
 - plugin manifest: `../../../.codex-plugin/plugin.json`
 - plugin skills: `../../../skills/`
 - shared references: `../../../references/`
+- routing/evaluation contract: `../../../references/71-skill-routing-and-evaluation.md`
 
 Load the canonical umbrella workflow from:
 
@@ -21,3 +22,5 @@ Load the canonical umbrella workflow from:
 Then follow the routing rules from `../../../SKILL.md` instead of copying the full routing table here. The focused plugin skills under `../../../skills/` and the shared references under `../../../references/` remain the actual implementation surface.
 
 Keep default guidance pinned to the local Avalonia 12 source baseline at `/Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia`. Treat Avalonia 11.x material as legacy migration contrast, not as default guidance.
+
+When the request is about this plugin's quality or readiness, run `python3 scripts/validate_plugin_quality.py` from the repository root and inspect `../../../evals/avalonia-12-plugin-prompts.md`.

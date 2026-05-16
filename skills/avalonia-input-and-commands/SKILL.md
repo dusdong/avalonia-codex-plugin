@@ -19,6 +19,12 @@ Load these when the interaction surface needs them:
 - `../../references/58-textbox-editing-clipboard-undo-and-input-options.md`
 - `../../references/36-adorners-focus-and-overlay-layers.md`
 
+## Evidence Discipline
+
+- Avalonia 12 source facts: verify APIs, package behavior, target frameworks, and platform behavior against `../../references/70-avalonia-12-source-and-reference-baseline.md` and the local `frameworks/Avalonia` source tree before making default recommendations.
+- Avalonia 12 project patterns: use only the allowed Avalonia 12 projects named in the baseline/reference-project evidence for product architecture, UI composition, and engineering patterns.
+- Avalonia 11.x migration contrast: mention legacy Avalonia 11.x behavior only when the task is explicitly about migration, compatibility risk, or anti-patterns; never promote it as default Avalonia 12 guidance.
+
 ## Workflow
 
 1. Decide whether the interaction belongs in routed events, commands, or control state.
