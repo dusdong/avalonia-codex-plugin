@@ -86,7 +86,7 @@ Expected evidence: Avalonia 12 source facts for theme APIs; design-token guidanc
 
 Prompt: Build an Avalonia 12 AI workbench with left module navigation, central workspace, right assistant, overlay dialogs, toast history, and a settings/plugin center using the AI desktop reference projects.
 
-Expected route: `ui-patterns` plus `app-building` via `avalonia-design-systems`, `avalonia-controls-and-windowing`, `avalonia-views-and-templating`, and `73-avalonia-12-ai-desktop-product-patterns.md`.
+Expected route: `ui-patterns` plus `app-building` via `avalonia-design-systems`, `avalonia-controls-and-windowing`, `avalonia-views-and-templating`, `73-avalonia-12-ai-desktop-product-patterns.md`, and `74-avalonia-12-ai-desktop-recipes-and-checklists.md`.
 
 Expected evidence: extract patterns from `mnemo`, `Netor.Cartana`, and `ClippyAI`; name source projects and key files; verify API choices against `frameworks/Avalonia`; do not copy third-party XAML, code, resources, plugin protocol, or visual constants.
 
@@ -94,6 +94,22 @@ Expected evidence: extract patterns from `mnemo`, `Netor.Cartana`, and `ClippyAI
 
 Prompt: Review a compact Avalonia 12 tray-first clipboard AI utility with a floating window, notification wrapper, task presets, and MCP plugin settings.
 
-Expected route: `ui-patterns` plus `debugging` via `avalonia-platform-services`, `avalonia-controls-and-windowing`, `avalonia-testing-diagnostics-and-performance`, and `73-avalonia-12-ai-desktop-product-patterns.md`.
+Expected route: `ui-patterns` plus `debugging` via `avalonia-platform-services`, `avalonia-controls-and-windowing`, `avalonia-testing-diagnostics-and-performance`, `73-avalonia-12-ai-desktop-product-patterns.md`, and `74-avalonia-12-ai-desktop-recipes-and-checklists.md`.
 
 Expected evidence: use `ClippyAI` only as local utility pattern evidence, use `Netor.Cartana` for plugin/MCP settings information architecture, use `mnemo` for overlay/toast service layering; flag polling, fixed sizing, Topmost defaults, and direct platform calls in ViewModels as risks.
+
+## Eval 13: AI Desktop Overlay and Notification Acceptance
+
+Prompt: Validate an Avalonia 12 AI desktop overlay, toast, and system-notification design for focus restore, modal behavior, queue capacity, fallback, and platform risks.
+
+Expected route: `ui-patterns` plus `debugging` via `avalonia-controls-and-windowing`, `avalonia-testing-diagnostics-and-performance`, `73-avalonia-12-ai-desktop-product-patterns.md`, and `74-avalonia-12-ai-desktop-recipes-and-checklists.md`.
+
+Expected evidence: use `mnemo` only as overlay/toast service-pattern evidence and `ClippyAI` only as notification-wrapper evidence; verify popup and notification APIs against `frameworks/Avalonia`; record checklist result fields for expected route, actual route, evidence classes, no-copy result, and source verification.
+
+## Eval 14: AI Desktop Plugin MCP Settings Acceptance
+
+Prompt: Design and review an Avalonia 12 settings center for providers, agents, MCP servers, plugin lifecycle, auth state, diagnostics, and failure recovery.
+
+Expected route: `ui-patterns` plus `app-building` via `avalonia-design-systems`, `avalonia-views-and-templating`, `avalonia-platform-services`, `73-avalonia-12-ai-desktop-product-patterns.md`, and `74-avalonia-12-ai-desktop-recipes-and-checklists.md`.
+
+Expected evidence: use `Netor.Cartana` only for plugin/MCP information-architecture patterns; do not copy its plugin protocol, manifest schema, fields, package names, or generator assumptions; verify settings UI and platform service APIs against `frameworks/Avalonia`.

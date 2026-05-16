@@ -2,6 +2,8 @@
 
 本文件把 `docs/reference/ai-desktop-projects.md` 中允许作为默认参考的三个 Avalonia 12 AI 桌面项目沉淀为插件经验库。它只提炼产品架构、交互组织和工程边界，不复制也不得照搬 third-party 项目代码、样式、资源、命名或实现细节。
 
+执行层 recipes、验收清单和 eval 记录入口见 `references/74-avalonia-12-ai-desktop-recipes-and-checklists.md` 与 `evals/avalonia-12-ai-desktop-eval-checklist.md`。
+
 ## Evidence Boundary
 
 - 默认参考项目只能是 `mnemo`、`Netor.Cartana`、`ClippyAI`。

@@ -12,6 +12,7 @@ Start with:
 - `../../references/16-property-system-attached-properties-behaviors-and-style-properties.md`
 - `../../references/17-resources-assets-theme-variants-and-xmlns.md`
 - `../../references/73-avalonia-12-ai-desktop-product-patterns.md` when styling AI desktop shells, assistant panels, overlays, toast surfaces, settings centers, or compact tray tools.
+- `../../references/74-avalonia-12-ai-desktop-recipes-and-checklists.md` when styling must satisfy AI desktop recipe acceptance checks for surfaces, density, focus, feedback, and no-copy token boundaries.
 
 Load these when needed:
 

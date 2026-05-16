@@ -13,6 +13,7 @@ Start with:
 - `../../references/08-performance-checklist.md`
 - `../../references/07-troubleshooting.md`
 - `../../references/73-avalonia-12-ai-desktop-product-patterns.md` when validating AI desktop product-pattern regressions such as overlay stacking, assistant streaming state, tray restore behavior, notification routing, plugin settings, or clipboard utility loops.
+- `../../references/74-avalonia-12-ai-desktop-recipes-and-checklists.md` when validating AI desktop eval/checklist coverage, acceptance criteria, failure states, focus risks, multi-screen risks, or no-copy regressions.
 
 Load this when an integrated sample helps:
 

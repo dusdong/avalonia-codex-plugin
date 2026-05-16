@@ -69,7 +69,7 @@ Expected output:
 
 ## Sample 7: Extract AI Desktop Product Patterns Without Copying
 
-Expected route: `avalonia-design-systems` -> `avalonia-controls-and-windowing` -> `avalonia-views-and-templating` -> `avalonia-platform-services`, with `references/73-avalonia-12-ai-desktop-product-patterns.md` loaded.
+Expected route: `avalonia-design-systems` -> `avalonia-controls-and-windowing` -> `avalonia-views-and-templating` -> `avalonia-platform-services`, with `references/73-avalonia-12-ai-desktop-product-patterns.md` and `references/74-avalonia-12-ai-desktop-recipes-and-checklists.md` loaded.
 
 Expected output:
 
@@ -78,3 +78,15 @@ Expected output:
 - cite representative third-party source files as evidence, then redesign the implementation against the target app,
 - verify Avalonia APIs such as `ContentControl`, `SplitView`, `TopLevel`, `TrayIcon`, `NativeMenu`, `Popup`, `WindowNotificationManager`, `IClipboard`, `IStorageProvider`, and `ILauncher` against `frameworks/Avalonia`,
 - explicitly avoid copying third-party code, XAML, resource keys, icons, plugin protocols, strings, or layout constants.
+
+## Sample 8: Run AI Desktop Eval Checklist
+
+Expected route: `avalonia-testing-diagnostics-and-performance` -> active AI desktop domain skills, with `evals/avalonia-12-ai-desktop-eval-checklist.md` loaded.
+
+Expected output:
+
+- run or request `python3 scripts/run_ai_desktop_eval_checklist.py --check` before declaring the eval checklist usable,
+- evaluate each AI desktop scenario by expected route, actual route, evidence classes, no-copy result, Avalonia source verification, and notes,
+- cover workbench, tray utility, overlay/notification, and plugin/MCP settings scenarios,
+- mark `mnemo`, `Netor.Cartana`, and `ClippyAI` as project-pattern evidence only,
+- reject copied third-party XAML, C# bodies, resource keys, plugin protocols, prompt text, visual constants, and platform implementations.

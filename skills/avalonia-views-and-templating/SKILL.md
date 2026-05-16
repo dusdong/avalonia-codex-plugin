@@ -12,6 +12,7 @@ Start with:
 - `../../references/38-data-templates-and-idatatemplate-selector-patterns.md`
 - `../../references/51-template-content-and-func-template-patterns.md`
 - `../../references/73-avalonia-12-ai-desktop-product-patterns.md` when view composition involves AI workbench modules, assistant panels, settings pages, plugin pages, or compact utility views.
+- `../../references/74-avalonia-12-ai-desktop-recipes-and-checklists.md` when view composition needs checklist-level coverage for workspace navigation, settings pages, plugin/MCP pages, or utility views.
 
 Load these when lookup or debugging matters:
 

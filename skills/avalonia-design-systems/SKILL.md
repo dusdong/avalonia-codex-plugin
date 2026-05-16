@@ -11,6 +11,7 @@ Start with:
 - `../../references/66-professional-ui-design-tokens-and-themes.md`
 - `../../references/professional-design/README.md`
 - `../../references/73-avalonia-12-ai-desktop-product-patterns.md` when the design task is an AI desktop workbench, assistant shell, settings center, plugin surface, tray entry, overlay, or notification flow.
+- `../../references/74-avalonia-12-ai-desktop-recipes-and-checklists.md` when the task needs AI desktop acceptance criteria, product recipes, or eval/checklist recording.
 
 Load only the lane chapters that fit the task:
 

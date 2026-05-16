@@ -36,10 +36,14 @@ The plugin now has an explicit capability model:
 
 The AI desktop product-pattern layer is now explicit in `references/73-avalonia-12-ai-desktop-product-patterns.md`. It extracts reusable patterns from `mnemo`, `Netor.Cartana`, and `ClippyAI` while keeping Avalonia 12 source facts, project patterns, and Avalonia 11.x migration contrast separate.
 
+The AI desktop execution layer is now explicit in `references/74-avalonia-12-ai-desktop-recipes-and-checklists.md`, `evals/avalonia-12-ai-desktop-eval-checklist.md`, and `scripts/run_ai_desktop_eval_checklist.py`. It turns the pattern library into recipes, acceptance checklists, eval result recording fields, and a local checklist validator.
+
 Primary documentation:
 
 - `references/71-skill-routing-and-evaluation.md`
 - `references/73-avalonia-12-ai-desktop-product-patterns.md`
+- `references/74-avalonia-12-ai-desktop-recipes-and-checklists.md`
+- `evals/avalonia-12-ai-desktop-eval-checklist.md`
 - `SKILL.md`
 - `README.md`
 - `AGENTS.md`
@@ -51,7 +55,9 @@ Primary documentation:
 - Specialist skills: all 19 `skills/*/SKILL.md` files
 - References: `references/compendium.md`, `references/71-skill-routing-and-evaluation.md`, `references/72-avalonia-12-skill-quality-audit.md`
 - AI desktop product patterns: `references/73-avalonia-12-ai-desktop-product-patterns.md`
+- AI desktop recipes and eval checklist: `references/74-avalonia-12-ai-desktop-recipes-and-checklists.md`, `evals/avalonia-12-ai-desktop-eval-checklist.md`
 - Executable validation: `scripts/validate_plugin_quality.py`
+- Eval checklist runner: `scripts/run_ai_desktop_eval_checklist.py`
 - Evaluation assets: `evals/avalonia-12-plugin-prompts.md`, `examples/avalonia-12-task-samples.md`
 
 ## Skill Evidence Discipline
@@ -84,11 +90,14 @@ The gate checks:
 - default 11.x drift markers are absent from plugin guidance/config files outside explicitly superseded historical planning context.
 - `plan/*` preview2 files are explicitly marked superseded and the tracked reclose report is present.
 - AI desktop pattern evidence exists, includes all three allowed Avalonia 12 projects, covers required product-pattern sections, excludes Avalonia 11.x projects from default guidance, and routes through README, SKILL, compendium, baseline, routing docs, six specialist skills, evals, and examples.
+- AI desktop recipes/checklists exist, cover workspace navigation, right assistant, plugin/MCP, tray, floating window, overlay, toast, notification, clipboard utility, and settings center surfaces.
+- The AI desktop eval checklist can be validated with `python3 scripts/run_ai_desktop_eval_checklist.py --check`.
+- A text-level copy-risk scan checks the AI desktop reference/eval/sample assets for obvious third-party XAML/C# body patterns.
 
 Latest result:
 
 ```text
-OK: source-baseline=12.1.999/net10.0, reference-projects=3-default-avalonia-12, skills=19, plugin-manifest=ok, evals>=8, samples>=5, ai-desktop-patterns=ok, plan-scope=ok, default-11x-scan-files=503
+OK: source-baseline=12.1.999/net10.0, reference-projects=3-default-avalonia-12, skills=19, plugin-manifest=ok, evals>=8, samples>=5, ai-desktop-patterns=ok, ai-desktop-deepening=ok, copy-risk-scan-files=5, plan-scope=ok, default-11x-scan-files=505
 ```
 
 ## Evaluation Assets
@@ -111,12 +120,16 @@ Coverage:
 - HTML/CSS conversion,
 - Fluent theme guidance,
 - AI desktop workbench pattern extraction,
-- tray-first utility and plugin/MCP settings review.
+- tray-first utility and plugin/MCP settings review,
+- overlay/notification acceptance review,
+- plugin/MCP settings acceptance review,
+- checklist-based eval result recording.
 
 ## Verification Commands
 
 ```bash
 python3 scripts/validate_plugin_quality.py
+python3 scripts/run_ai_desktop_eval_checklist.py --check
 python3 -m json.tool .codex-plugin/plugin.json
 python3 -m unittest scripts.test_generate_api_migration_report scripts.test_find_uncovered_apis
 git diff --check
@@ -125,6 +138,7 @@ git diff --check
 Results:
 
 - plugin quality gate: passed,
+- AI desktop eval checklist runner: passed,
 - plugin JSON validation: passed,
 - unit tests: `Ran 15 tests ... OK`,
 - diff whitespace check: passed.
@@ -138,3 +152,4 @@ The unit test output includes `error: unknown ref: bad-ref`; that string is emit
 - Historical `plan/` files may still describe old work, but the quality gate now requires preview2 plan files to be explicitly superseded and tied back to the current Avalonia 12 baseline.
 - The plugin still carries broad reference chapters from earlier work. This audit improves their routing and validation surface, but it is not a line-by-line rewrite of every deep reference chapter.
 - The AI desktop pattern library is evidence-based and structurally gated, but it is not a license to copy third-party source; implementations must redesign against the target product and verify APIs against the local Avalonia 12 source tree.
+- The copy-risk scan is intentionally lightweight. It catches obvious pasted XAML/C# body markers, not semantic plagiarism or externally generated near-duplicates.

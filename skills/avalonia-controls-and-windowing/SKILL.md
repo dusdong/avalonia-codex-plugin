@@ -12,6 +12,7 @@ Start with:
 - `../../references/13-windowing-and-custom-decorations.md`
 - `../../references/48-toplevel-window-and-runtime-services.md`
 - `../../references/73-avalonia-12-ai-desktop-product-patterns.md` when windows, popups, tray, notifications, overlays, assistant sidebars, or floating entries are part of an AI desktop product pattern.
+- `../../references/74-avalonia-12-ai-desktop-recipes-and-checklists.md` when reviewing acceptance criteria for overlays, toast, tray, floating windows, notification wrappers, or assistant shell surfaces.
 
 Load these based on the requested surface:
 

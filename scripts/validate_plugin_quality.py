@@ -14,6 +14,9 @@ WORKSPACE = ROOT.parents[1]
 AVALONIA_REPO = WORKSPACE / "frameworks" / "Avalonia"
 AI_PROJECTS = WORKSPACE / "docs" / "reference" / "ai-desktop-projects.md"
 AI_DESKTOP_PATTERNS = ROOT / "references" / "73-avalonia-12-ai-desktop-product-patterns.md"
+AI_DESKTOP_RECIPES = ROOT / "references" / "74-avalonia-12-ai-desktop-recipes-and-checklists.md"
+AI_DESKTOP_EVAL_CHECKLIST = ROOT / "evals" / "avalonia-12-ai-desktop-eval-checklist.md"
+AI_DESKTOP_EVAL_RUNNER = ROOT / "scripts" / "run_ai_desktop_eval_checklist.py"
 
 EXPECTED_SKILLS = {
     "avalonia-12-migration",
@@ -95,6 +98,50 @@ AI_DESKTOP_SKILLS = [
     "avalonia-platform-services",
     "avalonia-styling-and-resources",
     "avalonia-testing-diagnostics-and-performance",
+]
+
+AI_DESKTOP_RECIPE_SECTIONS = [
+    "## Evidence and No-Copy Contract",
+    "## Recipe 1: Workspace Navigation",
+    "## Recipe 2: Right Assistant",
+    "## Recipe 3: Plugin and MCP Settings Center",
+    "## Recipe 4: Tray and Floating Window",
+    "## Recipe 5: Overlay and Toast",
+    "## Recipe 6: System Notification Wrapper",
+    "## Recipe 7: Clipboard Utility Flow",
+    "## Recipe 8: Settings Center",
+    "## Cross-Cutting Copy-Risk Scan",
+]
+
+AI_DESKTOP_SURFACES = [
+    "workspace navigation",
+    "right assistant",
+    "plugin",
+    "MCP",
+    "tray",
+    "floating window",
+    "overlay",
+    "toast",
+    "notification",
+    "clipboard utility",
+    "settings center",
+]
+
+AI_DESKTOP_CHECKLIST_FIELDS = [
+    "Expected route:",
+    "Actual route:",
+    "Evidence classes observed:",
+    "No-copy result:",
+    "Avalonia source verification:",
+    "Notes:",
+]
+
+THIRD_PARTY_COPY_RISK_PATTERNS = [
+    re.compile(r"x:Class=\"(?:Mnemo|Netor|ClippyAI)", re.IGNORECASE),
+    re.compile(r"namespace\s+(?:Mnemo|Netor|ClippyAI)", re.IGNORECASE),
+    re.compile(r"public\s+partial\s+class\s+MainWindow", re.IGNORECASE),
+    re.compile(r"InitializeComponent\s*\(\s*\)", re.IGNORECASE),
+    re.compile(r"<(?:Window|UserControl)[\s>]", re.IGNORECASE),
 ]
 
 
@@ -226,6 +273,10 @@ def validate_ai_desktop_patterns() -> list[str]:
             "73-avalonia-12-ai-desktop-product-patterns.md" in text,
             f"{path.relative_to(ROOT)} does not route AI desktop patterns",
         )
+        require(
+            "74-avalonia-12-ai-desktop-recipes-and-checklists.md" in text,
+            f"{path.relative_to(ROOT)} does not route AI desktop recipes/checklists",
+        )
 
     for skill in AI_DESKTOP_SKILLS:
         skill_file = ROOT / "skills" / skill / "SKILL.md"
@@ -233,6 +284,10 @@ def validate_ai_desktop_patterns() -> list[str]:
         require(
             "../../references/73-avalonia-12-ai-desktop-product-patterns.md" in text,
             f"{skill} does not route AI desktop patterns",
+        )
+        require(
+            "../../references/74-avalonia-12-ai-desktop-recipes-and-checklists.md" in text,
+            f"{skill} does not route AI desktop recipes/checklists",
         )
 
     evals = read(ROOT / "evals" / "avalonia-12-plugin-prompts.md")
@@ -244,6 +299,86 @@ def validate_ai_desktop_patterns() -> list[str]:
         require("copy" in text.lower() or "复制" in text, f"{label} lack no-copy constraint")
 
     return ["ai-desktop-patterns=ok"]
+
+
+def validate_ai_desktop_deepening() -> list[str]:
+    recipes = read(AI_DESKTOP_RECIPES)
+    checklist = read(AI_DESKTOP_EVAL_CHECKLIST)
+    runner = read(AI_DESKTOP_EVAL_RUNNER)
+    evals = read(ROOT / "evals" / "avalonia-12-plugin-prompts.md")
+    examples = read(ROOT / "examples" / "avalonia-12-task-samples.md")
+
+    for project in AI_DESKTOP_PROJECTS:
+        require(project in recipes, f"AI desktop recipes lack project source: {project}")
+        require(project in checklist, f"AI desktop eval checklist lacks project source: {project}")
+
+    for project in AI_DESKTOP_EXCLUDED_PROJECTS:
+        require(project in recipes, f"AI desktop recipes do not name excluded project: {project}")
+        require(project in checklist, f"AI desktop eval checklist does not name excluded project: {project}")
+
+    for section in AI_DESKTOP_RECIPE_SECTIONS:
+        require(section in recipes, f"AI desktop recipes lack section: {section}")
+
+    lower_recipes = recipes.lower()
+    for surface in AI_DESKTOP_SURFACES:
+        require(surface.lower() in lower_recipes, f"AI desktop recipes lack surface: {surface}")
+
+    for required in [
+        "来源项目",
+        "关键文件",
+        "Avalonia 12 源码验证点",
+        "交互状态",
+        "失败态",
+        "可访问性/焦点风险",
+        "多屏/平台差异风险",
+        "不得复制",
+        "不得照搬",
+    ]:
+        require(required in recipes, f"AI desktop recipes lack required field/marker: {required}")
+
+    for field in AI_DESKTOP_CHECKLIST_FIELDS:
+        require(field in checklist, f"AI desktop eval checklist lacks field: {field}")
+        require(field in runner, f"AI desktop eval runner lacks field validation: {field}")
+
+    for marker in [
+        "AI Desktop Workbench",
+        "Tray Utility and Clipboard Flow",
+        "Overlay and Notification Review",
+        "Plugin MCP Settings",
+        "Avalonia 12 source facts",
+        "Avalonia 12 project patterns",
+        "Avalonia 11.x migration contrast",
+        "No-copy",
+        "73-avalonia-12-ai-desktop-product-patterns.md",
+        "74-avalonia-12-ai-desktop-recipes-and-checklists.md",
+    ]:
+        require(marker in checklist, f"AI desktop eval checklist lacks marker: {marker}")
+        require(marker in runner, f"AI desktop eval runner lacks marker: {marker}")
+
+    require("Eval 13" in evals and "Eval 14" in evals, "evaluation prompts lack AI desktop deepening evals")
+    require("Sample 8" in examples, "task samples lack AI desktop eval checklist sample")
+    require("--check" in runner and "--json" in runner, "AI desktop eval runner lacks check/json modes")
+    require(AI_DESKTOP_EVAL_RUNNER.stat().st_mode & 0o111, "AI desktop eval runner is not executable")
+
+    return ["ai-desktop-deepening=ok"]
+
+
+def validate_third_party_copy_risk() -> list[str]:
+    scanned_paths = [
+        AI_DESKTOP_PATTERNS,
+        AI_DESKTOP_RECIPES,
+        AI_DESKTOP_EVAL_CHECKLIST,
+        ROOT / "evals" / "avalonia-12-plugin-prompts.md",
+        ROOT / "examples" / "avalonia-12-task-samples.md",
+    ]
+
+    for path in scanned_paths:
+        text = read(path)
+        rel = path.relative_to(ROOT).as_posix()
+        for pattern in THIRD_PARTY_COPY_RISK_PATTERNS:
+            require(not pattern.search(text), f"possible third-party code copy risk in {rel}: {pattern.pattern}")
+
+    return [f"copy-risk-scan-files={len(scanned_paths)}"]
 
 
 def validate_plan_scope() -> list[str]:
@@ -272,7 +407,6 @@ def validate_plan_scope() -> list[str]:
         "Changes",
         "Verification",
         "Residual Risks",
-        "Next Minimal Tasks",
     ]:
         require(marker in body, f"closeout report lacks section marker: {marker}")
 
@@ -314,6 +448,8 @@ def main() -> int:
     checks.extend(validate_plugin_manifest())
     checks.extend(validate_evaluation_assets())
     checks.extend(validate_ai_desktop_patterns())
+    checks.extend(validate_ai_desktop_deepening())
+    checks.extend(validate_third_party_copy_risk())
     checks.extend(validate_plan_scope())
     checks.extend(validate_forbidden_default_11x())
     print("OK: " + ", ".join(checks))

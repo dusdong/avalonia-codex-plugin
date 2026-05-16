@@ -43,7 +43,11 @@ Pattern-level AI desktop experience extracted from those projects lives in:
 
 `references/73-avalonia-12-ai-desktop-product-patterns.md`
 
-Use that file for workbench, assistant, settings center, plugin/MCP, tray, floating entry, overlay, notification, theme-token, View/ViewModel, platform-service, and anti-copy guidance. It remains project-pattern evidence; source facts still come from `frameworks/Avalonia`.
+Executable recipes and acceptance checklists live in:
+
+`references/74-avalonia-12-ai-desktop-recipes-and-checklists.md`
+
+Use those files for workbench, assistant, settings center, plugin/MCP, tray, floating entry, overlay, notification, theme-token, View/ViewModel, platform-service, checklist, and anti-copy guidance. They remain project-pattern evidence; source facts still come from `frameworks/Avalonia`.
 
 ## Excluded from Default Guidance
 

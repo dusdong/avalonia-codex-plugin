@@ -228,9 +228,41 @@ OK: source-baseline=12.1.999/net10.0, reference-projects=3-default-avalonia-12, 
 - The quality gate verifies structure and routing, not actual model responses on live eval execution.
 - Third-party code copying is explicitly prohibited and structurally documented, but automated copy-detection is still outside this plugin gate.
 
-### Next Minimal Tasks
+## AI Desktop Deepening Reclose
 
-1. Add a small prompt-runner or checklist that executes the eval prompts against the installed plugin and captures routing quality.
-2. Prioritize reference expansion from `plan/api-coverage-not-covered.md` by app-facing risk instead of raw uncovered signature count.
-3. Add a source-path citation convention for high-risk API guidance in specialist skill outputs.
-4. Create a focused review for `references/68-avalonia-12-migration-guide.md` once the official Avalonia 12 package line stabilizes beyond local `12.1.999` source signals.
+Date: 2026-05-16
+
+### Scope
+
+This reclose deepens the AI desktop pattern library into executable evaluation, reusable acceptance checklists, and finer recipes while preserving the original evidence boundary:
+
+- `mnemo`, `Netor.Cartana`, and `ClippyAI` are the only default Avalonia 12 project-pattern references.
+- `Everywhere`, `StabilityMatrix`, `avallama`, and `WhisperVoiceInput` remain Avalonia 11.x migration contrast only.
+- Avalonia API, XAML, platform-service, control, and resource claims still resolve back to `/Volumes/程序开发/Du-Framework/Du.Ingest/frameworks/Avalonia` at `12.1.999 / net10.0`.
+- Third-party code, resources, plugin protocols, prompt text, visual constants, and implementation bodies remain prohibited copying sources.
+
+### Changes
+
+- Added `references/74-avalonia-12-ai-desktop-recipes-and-checklists.md` with recipes and acceptance checklists for workspace navigation, right assistant, plugin/MCP settings, tray/floating windows, overlay/toast, system notifications, clipboard utility flow, and settings center.
+- Added `evals/avalonia-12-ai-desktop-eval-checklist.md` so AI desktop evals can record expected route, actual route, evidence classes, no-copy result, Avalonia source verification, and notes.
+- Added `scripts/run_ai_desktop_eval_checklist.py` with `--check` and `--json` modes to validate or emit the checklist structure.
+- Updated `README.md`, `SKILL.md`, `references/70-avalonia-12-source-and-reference-baseline.md`, `references/71-skill-routing-and-evaluation.md`, `references/73-avalonia-12-ai-desktop-product-patterns.md`, `references/compendium.md`, six AI desktop-related specialist skills, `evals/avalonia-12-plugin-prompts.md`, and `examples/avalonia-12-task-samples.md` to route the new recipes and checklist layer.
+- Extended `scripts/validate_plugin_quality.py` with `ai-desktop-deepening=ok` and `copy-risk-scan-files=5`.
+
+### Verification
+
+Latest command result:
+
+```text
+python3 scripts/run_ai_desktop_eval_checklist.py --check
+OK: ai-desktop-eval-checklist=ok
+
+python3 scripts/validate_plugin_quality.py
+OK: source-baseline=12.1.999/net10.0, reference-projects=3-default-avalonia-12, skills=19, plugin-manifest=ok, evals>=8, samples>=5, ai-desktop-patterns=ok, ai-desktop-deepening=ok, copy-risk-scan-files=5, plan-scope=ok, default-11x-scan-files=505
+```
+
+### Residual Risks
+
+- The eval checklist records actual route and evidence quality, but it does not automatically run the installed plugin against a model; that remains a manual or harness-driven step.
+- The copy-risk scan catches obvious pasted XAML/C# body markers only; it is not full plagiarism detection.
+- The recipes are acceptance-level guidance, not generated implementation code.
